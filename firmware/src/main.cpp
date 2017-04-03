@@ -79,12 +79,12 @@ float get_termperature() {
   float t = dht.readTemperature();
   // Check if any reads failed and exit early (to try again).
   if (isnan(t)) {
-    Serial.println("Failed to read from DHT sensor!");
+    //Serial.println("Failed to read from DHT sensor!");
     return -1;
   }
-  Serial.print(" Temperature: ");
-  Serial.print(t);
-  Serial.println(" *C ");
+  //Serial.print(" Temperature: ");
+  //Serial.print(t);
+  //Serial.println(" *C ");
 
   return t;
 }
@@ -96,11 +96,11 @@ float get_humidity() {
   float h = dht.readHumidity();
   // Check if any reads failed and exit early (to try again).
   if (isnan(h)) {
-    Serial.println("Failed to read from DHT sensor!");
+    //Serial.println("Failed to read from DHT sensor!");
     return -1;
   }
-  Serial.print("Humidity: ");
-  Serial.print(h);
+  //Serial.print("Humidity: ");
+  //Serial.print(h);
 
   return h;
 }
@@ -171,6 +171,33 @@ void fs_write_data() {
   myDataFile.close();                                   // Close the file
   Serial.println(fs_available_space());
   Serial.println(fs_total_space());
+}
+
+void fs_delete_file() {
+  // Assign a file name e.g. 'names.dat' or 'data.txt' or 'data.dat' try to use the 8.3 file naming convention format could be 'data.d'
+  char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
+
+  if (SPIFFS.exists(filename)) SPIFFS.remove(filename); // First blu175.mail.live.com in this example check to see if a file already exists, if so delete it
+}
+
+void fs_read_file() {
+  char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
+  File myDataFile = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
+  myDataFile = SPIFFS.open(filename, "r");              // Open the file again, this time for reading
+  if (!myDataFile) Serial.println("file open failed");  // Check for errors
+  while (myDataFile.available()) {
+    Serial.write(myDataFile.read());                    // Read all the data from the file and display it
+  }
+}
+
+void fs_write_frame(String frame)
+{
+  char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
+  File myDataFile = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
+  if (!myDataFile)Serial.println("file open failed");   // Check for errors
+
+  myDataFile.println(frame);
+  myDataFile.close();
 }
 
 void displayInfo()
@@ -268,47 +295,94 @@ bool gps_data_available() {
 // void gps_get_valid_position() {
 //   //gps.f_get_position(&flat, &flon, &age);
 // }
+String slash = "/";
+String comma = ",";
+String invalid = "INVALID";
 
 void loop()
 {
+  // READ SHARP SENSOR
+  dust_voltage = 0;
+  for (int i=0;i<samples;i++) {
+    digitalWrite(ledPower,LOW); // power on the LED
+    delayMicroseconds(samplingTime);
+    voMeasured = 1000.0F*ads.readADC_SingleEnded_V(0); // read the dust voltage
+    delayMicroseconds(deltaTime);
+    digitalWrite(ledPower,HIGH); // turn the LED off
+    delayMicroseconds(sleepTime);
+    dust_voltage += voMeasured ;  // voltage 0-5V
+    delay(100);
+  }
+  dust_voltage = dust_voltage / samples;
+
+  // CALCULATE SHARP RESULTS
+  concSHARP = 0.172*dust_voltage-0.1;        // density microgram/m3
+  if (concSHARP > 500) concSHARP = 500;
+
+  // PRINT SHARP DATA TO SERIAL
+  //Serial.print(dust_voltage);
+  //Serial.print("\t\t");
+  //Serial.println(concSHARP);
+
+  // Read humidity
+  float h = get_humidity();
+  // Read temperature as Celsius
+  float t = get_termperature();
   //GPS
-  // This sketch displays information every time a new sentence is correctly encoded.
-  ESP.wdtDisable();
-
-  displayInfo();
+  wdt_disable();
   smartdelay(500);
-  // while (ss.available() > 0) if (gps.encode(ss.read())) displayInfo();
+  //displayInfo();
+  String frame;
 
-  // if (millis() > 5000 && gps.charsProcessed() < 10)
-  //   {
-  //     Serial.println(F("No GPS detected: check wiring."));
-  //     while(true);
-  //   }
-    // READ SHARP SENSOR
-  // dust_voltage = 0;
-  // for (int i=0;i<samples;i++) {
-  //   digitalWrite(ledPower,LOW); // power on the LED
-  //   delayMicroseconds(samplingTime);
-  //   voMeasured = 1000.0F*ads.readADC_SingleEnded_V(0); // read the dust voltage
-  //   delayMicroseconds(deltaTime);
-  //   digitalWrite(ledPower,HIGH); // turn the LED off
-  //   delayMicroseconds(sleepTime);
-  //   dust_voltage += voMeasured ;  // voltage 0-5V
-  //   delay(100);
-  // }
-  // dust_voltage = dust_voltage / samples;
+  if (gps.location.isValid())
+    {
+      char outstrlat[25],outstrlng[25];
+      dtostrf(gps.location.lat(), 3, 6, outstrlat);
+      dtostrf(gps.location.lng(), 3, 6, outstrlng);
+      frame +=  outstrlat + comma + outstrlng + comma;
+    }
+  else
+    {
+      frame += invalid+comma+invalid+comma;
+    }
 
-  // // CALCULATE SHARP RESULTS
-  // concSHARP = 0.172*dust_voltage-0.1;        // density microgram/m3
-  // if (concSHARP > 500) concSHARP = 500;
+  if (gps.date.isValid())
+    {
+      frame += gps.date.month() + slash + gps.date.day() + slash + gps.date.year()+ comma;
+    }
+  else
+    {
+      frame += invalid+comma;
+    }
 
-  // // PRINT SHARP DATA TO SERIAL
-  // Serial.print(dust_voltage);
-  // Serial.print("\t\t");
-  // Serial.println(concSHARP);
+  if(gps.altitude.isValid()) {
+    frame += gps.altitude.meters() + comma;
+  }
+  else
+    {
+      frame += invalid+comma;
+    }
 
-  // // Read humidity
-  // float h = get_humidity();
-  // // Read temperature as Celsius
-  // float t = get_termperature();
+  if(gps.course.isValid())
+    {
+      frame += gps.course.deg() + comma;
+    }
+  else {
+    frame += invalid+comma;
+  }
+
+  if(gps.speed.isValid()){
+    frame += gps.speed.kmph() + comma;
+  }
+  else {
+    frame += invalid + comma;
+  }
+
+  frame += h +comma + t +comma+ concSHARP;
+  //Serial.println(frame);
+  fs_write_frame(frame);
+  //fs_read_file();
+  fs_delete_file();
+  wdt_enable(1000);
+
 }
