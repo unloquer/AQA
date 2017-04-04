@@ -36,7 +36,7 @@ float multiplier;
 // SHARP SENSOR VARIABLES
 int dust_analog;
 float dust_voltage;  // measured
-int concSHARP;       // calculated
+float concSHARP;       // calculated
 int samples = 100;    // with delay of 100ms in between
 
 /*
@@ -405,7 +405,8 @@ void loop()
   //Serial.println(frame);
   fs_write_frame(frame);
   //fs_read_file();
-  fs_delete_file();
+  //fs_info_print();
+  //fs_delete_file();
   wdt_enable(1000);
 
 }
