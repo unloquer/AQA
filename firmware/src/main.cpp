@@ -298,7 +298,10 @@ bool gps_data_available() {
 String slash = "/";
 String comma = ",";
 String invalid = "INVALID";
-
+String cero = "0";
+String dospuntos = ":";
+String punto = ".";
+ 
 void loop()
 {
   // READ SHARP SENSOR
@@ -354,6 +357,26 @@ void loop()
     {
       frame += invalid+comma;
     }
+
+  if (gps.time.isValid())
+    {
+      if (gps.time.hour() < 10) frame += cero;
+      frame += gps.time.hour();
+      frame += dospuntos;
+      if (gps.time.minute() < 10) frame += cero;
+      frame += gps.time.minute();
+      frame += dospuntos;
+      if (gps.time.second() < 10) frame += cero;
+      frame += gps.time.second();
+      frame += punto;
+      if (gps.time.centisecond() < 10) frame += cero;
+      frame += gps.time.centisecond() + comma;
+    }
+  else
+    {
+      frame += invalid+comma;
+    }
+
 
   if(gps.altitude.isValid()) {
     frame += gps.altitude.meters() + comma;
