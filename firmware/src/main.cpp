@@ -36,8 +36,8 @@ float multiplier;
 // SHARP SENSOR VARIABLES
 int dust_analog;
 float dust_voltage;  // measured
-float concSHARP;       // calculated
-int samples = 100;    // with delay of 100ms in between
+float concSHARP;     // calculated
+int samples = 100;   // with delay of 100ms in between
 
 /*
   GPS connection:
@@ -71,6 +71,62 @@ SoftwareSerial ss(RXPin, TXPin);
 
 // Initialize DHT sensor for normal 16mhz Arduino
 DHT dht(DHTPIN, DHTTYPE);
+
+/*
+  Sensor Plantower
+ */
+#define LENG 23   //0x42 + 23 bytes equal to 24 bytes -> 
+//#define LENG 31   //0x42 + 31 bytes equal to 32 bytes
+unsigned char buf[LENG];
+
+int PM01Value=0;          //define PM1.0 value of the air detector module
+int PM2_5Value=0;         //define PM2.5 value of the air detector module
+int PM10Value=0;         //define PM10 value of the air detector module
+
+char checkValue(unsigned char *thebuf, char leng)
+{
+  char receiveflag=0;
+  int receiveSum=0;
+
+  for(int i=0; i<(leng-2); i++){
+    receiveSum=receiveSum+thebuf[i];
+  }
+  receiveSum=receiveSum + 0x42;
+
+  if(receiveSum == ((thebuf[leng-2]<<8)+thebuf[leng-1]))  //check the serial data 
+    {
+      receiveSum = 0;
+      receiveflag = 1;
+    }
+  return receiveflag;
+}
+
+int transmitPM01(unsigned char *thebuf)
+{
+  int PM01Val;
+  PM01Val=((thebuf[3]<<8) + thebuf[4]); //count PM1.0 value of the air detector module
+  return PM01Val;
+}
+
+//transmit PM Value to PC
+int transmitPM2_5(unsigned char *thebuf)
+{
+  int PM2_5Val;
+  PM2_5Val=((thebuf[5]<<8) + thebuf[6]);//count PM2.5 value of the air detector module
+  return PM2_5Val;
+}
+
+//transmit PM Value to PC
+int transmitPM10(unsigned char *thebuf)
+{
+  int PM10Val;
+  PM10Val=((thebuf[7]<<8) + thebuf[8]); //count PM10 value of the air detector module  
+  return PM10Val;
+}
+
+//
+
+void fs_read_file();
 
 float get_termperature() {
   // Reading temperature or humidity takes about 250 milliseconds!
@@ -126,18 +182,6 @@ long fs_available_space() {
   return fs_info.usedBytes;
 }
 
-void setup()
-{
-  Serial.begin(115200);
-  Serial.println("Starting...");
-  ss.begin(GPSBaud);
-  SPIFFS.begin();
-  pinMode(ledPower,OUTPUT);
-  ads.begin();
-  multiplier = ads.voltsPerBit()*1000.0F;           // Gets the millivolts per bit
-  dht.begin();
-}
-
 static void smartdelay(unsigned long ms)
 {
   unsigned long start = millis();
@@ -157,7 +201,7 @@ void fs_write_data() {
 
   File myDataFile = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
   if (!myDataFile)Serial.println("file open failed");   // Check for errors
-  
+
   myDataFile.println("ABCDEFGHIJKLMNOPQRSTUVWXYZ");     // Write some data to it (26-characters)
   myDataFile.println(3.141592654);
   Serial.println(myDataFile.size());                    // Display the file size (26 characters + 4-byte floating point number + 6 termination bytes (2/line) = 34 bytes)
@@ -200,90 +244,12 @@ void fs_write_frame(String frame)
   myDataFile.close();
 }
 
-void displayInfo()
-{
-  Serial.print(F("Location: "));
-  if (gps.location.isValid())
-  {
-    Serial.print(gps.location.lat(), 6);
-    Serial.print(F(","));
-    Serial.print(gps.location.lng(), 6);
-  }
-  else
-  {
-    Serial.print(F("INVALID"));
-  }
-
-  Serial.print(F("  Date/Time: "));
-  if (gps.date.isValid())
-  {
-    Serial.print(gps.date.month());
-    Serial.print(F("/"));
-    Serial.print(gps.date.day());
-    Serial.print(F("/"));
-    Serial.print(gps.date.year());
-  }
-  else
-  {
-    Serial.print(F("INVALID"));
-  }
-
-  Serial.print(F(" "));
-  if (gps.time.isValid())
-  {
-    if (gps.time.hour() < 10) Serial.print(F("0"));
-    Serial.print(gps.time.hour());
-    Serial.print(F(":"));
-    if (gps.time.minute() < 10) Serial.print(F("0"));
-    Serial.print(gps.time.minute());
-    Serial.print(F(":"));
-    if (gps.time.second() < 10) Serial.print(F("0"));
-    Serial.print(gps.time.second());
-    Serial.print(F("."));
-    if (gps.time.centisecond() < 10) Serial.print(F("0"));
-    Serial.print(gps.time.centisecond());
-  }
-  else
-  {
-    Serial.print(F("INVALID"));
-  }
-
-  Serial.print(F(" "));
-  if(gps.altitude.isValid()) {
-    Serial.print(gps.altitude.meters());
-  }
-  else
-  {
-      Serial.print(F("INVALID"));
-  }
-
-  Serial.print(F(" "));
-  if(gps.course.isValid()) {
-    Serial.print(gps.course.deg());
-  }
-  else
-    {
-      Serial.print(F("INVALID"));
-    }
-
-  Serial.print(F(" "));
-  if(gps.course.isValid()) {
-    Serial.print(gps.speed.kmph());
-  }
-  else
-    {
-      Serial.print(F("INVALID"));
-    }
-
-  Serial.println();
-}
-
 bool gps_data_available() {
   // This sketch displays information every time a new sentence is correctly encoded.
   while (ss.available() > 0)
     Serial.println("ENTRA");
     if (gps.encode(ss.read()))
-      displayInfo();
+      //displayInfo();
 
   if (millis() > 5000 && gps.charsProcessed() < 10)
     {
@@ -301,7 +267,62 @@ String invalid = "INVALID";
 String cero = "0";
 String dospuntos = ":";
 String punto = ".";
- 
+
+void read_pms_data() {
+  if(Serial.find(0x42)){    //start to read when detect 0x42
+    Serial.readBytes(buf,LENG);
+    // for(int i=0; i< LENG; i++) {
+    //   Serial.print(buf[i]);Serial.print("|");
+    // }
+    // Serial.println();
+
+
+    if(buf[0] == 0x4d){
+      if(checkValue(buf,LENG)){
+        PM01Value=transmitPM01(buf); //count PM1.0 value of the air detector module
+        PM2_5Value=transmitPM2_5(buf);//count PM2.5 value of the air detector module
+        PM10Value=transmitPM10(buf); //count PM10 value of the air detector module 
+      }
+    }
+  }
+
+  // static unsigned long OledTimer=millis();
+  // if (millis() - OledTimer >=1000)
+  //   {
+  //     OledTimer=millis();
+
+  //     Serial.print("PM1.0: ");
+  //     Serial.print(PM01Value);
+  //     Serial.println("  ug/m3");
+
+  //     Serial.print("PM2.5: ");
+  //     Serial.print(PM2_5Value);
+  //     Serial.println("  ug/m3");
+
+  //     Serial.print("PM1 0: ");
+  //     Serial.print(PM10Value);
+  //     Serial.println("  ug/m3");
+  //     Serial.println();
+  //   }
+}
+
+void setup()
+{
+  Serial.begin(9600); // Cambia para conectar directamente el PMS, hay que desconectarlo para subir un programa
+  Serial.println("Starting...");
+  Serial.setTimeout(1500);    //set the Timeout to 1500ms, longer than the data transmission periodic time of the sensor
+  ss.begin(GPSBaud);
+  SPIFFS.begin();
+  pinMode(ledPower,OUTPUT);
+  ads.begin();
+  multiplier = ads.voltsPerBit()*1000.0F;           // Gets the millivolts per bit
+  dht.begin();
+
+  //delay(500);
+  //fs_read_file();
+  //fs_info_print();
+}
+
 void loop()
 {
   // READ SHARP SENSOR
@@ -401,11 +422,12 @@ void loop()
     frame += invalid + comma;
   }
 
-  frame += h +comma + t +comma+ concSHARP;
+  frame += h +comma + t +comma+ concSHARP + comma;
+
+  read_pms_data();
+  frame += PM01Value + comma + PM2_5Value + comma + PM10Value;
   //Serial.println(frame);
   fs_write_frame(frame);
-  //fs_read_file();
-  //fs_info_print();
   //fs_delete_file();
   wdt_enable(1000);
 
