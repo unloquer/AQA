@@ -13,12 +13,13 @@
 
 TinyGPSPlus gps;
 FSInfo fs_info;
-static const int gpsRXPin = 12, gpsTXPin = 7;
+static const int gpsRXPin = 13, gpsTXPin = 7;
 static const uint32_t GPSBaud = 9600;
-
 SoftwareSerial ss(gpsRXPin, gpsTXPin);
 
-SoftwareSerial pms()
+static const int pmsRXPin = 12, pmsTXPin = 6;
+static const uint32_t PMSBaud = 9600;
+SoftwareSerial pms(pmsRXPin,pmsTXPin);
 
 //sensor de humedad
 /*
@@ -28,7 +29,7 @@ SoftwareSerial pms()
   DHT 4 -> ESP GND
 */
 #include "DHT.h"
-#define DHTPIN 13     // what pin we're connected to
+#define DHTPIN 4     // what pin we're connected to
 
 // Uncomment whatever type you're using!
 #define DHTTYPE DHT11   // DHT 11
@@ -209,8 +210,8 @@ String dospuntos = ":";
 String punto = ".";
 
 void read_pms_data() {
-  if(Serial.find(0x42)){    //start to read when detect 0x42
-    Serial.readBytes(buf,LENG);
+  if(pms.find(0x42)){    //start to read when detect 0x42
+    pms.readBytes(buf,LENG);
     // for(int i=0; i< LENG; i++) {
     //   Serial.print(buf[i]);Serial.print("|");
     // }
@@ -248,17 +249,19 @@ void read_pms_data() {
 
 void setup()
 {
-  Serial.begin(9600); // Cambia para conectar directamente el PMS, hay que desconectarlo para subir un programa
+  Serial.begin(115200); // Cambia para conectar directamente el PMS, hay que desconectarlo para subir un programa
   Serial.println("Starting...");
-  Serial.setTimeout(1500);    //set the Timeout to 1500ms, longer than the data transmission periodic time of the sensor
   ss.begin(GPSBaud);
+  pms.begin(PMSBaud);
+  pms.setTimeout(1500);    //set the Timeout to 1500ms, longer than the data transmission periodic time of the sensor
+
   SPIFFS.begin();
 
   dht.begin();
 
-  //delay(500);
-  //fs_read_file();
-  //fs_info_print();
+  // delay(500);
+  // fs_read_file();
+  // fs_info_print();
 }
 
 void loop()
@@ -269,7 +272,7 @@ void loop()
   float t = get_termperature();
   //GPS
   wdt_disable();
-  smartdelay(500);
+  smartdelay(5000);
   //displayInfo();
   String frame;
 
@@ -342,7 +345,7 @@ void loop()
   read_pms_data();
 
   frame += PM01Value + comma + PM2_5Value + comma + PM10Value;
-  //Serial.println(frame);
+  Serial.println(frame);
   fs_write_frame(frame);
   //fs_delete_file();
   wdt_enable(1000);
