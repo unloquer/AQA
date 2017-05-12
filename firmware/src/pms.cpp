@@ -2,7 +2,6 @@
 #include <SoftwareSerial.h>
 #include <FS.h>
 #include <Wire.h>
-#include <Adafruit_ADS1015.h>
 
 /*
   GPS connection:
@@ -29,7 +28,7 @@ SoftwareSerial pms(pmsRXPin,pmsTXPin);
   DHT 4 -> ESP GND
 */
 #include "DHT.h"
-#define DHTPIN 4     // what pin we're connected to
+#define DHTPIN 5     // what pin we're connected to
 
 // Uncomment whatever type you're using!
 #define DHTTYPE DHT11   // DHT 11
@@ -259,9 +258,9 @@ void setup()
 
   dht.begin();
 
-  // delay(500);
-  // fs_read_file();
-  // fs_info_print();
+  delay(500);
+  fs_read_file();
+  fs_info_print();
 }
 
 void loop()
