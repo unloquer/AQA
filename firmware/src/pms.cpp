@@ -4,6 +4,21 @@
 #include <Wire.h>
 
 /*
+  LED Indicator config
+*/
+// https://github.com/FastLED/FastLED/wiki/ESP8266-notes
+#define FASTLED_ESP8266_RAW_PIN_ORDER
+#include <FastLED.h>
+
+// Pines 16 y 14 no sirven para la librería fastled
+
+#define NUM_LEDS 2
+#define DI 4
+#define CI 2
+CRGB leds[NUM_LEDS];
+
+
+/*
   GPS connection:
   GPS GND --> ESP GND
   GPS Vcc --> ESP 3v3
@@ -47,8 +62,7 @@ int PM01Value=0;          //define PM1.0 value of the air detector module
 int PM2_5Value=0;         //define PM2.5 value of the air detector module
 int PM10Value=0;         //define PM10 value of the air detector module
 
-char checkValue(unsigned char *thebuf, char leng)
-{
+char checkValue(unsigned char *thebuf, char leng) {
   char receiveflag=0;
   int receiveSum=0;
 
@@ -65,24 +79,21 @@ char checkValue(unsigned char *thebuf, char leng)
   return receiveflag;
 }
 
-int transmitPM01(unsigned char *thebuf)
-{
+int transmitPM01(unsigned char *thebuf) {
   int PM01Val;
   PM01Val=((thebuf[3]<<8) + thebuf[4]); //count PM1.0 value of the air detector module
   return PM01Val;
 }
 
 //transmit PM Value to PC
-int transmitPM2_5(unsigned char *thebuf)
-{
+int transmitPM2_5(unsigned char *thebuf) {
   int PM2_5Val;
   PM2_5Val=((thebuf[5]<<8) + thebuf[6]);//count PM2.5 value of the air detector module
   return PM2_5Val;
 }
 
 //transmit PM Value to PC
-int transmitPM10(unsigned char *thebuf)
-{
+int transmitPM10(unsigned char *thebuf) {
   int PM10Val;
   PM10Val=((thebuf[7]<<8) + thebuf[8]); //count PM10 value of the air detector module  
   return PM10Val;
@@ -102,10 +113,6 @@ float get_termperature() {
     //Serial.println("Failed to read from DHT sensor!");
     return -1;
   }
-  //Serial.print(" Temperature: ");
-  //Serial.print(t);
-  //Serial.println(" *C ");
-
   return t;
 }
 
@@ -146,8 +153,7 @@ long fs_available_space() {
   return fs_info.usedBytes;
 }
 
-static void smartdelay(unsigned long ms)
-{
+static void smartdelay(unsigned long ms) {
   unsigned long start = millis();
   do
     {
@@ -174,8 +180,7 @@ void fs_read_file() {
   }
 }
 
-void fs_write_frame(String frame)
-{
+void fs_write_frame(String frame) {
   char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
   File myDataFile = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
   if (!myDataFile)Serial.println("file open failed");   // Check for errors
@@ -225,29 +230,9 @@ void read_pms_data() {
       }
     }
   }
-
-  // static unsigned long OledTimer=millis();
-  // if (millis() - OledTimer >=1000)
-  //   {
-  //     OledTimer=millis();
-
-  //     Serial.print("PM1.0: ");
-  //     Serial.print(PM01Value);
-  //     Serial.println("  ug/m3");
-
-  //     Serial.print("PM2.5: ");
-  //     Serial.print(PM2_5Value);
-  //     Serial.println("  ug/m3");
-
-  //     Serial.print("PM1 0: ");
-  //     Serial.print(PM10Value);
-  //     Serial.println("  ug/m3");
-  //     Serial.println();
-  //   }
 }
 
-void setup()
-{
+void setup() {
   Serial.begin(115200); // Cambia para conectar directamente el PMS, hay que desconectarlo para subir un programa
   Serial.println("Starting...");
   ss.begin(GPSBaud);
@@ -258,8 +243,10 @@ void setup()
 
   dht.begin();
 
-  delay(500);
-  fs_read_file();
+  FastLED.addLeds<LPD8806, DI, CI>(leds, NUM_LEDS);
+
+  //delay(500);
+  //fs_read_file();
   fs_info_print();
 }
 
@@ -342,6 +329,15 @@ void loop()
   frame += h +comma + t +comma;
 
   read_pms_data();
+
+  if(PM2_5Value < 13 ) leds[0] = leds[1] =CRGB::Red;
+  if(PM2_5Value >= 13 && PM2_5Value < 35) leds[0] = leds[1] =CRGB::Yellow;
+  if(PM2_5Value >= 35 && PM2_5Value < 55) leds[0] = leds[1] =CRGB::Orange;
+  if(PM2_5Value >= 55) leds[0] = leds[1] =CRGB::Green;
+  FastLED.show();
+  //delay(1000);
+  //leds[0] = leds[1] = CRGB::Black;
+  //FastLED.show();
 
   frame += PM01Value + comma + PM2_5Value + comma + PM10Value;
   Serial.println(frame);
