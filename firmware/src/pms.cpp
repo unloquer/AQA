@@ -245,8 +245,8 @@ void setup() {
 
   FastLED.addLeds<LPD8806, DI, CI>(leds, NUM_LEDS);
 
-  //delay(500);
-  //fs_read_file();
+  //delay(500); // descomentar esto para bajar datos
+  //fs_read_file(); // descomentar esto para bajar datos
   fs_info_print();
 }
 
@@ -258,7 +258,7 @@ void loop()
   float t = get_termperature();
   //GPS
   wdt_disable();
-  smartdelay(5000);
+  smartdelay(1000);
   //displayInfo();
   String frame;
 
@@ -330,19 +330,36 @@ void loop()
 
   read_pms_data();
 
+  FastLED.setBrightness(millis()%255);
+
   if(PM2_5Value < 13 ) leds[0] = leds[1] =CRGB::Red;
   if(PM2_5Value >= 13 && PM2_5Value < 35) leds[0] = leds[1] =CRGB::Yellow;
-  if(PM2_5Value >= 35 && PM2_5Value < 55) leds[0] = leds[1] =CRGB::Orange;
+  if(PM2_5Value >= 35 && PM2_5Value < 55) leds[0] = leds[1] =CRGB::OrangeRed;
   if(PM2_5Value >= 55) leds[0] = leds[1] =CRGB::Green;
   FastLED.show();
+  delay(500);
+
+  if(PM2_5Value < 13 ) leds[0] = leds[1] =CRGB::Black;
+  if(PM2_5Value >= 13 && PM2_5Value < 35) leds[0] = leds[1] =CRGB::Black;
+  if(PM2_5Value >= 35 && PM2_5Value < 55) leds[0] = leds[1] =CRGB::Black;
+  if(PM2_5Value >= 55) leds[0] = leds[1] =CRGB::Black;
+  FastLED.show();
+  delay(10000/PM2_5Value*2 );
+
+  if(PM2_5Value < 13 ) leds[0] = leds[1] =CRGB::Red;
+  if(PM2_5Value >= 13 && PM2_5Value < 35) leds[0] = leds[1] =CRGB::Yellow;
+  if(PM2_5Value >= 35 && PM2_5Value < 55) leds[0] = leds[1] =CRGB::OrangeRed;
+  if(PM2_5Value >= 55) leds[0] = leds[1] =CRGB::Green;
+  FastLED.show();
+  delay(500);
   //delay(1000);
   //leds[0] = leds[1] = CRGB::Black;
   //FastLED.show();
 
   frame += PM01Value + comma + PM2_5Value + comma + PM10Value;
-  Serial.println(frame);
-  fs_write_frame(frame);
-  //fs_delete_file();
+  Serial.println(frame); // se comenta para descargar
+  fs_write_frame(frame); // se comenta para descargar
+  // fs_delete_file(); // se descomenta una vez para borra la memoria
   wdt_enable(1000);
 
 }
