@@ -3,6 +3,9 @@
 #include <FS.h>
 #include <Wire.h>
 
+#include <ESP8266HTTPClient.h>
+HTTPClient http;
+
 /*
   LED Indicator config
 */
@@ -28,10 +31,12 @@ CRGB leds[NUM_LEDS];
 TinyGPSPlus gps;
 FSInfo fs_info;
 static const int gpsRXPin = 13, gpsTXPin = 7;
+//static const int gpsRXPin = 16, gpsTXPin = 7;
 static const uint32_t GPSBaud = 9600;
 SoftwareSerial ss(gpsRXPin, gpsTXPin);
 
 static const int pmsRXPin = 12, pmsTXPin = 6;
+//static const int pmsRXPin = 0, pmsTXPin = 6;
 static const uint32_t PMSBaud = 9600;
 SoftwareSerial pms(pmsRXPin,pmsTXPin);
 
@@ -44,6 +49,7 @@ SoftwareSerial pms(pmsRXPin,pmsTXPin);
 */
 #include "DHT.h"
 #define DHTPIN 5     // what pin we're connected to
+//#define DHTPIN 4
 
 // Uncomment whatever type you're using!
 #define DHTTYPE DHT11   // DHT 11
@@ -98,10 +104,6 @@ int transmitPM10(unsigned char *thebuf) {
   PM10Val=((thebuf[7]<<8) + thebuf[8]); //count PM10 value of the air detector module  
   return PM10Val;
 }
-
-//
-
-void fs_read_file();
 
 float get_termperature() {
   // Reading temperature or humidity takes about 250 milliseconds!
@@ -178,6 +180,24 @@ void fs_read_file() {
   while (myDataFile.available()) {
     Serial.write(myDataFile.read());                    // Read all the data from the file and display it
   }
+  myDataFile.close();
+}
+
+void fs_read_line_by_line() {
+  char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
+  File myDataFile = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
+  String l_line = "";
+  myDataFile = SPIFFS.open(filename, "r");              // Open the file again, this time for reading
+  if (!myDataFile) Serial.println("file open failed");  // Check for errors
+  while (myDataFile.available()) {
+    //A inconsistent line length may lead to heap memory fragmentation
+    l_line = myDataFile.readStringUntil('\n');
+    if (l_line == "") //no blank lines are anticipated
+      break;
+    //parse l_line here
+    Serial.println(l_line);     // Read all the data from the file and display it
+  }
+  myDataFile.close();
 }
 
 void fs_write_frame(String frame) {
@@ -232,6 +252,33 @@ void read_pms_data() {
   }
 }
 
+int server_request() {
+
+  String url = "http://104.131.1.214:3000/api/SensorEvents";
+  http.begin(url);
+  http.addHeader("Content-Type", "application/csv");
+  //http.addHeader("X-Auth-Token", AUTH_TOKEN);
+  int content_length =0;
+
+  char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
+  File myDataFile = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
+  content_length = myDataFile.size();
+
+  http.addHeader("Content-Length", String(content_length));
+  int httpCode = http.POST((String) myDataFile);
+  if(httpCode > 0) {
+    String payload = http.getString();
+    Serial.println(payload);
+  }
+  else {
+    Serial.print("[HTTP] failed, error: ");Serial.println(http.errorToString(httpCode).c_str());
+  }
+  http.end();
+
+  return httpCode;
+}
+
+
 void setup() {
   Serial.begin(115200); // Cambia para conectar directamente el PMS, hay que desconectarlo para subir un programa
   Serial.println("Starting...");
@@ -245,7 +292,7 @@ void setup() {
 
   FastLED.addLeds<LPD8806, DI, CI>(leds, NUM_LEDS);
 
-  //delay(500);
+  delay(500);
   //fs_read_file();
   fs_info_print();
 }
@@ -332,7 +379,7 @@ void loop()
 
   if(PM2_5Value < 13 ) leds[0] = leds[1] =CRGB::Red;
   if(PM2_5Value >= 13 && PM2_5Value < 35) leds[0] = leds[1] =CRGB::Yellow;
-  if(PM2_5Value >= 35 && PM2_5Value < 55) leds[0] = leds[1] =CRGB::Orange;
+  if(PM2_5Value >= 35 && PM2_5Value < 55) leds[0] = leds[1] =CRGB::OrangeRed;
   if(PM2_5Value >= 55) leds[0] = leds[1] =CRGB::Green;
   FastLED.show();
   //delay(1000);
@@ -343,6 +390,6 @@ void loop()
   Serial.println(frame);
   fs_write_frame(frame);
   //fs_delete_file();
-  wdt_enable(1000);
 
+  wdt_enable(1000);
 }
