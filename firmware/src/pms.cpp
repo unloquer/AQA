@@ -60,8 +60,8 @@ DHT dht(DHTPIN, DHTTYPE);
 /*
   Sensor Plantower
  */
-#define LENG 23   //0x42 + 23 bytes equal to 24 bytes -> 
-//#define LENG 31   //0x42 + 31 bytes equal to 32 bytes
+//#define LENG 23   //0x42 + 23 bytes equal to 24 bytes -> 
+#define LENG 31   //0x42 + 31 bytes equal to 32 bytes
 unsigned char buf[LENG];
 
 int PM01Value=0;          //define PM1.0 value of the air detector module
@@ -293,7 +293,7 @@ void setup() {
   FastLED.addLeds<LPD8806, DI, CI>(leds, NUM_LEDS);
 
   delay(500);
-  //fs_read_file();
+  fs_read_file();
   fs_info_print();
 }
 
@@ -387,8 +387,8 @@ void loop()
   //FastLED.show();
 
   frame += PM01Value + comma + PM2_5Value + comma + PM10Value;
-  Serial.println(frame);
-  fs_write_frame(frame);
+  //Serial.println(frame);
+  //fs_write_frame(frame);
   //fs_delete_file();
 
   wdt_enable(1000);
