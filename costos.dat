@@ -4,37 +4,30 @@
 ;; $ ledger ruta/al/archivo/costos.dat register aparato
 ;; responde con la suma de los costos de la categoría aparato
 
-2017/05/24 Sensor
+2017/05/24 Sensor de partículas
     costo:aparato:sensor                               $-13.80
     Ali Express
 2017/05/24 gps
     costo:aparato:gps                                  $-12.00
     Sigma Electronica
-
-
-2017/05/24 ESP
+2017/05/24 ESP8266
     costo:aparato:esp                                  $-10.00  ; pueden bajar a us5
     Ali Express 
-
-2017/05/24 DHT
+2017/05/24 DHT (sensor de humedad y temperatura)
     costo:aparato:sensor:dht                            $-0.65
     Ali Express
-
 2017/05/24 Leds
     costo:aparato:feedback:led                          $-0.16
     Ali Express
-
 2017/05/24 bateria
     costo:aparato:energia:bateria                       $-6.00
     cualquier tienda
-
 2017/05/24 ensamblaje
     costo:aparato:manoDeObra:ensamblaje                $-17.00
     unloquer
 2017/05/24 diseño electrónico
     costo:aparato:diseno                               $-17.00
     unloquer
-
 2017/05/24 cableado
     costo:aparato:cableado                              $-1.00
     cualquier tienda
@@ -45,62 +38,15 @@
 2017/05/24 codigo
     costo:aparato:codigo                               $-10.00
     desarrollador
-
 2017/05/24 infraestructura
     costo:aparato:infraestructura                      $-12.00
     infraestructura
 2017/05/24 comunicaciones y documenta
     costo:taller:comunicacion                          $-30.00
     documentador
-
-
-
-2017/05/24 impuestos
+2017/05/24 impuestos IVA 19%
     costo:aparato:impuestos                            $-28.50 ; asumiendo un valor final de 150
     dian
-   
-
 2017/05/24 utilidad
    costo:aparato:utilidad                             $-30.00 ; 20% asumiendo un costo final de 150
    proyecto
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
