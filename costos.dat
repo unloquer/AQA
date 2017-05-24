@@ -1,4 +1,8 @@
-
+;; para hacer consultas a este cuaderno
+;; puede usar ledger ( http://ledger-cli.org/  )
+;; por ejemplo el comando
+;; $ ledger ruta/al/archivo/costos.dat register aparato
+;; responde con la suma de los costos de la categoría aparato
 
 2017/05/24 Sensor
     costo:aparato:sensor                               $-13.80
