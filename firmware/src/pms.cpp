@@ -31,12 +31,11 @@ CRGB leds[NUM_LEDS];
 TinyGPSPlus gps;
 FSInfo fs_info;
 static const int gpsRXPin = 13, gpsTXPin = 7;
-//static const int gpsRXPin = 16, gpsTXPin = 7;
 static const uint32_t GPSBaud = 9600;
 SoftwareSerial ss(gpsRXPin, gpsTXPin);
 
-static const int pmsRXPin = 12, pmsTXPin = 6;
-//static const int pmsRXPin = 0, pmsTXPin = 6;
+static const int pmsRXPin = 5, pmsTXPin = 6;
+//static const int pmsRXPin = 12, pmsTXPin = 6; // Descomentar para el sensor de checho
 static const uint32_t PMSBaud = 9600;
 SoftwareSerial pms(pmsRXPin,pmsTXPin);
 
@@ -48,8 +47,8 @@ SoftwareSerial pms(pmsRXPin,pmsTXPin);
   DHT 4 -> ESP GND
 */
 #include "DHT.h"
-#define DHTPIN 5     // what pin we're connected to
-//#define DHTPIN 4
+#define DHTPIN 12     // what pin we're connected to
+//#define DHTPIN 5 // Descomentar para el sensor de checho
 
 // Uncomment whatever type you're using!
 #define DHTTYPE DHT11   // DHT 11
@@ -60,8 +59,8 @@ DHT dht(DHTPIN, DHTTYPE);
 /*
   Sensor Plantower
  */
-#define LENG 23   //0x42 + 23 bytes equal to 24 bytes -> 
-//#define LENG 31   //0x42 + 31 bytes equal to 32 bytes
+//#define LENG 23   //0x42 + 23 bytes equal to 24 bytes -> 
+#define LENG 31   //0x42 + 31 bytes equal to 32 bytes
 unsigned char buf[LENG];
 
 int PM01Value=0;          //define PM1.0 value of the air detector module
@@ -178,7 +177,10 @@ void fs_read_file() {
   myDataFile = SPIFFS.open(filename, "r");              // Open the file again, this time for reading
   if (!myDataFile) Serial.println("file open failed");  // Check for errors
   while (myDataFile.available()) {
+    wdt_disable();
+    yield();
     Serial.write(myDataFile.read());                    // Read all the data from the file and display it
+    wdt_enable(1000);
   }
   myDataFile.close();
 }
@@ -292,8 +294,7 @@ void setup() {
 
   FastLED.addLeds<LPD8806, DI, CI>(leds, NUM_LEDS);
 
-
-  //delay(500); // descomentar esto para bajar datos
+  delay(500); // descomentar esto para bajar datos
   //fs_read_file(); // descomentar esto para bajar datos
   fs_info_print();
 }
@@ -408,9 +409,6 @@ void loop()
 
   Serial.println(frame); // se comenta para descargar
   fs_write_frame(frame); // se comenta para descargar
-  // fs_delete_file(); // se descomenta una vez para borra la memoria
-  wdt_enable(1000);
-
-
+  //fs_delete_file(); // se descomenta una vez para borra la memoria
   wdt_enable(1000);
 }
