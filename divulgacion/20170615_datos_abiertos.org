@@ -1,0 +1,42 @@
+* 15 junio Aqa
+** Aprendizaje a travez de problemas
+*** anarquía; no reconoce autoridad, paternalismo, ¿Qué hacemos?
+*** múltiples perspectivas
+**** escala ciudad
+**** escala personal
+** Abiertos
+
+   Dura > 100 años
+   Si hay buenas preguntas
+   Ref  matematicas
+
+*** Firmware
+*** Costos
+*** Ruta
+*** Argumentacion
+*** Documentacion
+**** Repositorio
+***** Fork
+***** Clone
+***** Pull request
+***** Blame
+*** Asuntos / issues / problemas
+*** Diagrama
+**** Sensor
+**** Gps
+**** Bateria
+**** Mic?
+** Datos
+*** Points - disclaimer
+**** Calibración
+**** Momentum
+**** Invalid
+**** Gps
+**** Voltaje
+*** Contabilidad
+*** Timeline
+**** Jardin
+**** Esp
+**** Sensor aire acondiconado
+**** Sensor laser
+SCHEDULED: <2017-05-12 vie.>
