@@ -2,31 +2,9 @@
 ** Aprendizaje a travez de problemas
 *** anarquía; no reconoce autoridad, paternalismo, ¿Qué hacemos?
 *** múltiples perspectivas
-**** escala ciudad
+**** escala ciudad 
 **** escala personal
-** Abiertos
-
-   Dura > 100 años
-   Si hay buenas preguntas
-   Ref  matematicas
-
-*** Firmware
-*** Costos
-*** Ruta
-*** Argumentacion
-*** Documentacion
-**** Repositorio
-***** Fork
-***** Clone
-***** Pull request
-***** Blame
-*** Asuntos / issues / problemas
-*** Diagrama
-**** Sensor
-**** Gps
-**** Bateria
-**** Mic?
-** Datos
+** ¿Qué hay de Datos?
 *** Points - disclaimer
 **** Calibración
 **** Momentum
@@ -40,3 +18,22 @@
 **** Sensor aire acondiconado
 **** Sensor laser
 SCHEDULED: <2017-05-12 vie.>
+** ¿Qué hay de Abiertos?
+   Dura > 100 años, si hay buenas preguntas hay relevancia.   
+*** Firmware 
+*** Costos https://github.com/unloquer/AQA/blob/master/costos.dat
+*** Ruta
+*** Argumentacion (trabajocracia, forks)
+*** Documentacion
+**** Repositorio  https://github.com/unloquer/AQA
+***** Fork
+***** Clone
+***** Pull request
+***** Blame
+**** Wiki http://wiki.unloquer.org/personas/brolin/proyectos/agentes_calidad_aire
+*** Asuntos / issues / problemas https://github.com/unloquer/AQA/issues
+*** Diagrama
+**** Sensor
+**** Gps
+**** Bateria
+**** Mic?
