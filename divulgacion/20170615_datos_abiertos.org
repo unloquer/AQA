@@ -1,0 +1,66 @@
+#+TITLE:      De los personal a lo colectivo
+#+AUTHOR:     un/loquer
+#+EMAIL:      unloquer@gmail.com
+#+OPTIONS:    H:3 num:nil toc:t \n:nil ::t |:t ^:t -:t f:t *:t tex:t d:(HIDE) tags:not-in-toc
+#+STARTUP:    align fold nodlcheck hidestars oddeven lognotestate
+#+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)
+#+TAGS:       Write(w) Update(u) Fix(f) Check(c) 
+#+LANGUAGE:   es
+#+PRIORITIES: A C B
+#+CATEGORY:   worg
+#+CONSTANTS: d=2920
+
+** ¿Qué hay de Datos?
+*** Points - disclaimer
+**** Calibración
+***** 500 !!! ¿ Info subjetiva?
+****** ¿Y si le agregamos un consenso?
+**** Momentum
+**** Invalid
+**** Gps
+**** Voltaje
+*** Contabilidad
+*** Timeline
+**** Jardin
+**** Esp
+**** Sensor aire acondiconado
+**** Sensor laser
+SCHEDULED: <2017-05-12 vie.>
+** ¿Qué hay de Abiertos?
+   Dura > 100 años, si hay buenas preguntas hay relevancia.   
+*** Firmware 
+*** ¿Se puede alterar los datos?
+**** ¿cadena de custodia? ¿blockchain?
+*** Costos https://github.com/unloquer/AQA/blob/master/costos.dat    
+
+    | muñeco   | us$ |   col$ |
+    |----------+-----+--------|
+    | muñeco   | 108 | 315360 |
+    | embebido | 178 | 519760 |
+    #+TBLFM: $3=$2*$d
+
+*** Ruta
+*** Argumentacion (trabajocracia, forks)
+*** Documentacion
+**** Repositorio  https://github.com/unloquer/AQA
+***** Fork
+***** Clone
+***** Pull request
+***** Blame
+**** Wiki http://wiki.unloquer.org/personas/brolin/proyectos/agentes_calidad_aire
+*** Asuntos / issues / problemas https://github.com/unloquer/AQA/issues
+*** Diagrama
+**** Sensor
+**** Gps
+**** Bateria
+**** Mic?
+*** ¿ lo puedo cerrar y vender?
+**** ¿licenciar para mantener abierto?
+** ¿Detonantes?
+*** Cuanto le vale a la ciudad darle información al individuo de su entorno vs. Cuanto le vale al individo generar esa info
+*** ¿Aprendizaje a travez de problemas? *** ¿aprender? ¿en serio?
+**** anarquía; no reconoce autoridad, paternalismo, ¿Qué hacemos?
+**** múltiples perspectivas                                             :Fix:
+***** escala ciudad 
+***** escala personal
+* 
