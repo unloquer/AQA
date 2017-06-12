@@ -1,21 +1,34 @@
 #+TITLE:      De los personal a lo colectivo
 #+AUTHOR:     un/loquer
 #+EMAIL:      unloquer@gmail.com
-#+OPTIONS:    H:3 num:nil toc:t \n:nil ::t |:t ^:t -:t f:t *:t tex:t d:(HIDE) tags:not-in-toc
+#+OPTIONS:    H:2 num:nil toc:t \n:nil ::t |:t ^:t -:t f:t *:t tex:t d:(HIDE) tags:not-in-toc
 #+STARTUP:    align fold nodlcheck hidestars oddeven lognotestate
 #+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)
 #+TAGS:       Write(w) Update(u) Fix(f) Check(c) 
 #+LANGUAGE:   es
 #+PRIORITIES: A C B
-#+CATEGORY:   worg
+#+CATEGORY:   un/loquer
 #+CONSTANTS: d=2920
 
-** ¿Qué hay de Datos?
-*** Points - disclaimer
-**** Calibración
-***** 500 !!! ¿ Info subjetiva?
-****** ¿Y si le agregamos un consenso?
-**** Momentum
+** ¿De qué vamos a aprender hoy?
+*** ¿Cómo en un/loquer se esta respondiendo ante el problema del aire?
+**** ¿Artefacto para medir y reportar?
+***** DONE ¿Microcontrolador? (ESP8266)
+      CLOSED: [2016-10-12 Wed 17:11]
+***** DONE ¿Sensor de partículas?
+      CLOSED: [2017-06-12 Mon 17:13]
+***** TODO ¿Carcasa?
+***** ¿Compartir los datos capturados?
+****** DONE ¿Prueba de concepto? 
+       CLOSED: [2017-06-12 Mon 17:20]
+****** TODO ¿Descarga con Wi-Fi?
+****** TODO ¿LoRa?
+** ¿Datos?
+*** dataPoints - disclaimer 
+****  500 !!! ¿subjetiva?
+***** ¿Cómo podemos calibrar? https://github.com/unloquer/AQA/issues/13
+***** Link a mediciones mayores a 100 http://daquina.io/aqaviz/?_inputs_&dates=%5B%222017-03-01%22%2C%222017-10-11%22%5D&map_bounds=%7B%22north%22%3A6.38627143781799%2C%22east%22%3A-75.340461730957%2C%22south%22%3A6.11939048057678%2C%22west%22%3A-75.8781051635742%7D&map_zoom=12&range=%5B103%2C187%5D&undefined_shape_click=%7B%22id%22%3Anull%2C%22.nonce%22%3A0.468528855641437%2C%22lat%22%3A6.182392%2C%22lng%22%3A-75.550095%7D&undefined_shape_mouseout=%7B%22id%22%3Anull%2C%22.nonce%22%3A0.631095207384145%2C%22lat%22%3A6.18352%2C%22lng%22%3A-75.547245%7D&undefined_shape_mouseover=%7B%22id%22%3Anull%2C%22.nonce%22%3A0.697734141732581%2C%22lat%22%3A6.18352%2C%22lng%22%3A-75.547245%7D&wday=%5B%22Sunday%22%2C%22Monday%22%2C%22Tuesday%22%2C%22Wednesday%22%2C%22Thursday%22%2C%22Friday%22%2C%22Saturday%22%5D
+***** ¿Y si le agregamos un consenso? 
 **** Invalid
 **** Gps
 **** Voltaje
@@ -25,18 +38,22 @@
 **** Esp
 **** Sensor aire acondiconado
 **** Sensor laser
-SCHEDULED: <2017-05-12 vie.>
-** ¿Qué hay de Abiertos?
-   Dura > 100 años, si hay buenas preguntas hay relevancia.   
-*** Firmware 
+     <2017-04-25 Tue>
+** ¿Abiertos?
+*** ¿Firmware? 
+*** ¿Hardware?                                                        :Check:
+**** ¿Diseño PCB?
+**** ¿Diseño sensor?                                                  :Check:
+**** ¿Microcontrolador ESP2688?                                       :Check:
 *** ¿Se puede alterar los datos?
 **** ¿cadena de custodia? ¿blockchain?
 *** Costos https://github.com/unloquer/AQA/blob/master/costos.dat    
 
-    | muñeco   | us$ |   col$ |
-    |----------+-----+--------|
-    | muñeco   | 108 | 315360 |
-    | embebido | 178 | 519760 |
+    | muñeco               | us$ |   col$ |
+    |----------------------+-----+--------|
+    | diy                  |  43 | 125560 |
+    | muñeco               | 108 | 315360 |
+    | embebido y red fácil | 178 | 519760 |
     #+TBLFM: $3=$2*$d
 
 *** Ruta
@@ -56,6 +73,7 @@ SCHEDULED: <2017-05-12 vie.>
 **** Mic?
 *** ¿ lo puedo cerrar y vender?
 **** ¿licenciar para mantener abierto?
+***** ¿TAPR?  http://www.tapr.org/OHL
 ** ¿Detonantes?
 *** Cuanto le vale a la ciudad darle información al individuo de su entorno vs. Cuanto le vale al individo generar esa info
 *** ¿Aprendizaje a travez de problemas? *** ¿aprender? ¿en serio?
@@ -63,4 +81,5 @@ SCHEDULED: <2017-05-12 vie.>
 **** múltiples perspectivas                                             :Fix:
 ***** escala ciudad 
 ***** escala personal
-* 
+*** ¿Para que dure más de 100 años debe ser abierto o cerrado?
+
