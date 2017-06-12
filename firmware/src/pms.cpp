@@ -35,7 +35,6 @@ static const uint32_t GPSBaud = 9600;
 SoftwareSerial ss(gpsRXPin, gpsTXPin);
 
 static const int pmsRXPin = 5, pmsTXPin = 6;
-//static const int pmsRXPin = 12, pmsTXPin = 6; // Descomentar para el sensor de checho
 static const uint32_t PMSBaud = 9600;
 SoftwareSerial pms(pmsRXPin,pmsTXPin);
 
@@ -48,7 +47,6 @@ SoftwareSerial pms(pmsRXPin,pmsTXPin);
 */
 #include "DHT.h"
 #define DHTPIN 12     // what pin we're connected to
-//#define DHTPIN 5 // Descomentar para el sensor de checho
 
 // Uncomment whatever type you're using!
 #define DHTTYPE DHT11   // DHT 11
@@ -178,7 +176,7 @@ void fs_read_file() {
   if (!myDataFile) Serial.println("file open failed");  // Check for errors
   while (myDataFile.available()) {
     wdt_disable();
-    yield();
+    //yield();
     Serial.write(myDataFile.read());                    // Read all the data from the file and display it
     wdt_enable(1000);
   }
@@ -295,8 +293,8 @@ void setup() {
   FastLED.addLeds<LPD8806, DI, CI>(leds, NUM_LEDS);
 
   delay(500); // descomentar esto para bajar datos
-  //fs_read_file(); // descomentar esto para bajar datos
   fs_info_print();
+  fs_read_file(); // descomentar esto para bajar datos
 }
 
 void loop()
@@ -407,8 +405,8 @@ void loop()
 
   frame += PM01Value + comma + PM2_5Value + comma + PM10Value;
 
-  Serial.println(frame); // se comenta para descargar
-  fs_write_frame(frame); // se comenta para descargar
+  //Serial.println(frame); // se comenta para descargar
+  //fs_write_frame(frame); // se comenta para descargar
   //fs_delete_file(); // se descomenta una vez para borra la memoria
   wdt_enable(1000);
 }
