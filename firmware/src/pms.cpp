@@ -4,6 +4,7 @@
 #include <Wire.h>
 
 #include <ESP8266HTTPClient.h>
+#include <ESP8266WiFi.h>
 HTTPClient http;
 
 /*
@@ -278,6 +279,18 @@ int server_request() {
   return httpCode;
 }
 
+void setupWiFi(int pm25_value)
+{
+  String AP_NameString = "Partículas PM2.5 " + (String)pm25_value + " ug/m3";
+
+  char AP_NameChar[AP_NameString.length() + 1];
+  memset(AP_NameChar, AP_NameString.length() + 1, 0);
+
+  for (int i=0; i<AP_NameString.length(); i++)
+    AP_NameChar[i] = AP_NameString.charAt(i);
+
+  WiFi.softAP(AP_NameChar, "unloquer");
+}
 
 void setup() {
   Serial.begin(115200); // Cambia para conectar directamente el PMS, hay que desconectarlo para subir un programa
@@ -290,11 +303,17 @@ void setup() {
 
   dht.begin();
 
+  WiFi.mode(WIFI_AP);
+  setupWiFi(30);
+
   FastLED.addLeds<LPD8806, DI, CI>(leds, NUM_LEDS);
 
   delay(500); // descomentar esto para bajar datos
   fs_info_print();
-  fs_read_file(); // descomentar esto para bajar datos
+  //fs_read_file(); // descomentar esto para bajar datos
+
+
+  //fs_delete_file(); // se descomenta una vez para borra la memoria
 }
 
 void loop()
@@ -405,8 +424,10 @@ void loop()
 
   frame += PM01Value + comma + PM2_5Value + comma + PM10Value;
 
-  //Serial.println(frame); // se comenta para descargar
-  //fs_write_frame(frame); // se comenta para descargar
-  //fs_delete_file(); // se descomenta una vez para borra la memoria
+  //if((millis() % 10000) == 1)
+    setupWiFi(PM2_5Value);
+
+  Serial.println(frame); // se comenta para descargar
+  fs_write_frame(frame); // se comenta para descargar
   wdt_enable(1000);
 }
