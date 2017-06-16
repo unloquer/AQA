@@ -2,11 +2,11 @@
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdcdd48d">¿Qué vamos a aprender hoy?</a>
+<li><a href="#org425d03d">¿Qué vamos a aprender hoy?</a>
 <ul>
-<li><a href="#org70b8c1d">¿Cómo en un/loquer se esta respondiendo ante el problema del aire?</a></li>
-<li><a href="#orgc00af6e">¿Qué puedo aprender con los datos que exponen?</a></li>
-<li><a href="#org0132063">¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?</a></li>
+<li><a href="#org46ea79c">¿Cómo en un/loquer se esta respondiendo ante el problema del aire?</a></li>
+<li><a href="#org3166c24">¿Qué puedo aprender con los datos que exponen?</a></li>
+<li><a href="#org965326e">¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?</a></li>
 </ul>
 </li>
 </ul>
@@ -14,20 +14,40 @@
 </div>
 
 
-<a id="orgdcdd48d"></a>
+<a id="org425d03d"></a>
 
 # ¿Qué vamos a aprender hoy?
 
 
-<a id="org70b8c1d"></a>
+<a id="org46ea79c"></a>
 
 ## ¿Cómo en un/loquer se esta respondiendo ante el problema del aire?
 
 -   ¿Artefacto para medir y reportar?
 
+    Un dispositivo que permite hacer mediciones moviles.
+    
     -   DONE ¿Microcontrolador? (ESP8266)
     
+        Tiene
+        
+        -   ¿Almacena los datos?
+        
+            Sí, porque no podemos garantizar conectividad wi-fi.
+    
+    -   GPS
+    
+        Entrega Latitud Longitud
+    
     -   DONE ¿Sensor de partículas?
+    
+        Entrega mediciones de partículas pm1, pm2.5 y pm10.
+    
+    -   ¿Sensor de temperatura y humedad? DHT11
+    
+    -   ¿RGB Leds?
+    
+        Retroalimentación visual expresada en colores ajustada a alguna escala.
     
     -   TODO ¿Carcasa?
     
@@ -54,7 +74,7 @@
             -   escala personal
 
 
-<a id="orgc00af6e"></a>
+<a id="org3166c24"></a>
 
 ## ¿Qué puedo aprender con los datos que exponen?
 
@@ -83,7 +103,7 @@
     -   ¿Puedo poner historias ?
 
 
-<a id="org0132063"></a>
+<a id="org965326e"></a>
 
 ## ¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?
 

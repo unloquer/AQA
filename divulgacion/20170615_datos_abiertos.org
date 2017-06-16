@@ -13,10 +13,20 @@
 ** ¿Qué vamos a aprender hoy?
 *** ¿Cómo en un/loquer se esta respondiendo ante el problema del aire?
 **** ¿Artefacto para medir y reportar?
+     Un dispositivo que permite hacer mediciones moviles.
 ***** DONE ¿Microcontrolador? (ESP8266)
       CLOSED: [2016-10-12 Wed 17:11]
+      Tiene
+****** ¿Almacena los datos?
+       Sí, porque no podemos garantizar conectividad wi-fi.
+***** GPS
+      Entrega Latitud Longitud
 ***** DONE ¿Sensor de partículas?
       CLOSED: [2017-06-12 Mon 17:13]
+       Entrega mediciones de partículas pm1, pm2.5 y pm10.
+***** ¿Sensor de temperatura y humedad? DHT11
+***** ¿RGB Leds? 
+      Retroalimentación visual expresada en colores ajustada a alguna escala.
 ***** TODO ¿Carcasa?
 ***** ¿Compartir los datos capturados?
 ****** DONE ¿Prueba de concepto? 
@@ -41,11 +51,12 @@
 ****** Voltaje
 **** Detonantes
 ***** ¿Puedo hacer mi propia comunidad de aire?
-***** ¿Porque comunidades pequeñas?
+****** ¿Porque comunidades pequeñas?
 ***** ¿Puedo poner historias ?
 *** ¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?
 **** ¿Respecto al Firmware? 
 ***** ¿Puedo adaptar el código a mis necesidades?
+***** ¿Puedo quitar o agregar componentes (micrófono)?
 **** ¿Respecto al Hardware?                                           :Check:
 ***** ¿Puedo cambiar el diseño PCB? ¿Para qué?
 ***** ¿Diseño sensor?                                                 :Check:
