@@ -16,7 +16,16 @@
      Un dispositivo que permite hacer mediciones moviles.
 ***** DONE ¿Microcontrolador? (ESP8266)
       CLOSED: [2016-10-12 Wed 17:11]
-      Tiene
+      Tiene conectividad wi-fi integrada, recive los datos de direferentes protocolos y genera la trama de datos.
+
+|      lat |        lng | date      |        hour | altitude | course | speed | humidity | temperature | pm1 | pm25 | pm10 |
+| 6.254207 | -75.575022 | 5/11/2017 | 05:54:00.00 |   1498.5 | 189.57 | 14.24 |     34.0 |        28.0 |  11 |   16 |   17 |
+| 6.253995 | -75.575045 | 5/11/2017 | 05:54:05.00 |   1499.1 | 179.03 | 15.26 |     34.0 |        28.0 |  11 |   16 |   17 |
+| 6.253763 | -75.575067 | 5/11/2017 | 05:54:11.00 |   1498.8 | 186.22 | 14.46 |     34.0 |        28.0 |  11 |   16 |   17 |
+| 6.253593 | -75.575132 | 5/11/2017 | 05:54:16.00 |   1497.9 | 215.65 | 12.45 |     34.0 |        28.0 |  11 |   16 |   17 |
+| 6.253485 | -75.575307 | 5/11/2017 | 05:54:22.00 |   1498.3 | 256.68 | 14.41 |     34.0 |        28.0 |  11 |   16 |   17 |
+| 6.253502 | -75.575495 | 5/11/2017 | 05:54:27.00 |   1498.2 |  296.0 | 14.89 |     34.0 |        28.0 |  11 |   16 |   17 |
+
 ****** ¿Almacena los datos?
        Sí, porque no podemos garantizar conectividad wi-fi.
 ***** GPS

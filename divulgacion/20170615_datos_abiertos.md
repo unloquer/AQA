@@ -2,11 +2,11 @@
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org425d03d">¿Qué vamos a aprender hoy?</a>
+<li><a href="#org8fe488c">¿Qué vamos a aprender hoy?</a>
 <ul>
-<li><a href="#org46ea79c">¿Cómo en un/loquer se esta respondiendo ante el problema del aire?</a></li>
-<li><a href="#org3166c24">¿Qué puedo aprender con los datos que exponen?</a></li>
-<li><a href="#org965326e">¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?</a></li>
+<li><a href="#org629542d">¿Cómo en un/loquer se esta respondiendo ante el problema del aire?</a></li>
+<li><a href="#orgf1c09f5">¿Qué puedo aprender con los datos que exponen?</a></li>
+<li><a href="#orgc795ce5">¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?</a></li>
 </ul>
 </li>
 </ul>
@@ -14,12 +14,12 @@
 </div>
 
 
-<a id="org425d03d"></a>
+<a id="org8fe488c"></a>
 
 # ¿Qué vamos a aprender hoy?
 
 
-<a id="org46ea79c"></a>
+<a id="org629542d"></a>
 
 ## ¿Cómo en un/loquer se esta respondiendo ante el problema del aire?
 
@@ -29,7 +29,149 @@
     
     -   DONE ¿Microcontrolador? (ESP8266)
     
-        Tiene
+        Tiene conectividad wi-fi integrada, recive los datos de direferentes protocolos y genera la trama de datos.
+        
+        <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+        
+        
+        <colgroup>
+        <col  class="org-right" />
+        
+        <col  class="org-right" />
+        
+        <col  class="org-left" />
+        
+        <col  class="org-right" />
+        
+        <col  class="org-right" />
+        
+        <col  class="org-right" />
+        
+        <col  class="org-right" />
+        
+        <col  class="org-right" />
+        
+        <col  class="org-right" />
+        
+        <col  class="org-right" />
+        
+        <col  class="org-right" />
+        
+        <col  class="org-right" />
+        </colgroup>
+        <tbody>
+        <tr>
+        <td class="org-right">lat</td>
+        <td class="org-right">lng</td>
+        <td class="org-left">date</td>
+        <td class="org-right">hour</td>
+        <td class="org-right">altitude</td>
+        <td class="org-right">course</td>
+        <td class="org-right">speed</td>
+        <td class="org-right">humidity</td>
+        <td class="org-right">temperature</td>
+        <td class="org-right">pm1</td>
+        <td class="org-right">pm25</td>
+        <td class="org-right">pm10</td>
+        </tr>
+        
+        
+        <tr>
+        <td class="org-right">6.254207</td>
+        <td class="org-right">-75.575022</td>
+        <td class="org-left">5/11/2017</td>
+        <td class="org-right">05:54:00.00</td>
+        <td class="org-right">1498.5</td>
+        <td class="org-right">189.57</td>
+        <td class="org-right">14.24</td>
+        <td class="org-right">34.0</td>
+        <td class="org-right">28.0</td>
+        <td class="org-right">11</td>
+        <td class="org-right">16</td>
+        <td class="org-right">17</td>
+        </tr>
+        
+        
+        <tr>
+        <td class="org-right">6.253995</td>
+        <td class="org-right">-75.575045</td>
+        <td class="org-left">5/11/2017</td>
+        <td class="org-right">05:54:05.00</td>
+        <td class="org-right">1499.1</td>
+        <td class="org-right">179.03</td>
+        <td class="org-right">15.26</td>
+        <td class="org-right">34.0</td>
+        <td class="org-right">28.0</td>
+        <td class="org-right">11</td>
+        <td class="org-right">16</td>
+        <td class="org-right">17</td>
+        </tr>
+        
+        
+        <tr>
+        <td class="org-right">6.253763</td>
+        <td class="org-right">-75.575067</td>
+        <td class="org-left">5/11/2017</td>
+        <td class="org-right">05:54:11.00</td>
+        <td class="org-right">1498.8</td>
+        <td class="org-right">186.22</td>
+        <td class="org-right">14.46</td>
+        <td class="org-right">34.0</td>
+        <td class="org-right">28.0</td>
+        <td class="org-right">11</td>
+        <td class="org-right">16</td>
+        <td class="org-right">17</td>
+        </tr>
+        
+        
+        <tr>
+        <td class="org-right">6.253593</td>
+        <td class="org-right">-75.575132</td>
+        <td class="org-left">5/11/2017</td>
+        <td class="org-right">05:54:16.00</td>
+        <td class="org-right">1497.9</td>
+        <td class="org-right">215.65</td>
+        <td class="org-right">12.45</td>
+        <td class="org-right">34.0</td>
+        <td class="org-right">28.0</td>
+        <td class="org-right">11</td>
+        <td class="org-right">16</td>
+        <td class="org-right">17</td>
+        </tr>
+        
+        
+        <tr>
+        <td class="org-right">6.253485</td>
+        <td class="org-right">-75.575307</td>
+        <td class="org-left">5/11/2017</td>
+        <td class="org-right">05:54:22.00</td>
+        <td class="org-right">1498.3</td>
+        <td class="org-right">256.68</td>
+        <td class="org-right">14.41</td>
+        <td class="org-right">34.0</td>
+        <td class="org-right">28.0</td>
+        <td class="org-right">11</td>
+        <td class="org-right">16</td>
+        <td class="org-right">17</td>
+        </tr>
+        
+        
+        <tr>
+        <td class="org-right">6.253502</td>
+        <td class="org-right">-75.575495</td>
+        <td class="org-left">5/11/2017</td>
+        <td class="org-right">05:54:27.00</td>
+        <td class="org-right">1498.2</td>
+        <td class="org-right">296.0</td>
+        <td class="org-right">14.89</td>
+        <td class="org-right">34.0</td>
+        <td class="org-right">28.0</td>
+        <td class="org-right">11</td>
+        <td class="org-right">16</td>
+        <td class="org-right">17</td>
+        </tr>
+        </tbody>
+        </table>
         
         -   ¿Almacena los datos?
         
@@ -74,7 +216,7 @@
             -   escala personal
 
 
-<a id="org3166c24"></a>
+<a id="orgf1c09f5"></a>
 
 ## ¿Qué puedo aprender con los datos que exponen?
 
@@ -103,7 +245,7 @@
     -   ¿Puedo poner historias ?
 
 
-<a id="org965326e"></a>
+<a id="orgc795ce5"></a>
 
 ## ¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?
 
