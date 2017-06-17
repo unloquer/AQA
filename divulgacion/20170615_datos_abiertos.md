@@ -2,18 +2,18 @@
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9978763">¿Qué vamos a aprender hoy?</a>
+<li><a href="#orgd4ae757">¿Qué vamos a aprender hoy?</a>
 <ul>
-<li><a href="#org82b328a">¿Cómo en un/loquer se esta respondiendo ante el problema del aire?</a></li>
-<li><a href="#org86d1adf">¿Qué puedo aprender con los datos que exponen?</a></li>
-<li><a href="#org227da8d">¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?</a></li>
+<li><a href="#org76be75c">¿Cómo en un/loquer se esta respondiendo ante el problema del aire?</a></li>
+<li><a href="#org843fc4e">¿Qué puedo aprender con los datos que exponen?</a></li>
+<li><a href="#org2be2a97">¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?</a></li>
 </ul>
 </li>
-<li><a href="#org7494234">¿Qué vamos a aprender hoy?</a>
+<li><a href="#org22d54b2">¿Qué vamos a aprender hoy?</a>
 <ul>
-<li><a href="#orgebd18ca">¿Cómo en un/loquer se esta respondiendo ante el problema del aire?</a></li>
-<li><a href="#org3b95e36">¿Qué puedo aprender con los datos que exponen?</a></li>
-<li><a href="#org5dc973b">¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?</a></li>
+<li><a href="#org0bbdd6e">¿Cómo en un/loquer se esta respondiendo ante el problema del aire?</a></li>
+<li><a href="#org4a3197e">¿Qué puedo aprender con los datos que exponen?</a></li>
+<li><a href="#org1357595">¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?</a></li>
 </ul>
 </li>
 </ul>
@@ -21,18 +21,18 @@
 </div>
 
 
-<a id="org9978763"></a>
+<a id="orgd4ae757"></a>
 
 # ¿Qué vamos a aprender hoy?
 
 
-<a id="org82b328a"></a>
+<a id="org76be75c"></a>
 
 ## ¿Cómo en un/loquer se esta respondiendo ante el problema del aire?
 
 -   ¿Artefacto para medir y reportar?
 
-    Un dispositivo que permite hacer mediciones moviles.
+    Un dispositivo que permite hacer mediciones móviles.
     
     -   DONE ¿Microcontrolador? (ESP8266)
     
@@ -182,7 +182,7 @@
         
         -   ¿Almacena los datos?
         
-            Sí, porque no podemos garantizar conectividad wi-fi.
+            Sí, porque no podemos garantizar conectividad wi-fi, se está trabajando en implementar el reporte a travéz de una red LoRa
     
     -   GPS
     
@@ -204,9 +204,15 @@
     
         -   DONE ¿Prueba de concepto?
         
+            Actualmente los datos se descargan de la memoria Flash de forma rudimentaria.
+        
         -   TODO ¿Descarga con Wi-Fi?
         
+            Requiere un navegador para conectar el ESP a alguna red disponible.
+        
         -   TODO ¿LoRa?
+        
+            Estamos en la búsqueda de unos gateway para hacer una prueba de concepto.
 
 -   Detonantes:
 
@@ -223,7 +229,7 @@
             -   escala personal
 
 
-<a id="org86d1adf"></a>
+<a id="org843fc4e"></a>
 
 ## ¿Qué puedo aprender con los datos que exponen?
 
@@ -231,17 +237,19 @@
 
     -   ¿Porqué hay una medida de 500 !!! ¿subjetiva?
     
+        Son datos sucios por diferentes razones, algunas ideas de depuración de @kleper <https://github.com/daquina-io/VizCalidadAire/issues/2>
+        
         -   ¿Cómo podemos calibrar? <https://github.com/unloquer/AQA/issues/13>
         
         -   Link a mediciones mayores a 100 <http://daquina.io/aqaviz/?_inputs_&dates=%5B%222017-03-01%22%2C%222017-10-11%22%5D&map_bounds=%7B%22north%22%3A6.38627143781799%2C%22east%22%3A-75.340461730957%2C%22south%22%3A6.11939048057678%2C%22west%22%3A-75.8781051635742%7D&map_zoom=12&range=%5B103%2C187%5D&undefined_shape_click=%7B%22id%22%3Anull%2C%22.nonce%22%3A0.468528855641437%2C%22lat%22%3A6.182392%2C%22lng%22%3A-75.550095%7D&undefined_shape_mouseout=%7B%22id%22%3Anull%2C%22.nonce%22%3A0.631095207384145%2C%22lat%22%3A6.18352%2C%22lng%22%3A-75.547245%7D&undefined_shape_mouseover=%7B%22id%22%3Anull%2C%22.nonce%22%3A0.697734141732581%2C%22lat%22%3A6.18352%2C%22lng%22%3A-75.547245%7D&wday=%5B%22Sunday%22%2C%22Monday%22%2C%22Tuesday%22%2C%22Wednesday%22%2C%22Thursday%22%2C%22Friday%22%2C%22Saturday%22%5D>
         
         -   ¿Y si le agregamos un consenso?
         
-        -   Invalid
+            Tener muchas mediciones del mismo sitio en diferentes días y horas permitiría ir validando los datos.
         
         -   Gps
         
-        -   Voltaje
+            Emite datos errados cuando se está localizando, el asunto se esta tratando acá: <https://github.com/unloquer/AQA/issues/18>
 
 -   Detonantes
 
@@ -252,7 +260,7 @@
     -   ¿Puedo poner historias ?
 
 
-<a id="org227da8d"></a>
+<a id="org2be2a97"></a>
 
 ## ¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?
 
@@ -344,12 +352,12 @@
     -   ¿Para que dure más de 100 años debe ser abierto o cerrado?
 
 
-<a id="org7494234"></a>
+<a id="org22d54b2"></a>
 
 # ¿Qué vamos a aprender hoy?
 
 
-<a id="orgebd18ca"></a>
+<a id="org0bbdd6e"></a>
 
 ## ¿Cómo en un/loquer se esta respondiendo ante el problema del aire?
 
@@ -546,7 +554,7 @@
             -   escala personal
 
 
-<a id="org3b95e36"></a>
+<a id="org4a3197e"></a>
 
 ## ¿Qué puedo aprender con los datos que exponen?
 
@@ -575,7 +583,7 @@
     -   ¿Puedo poner historias ?
 
 
-<a id="org5dc973b"></a>
+<a id="org1357595"></a>
 
 ## ¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?
 
