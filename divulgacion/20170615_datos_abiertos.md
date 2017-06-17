@@ -2,11 +2,11 @@
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9bd7aa8">¿Qué vamos a aprender hoy?</a>
+<li><a href="#org17e56e0">¿Qué vamos a aprender hoy?</a>
 <ul>
-<li><a href="#org4849222">¿Cómo en un/loquer se esta respondiendo ante el problema del aire?</a></li>
-<li><a href="#orgdb06ea8">¿Qué puedo aprender con los datos que exponen?</a></li>
-<li><a href="#org8a27f33">¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?</a></li>
+<li><a href="#org83961ff">¿Cómo en un/loquer se esta respondiendo ante el problema del aire?</a></li>
+<li><a href="#org23fedf0">¿Qué puedo aprender con los datos que exponen?</a></li>
+<li><a href="#org5c5cfc8">¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?</a></li>
 </ul>
 </li>
 </ul>
@@ -14,12 +14,12 @@
 </div>
 
 
-<a id="org9bd7aa8"></a>
+<a id="org17e56e0"></a>
 
 # ¿Qué vamos a aprender hoy?
 
 
-<a id="org4849222"></a>
+<a id="org83961ff"></a>
 
 ## ¿Cómo en un/loquer se esta respondiendo ante el problema del aire?
 
@@ -27,7 +27,7 @@
 
     Un dispositivo que permite hacer mediciones móviles.
     
-    -   DONE ¿Microcontrolador? (ESP8266)
+    -   ¿Microcontrolador? **ESP8266**
     
         Tiene conectividad wi-fi integrada, recive los datos de direferentes protocolos y genera la trama de datos.
         
@@ -177,35 +177,39 @@
         
             Sí, porque no podemos garantizar conectividad wi-fi, se está trabajando en implementar el reporte a travéz de una red LoRa
     
-    -   GPS
+    -   ¿GPS?  **quectel l70**
     
-        Entrega Latitud, Longitud, Altitud, Curso, y Velocidad, ver issue <https://github.com/unloquer/AQA/issues/18>
+        Entrega Timestamp, Latitud, Longitud, Altitud, Curso, y Velocidad, ver issue <https://github.com/unloquer/AQA/issues/18>
     
-    -   DONE ¿Sensor de partículas?
+    -   ¿Sensor de partículas? **planttower PMSx003**
     
         Entrega mediciones de partículas pm1, pm2.5 y pm10.
     
-    -   ¿Sensor de temperatura y humedad? DHT11
+    -   ¿Sensor de temperatura y humedad? **DHT11**
     
     -   ¿RGB Leds?
     
         Retroalimentación visual expresada en colores ajustada a alguna escala.
     
     -   TODO ¿Carcasa?
+
+-   ¿Compartir los datos capturados?
+
+    -   ¿Prueba de concepto?
     
-    -   ¿Compartir los datos capturados?
+        Actualmente los datos se descargan de la memoria Flash de forma rudimentaria.
     
-        -   DONE ¿Prueba de concepto?
-        
-            Actualmente los datos se descargan de la memoria Flash de forma rudimentaria.
-        
-        -   TODO ¿Descarga con Wi-Fi?
-        
-            Requiere un navegador para conectar el ESP a alguna red disponible.
-        
-        -   TODO ¿LoRa?
-        
-            Estamos en la búsqueda de unos gateway para hacer una prueba de concepto.
+    -   ¿Compartir la medición PM2.5 usando el ESSID?
+    
+        Cualquier dispositivo Wi-Fi al alcance puede recibir el reporte de la medición en su listado de redes disponibles. <https://github.com/unloquer/AQA/issues/14>
+    
+    -   TODO ¿Descarga con Wi-Fi?
+    
+        Requiere un navegador para conectar el ESP a alguna red disponible.
+    
+    -   TODO ¿LoRa?
+    
+        Estamos en la búsqueda de unos gateway para hacer una prueba de concepto.
 
 -   Detonantes:
 
@@ -222,7 +226,7 @@
             -   escala personal
 
 
-<a id="orgdb06ea8"></a>
+<a id="org23fedf0"></a>
 
 ## ¿Qué puedo aprender con los datos que exponen?
 
@@ -253,7 +257,7 @@
     -   ¿Puedo poner historias ?
 
 
-<a id="org8a27f33"></a>
+<a id="org5c5cfc8"></a>
 
 ## ¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?
 
