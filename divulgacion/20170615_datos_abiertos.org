@@ -79,11 +79,11 @@
 ***** ¿blame? ¿cadena de custodia? ¿blockchain?
 **** ¿Porqué publican el presupuesto? https://github.com/unloquer/AQA/blob/master/costos.dat    
 
-     | muñeco               | us$ |   col$ |
-     |----------------------+-----+--------|
-     | diy                  |  44 | 128876 |
-     | muñeco               | 108 | 316332 |
-     | embebido y red fácil | 178 | 521362 |
+     | Dispositivo               | us$ |   col$ |
+     |---------------------------+-----+--------|
+     | DIY                       |  44 | 128876 |
+     | Muñeco, cables a la vista | 108 | 316332 |
+     | Embebido en carcasa       | 178 | 521362 |
      #+TBLFM: $3=$2*2929
 
 **** Documentacion

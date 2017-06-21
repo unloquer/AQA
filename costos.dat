@@ -5,39 +5,39 @@
 ;; responde con la suma de los costos de la categoría aparato
 
 2017/05/24 Sensor de partículas
-    costo:aparato:componente:sensor                               $-15.00
+    costo:aparato:componente:sensor                    $-15.00
     Ali Express
 
 2017/05/24 gps
-    costo:aparato:componente:gps                                  $-12.00
+    costo:aparato:componente:gps                       $-12.00
     Sigma Electronica
 2017/05/24 ESP8266
-    costo:aparato:componente:esp                                  $-10.00  ; pueden bajar a us5
+    costo:aparato:componente:esp                       $-10.00  ; pueden bajar a us5
     Ali Express 
 2017/05/24 DHT (sensor de humedad y temperatura)
-    costo:aparato:componente:sensor:dht                            $-0.65
+    costo:aparato:componente:sensor:dht                 $-0.65
     Ali Express
 2017/05/24 Leds
-    costo:aparato:componente:feedback:led                          $-0.16
+    costo:aparato:componente:feedback:led               $-0.16
     Ali Express
 2017/05/24 bateria
-    costo:aparato:componente:energia:bateria                       $-6.00
+    costo:aparato:componente:energia:bateria            $-6.00
     cualquier tienda
 2017/05/24 ensamblaje
     costo:aparato:manoDeObra:ensamblaje                $-17.00
     unloquer
 2017/05/24 diseño electrónico
-    costo:aparato:manoDeObra:diseno                               $-17.00
+    costo:aparato:manoDeObra:diseno                    $-17.00
     unloquer
 2017/05/24 cableado
-    costo:aparato:manoDeObra:cableado                              $-1.00
+    costo:aparato:manoDeObra:cableado                   $-1.00
     cualquier tienda
 
 2017/05/24 carcasa
-    costo:aparato:manoDeObra:diseno:carcasa                       $-20.00
+    costo:aparato:manoDeObra:diseno:carcasa            $-20.00
     desconocido
 2017/05/24 codigo
-    costo:aparato:manoDeObra:codigo                               $-10.00
+    costo:aparato:manoDeObra:codigo                    $-10.00
     desarrollador
 2017/05/24 infraestructura
     costo:aparato:infraestructura                      $-12.00
@@ -49,5 +49,18 @@
     costo:aparato:impuestos                            $-28.50 ; asumiendo un valor final de 150
     dian
 2017/05/24 utilidad
-   costo:aparato:utilidad                             $-30.00 ; 20% asumiendo un costo final de 150
+    costo:aparato:utilidad                             $-30.00 ; 20% asumiendo un costo final de 150
    proyecto
+
+2017/06/17 Venta sensor
+    ingreso:venta:sensor:partes                    $200,000.00
+    Federico López
+
+2017/06/17 Pago sensor particulas
+    egreso:componente:sensor:plantower             $-60,000.00
+    brolin 
+
+
+
+
+
