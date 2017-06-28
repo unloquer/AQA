@@ -63,30 +63,53 @@
 ;; ------------- termina presupuesto ----------------------
 
 
-2017/06/17 Venta sensor
-    ingreso:venta:sensor:partes                    $200,000.00
-    Federico López
-
-2017/06/17 Pago sensor particulas
-    egreso:componente:sensor:plantower             $-60,000.00
-    brolin
-
-2017/06/17  sale de inventario
-    inventario:egreso:sensor:plantower                      -1
-    Federico López
-
-2017/06/28 Prestamo Federico   
-    reembolsable:ingreso:prestamo:federico        $ 400,000.00 ;; compra gps
-    Federico López
-
-   
-2017/06/01 prestamo brolin
-    reembolsable:ingreso:prestamo:brolin        $ 600,000.00
+2017/06/01 prestamo brolin sensores plantower 10
+    reembolsable:ingreso:prestamo:sensor:plantower:brolin  $ 600,000.00
     brolin
 
 2017/06/01 compra sensores plantower
-    egreso:componente:sensor:plantower        $-600,000.00
+    egreso:componente:sensor:plantower            $-600,000.00
     brolin
+
+2017/06/01 aporte unloquer sensores dht11
+    inventario:ingreso:component:dht11                      10
+    unloquer
+
+2017/06/01 prestamo unloquer dht11
+    reembolsable:prestamo:sensor:dht11:unloquer     $40,000.00
+    unloquer
+
+2017/06/17 Venta sensor
+    ingreso:venta:sensor:partes                    $200,000.00
+    cuenta brolin
+
+
+2017/06/17 Pago a brolin sensor particulas
+    egreso:componente:sensor:plantower             $-60,000.00
+    cuenta brolin
+
+2017/06/17  sale de inventario 
+    inventario:egreso:componente:sensor:plantower           -1
+    Federico López
+2017/06/17 armado sensor federico
+    inventario:egreso:componente:sensor:dht11               -1
+    Federico López
+
+2017/06/17 venta sensor dth11
+    ingreso:componente:sensor:dth11                  $4,000.00
+    Federico López
+    
+
+2017/06/28 Prestamo Federico   
+    reembolsable:ingreso:prestamo:sensor:l80:federico        $ 400,000.00 ;; compra gps
+    cuenta brolin
+
+
+
+
+   
+
+
 
 
 
