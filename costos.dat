@@ -72,7 +72,7 @@
     brolin
 
 2017/06/01 aporte unloquer sensores dht11
-    inventario:ingreso:component:dht11                      10
+    inventario:ingreso:componente:dht11                      10
     unloquer
 
 2017/06/01 prestamo unloquer dht11
@@ -103,6 +103,18 @@
 2017/06/28 Prestamo Federico   
     reembolsable:ingreso:prestamo:sensor:l80:federico        $ 400,000.00 ;; compra gps
     cuenta brolin
+
+2017/07/04 Compra GPS
+    egreso:componente:sensor:gps                  $-339,000.00
+    cuentaBrolin:electronica I+D
+
+2017/07/04 Ingresan GPS's
+    inventario:ingreso:componente:gps             10
+    elecronica I+D
+
+
+
+
 
 
 
