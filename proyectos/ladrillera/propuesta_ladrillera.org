@@ -2,8 +2,7 @@
 ** Justificación
    Medellín tiene un problema de calidad del aire, la política pública tiene planes a largo plazo, el sistema publico de monitoreo de calidad del aire tiene alcance limitado. 
 ** Problema
-   Que el habitante pueda tener una medición del aire a sus alrededores
-** 
+   Que el ciudadano pueda tener una medición del aire que respira en el momento. 
 ** Solución propuesta
    Medidor portable que indique visualmente la calidad del aire y que permita socializar esas mediciones.
 ** Fases
