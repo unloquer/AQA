@@ -425,7 +425,7 @@ void loop()
   frame += PM01Value + comma + PM2_5Value + comma + PM10Value;
 
   //if((millis() % 10000) == 1)
-    setupWiFi(PM2_5Value);
+  setupWiFi(PM2_5Value);
 
   Serial.println(frame); // se comenta para descargar
   fs_write_frame(frame); // se comenta para descargar
