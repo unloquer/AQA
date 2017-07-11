@@ -2,15 +2,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgffbc67b">1. Agentes Calidad del Aire</a>
+<li><a href="#org0dc3a9b">1. Agentes Calidad del Aire</a>
 <ul>
-<li><a href="#org82816ab">1.1. Justificación</a></li>
-<li><a href="#orgdced0b9">1.2. Problema</a></li>
-<li><a href="#org91434e2">1.3. Solución propuesta</a></li>
-<li><a href="#orga048bc1">1.4. Fases</a>
+<li><a href="#org978461e">1.1. Justificación</a></li>
+<li><a href="#org76ca5a3">1.2. Problema</a></li>
+<li><a href="#org2a85e36">1.3. Solución propuesta</a></li>
+<li><a href="#org30646cc">1.4. Fases</a>
 <ul>
-<li><a href="#org49ad4af">1.4.1. Primer fase:</a></li>
-<li><a href="#orgb40f550">1.4.2. Segunda Fase:</a></li>
+<li><a href="#orgef0e59e">1.4.1. Primer fase:</a></li>
+<li><a href="#orgc540950">1.4.2. Segunda Fase:</a></li>
 </ul>
 </li>
 </ul>
@@ -19,38 +19,38 @@
 </div>
 </div>
 
-<a id="orgffbc67b"></a>
+<a id="org0dc3a9b"></a>
 
 # Agentes Calidad del Aire
 
 
-<a id="org82816ab"></a>
+<a id="org978461e"></a>
 
 ## Justificación
 
 Medellín tiene un problema de calidad del aire, la política pública tiene planes a largo plazo, el sistema publico de monitoreo de calidad del aire tiene alcance limitado. 
 
 
-<a id="orgdced0b9"></a>
+<a id="org76ca5a3"></a>
 
 ## Problema
 
 El ciudadano no tiene una medición del aire que respira en el momento. 
 
 
-<a id="org91434e2"></a>
+<a id="org2a85e36"></a>
 
 ## Solución propuesta
 
 Medidor portable que indique visualmente la calidad del aire y que permita socializar esas mediciones.
 
 
-<a id="orga048bc1"></a>
+<a id="org30646cc"></a>
 
 ## Fases
 
 
-<a id="org49ad4af"></a>
+<a id="orgef0e59e"></a>
 
 ### Primer fase:
 
@@ -84,103 +84,104 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     <col  class="org-left" />
     </colgroup>
+    <thead>
+    <tr>
+    <th scope="col" class="org-left">Payee</th>
+    <th scope="col" class="org-left">Account</th>
+    <th scope="col" class="org-left">Amount</th>
+    <th scope="col" class="org-left">Balance</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Sensor de partículas</th>
+    <th scope="col" class="org-left">fase1:costo:aparato:componente:sensor</th>
+    <th scope="col" class="org-left">$ -20.00</th>
+    <th scope="col" class="org-left">$ -20.00</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">ESP8266</th>
+    <th scope="col" class="org-left">fase1:costo:aparato:componente:esp</th>
+    <th scope="col" class="org-left">$ -10.00</th>
+    <th scope="col" class="org-left">$ -30.00</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">DHT (sensor de humedad y temperatura)</th>
+    <th scope="col" class="org-left">fase1:costo:aparato:componente:sensor:dht</th>
+    <th scope="col" class="org-left">$ -0.65</th>
+    <th scope="col" class="org-left">$ -30.65</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Leds</th>
+    <th scope="col" class="org-left">fase1:costo:aparato:componente:feedback:led</th>
+    <th scope="col" class="org-left">$ -0.16</th>
+    <th scope="col" class="org-left">$ -30.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Alimentación Energía</th>
+    <th scope="col" class="org-left">fase1:costo:aparato:componente:energia:adaptador</th>
+    <th scope="col" class="org-left">$ -6.00</th>
+    <th scope="col" class="org-left">$ -36.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Ensamblaje</th>
+    <th scope="col" class="org-left">fase1:costo:aparato:manoDeObra:ensamblaje</th>
+    <th scope="col" class="org-left">$ -17.00</th>
+    <th scope="col" class="org-left">$ -53.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Diseño electrónico</th>
+    <th scope="col" class="org-left">fase1:costo:aparato:manoDeObra:diseno</th>
+    <th scope="col" class="org-left">$ -17.00</th>
+    <th scope="col" class="org-left">$ -70.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Cableado</th>
+    <th scope="col" class="org-left">fase1:costo:aparato:manoDeObra:cableado</th>
+    <th scope="col" class="org-left">$ -1.00</th>
+    <th scope="col" class="org-left">$ -71.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Carcasa</th>
+    <th scope="col" class="org-left">fase1:costo:aparato:manoDeObra:diseno:carcasa</th>
+    <th scope="col" class="org-left">$ -20.00</th>
+    <th scope="col" class="org-left">$ -91.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Código</th>
+    <th scope="col" class="org-left">fase1:costo:aparato:manoDeObra:codigo</th>
+    <th scope="col" class="org-left">$ -10.00</th>
+    <th scope="col" class="org-left">$ -101.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Infraestructura</th>
+    <th scope="col" class="org-left">fase1:costo:aparato:infraestructura</th>
+    <th scope="col" class="org-left">$ -12.00</th>
+    <th scope="col" class="org-left">$ -113.81</th>
+    </tr>
+    </thead>
+    
     <tbody>
-    <tr>
-    <td class="org-left">Payee</td>
-    <td class="org-left">Account</td>
-    <td class="org-left">Amount</td>
-    <td class="org-left">Balance</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Sensor de partículas</td>
-    <td class="org-left">fase1:costo:aparato:componente:sensor</td>
-    <td class="org-left">$ -20.00</td>
-    <td class="org-left">$ -20.00</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">ESP8266</td>
-    <td class="org-left">fase1:costo:aparato:componente:esp</td>
-    <td class="org-left">$ -10.00</td>
-    <td class="org-left">$ -30.00</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">DHT (sensor de humedad y temperatura)</td>
-    <td class="org-left">fase1:costo:aparato:componente:sensor:dht</td>
-    <td class="org-left">$ -0.65</td>
-    <td class="org-left">$ -30.65</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Leds</td>
-    <td class="org-left">fase1:costo:aparato:componente:feedback:led</td>
-    <td class="org-left">$ -0.16</td>
-    <td class="org-left">$ -30.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Alimentación Energía</td>
-    <td class="org-left">fase1:costo:aparato:componente:energia:adaptador</td>
-    <td class="org-left">$ -6.00</td>
-    <td class="org-left">$ -36.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Ensamblaje</td>
-    <td class="org-left">fase1:costo:aparato:manoDeObra:ensamblaje</td>
-    <td class="org-left">$ -17.00</td>
-    <td class="org-left">$ -53.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Diseño electrónico</td>
-    <td class="org-left">fase1:costo:aparato:manoDeObra:diseno</td>
-    <td class="org-left">$ -17.00</td>
-    <td class="org-left">$ -70.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Cableado</td>
-    <td class="org-left">fase1:costo:aparato:manoDeObra:cableado</td>
-    <td class="org-left">$ -1.00</td>
-    <td class="org-left">$ -71.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Carcasa</td>
-    <td class="org-left">fase1:costo:aparato:manoDeObra:diseno:carcasa</td>
-    <td class="org-left">$ -20.00</td>
-    <td class="org-left">$ -91.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Código</td>
-    <td class="org-left">fase1:costo:aparato:manoDeObra:codigo</td>
-    <td class="org-left">$ -10.00</td>
-    <td class="org-left">$ -101.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Infraestructura</td>
-    <td class="org-left">fase1:costo:aparato:infraestructura</td>
-    <td class="org-left">$ -12.00</td>
-    <td class="org-left">$ -113.81</td>
-    </tr>
-    
-    
     <tr>
     <td class="org-left">Impuestos IVA 19%</td>
     <td class="org-left">fase1:costo:aparato:impuestos</td>
@@ -196,10 +197,27 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     <td class="org-left">$ -157.88</td>
     </tr>
     </tbody>
+    
+    <tbody>
+    <tr>
+    <td class="org-left">&#xa0;</td>
+    <td class="org-left">&#xa0;</td>
+    <td class="org-left">Total</td>
+    <td class="org-left">**$ -157.88**</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">&#xa0;</td>
+    <td class="org-left">&#xa0;</td>
+    <td class="org-left">&#xa0;</td>
+    <td class="org-left">&#xa0;</td>
+    </tr>
+    </tbody>
     </table>
 
 
-<a id="orgb40f550"></a>
+<a id="orgc540950"></a>
 
 ### Segunda Fase:
 
@@ -231,143 +249,144 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     <col  class="org-left" />
     </colgroup>
+    <thead>
+    <tr>
+    <th scope="col" class="org-left">Payee</th>
+    <th scope="col" class="org-left">Account</th>
+    <th scope="col" class="org-left">Amount</th>
+    <th scope="col" class="org-left">Balance</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">ESP8266</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:componente:esp</th>
+    <th scope="col" class="org-left">$ -10.00</th>
+    <th scope="col" class="org-left">$ -10.00</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Sensor de partículas</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:componente:sensor</th>
+    <th scope="col" class="org-left">$ -20.00</th>
+    <th scope="col" class="org-left">$ -30.00</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Gps</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:componente:gps</th>
+    <th scope="col" class="org-left">$ -12.00</th>
+    <th scope="col" class="org-left">$ -42.00</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">DHT (sensor de humedad y temperatura)</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:componente:sensor:dht</th>
+    <th scope="col" class="org-left">$ -0.65</th>
+    <th scope="col" class="org-left">$ -42.65</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Leds</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:componente:feedback:led</th>
+    <th scope="col" class="org-left">$ -0.16</th>
+    <th scope="col" class="org-left">$ -42.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Alimentación Energía</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:componente:energia:adaptador</th>
+    <th scope="col" class="org-left">$ -6.00</th>
+    <th scope="col" class="org-left">$ -48.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Batería</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:componente:energia:bateria</th>
+    <th scope="col" class="org-left">$ -6.00</th>
+    <th scope="col" class="org-left">$ -54.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Ensamblaje</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:manoDeObra:ensamblaje</th>
+    <th scope="col" class="org-left">$ -17.00</th>
+    <th scope="col" class="org-left">$ -71.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Diseño electrónico</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:manoDeObra:diseno</th>
+    <th scope="col" class="org-left">$ -17.00</th>
+    <th scope="col" class="org-left">$ -88.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Cableado</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:manoDeObra:cableado</th>
+    <th scope="col" class="org-left">$ -1.00</th>
+    <th scope="col" class="org-left">$ -89.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Carcasa</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:manoDeObra:diseno:carcasa</th>
+    <th scope="col" class="org-left">$ -20.00</th>
+    <th scope="col" class="org-left">$ -109.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Código backend</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:manoDeObra:codigo</th>
+    <th scope="col" class="org-left">$ -10.00</th>
+    <th scope="col" class="org-left">$ -119.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Análisis-Mapas</th>
+    <th scope="col" class="org-left">fase2:costo:servicio:analisis:mapas</th>
+    <th scope="col" class="org-left">$ -10.00</th>
+    <th scope="col" class="org-left">$ -129.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Aplicación móvil Android</th>
+    <th scope="col" class="org-left">fase2:costo:servicio:aplicacion:android</th>
+    <th scope="col" class="org-left">$ -10.00</th>
+    <th scope="col" class="org-left">$ -139.81</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Lector memoria SD</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:componente:lectorSD</th>
+    <th scope="col" class="org-left">$ -0.66</th>
+    <th scope="col" class="org-left">$ -140.47</th>
+    </tr>
+    
+    
+    <tr>
+    <th scope="col" class="org-left">Infraestructura</th>
+    <th scope="col" class="org-left">fase2:costo:aparato:infraestructura</th>
+    <th scope="col" class="org-left">$ -12.00</th>
+    <th scope="col" class="org-left">$ -152.47</th>
+    </tr>
+    </thead>
+    
     <tbody>
-    <tr>
-    <td class="org-left">Payee</td>
-    <td class="org-left">Account</td>
-    <td class="org-left">Amount</td>
-    <td class="org-left">Balance</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">ESP8266</td>
-    <td class="org-left">fase2:costo:aparato:componente:esp</td>
-    <td class="org-left">$ -10.00</td>
-    <td class="org-left">$ -10.00</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Sensor de partículas</td>
-    <td class="org-left">fase2:costo:aparato:componente:sensor</td>
-    <td class="org-left">$ -20.00</td>
-    <td class="org-left">$ -30.00</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Gps</td>
-    <td class="org-left">fase2:costo:aparato:componente:gps</td>
-    <td class="org-left">$ -12.00</td>
-    <td class="org-left">$ -42.00</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">DHT (sensor de humedad y temperatura)</td>
-    <td class="org-left">fase2:costo:aparato:componente:sensor:dht</td>
-    <td class="org-left">$ -0.65</td>
-    <td class="org-left">$ -42.65</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Leds</td>
-    <td class="org-left">fase2:costo:aparato:componente:feedback:led</td>
-    <td class="org-left">$ -0.16</td>
-    <td class="org-left">$ -42.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Alimentación Energía</td>
-    <td class="org-left">fase2:costo:aparato:componente:energia:adaptador</td>
-    <td class="org-left">$ -6.00</td>
-    <td class="org-left">$ -48.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Batería</td>
-    <td class="org-left">fase2:costo:aparato:componente:energia:bateria</td>
-    <td class="org-left">$ -6.00</td>
-    <td class="org-left">$ -54.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Ensamblaje</td>
-    <td class="org-left">fase2:costo:aparato:manoDeObra:ensamblaje</td>
-    <td class="org-left">$ -17.00</td>
-    <td class="org-left">$ -71.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Diseño electrónico</td>
-    <td class="org-left">fase2:costo:aparato:manoDeObra:diseno</td>
-    <td class="org-left">$ -17.00</td>
-    <td class="org-left">$ -88.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Cableado</td>
-    <td class="org-left">fase2:costo:aparato:manoDeObra:cableado</td>
-    <td class="org-left">$ -1.00</td>
-    <td class="org-left">$ -89.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Carcasa</td>
-    <td class="org-left">fase2:costo:aparato:manoDeObra:diseno:carcasa</td>
-    <td class="org-left">$ -20.00</td>
-    <td class="org-left">$ -109.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Código backend</td>
-    <td class="org-left">fase2:costo:aparato:manoDeObra:codigo</td>
-    <td class="org-left">$ -10.00</td>
-    <td class="org-left">$ -119.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Análisis-Mapas</td>
-    <td class="org-left">fase2:costo:servicio:analisis:mapas</td>
-    <td class="org-left">$ -10.00</td>
-    <td class="org-left">$ -129.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Aplicación móvil Android</td>
-    <td class="org-left">fase2:costo:servicio:aplicacion:android</td>
-    <td class="org-left">$ -10.00</td>
-    <td class="org-left">$ -139.81</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Lector memoria SD</td>
-    <td class="org-left">fase2:costo:aparato:componente:lectorSD</td>
-    <td class="org-left">$ -0.66</td>
-    <td class="org-left">$ -140.47</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">Infraestructura</td>
-    <td class="org-left">fase2:costo:aparato:infraestructura</td>
-    <td class="org-left">$ -12.00</td>
-    <td class="org-left">$ -152.47</td>
-    </tr>
-    
-    
     <tr>
     <td class="org-left">impuestos IVA 19%</td>
     <td class="org-left">fase2:costo:aparato:impuestos</td>
@@ -377,10 +396,19 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">Utilidad</td>
+    <td class="org-left">Utilida</td>
     <td class="org-left">fase2:costo:aparato:utilidad</td>
     <td class="org-left">$ -30.40</td>
     <td class="org-left">$ -211.75</td>
+    </tr>
+    </tbody>
+    
+    <tbody>
+    <tr>
+    <td class="org-left">&#xa0;</td>
+    <td class="org-left">&#xa0;</td>
+    <td class="org-left">Total</td>
+    <td class="org-left">**$ -211.75**</td>
     </tr>
     </tbody>
     </table>

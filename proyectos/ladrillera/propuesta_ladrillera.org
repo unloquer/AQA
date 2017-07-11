@@ -19,20 +19,24 @@
      :LOGBOOK:
      CLOCK: [2017-07-10 Mon 17:40]--[2017-07-10 Mon 18:30] =>  0:50
      :END:
-| Payee                                 | Account                                          | Amount   | Balance   |
-| Sensor de partículas                  | fase1:costo:aparato:componente:sensor            | $ -20.00 | $ -20.00  |
-| ESP8266                               | fase1:costo:aparato:componente:esp               | $ -10.00 | $ -30.00  |
-| DHT (sensor de humedad y temperatura) | fase1:costo:aparato:componente:sensor:dht        | $ -0.65  | $ -30.65  |
-| Leds                                  | fase1:costo:aparato:componente:feedback:led      | $ -0.16  | $ -30.81  |
-| Alimentación Energía                  | fase1:costo:aparato:componente:energia:adaptador | $ -6.00  | $ -36.81  |
-| Ensamblaje                            | fase1:costo:aparato:manoDeObra:ensamblaje        | $ -17.00 | $ -53.81  |
-| Diseño electrónico                    | fase1:costo:aparato:manoDeObra:diseno            | $ -17.00 | $ -70.81  |
-| Cableado                              | fase1:costo:aparato:manoDeObra:cableado          | $ -1.00  | $ -71.81  |
-| Carcasa                               | fase1:costo:aparato:manoDeObra:diseno:carcasa    | $ -20.00 | $ -91.81  |
-| Código                                | fase1:costo:aparato:manoDeObra:codigo            | $ -10.00 | $ -101.81 |
-| Infraestructura                       | fase1:costo:aparato:infraestructura              | $ -12.00 | $ -113.81 |
-| Impuestos IVA 19%                     | fase1:costo:aparato:impuestos                    | $ -21.47 | $ -135.28 |
-| Utilidad                              | fase1:costo:aparato:utilidad                     | $ -22.60 | $ -157.88 |
+| Payee                                 | Account                                          | Amount   | Balance     |
+| Sensor de partículas                  | fase1:costo:aparato:componente:sensor            | $ -20.00 | $ -20.00    |
+| ESP8266                               | fase1:costo:aparato:componente:esp               | $ -10.00 | $ -30.00    |
+| DHT (sensor de humedad y temperatura) | fase1:costo:aparato:componente:sensor:dht        | $ -0.65  | $ -30.65    |
+| Leds                                  | fase1:costo:aparato:componente:feedback:led      | $ -0.16  | $ -30.81    |
+| Alimentación Energía                  | fase1:costo:aparato:componente:energia:adaptador | $ -6.00  | $ -36.81    |
+| Ensamblaje                            | fase1:costo:aparato:manoDeObra:ensamblaje        | $ -17.00 | $ -53.81    |
+| Diseño electrónico                    | fase1:costo:aparato:manoDeObra:diseno            | $ -17.00 | $ -70.81    |
+| Cableado                              | fase1:costo:aparato:manoDeObra:cableado          | $ -1.00  | $ -71.81    |
+| Carcasa                               | fase1:costo:aparato:manoDeObra:diseno:carcasa    | $ -20.00 | $ -91.81    |
+| Código                                | fase1:costo:aparato:manoDeObra:codigo            | $ -10.00 | $ -101.81   |
+| Infraestructura                       | fase1:costo:aparato:infraestructura              | $ -12.00 | $ -113.81   |
+|---------------------------------------+--------------------------------------------------+----------+-------------|
+| Impuestos IVA 19%                     | fase1:costo:aparato:impuestos                    | $ -21.47 | $ -135.28   |
+| Utilidad                              | fase1:costo:aparato:utilidad                     | $ -22.60 | $ -157.88   |
+|---------------------------------------+--------------------------------------------------+----------+-------------|
+|                                       |                                                  | Total    | *$ -157.88* |
+|                                       |                                                  |          |             |
 
 
 ***  Segunda Fase: 
@@ -47,23 +51,26 @@
      :LOGBOOK:
      CLOCK: [2017-07-11 Tue 05:05]
      :END:
-| Payee                                 | Account                                          | Amount   | Balance   |
-| ESP8266                               | fase2:costo:aparato:componente:esp               | $ -10.00 | $ -10.00  |
-| Sensor de partículas                  | fase2:costo:aparato:componente:sensor            | $ -20.00 | $ -30.00  |
-| Gps                                   | fase2:costo:aparato:componente:gps               | $ -12.00 | $ -42.00  |
-| DHT (sensor de humedad y temperatura) | fase2:costo:aparato:componente:sensor:dht        | $ -0.65  | $ -42.65  |
-| Leds                                  | fase2:costo:aparato:componente:feedback:led      | $ -0.16  | $ -42.81  |
-| Alimentación Energía                  | fase2:costo:aparato:componente:energia:adaptador | $ -6.00  | $ -48.81  |
-| Batería                               | fase2:costo:aparato:componente:energia:bateria   | $ -6.00  | $ -54.81  |
-| Ensamblaje                            | fase2:costo:aparato:manoDeObra:ensamblaje        | $ -17.00 | $ -71.81  |
-| Diseño electrónico                    | fase2:costo:aparato:manoDeObra:diseno            | $ -17.00 | $ -88.81  |
-| Cableado                              | fase2:costo:aparato:manoDeObra:cableado          | $ -1.00  | $ -89.81  |
-| Carcasa                               | fase2:costo:aparato:manoDeObra:diseno:carcasa    | $ -20.00 | $ -109.81 |
-| Código backend                        | fase2:costo:aparato:manoDeObra:codigo            | $ -10.00 | $ -119.81 |
-| Análisis-Mapas                        | fase2:costo:servicio:analisis:mapas              | $ -10.00 | $ -129.81 |
-| Aplicación móvil Android              | fase2:costo:servicio:aplicacion:android          | $ -10.00 | $ -139.81 |
-| Lector memoria SD                     | fase2:costo:aparato:componente:lectorSD          | $ -0.66  | $ -140.47 |
-| Infraestructura                       | fase2:costo:aparato:infraestructura              | $ -12.00 | $ -152.47 |
-| impuestos IVA 19%                     | fase2:costo:aparato:impuestos                    | $ -28.88 | $ -181.35 |
-| Utilidad                              | fase2:costo:aparato:utilidad                     | $ -30.40 | $ -211.75 |
+| Payee                                 | Account                                          | Amount   | Balance     |
+| ESP8266                               | fase2:costo:aparato:componente:esp               | $ -10.00 | $ -10.00    |
+| Sensor de partículas                  | fase2:costo:aparato:componente:sensor            | $ -20.00 | $ -30.00    |
+| Gps                                   | fase2:costo:aparato:componente:gps               | $ -12.00 | $ -42.00    |
+| DHT (sensor de humedad y temperatura) | fase2:costo:aparato:componente:sensor:dht        | $ -0.65  | $ -42.65    |
+| Leds                                  | fase2:costo:aparato:componente:feedback:led      | $ -0.16  | $ -42.81    |
+| Alimentación Energía                  | fase2:costo:aparato:componente:energia:adaptador | $ -6.00  | $ -48.81    |
+| Batería                               | fase2:costo:aparato:componente:energia:bateria   | $ -6.00  | $ -54.81    |
+| Ensamblaje                            | fase2:costo:aparato:manoDeObra:ensamblaje        | $ -17.00 | $ -71.81    |
+| Diseño electrónico                    | fase2:costo:aparato:manoDeObra:diseno            | $ -17.00 | $ -88.81    |
+| Cableado                              | fase2:costo:aparato:manoDeObra:cableado          | $ -1.00  | $ -89.81    |
+| Carcasa                               | fase2:costo:aparato:manoDeObra:diseno:carcasa    | $ -20.00 | $ -109.81   |
+| Código backend                        | fase2:costo:aparato:manoDeObra:codigo            | $ -10.00 | $ -119.81   |
+| Análisis-Mapas                        | fase2:costo:servicio:analisis:mapas              | $ -10.00 | $ -129.81   |
+| Aplicación móvil Android              | fase2:costo:servicio:aplicacion:android          | $ -10.00 | $ -139.81   |
+| Lector memoria SD                     | fase2:costo:aparato:componente:lectorSD          | $ -0.66  | $ -140.47   |
+| Infraestructura                       | fase2:costo:aparato:infraestructura              | $ -12.00 | $ -152.47   |
+|---------------------------------------+--------------------------------------------------+----------+-------------|
+| impuestos IVA 19%                     | fase2:costo:aparato:impuestos                    | $ -28.88 | $ -181.35   |
+| Utilida                               | fase2:costo:aparato:utilidad                     | $ -30.40 | $ -211.75   |
+|---------------------------------------+--------------------------------------------------+----------+-------------|
+|                                       |                                                  | Total    | *$ -211.75* |
 
