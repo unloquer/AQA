@@ -238,7 +238,7 @@
     cuenta brolin
 
 2017/07/04 Préstamo pcb colcircuitos LoRa brolin
-    reembolsable:ingreso:prestamo:experimento         ($165,815.00/2)
+    reembolsable:ingreso:prestamo:experimento:brolin         ($165,815.00/2)
     brolin
 
 2017/07/04 Compra GPS
@@ -249,6 +249,13 @@
     inventario:ingreso:componente:gps                       10
     elecronica I+D
 
+2017/07/11 prestamo brolin lectores sd 20
+    reembolsable:ingreso:prestamo:sdreader:brolin   $39,353.00
+    brolin
+
+2017/07/11 compra lectores sd 20
+    egreso:componente:sdreader                     $-39,353.00
+    brolin
 
 
 
