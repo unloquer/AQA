@@ -2,15 +2,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org65710cd">1. Agentes Calidad del Aire</a>
+<li><a href="#orgffbc67b">1. Agentes Calidad del Aire</a>
 <ul>
-<li><a href="#org17b0934">1.1. Justificación</a></li>
-<li><a href="#org3b60fa9">1.2. Problema</a></li>
-<li><a href="#orge3aaf79">1.3. Solución propuesta</a></li>
-<li><a href="#org36285a7">1.4. Fases</a>
+<li><a href="#org82816ab">1.1. Justificación</a></li>
+<li><a href="#orgdced0b9">1.2. Problema</a></li>
+<li><a href="#org91434e2">1.3. Solución propuesta</a></li>
+<li><a href="#orga048bc1">1.4. Fases</a>
 <ul>
-<li><a href="#org2e8d253">1.4.1. Primer fase:</a></li>
-<li><a href="#orgff6c4fa">1.4.2. Segunda Fase:</a></li>
+<li><a href="#org49ad4af">1.4.1. Primer fase:</a></li>
+<li><a href="#orgb40f550">1.4.2. Segunda Fase:</a></li>
 </ul>
 </li>
 </ul>
@@ -19,38 +19,38 @@
 </div>
 </div>
 
-<a id="org65710cd"></a>
+<a id="orgffbc67b"></a>
 
 # Agentes Calidad del Aire
 
 
-<a id="org17b0934"></a>
+<a id="org82816ab"></a>
 
 ## Justificación
 
 Medellín tiene un problema de calidad del aire, la política pública tiene planes a largo plazo, el sistema publico de monitoreo de calidad del aire tiene alcance limitado. 
 
 
-<a id="org3b60fa9"></a>
+<a id="orgdced0b9"></a>
 
 ## Problema
 
 El ciudadano no tiene una medición del aire que respira en el momento. 
 
 
-<a id="orge3aaf79"></a>
+<a id="org91434e2"></a>
 
 ## Solución propuesta
 
 Medidor portable que indique visualmente la calidad del aire y que permita socializar esas mediciones.
 
 
-<a id="org36285a7"></a>
+<a id="orga048bc1"></a>
 
 ## Fases
 
 
-<a id="org2e8d253"></a>
+<a id="org49ad4af"></a>
 
 ### Primer fase:
 
@@ -83,25 +83,9 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     <col  class="org-left" />
     
     <col  class="org-left" />
-    
-    <col  class="org-left" />
-    
-    <col  class="org-left" />
     </colgroup>
     <tbody>
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">&#xa0;</td>
-    </tr>
-    
-    
-    <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">Date</td>
     <td class="org-left">Payee</td>
     <td class="org-left">Account</td>
     <td class="org-left">Amount</td>
@@ -110,8 +94,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">Sensor de partículas</td>
     <td class="org-left">fase1:costo:aparato:componente:sensor</td>
     <td class="org-left">$ -20.00</td>
@@ -120,8 +102,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">ESP8266</td>
     <td class="org-left">fase1:costo:aparato:componente:esp</td>
     <td class="org-left">$ -10.00</td>
@@ -130,8 +110,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">DHT (sensor de humedad y temperatura)</td>
     <td class="org-left">fase1:costo:aparato:componente:sensor:dht</td>
     <td class="org-left">$ -0.65</td>
@@ -140,8 +118,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">Leds</td>
     <td class="org-left">fase1:costo:aparato:componente:feedback:led</td>
     <td class="org-left">$ -0.16</td>
@@ -150,8 +126,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">Alimentación Energía</td>
     <td class="org-left">fase1:costo:aparato:componente:energia:adaptador</td>
     <td class="org-left">$ -6.00</td>
@@ -160,8 +134,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">Ensamblaje</td>
     <td class="org-left">fase1:costo:aparato:manoDeObra:ensamblaje</td>
     <td class="org-left">$ -17.00</td>
@@ -170,8 +142,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">Diseño electrónico</td>
     <td class="org-left">fase1:costo:aparato:manoDeObra:diseno</td>
     <td class="org-left">$ -17.00</td>
@@ -180,8 +150,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">Cableado</td>
     <td class="org-left">fase1:costo:aparato:manoDeObra:cableado</td>
     <td class="org-left">$ -1.00</td>
@@ -190,8 +158,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">Carcasa</td>
     <td class="org-left">fase1:costo:aparato:manoDeObra:diseno:carcasa</td>
     <td class="org-left">$ -20.00</td>
@@ -200,8 +166,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">Código</td>
     <td class="org-left">fase1:costo:aparato:manoDeObra:codigo</td>
     <td class="org-left">$ -10.00</td>
@@ -210,8 +174,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">Infraestructura</td>
     <td class="org-left">fase1:costo:aparato:infraestructura</td>
     <td class="org-left">$ -12.00</td>
@@ -220,8 +182,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">Impuestos IVA 19%</td>
     <td class="org-left">fase1:costo:aparato:impuestos</td>
     <td class="org-left">$ -21.47</td>
@@ -230,8 +190,6 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">01-Jan-01</td>
     <td class="org-left">Utilidad</td>
     <td class="org-left">fase1:costo:aparato:utilidad</td>
     <td class="org-left">$ -22.60</td>
@@ -241,7 +199,7 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     </table>
 
 
-<a id="orgff6c4fa"></a>
+<a id="orgb40f550"></a>
 
 ### Segunda Fase:
 
@@ -258,4 +216,172 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     2.  b. Publicación básica de resultados en web responsive, en mapas y capas de análisis básico.
     
     3.  c. Desarrollo de aplicación móvil (Android, posiblemente ios).
+
+5.  Presupuesto fase 2:
+
+    <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+    
+    
+    <colgroup>
+    <col  class="org-left" />
+    
+    <col  class="org-left" />
+    
+    <col  class="org-left" />
+    
+    <col  class="org-left" />
+    </colgroup>
+    <tbody>
+    <tr>
+    <td class="org-left">Payee</td>
+    <td class="org-left">Account</td>
+    <td class="org-left">Amount</td>
+    <td class="org-left">Balance</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">ESP8266</td>
+    <td class="org-left">fase2:costo:aparato:componente:esp</td>
+    <td class="org-left">$ -10.00</td>
+    <td class="org-left">$ -10.00</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Sensor de partículas</td>
+    <td class="org-left">fase2:costo:aparato:componente:sensor</td>
+    <td class="org-left">$ -20.00</td>
+    <td class="org-left">$ -30.00</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Gps</td>
+    <td class="org-left">fase2:costo:aparato:componente:gps</td>
+    <td class="org-left">$ -12.00</td>
+    <td class="org-left">$ -42.00</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">DHT (sensor de humedad y temperatura)</td>
+    <td class="org-left">fase2:costo:aparato:componente:sensor:dht</td>
+    <td class="org-left">$ -0.65</td>
+    <td class="org-left">$ -42.65</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Leds</td>
+    <td class="org-left">fase2:costo:aparato:componente:feedback:led</td>
+    <td class="org-left">$ -0.16</td>
+    <td class="org-left">$ -42.81</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Alimentación Energía</td>
+    <td class="org-left">fase2:costo:aparato:componente:energia:adaptador</td>
+    <td class="org-left">$ -6.00</td>
+    <td class="org-left">$ -48.81</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Batería</td>
+    <td class="org-left">fase2:costo:aparato:componente:energia:bateria</td>
+    <td class="org-left">$ -6.00</td>
+    <td class="org-left">$ -54.81</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Ensamblaje</td>
+    <td class="org-left">fase2:costo:aparato:manoDeObra:ensamblaje</td>
+    <td class="org-left">$ -17.00</td>
+    <td class="org-left">$ -71.81</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Diseño electrónico</td>
+    <td class="org-left">fase2:costo:aparato:manoDeObra:diseno</td>
+    <td class="org-left">$ -17.00</td>
+    <td class="org-left">$ -88.81</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Cableado</td>
+    <td class="org-left">fase2:costo:aparato:manoDeObra:cableado</td>
+    <td class="org-left">$ -1.00</td>
+    <td class="org-left">$ -89.81</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Carcasa</td>
+    <td class="org-left">fase2:costo:aparato:manoDeObra:diseno:carcasa</td>
+    <td class="org-left">$ -20.00</td>
+    <td class="org-left">$ -109.81</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Código backend</td>
+    <td class="org-left">fase2:costo:aparato:manoDeObra:codigo</td>
+    <td class="org-left">$ -10.00</td>
+    <td class="org-left">$ -119.81</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Análisis-Mapas</td>
+    <td class="org-left">fase2:costo:servicio:analisis:mapas</td>
+    <td class="org-left">$ -10.00</td>
+    <td class="org-left">$ -129.81</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Aplicación móvil Android</td>
+    <td class="org-left">fase2:costo:servicio:aplicacion:android</td>
+    <td class="org-left">$ -10.00</td>
+    <td class="org-left">$ -139.81</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Lector memoria SD</td>
+    <td class="org-left">fase2:costo:aparato:componente:lectorSD</td>
+    <td class="org-left">$ -0.66</td>
+    <td class="org-left">$ -140.47</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Infraestructura</td>
+    <td class="org-left">fase2:costo:aparato:infraestructura</td>
+    <td class="org-left">$ -12.00</td>
+    <td class="org-left">$ -152.47</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">impuestos IVA 19%</td>
+    <td class="org-left">fase2:costo:aparato:impuestos</td>
+    <td class="org-left">$ -28.88</td>
+    <td class="org-left">$ -181.35</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">Utilidad</td>
+    <td class="org-left">fase2:costo:aparato:utilidad</td>
+    <td class="org-left">$ -30.40</td>
+    <td class="org-left">$ -211.75</td>
+    </tr>
+    </tbody>
+    </table>
 

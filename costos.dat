@@ -96,63 +96,88 @@
 2001/01/01  Código 
     fase1:costo:aparato:manoDeObra:codigo                    $-10.00
     desarrollador
+
+2001/01/01 Lector memoria SD
+    fase1:costo:aparato:componente:lectorSD                  $-0.66  
+    Ali Express
 2001/01/01  Infraestructura 
     fase1:costo:aparato:infraestructura                      $-12.00
     infraestructura
 
 2001/01/01  Impuestos IVA 19%
-    fase1:costo:aparato:impuestos                           ($-113*0.19) ; asumiendo un valor final de 150
+    fase1:costo:aparato:impuestos                           ($-113*0.19) ; asumiendo un valor final de 113
     dian
 2001/01/01  Utilidad
-    fase1:costo:aparato:utilidad                             ($-113*0.20) ; 20% asumiendo un fase1:costofinal de 150
+    fase1:costo:aparato:utilidad                             ($-113*0.20) ; 20% 
    proyecto
 ;; ============= fase 2 ===================
 
-2001/01/01  Sensor de partículas
-    fase2:costo:aparato:componente:sensor                    $-20.00
+2001/01/01  ESP8266
+    fase2:costo:aparato:componente:esp                 $-10.00  ; pueden bajar a us5
     Ali Express
 
-2001/01/01  gps
-    fase2:costo:aparato:componente:gps                       $-12.00
+2001/01/01  Sensor de partículas
+    fase2:costo:aparato:componente:sensor              $-20.00
+    Ali Express
+
+2001/01/01  Gps
+    fase2:costo:aparato:componente:gps                 $-12.00
     Sigma Electronica
-2001/01/01  ESP8266
-    fase2:costo:aparato:componente:esp                       $-10.00  ; pueden bajar a us5
-    Ali Express 
+
 2001/01/01  DHT (sensor de humedad y temperatura)
-    fase2:costo:aparato:componente:sensor:dht                 $-0.65
+    fase2:costo:aparato:componente:sensor:dht           $-0.65
     Ali Express
 2001/01/01  Leds
-    fase2:costo:aparato:componente:feedback:led               $-0.16
+    fase2:costo:aparato:componente:feedback:led         $-0.16
     Ali Express
-2001/01/01  bateria
-    fase2:costo:aparato:componente:energia:bateria            $-6.00
-    cualquier tienda
-2001/01/01  ensamblaje
-    fase2:costo:aparato:manoDeObra:ensamblaje                $-17.00
-    unloquer
-2001/01/01  diseño electrónico
-    fase2:costo:aparato:manoDeObra:diseno                    $-17.00
-    unloquer
-2001/01/01  cableado
-    fase2:costo:aparato:manoDeObra:cableado                   $-1.00
+2001/01/01  Alimentación Energía
+    fase2:costo:aparato:componente:energia:adaptador    $-6.00
     cualquier tienda
 
-2001/01/01  carcasa
-    fase2:costo:aparato:manoDeObra:diseno:carcasa            $-20.00
+2001/01/01  Batería
+    fase2:costo:aparato:componente:energia:bateria      $-6.00
+    cualquier tienda
+
+2001/01/01  Ensamblaje
+    fase2:costo:aparato:manoDeObra:ensamblaje          $-17.00
+    unloquer
+2001/01/01  Diseño electrónico
+    fase2:costo:aparato:manoDeObra:diseno              $-17.00
+    unloquer
+2001/01/01  Cableado
+    fase2:costo:aparato:manoDeObra:cableado             $-1.00
+    cualquier tienda
+
+2001/01/01  Carcasa
+    fase2:costo:aparato:manoDeObra:diseno:carcasa      $-20.00
     desconocido
-2001/01/01  codigo
-    fase2:costo:aparato:manoDeObra:codigo                    $-10.00
+2001/01/01  Código backend
+    fase2:costo:aparato:manoDeObra:codigo              $-10.00
     desarrollador
-2001/01/01  infraestructura
-    fase2:costo:aparato:infraestructura                      $-12.00
+
+2001/01/01  Análisis-Mapas
+    fase2:costo:servicio:analisis:mapas                $-10.00 
+    desarrollador
+
+2001/01/01  Aplicación móvil Android
+    fase2:costo:servicio:aplicacion:android            $-10.00 
+    desarrollador
+
+
+2001/01/01 Lector memoria SD
+    fase2:costo:aparato:componente:lectorSD             $-0.66  
+    Ali Express
+2001/01/01  Infraestructura 
+    fase2:costo:aparato:infraestructura                $-12.00
     infraestructura
 
 2001/01/01  impuestos IVA 19%
-    fase2:costo:aparato:impuestos                            $-28.50 ; asumiendo un valor final de 150
+    fase2:costo:aparato:impuestos                           ($-152*0.19) ; 
     dian
-2001/01/01  utilidad
-    fase2:costo:aparato:utilidad                             $-30.00 ; 20% asumiendo un costo final de 150
-   proyecto
+2001/01/01  Utilidad
+    fase2:costo:aparato:utilidad                             ($-152*0.20) ; 20% 
+    proyecto
+
 
 ;; ====================== FIN proyecto Ladrillera ==============
 ;; =============================================================
