@@ -2,15 +2,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org588860d">1. Agentes Calidad del Aire</a>
+<li><a href="#org9587b97">1. Agentes Calidad del Aire</a>
 <ul>
-<li><a href="#org0ee8570">1.1. Justificación</a></li>
-<li><a href="#orgca0952e">1.2. Problema</a></li>
-<li><a href="#orgdb1dc98">1.3. Solución propuesta</a></li>
-<li><a href="#org71cd073">1.4. Fases</a>
+<li><a href="#org689983b">1.1. Justificación</a></li>
+<li><a href="#org1a70030">1.2. Problema</a></li>
+<li><a href="#org385af89">1.3. Solución propuesta</a></li>
+<li><a href="#orgbe6539a">1.4. Fases</a>
 <ul>
-<li><a href="#orgc3ce711">1.4.1. Primer fase:</a></li>
-<li><a href="#orga3615db">1.4.2. Segunda Fase:</a></li>
+<li><a href="#org8cfd246">1.4.1. Primer fase:</a></li>
+<li><a href="#orgf47cdfa">1.4.2. Segunda Fase:</a></li>
 </ul>
 </li>
 </ul>
@@ -19,38 +19,38 @@
 </div>
 </div>
 
-<a id="org588860d"></a>
+<a id="org9587b97"></a>
 
 # Agentes Calidad del Aire
 
 
-<a id="org0ee8570"></a>
+<a id="org689983b"></a>
 
 ## Justificación
 
 Medellín tiene un problema de calidad del aire, la política pública tiene planes a largo plazo, el sistema publico de monitoreo de calidad del aire tiene alcance limitado. 
 
 
-<a id="orgca0952e"></a>
+<a id="org1a70030"></a>
 
 ## Problema
 
 El ciudadano no tiene una medición del aire que respira en el momento. 
 
 
-<a id="orgdb1dc98"></a>
+<a id="org385af89"></a>
 
 ## Solución propuesta
 
 Medidor portable que indique visualmente la calidad del aire y que permita socializar esas mediciones.
 
 
-<a id="org71cd073"></a>
+<a id="orgbe6539a"></a>
 
 ## Fases
 
 
-<a id="orgc3ce711"></a>
+<a id="org8cfd246"></a>
 
 ### Primer fase:
 
@@ -205,19 +205,11 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     <td class="org-left">Total</td>
     <td class="org-left">$ -157.88</td>
     </tr>
-    
-    
-    <tr>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">&#xa0;</td>
-    <td class="org-left">&#xa0;</td>
-    </tr>
     </tbody>
     </table>
 
 
-<a id="orga3615db"></a>
+<a id="orgf47cdfa"></a>
 
 ### Segunda Fase:
 
