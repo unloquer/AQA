@@ -68,8 +68,8 @@
 | Lector memoria SD                     | fase2:costo:aparato:componente:lectorSD          | $ -0.66  | $ -140.47   |
 | Infraestructura                       | fase2:costo:aparato:infraestructura              | $ -12.00 | $ -152.47   |
 |---------------------------------------+--------------------------------------------------+----------+-------------|
-| impuestos IVA 19%                     | fase2:costo:aparato:impuestos                    | $ -28.88 | $ -181.35   |
-| Utilida                               | fase2:costo:aparato:utilidad                     | $ -30.40 | $ -211.75   |
+| Impuestos IVA 19%                     | fase2:costo:aparato:impuestos                    | $ -28.88 | $ -181.35   |
+| Utilidad                              | fase2:costo:aparato:utilidad                     | $ -30.40 | $ -211.75   |
 |---------------------------------------+--------------------------------------------------+----------+-------------|
 |                                       |                                                  | Total    | $ -211.75   |
 

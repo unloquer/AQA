@@ -2,15 +2,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9587b97">1. Agentes Calidad del Aire</a>
+<li><a href="#org6e1e0bf">1. Agentes Calidad del Aire</a>
 <ul>
-<li><a href="#org689983b">1.1. Justificación</a></li>
-<li><a href="#org1a70030">1.2. Problema</a></li>
-<li><a href="#org385af89">1.3. Solución propuesta</a></li>
-<li><a href="#orgbe6539a">1.4. Fases</a>
+<li><a href="#org526cd84">1.1. Justificación</a></li>
+<li><a href="#orge21955c">1.2. Problema</a></li>
+<li><a href="#orgf99aaa4">1.3. Solución propuesta</a></li>
+<li><a href="#org3859f35">1.4. Fases</a>
 <ul>
-<li><a href="#org8cfd246">1.4.1. Primer fase:</a></li>
-<li><a href="#orgf47cdfa">1.4.2. Segunda Fase:</a></li>
+<li><a href="#orgd3f207a">1.4.1. Primer fase:</a></li>
+<li><a href="#org5c07fcc">1.4.2. Segunda Fase:</a></li>
 </ul>
 </li>
 </ul>
@@ -19,38 +19,38 @@
 </div>
 </div>
 
-<a id="org9587b97"></a>
+<a id="org6e1e0bf"></a>
 
 # Agentes Calidad del Aire
 
 
-<a id="org689983b"></a>
+<a id="org526cd84"></a>
 
 ## Justificación
 
 Medellín tiene un problema de calidad del aire, la política pública tiene planes a largo plazo, el sistema publico de monitoreo de calidad del aire tiene alcance limitado. 
 
 
-<a id="org1a70030"></a>
+<a id="orge21955c"></a>
 
 ## Problema
 
 El ciudadano no tiene una medición del aire que respira en el momento. 
 
 
-<a id="org385af89"></a>
+<a id="orgf99aaa4"></a>
 
 ## Solución propuesta
 
 Medidor portable que indique visualmente la calidad del aire y que permita socializar esas mediciones.
 
 
-<a id="orgbe6539a"></a>
+<a id="org3859f35"></a>
 
 ## Fases
 
 
-<a id="org8cfd246"></a>
+<a id="orgd3f207a"></a>
 
 ### Primer fase:
 
@@ -209,7 +209,7 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     </table>
 
 
-<a id="orgf47cdfa"></a>
+<a id="org5c07fcc"></a>
 
 ### Segunda Fase:
 
@@ -380,7 +380,7 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     <tbody>
     <tr>
-    <td class="org-left">impuestos IVA 19%</td>
+    <td class="org-left">Impuestos IVA 19%</td>
     <td class="org-left">fase2:costo:aparato:impuestos</td>
     <td class="org-left">$ -28.88</td>
     <td class="org-left">$ -181.35</td>
@@ -388,7 +388,7 @@ Medidor portable que indique visualmente la calidad del aire y que permita socia
     
     
     <tr>
-    <td class="org-left">Utilida</td>
+    <td class="org-left">Utilidad</td>
     <td class="org-left">fase2:costo:aparato:utilidad</td>
     <td class="org-left">$ -30.40</td>
     <td class="org-left">$ -211.75</td>
