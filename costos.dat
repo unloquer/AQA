@@ -206,12 +206,12 @@
     reembolsable:unloquer
 
 2017/06/17 Venta sensor
-    ingreso:venta:sensor:partes                    $200,000.00
-    cuenta:brolin
+    ingreso:venta:sensor:cuenta:brolin                  $200,000.00
+    brolin
 
 2017/06/17 Pago a brolin sensor particulas
-    egreso:reembolsable:brolin:componente:sensor:plantower  $-60,000.00
-    brolin
+    egreso:componente:sensor:plantower:reembolsable:brolin:cuenta:brolin  $-60,000.00
+   brolin
 
 2017/06/17  sale de inventario 
     inventario:egreso:componente:sensor:plantower           -1
@@ -225,17 +225,18 @@
     Federico López
     
 
-2017/06/28 Compra GPS   
-    egreso:componente:l80                         $-400,000.00 ;; compra gps
-    reembolsable:federico
+2017/06/28 Aporte para  GPS   
+    ingreso:cuenta:brolin:reembolsable:federico                                  $400,000.00 ;; compra gps
+    caja
+    
 
 2017/07/04 Préstamo pcb colcircuitos LoRa brolin
     egreso:componente:lora                    ($-165,815.00/2)
     reembolsable:brolin:colcircuitos
 
 2017/07/04 Compra GPS
-    egreso:componente:sensor:gps                  $-339,000.00
-    cuenta:brolin:electronica I+D
+    egreso:cuenta:brolin:componente:sensor:gps                $-339,000.00
+    electronica I+D
 
 2017/07/04 Ingresan GPS's
     inventario:ingreso:componente:gps                       10
