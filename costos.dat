@@ -59,7 +59,7 @@
     dian
 1980/05/24 utilidad
     costo:aparato:utilidad                             $-30.00 ; 20% asumiendo un costo final de 150
-   proyecto
+    proyecto
 
 
 
@@ -71,44 +71,44 @@
 
 ;; ============ Fase 1 =================================
 2001/01/01  Sensor de partículas
-    fase1:costo:aparato:componente:sensor                    $-20.00
+    fase1:costo:aparato:componente:sensor              $-20.00
     Ali Express
 
 
 2001/01/01  ESP8266
-    fase1:costo:aparato:componente:esp                       $-10.00  ; pueden bajar a us5
+    fase1:costo:aparato:componente:esp                 $-10.00  ; pueden bajar a us5
     Ali Express 
 2001/01/01  DHT (sensor de humedad y temperatura)
-    fase1:costo:aparato:componente:sensor:dht                 $-0.65
+    fase1:costo:aparato:componente:sensor:dht           $-0.65
     Ali Express
 2001/01/01  Leds
-    fase1:costo:aparato:componente:feedback:led               $-0.16
+    fase1:costo:aparato:componente:feedback:led         $-0.16
     Ali Express
 2001/01/01  Alimentación Energía
-    fase1:costo:aparato:componente:energia:adaptador           $-6.00
+    fase1:costo:aparato:componente:energia:adaptador    $-6.00
     cualquier tienda
 2001/01/01  Ensamblaje
-    fase1:costo:aparato:manoDeObra:ensamblaje                $-17.00
+    fase1:costo:aparato:manoDeObra:ensamblaje          $-17.00
     unloquer
 2001/01/01  Diseño electrónico
-    fase1:costo:aparato:manoDeObra:diseno                    $-17.00
+    fase1:costo:aparato:manoDeObra:diseno              $-17.00
     unloquer
 2001/01/01  Cableado
-    fase1:costo:aparato:manoDeObra:cableado                   $-1.00
+    fase1:costo:aparato:manoDeObra:cableado             $-1.00
     cualquier tienda
 
 2001/01/01  Carcasa
-    fase1:costo:aparato:manoDeObra:diseno:carcasa            $-20.00
+    fase1:costo:aparato:manoDeObra:diseno:carcasa      $-20.00
     desconocido
 2001/01/01  Código 
-    fase1:costo:aparato:manoDeObra:codigo                    $-10.00
+    fase1:costo:aparato:manoDeObra:codigo              $-10.00
     desarrollador
 
 2001/01/01 Lector memoria SD
-    fase1:costo:aparato:componente:lectorSD                  $-0.66  
+    fase1:costo:aparato:componente:lectorSD             $-0.66  
     Ali Express
 2001/01/01  Infraestructura 
-    fase1:costo:aparato:infraestructura                      $-12.00
+    fase1:costo:aparato:infraestructura                $-12.00
     infraestructura
 
 2001/01/01  Impuestos IVA 19%
@@ -116,7 +116,7 @@
     dian
 2001/01/01  Utilidad
     fase1:costo:aparato:utilidad                             ($-113*0.20) ; 20% 
-   proyecto
+    proyecto
 ;; ============= fase 2 ===================
 
 2001/01/01  ESP8266
@@ -198,20 +198,20 @@
     reembolsable:brolin
 
 2017/06/01 aporte unloquer sensores dht11
-    inventario:ingreso:componente:dht11                      10
+    inventario:ingreso:componente:dht11                     10
     unloquer
 
 2017/06/01 Comprao unloquer dht11
-    egreso:componente:dht11                         $-40,000.00
+    egreso:componente:dht11                        $-40,000.00
     reembolsable:unloquer
 
 2017/06/17 Venta sensor
-    ingreso:venta:sensor:cuenta:brolin                  $200,000.00
+    ingreso:venta:sensor:cuenta:brolin             $200,000.00
     brolin
 
 2017/06/17 Pago a brolin sensor particulas
     egreso:componente:sensor:plantower:reembolsable:brolin:cuenta:brolin  $-60,000.00
-   brolin
+    brolin
 
 2017/06/17  sale de inventario 
     inventario:egreso:componente:sensor:plantower           -1
@@ -223,19 +223,27 @@
 2017/06/17 venta sensor dth11
     ingreso:componente:sensor:dth11                  $4,000.00
     Federico López
-    
+     
 
 2017/06/28 Aporte para  GPS   
-    ingreso:cuenta:brolin:reembolsable:federico                                  $400,000.00 ;; compra gps
+    ingreso:cuenta:brolin:reembolsable:federico    $400,000.00 ;; compra gps
     caja
-    
+     
+2017/07/15 GPS para Johnny Sepúlveda
+    inventario:egreso:componente:gps                        -1
+    Johnny Sepúlveda
+
+2017/07/15 Aporte al proyecto de Johnny Sepúlveda
+    ingreso:cuenta:brolin:johnnySepulveda           $20,000.00 ;; compra gps
+    caja
+
 
 2017/07/04 Préstamo pcb colcircuitos LoRa brolin
     egreso:componente:lora                    ($-165,815.00/2)
     reembolsable:brolin:colcircuitos
 
 2017/07/04 Compra GPS
-    egreso:cuenta:brolin:componente:sensor:gps                $-339,000.00
+    egreso:cuenta:brolin:componente:sensor:gps    $-339,000.00
     electronica I+D
 
 2017/07/04 Ingresan GPS's
@@ -255,5 +263,11 @@
     egreso:componente:esp8266             ($-20*10*3000)
     reembolsable:unloquer
 
+2017/07/15 GPS para Johnny Sepúlveda
+    inventario:egreso:componente:gps                        -1
+    Johnny Sepúlveda
 
-
+2017/07/15 Aporte al proyecto de Johnny Sepúlveda
+    ingreso:cuenta:brolin:johnnySepulveda           $20,000.00 ;; compra gps
+    caja
+     
