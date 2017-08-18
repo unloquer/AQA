@@ -61,9 +61,50 @@
     costo:aparato:utilidad                             $-30.00 ; 20% asumiendo un costo final de 150
     proyecto
 
+;; Presupuesto Huerteros--------------------------------
+
+2001/01/01  Sensor de partículas
+    redHuerteros:costo:aparato:componente:sensor              US$-20.00
+    Ali Express
+
+2001/01/01  ESP8266
+    redHuerteros:costo:aparato:componente:esp                 US$-10.00  ; pueden bajar a us5
+    Ali Express 
+2001/01/01  DHT (sensor de humedad y temperatura)
+    redHuerteros:costo:aparato:componente:sensor:dht11           US$-0.65
+    Ali Express
+2001/01/01  Leds
+    redHuerteros:costo:aparato:componente:feedback:led         US$-0.16
+    Ali Express
+2001/01/01  Alimentación Energía
+    redHuerteros:costo:aparato:componente:energia:adaptador    US$-6.00
+    cualquier tienda
+2001/01/01  Ensamblaje
+    redHuerteros:costo:aparato:manoDeObra:ensamblaje          US$-0.00 ;; ellos lo van a ensamblar
+    unloquer
+2001/01/01  Diseño electrónico
+    redHuerteros:costo:aparato:manoDeObra:diseno              US$-17.00
+    unloquer
+2001/01/01  Cableado
+    redHuerteros:costo:aparato:manoDeObra:cableado             US$-1.00
+    cualquier tienda
+
+2001/01/01  Carcasa
+    redHuerteros:costo:aparato:manoDeObra:diseno:carcasa      US$-10.00 ;; carcasa temporal impresa en plastico
+    desconocido
+2001/01/01  Código 
+    redHuerteros:costo:aparato:manoDeObra:codigo              US$-10.00
+    desarrollador
 
 
-;; ------------- termina presupuesto ----------------------
+2001/01/01  Impuestos IVA 19%
+    redHuerteros:costo:aparato:impuestos                           (US$-74*0.19) ; asumiendo un valor final de 113
+    dian
+2001/01/01  Utilidad
+    redHuerteros:costo:aparato:utilidad                             (US$-74*0.20) ; 20% 
+    proyecto
+
+
 
 ;; ==========================================================
 ;; ========== Presupuestos Ladrillera =======================
