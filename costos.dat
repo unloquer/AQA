@@ -229,9 +229,6 @@
     ingreso:cuenta:brolin:reembolsable:federico    $400,000.00 ;; compra gps
     caja
      
-2017/07/15 GPS para Johnny Sepúlveda
-    inventario:egreso:componente:gps                        -1
-    Johnny Sepúlveda
 
 2017/07/15 Aporte al proyecto de Johnny Sepúlveda
     ingreso:cuenta:brolin:johnnySepulveda           $20,000.00 ;; compra gps
@@ -265,9 +262,39 @@
 
 2017/07/15 GPS para Johnny Sepúlveda
     inventario:egreso:componente:gps                        -1
+    inventario:egreso:componente:leds                      -1 
     Johnny Sepúlveda
 
 2017/07/15 Aporte al proyecto de Johnny Sepúlveda
     ingreso:cuenta:brolin:johnnySepulveda           $20,000.00 ;; compra gps
     caja
-     
+
+2017/08/08 Entrega a Gaviria ;; se uso un gps de unloquer
+    inventario:egreso:componente:leds                       -1
+    inventario:egreso:componente:dht11                      -1
+    inventario:egreso:componente:plantower                  -1
+    Santiago Gaviria
+
+2017/08/08 Entrega a Miguel
+    inventario:egreso:componente:gps                        -1
+    inventario:egreso:componente:leds                       -1
+    inventario:egreso:componente:dht11                      -1
+    inventario:egreso:componente:plantower                  -1
+    Miguel Vargas
+
+2017/08/08  Volker 7000 de brolin
+    inventario:egreso:componente:gps                        -1
+    inventario:egreso:componente:leds                       -1
+    inventario:egreso:componente:dht11                      -1
+    inventario:egreso:componente:plantower                  -1
+    brolin
+
+2017/08/08  Volker 7000 de fedrico
+    inventario:egreso:componente:gps                        -1
+    inventario:egreso:componente:leds                       -1
+    inventario:egreso:componente:dht11                      -1
+    inventario:egreso:componente:plantower                  -1
+    federico
+
+
+
