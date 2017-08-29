@@ -337,5 +337,31 @@
     inventario:egreso:componente:plantower                  -1
     federico
 
+2017/08/29 Aporte para  GPS
+    ingreso:cuenta:brolin:reembolsable:federico   $ 340,000.00
+    egreso:cuenta:brolin
+
+
+2017/08/29 Aporte para Kit Mini Mandril y Pinza
+    egreso:reembolsable:brolin      $-18,000.00
+    elecronica I+D
+
+2017/08/29 Ingreso GPS's
+    inventario:ingreso:componente:gps                 10
+    federico
+
+2017/08/29 Pinza de precisión
+    inventario:ingreso:herramienta:pinzaDePrecision  1
+    brolin
+
+2017/08/29 Kit Mini Mandril ;; cabeza y brocas
+    inventario:ingreso:herramienta:kitMiniMandril   1
+    brolin
+
+
+
+
+
+
 
 
