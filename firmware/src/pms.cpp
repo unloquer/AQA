@@ -3,16 +3,45 @@
 #include <FS.h>
 #include <Wire.h>
 
-#include <ESP8266HTTPClient.h>
-#include <ESP8266WiFi.h>
-HTTPClient http;
+//#include <ESP8266HTTPClient.h>
+//#include <ESP8266WiFi.h>
+//HTTPClient http;
 
+#include <Hash.h>
+#include <ESPAsyncWebServer.h>
+
+#include <DNSServer.h>
+#include <ESPAsyncWiFiManager.h>         //https://github.com/tzapu/WiFiManager
+#include <DoubleResetDetector.h>
+
+// Number of seconds after reset during which a 
+// subseqent reset will be considered a double reset.
+#define DRD_TIMEOUT 100
+
+// RTC Memory Address for the DoubleResetDetector to use
+#define DRD_ADDRESS 0
+
+DoubleResetDetector drd(DRD_TIMEOUT, DRD_ADDRESS);
+
+AsyncWebServer server(80);
+DNSServer dns;
 /*
   LED Indicator config
 */
 // https://github.com/FastLED/FastLED/wiki/ESP8266-notes
 #define FASTLED_ESP8266_RAW_PIN_ORDER
 #include <FastLED.h>
+
+//for LED status
+#include <Ticker.h>
+Ticker ticker;
+
+void tick()
+{
+  //toggle state
+  int state = digitalRead(BUILTIN_LED);  // get the current state of GPIO1 pin
+  digitalWrite(BUILTIN_LED, !state);     // set pin to the opposite state
+}
 
 // Pines 16 y 14 no sirven para la librería fastled
 
@@ -179,27 +208,28 @@ void fs_read_file() {
     wdt_disable();
     //yield();
     Serial.write(myDataFile.read());                    // Read all the data from the file and display it
+    Serial.flush();
     wdt_enable(1000);
   }
   myDataFile.close();
 }
 
-void fs_read_line_by_line() {
-  char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
-  File myDataFile = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
-  String l_line = "";
-  myDataFile = SPIFFS.open(filename, "r");              // Open the file again, this time for reading
-  if (!myDataFile) Serial.println("file open failed");  // Check for errors
-  while (myDataFile.available()) {
-    //A inconsistent line length may lead to heap memory fragmentation
-    l_line = myDataFile.readStringUntil('\n');
-    if (l_line == "") //no blank lines are anticipated
-      break;
-    //parse l_line here
-    Serial.println(l_line);     // Read all the data from the file and display it
-  }
-  myDataFile.close();
-}
+// void fs_read_line_by_line() {
+//   char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
+//   File myDataFile = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
+//   String l_line = "";
+//   myDataFile = SPIFFS.open(filename, "r");              // Open the file again, this time for reading
+//   if (!myDataFile) Serial.println("file open failed");  // Check for errors
+//   while (myDataFile.available()) {
+//     //A inconsistent line length may lead to heap memory fragmentation
+//     l_line = myDataFile.readStringUntil('\n');
+//     if (l_line == "") //no blank lines are anticipated
+//       break;
+//     //parse l_line here
+//     Serial.println(l_line);     // Read all the data from the file and display it
+//   }
+//   myDataFile.close();
+// }
 
 void fs_write_frame(String frame) {
   char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
@@ -253,31 +283,31 @@ void read_pms_data() {
   }
 }
 
-int server_request() {
+// int server_request() {
 
-  String url = "http://104.131.1.214:3000/api/SensorEvents";
-  http.begin(url);
-  http.addHeader("Content-Type", "application/csv");
-  //http.addHeader("X-Auth-Token", AUTH_TOKEN);
-  int content_length =0;
+//   String url = "http://104.131.1.214:3000/api/SensorEvents";
+//   http.begin(url);
+//   http.addHeader("Content-Type", "application/csv");
+//   //http.addHeader("X-Auth-Token", AUTH_TOKEN);
+//   int content_length =0;
 
-  char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
-  File myDataFile = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
-  content_length = myDataFile.size();
+//   char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
+//   File myDataFile = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
+//   content_length = myDataFile.size();
 
-  http.addHeader("Content-Length", String(content_length));
-  int httpCode = http.POST((String) myDataFile);
-  if(httpCode > 0) {
-    String payload = http.getString();
-    Serial.println(payload);
-  }
-  else {
-    Serial.print("[HTTP] failed, error: ");Serial.println(http.errorToString(httpCode).c_str());
-  }
-  http.end();
+//   http.addHeader("Content-Length", String(content_length));
+//   int httpCode = http.POST((String) myDataFile);
+//   if(httpCode > 0) {
+//     String payload = http.getString();
+//     Serial.println(payload);
+//   }
+//   else {
+//     Serial.print("[HTTP] failed, error: ");Serial.println(http.errorToString(httpCode).c_str());
+//   }
+//   http.end();
 
-  return httpCode;
-}
+//   return httpCode;
+// }
 
 void setupWiFi(int pm25_value)
 {
@@ -290,6 +320,16 @@ void setupWiFi(int pm25_value)
     AP_NameChar[i] = AP_NameString.charAt(i);
 
   WiFi.softAP(AP_NameChar, "unloquer");
+  Serial.print("IP: ");
+  Serial.print(WiFi.localIP());
+}
+
+void configModeCallback (AsyncWiFiManager *myWiFiManager) {
+  Serial.println("Entered config mode");
+  Serial.println(WiFi.softAPIP());
+  // print the ssid that we should connect to to configure the ESP8266
+  Serial.print("Created config portal AP ");
+  Serial.println(myWiFiManager->getConfigPortalSSID());
 }
 
 void setup() {
@@ -300,20 +340,46 @@ void setup() {
   pms.setTimeout(1500);    //set the Timeout to 1500ms, longer than the data transmission periodic time of the sensor
 
   SPIFFS.begin();
-
+  ticker.attach(0.6, tick);
   dht.begin();
 
-  WiFi.mode(WIFI_AP);
-  setupWiFi(30);
+  //  if (drd.detectDoubleReset()) {
+
+    // AsyncWiFiManager wifiManager(&server, &dns);
+    // //reset settings - for testing
+    // wifiManager.resetSettings();
+    // wifiManager.setAPCallback(configModeCallback);
+    // //set callback that gets called when connecting to previous WiFi fails, and enters Access Point mode
+    // //fetches ssid and pass and tries to connect
+    // //if it does not connect it starts an access point with the specified name
+    // //here  "AutoConnectAP"
+    // //and goes into a blocking loop awaiting configuration
+    // if(!wifiManager.autoConnect()) {
+    //   Serial.println("failed to connect and hit timeout");
+    //   //reset and try again, or maybe put it to deep sleep
+    //   ESP.reset();
+    //   delay(1000);
+    // }
+
+  //  }
+
+  // setupWiFi(30);
+  // server.on("/log", HTTP_GET, [](AsyncWebServerRequest *request){
+  //     //Download index.htm
+  //     request->_tempFile = SPIFFS.open("datalog.txt", "r");
+  //     request->send(request->_tempFile, request->_tempFile.name(), String(), true);
+  //     //AsyncWebServerResponse *response = request->beginResponse(SPIFFS, "log", String(), true);
+  //   });
+
 
   FastLED.addLeds<LPD8806, DI, CI>(leds, NUM_LEDS);
 
   delay(500); // descomentar esto para bajar datos
   fs_info_print();
+
   //fs_read_file(); // descomentar esto para bajar datos
-
-
   //fs_delete_file(); // se descomenta una vez para borra la memoria
+  //server.begin();
 }
 
 void loop()
@@ -425,9 +491,10 @@ void loop()
   frame += PM01Value + comma + PM2_5Value + comma + PM10Value;
 
   //if((millis() % 10000) == 1)
-  setupWiFi(PM2_5Value);
+  //setupWiFi(PM2_5Value);
 
   Serial.println(frame); // se comenta para descargar
   fs_write_frame(frame); // se comenta para descargar
+  drd.loop();
   wdt_enable(1000);
 }
