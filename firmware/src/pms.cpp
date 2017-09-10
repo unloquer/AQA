@@ -378,7 +378,7 @@ void setup() {
   fs_info_print();
 
   //fs_read_file(); // descomentar esto para bajar datos
-  //fs_delete_file(); // se descomenta una vez para borra la memoria
+  fs_delete_file(); // se descomenta una vez para borra la memoria
   //server.begin();
 }
 
