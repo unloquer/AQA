@@ -4,7 +4,7 @@
 ### El más bajo costo posible
 ### Comunidad alrededor del problema
   
-  * ¿Blockchain? inmutable, consenso, retribución a los participantes, confianza
+  * ¿Blockchain? inmutable, consenso, retribución a los participantes
   
 ### Tener datos para poder "jugar" con datos
 ### Uso social de los de los datos en respuesta a la cultura de hacer emprendimientos empresariales de los datos
