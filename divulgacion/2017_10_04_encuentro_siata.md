@@ -22,7 +22,9 @@
 
 ## Lo que nos gustaría aprender del SIATA
   * ¿Son reproducibles las nubecitas? (codigo abierto y diagrama de cableado)
-  * ¿Cómo se calculan los promedios que se publican en El Colombiano?
-  * ¿En sus reportes representan gases+partículas  o solo partículas?
+  * ¿Vale la pena medir los gases?
+  
+## Propuestas
+  * ¿Podríamos instalar uno de los sensores que estamos construyendo en una de las estaciones comparar las mediciones? si usamos la ecuación descrita en https://en.wikipedia.org/wiki/Air_quality_index#Computing_the_AQI  podrían ser comparables las lecturas?
   
  
