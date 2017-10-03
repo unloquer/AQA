@@ -15,5 +15,7 @@
 ### Documentar con soberanía
   * facebook vs. datos publicos distribuidos
     - blockstack
+    
+### Gobierno distribuido
   
  
