@@ -357,3 +357,18 @@
 2017/08/29 Kit Mini Mandril ;; cabeza y brocas
     inventario:ingreso:herramienta:kitMiniMandril   1
     brolin
+
+2017/10/09 Entrega a Martha
+    inventario:egreso:componente:gps                        -1
+    inventario:egreso:componente:leds                       -1
+    inventario:egreso:componente:dht11                      -1
+    inventario:egreso:componente:plantower                  -1
+    Martha
+
+2017/10/04 Entrega a SIATA
+    inventario:egreso:componente:gps                        -1
+    inventario:egreso:componente:leds                       -1
+    inventario:egreso:componente:dht11                      -1
+    inventario:egreso:componente:plantower                  -1
+    SIATA
+
