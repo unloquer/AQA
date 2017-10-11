@@ -231,7 +231,7 @@
 ;; =============================================================
 
 2017/06/01  aporte brolin plantowers
-    inventario:component:plantower                          10
+    inventario:ingreso:componente:plantower                          10
     brolin
 
 2017/06/01 compra sensores plantower
@@ -296,6 +296,10 @@
 2017/07/12 Compra Leds
     egreso:componente:leds             ($-40*0.16*3000)
     reembolsable:brolin
+
+2017/07/12 Ingreso LED's
+    inventario:ingreso:componente:leds                      10
+    brolin
 
 2017/07/12 Compra ESP unloquer
     egreso:componente:esp8266             ($-20*10*3000)
