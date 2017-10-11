@@ -14,7 +14,7 @@
 ;; --------- estimado presupuesto ------------
 
 1980/05/24 Sensor de partículas
-    costo:aparato:componente:sensor                    $-20.00
+    costo:aparato:componente:plantower                    $-20.00
     Ali Express
 
 1980/05/24 gps
@@ -33,7 +33,7 @@
     costo:aparato:componente:energia:bateria            $-6.00
     cualquier tienda
 1980/05/24 ensamblaje
-    costo:aparato:manoDeObra:ensamblaje                $-17.00
+    costo:aparato:manoDeObra:ensamblaje                $-5.00
     unloquer
 1980/05/24 diseño electrónico
     costo:aparato:manoDeObra:diseno                    $-17.00
@@ -43,7 +43,7 @@
     cualquier tienda
 
 1980/05/24 carcasa
-    costo:aparato:manoDeObra:diseno:carcasa            $-20.00
+    costo:aparato:manoDeObra:diseno:carcasa:impresa      $-2.00
     desconocido
 1980/05/24 codigo
     costo:aparato:manoDeObra:codigo                    $-10.00
@@ -55,11 +55,11 @@
     costo:taller:comunicacion                          $-30.00
     documentador
 1980/05/24 impuestos IVA 19%
-    costo:aparato:impuestos                            $-28.50 ; asumiendo un valor final de 150
+    costo:aparato:impuestos                            ($-77*0.19) ; 19% del costo 
     dian
 1980/05/24 utilidad
-    costo:aparato:utilidad                             $-30.00 ; 20% asumiendo un costo final de 150
-    proyecto
+    costo:aparato:utilidad                             ($-77*0.2) ; 20% del costo
+    unloquer
 
 ;; Presupuesto Huerteros--------------------------------
 
