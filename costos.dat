@@ -362,12 +362,12 @@
     inventario:ingreso:herramienta:kitMiniMandril   1
     brolin
 
-2017/10/09 Entrega a Martha
+2017/10/09 Entrega a Marta
     inventario:egreso:componente:gps                        -1
     inventario:egreso:componente:leds                       -1
     inventario:egreso:componente:dht11                      -1
     inventario:egreso:componente:plantower                  -1
-    Martha
+    Marta Salazar
 
 2017/10/04 Entrega a SIATA
     inventario:egreso:componente:gps                        -1
@@ -376,3 +376,6 @@
     inventario:egreso:componente:plantower                  -1
     SIATA
 
+2017/10/15 * Adquisición Marta
+    ingreso:venta:sensor:cuenta:federico           $284,000.00
+    Marta Salazar
