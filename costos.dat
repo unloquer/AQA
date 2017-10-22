@@ -379,3 +379,13 @@
 2017/10/15 * Adquisición Marta
     ingreso:venta:sensor:cuenta:federico           $284,000.00
     Marta Salazar
+
+; 2017/10/20 * Adquisición 2 kit GPS + ESP
+;     ingreso:venta:sensor:cuenta:federico           $300,000.00
+;     Luis Velazquez y Francisco
+
+; Descuenta 2 GPS
+; Agrega dos ESP8266 que pone brolin, y los 10 ESP con los que se ensablaron los sensores que tenemos también los pone brolin
+; Descuenta dos ESP
+; Descuenta 20mil de checho por ensamblarlos
+
