@@ -122,7 +122,7 @@ void setup() {
   setupDHT11();
   //fs_delete_file();  // descomentar para borrar la memoria
   fs_info_print();
-  fs_list_files();
+  //fs_list_files();
 
   if (drd.detectDoubleReset()) {
     Serial.println("Connecting to network ...");

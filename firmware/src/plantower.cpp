@@ -55,11 +55,9 @@ PlantowerData readPlantower(unsigned long ms) {
   wdt_disable();
 
   do {
-    Serial.println(millis() - start);
     //while(pmsSerial.available()) {
     if(pmsSerial.find(0x42)) {    //start to read when detect 0x42
       //Serial.println("has 0x42");
-
       pmsSerial.readBytes(buf,LENG);
 
       if(buf[0] == 0x4d){
@@ -77,7 +75,7 @@ PlantowerData readPlantower(unsigned long ms) {
         }
       }
     }
-      // }
+    // }
   } while (millis() - start < ms);
 
   wdt_enable(1000);
