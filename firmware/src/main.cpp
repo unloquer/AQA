@@ -12,6 +12,30 @@ DHT11Data dht11;
 PlantowerData plantower;
 PlantowerData plantowerData;
 
+FSInfo fs_info;
+
+
+void fs_info_print() {
+  SPIFFS.info(fs_info);
+  Serial.print("totalBytes ");Serial.println(fs_info.totalBytes);
+  Serial.print("usedBytes ");Serial.println(fs_info.usedBytes);
+  Serial.print("blockSize ");Serial.println(fs_info.blockSize);
+  Serial.print("pageSize ");Serial.println(fs_info.pageSize);
+  Serial.print("maxOpenFiles ");Serial.println(fs_info.maxOpenFiles);
+  Serial.print("maxPathLength ");Serial.println(fs_info.maxPathLength);
+}
+
+void fs_delete_file() {
+  // SPIFFS.format(); // descomentar esta línea si hay algo que no se puede borrar en la memoria flash
+  // Assign a file name e.g. 'names.dat' or 'data.txt' or 'data.dat' try to use the 8.3 file naming convention format could be 'data.d'
+  char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
+
+  if (SPIFFS.exists(filename)) SPIFFS.remove(filename); // First blu175.mail.live.com in this example check to see if a file already exists, if so delete it
+}
+
+
+
+
 #include <DoubleResetDetector.h>
 
 // Number of seconds after reset during which a 
@@ -78,6 +102,15 @@ void syncLog() {
   }
 }
 
+void fs_list_files(){
+  Dir dir = SPIFFS.openDir("/");
+  while (dir.next()) {
+    Serial.print(dir.fileName());
+    File f = dir.openFile("r");
+    Serial.println(f.size());
+  }
+}
+
 void setup() {
   Serial.begin(115200);
   Serial.println("\nStarting ...");
@@ -87,7 +120,10 @@ void setup() {
   setupGPS();
   setupPlantower();
   setupDHT11();
-  
+  //fs_delete_file();  // descomentar para borrar la memoria
+  fs_info_print();
+  fs_list_files();
+
   if (drd.detectDoubleReset()) {
     Serial.println("Connecting to network ...");
     setupWifi();

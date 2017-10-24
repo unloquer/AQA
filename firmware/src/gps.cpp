@@ -16,7 +16,9 @@ void readGPS(unsigned long ms) {
 
   do {
     while(gpsSerial.available()) {
-      gpsParser.encode(gpsSerial.read());
+      // gpsParser.encode(gpsSerial.read());
+      Serial.println(gpsSerial.readString());
+      Serial.println("test");
     }
   } while (millis() - start < ms);
 
