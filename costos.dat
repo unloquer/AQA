@@ -230,8 +230,16 @@
 ;; ====================== FIN proyecto Ladrillera ==============
 ;; =============================================================
 
+2017/06/01 aporte unloquer esp
+    inventario:ingreso:componente:esp8266:uber1              1 ;; lo tiene Gustavo Galeano
+    unloquer
+
+2017/06/01 aporte brolin esp
+    inventario:ingreso:componente:esp8266:wemos             10
+    brolin
+
 2017/06/01  aporte brolin plantowers
-    inventario:ingreso:componente:plantower                          10
+    inventario:ingreso:componente:plantower                 10
     brolin
 
 2017/06/01 compra sensores plantower
@@ -305,71 +313,80 @@
     egreso:componente:esp8266             ($-20*10*3000)
     reembolsable:unloquer
 
-2017/07/15 GPS para Johnny Sepúlveda
+2017/07/15 * GPS para Johnny Sepúlveda
+    inventario:egreso:componente:esp8266:uber1              -1
+    inventario:egreso:componente:dht11                      -1
+    inventario:egreso:componente:plantower                  -1
     inventario:egreso:componente:gps                        -1
-    inventario:egreso:componente:leds                      -1 
+    inventario:egreso:componente:leds                       -1 
     Johnny Sepúlveda
 
-2017/07/15 Aporte al proyecto de Johnny Sepúlveda
+2017/07/15 * Aporte al proyecto de Johnny Sepúlveda
     ingreso:cuenta:brolin:johnnySepulveda           $20,000.00 ;; compra gps
     caja
 
-2017/08/08 Entrega a Gaviria ;; se uso un gps de unloquer
+2017/08/08 * Entrega a Gaviria ;; se uso un gps de unloquer
+    inventario:egreso:componente:esp8266:uber1              -1
     inventario:egreso:componente:leds                       -1
     inventario:egreso:componente:dht11                      -1
     inventario:egreso:componente:plantower                  -1
     Santiago Gaviria
 
-2017/08/08 Entrega a Miguel
+2017/08/08 * Entrega a Miguel
+    inventario:egreso:componente:esp8266:uber1              -1
     inventario:egreso:componente:gps                        -1
     inventario:egreso:componente:leds                       -1
     inventario:egreso:componente:dht11                      -1
     inventario:egreso:componente:plantower                  -1
     Miguel Vargas
 
-2017/08/08  Volker 7000 de brolin
+2017/08/08 * Volker 7000 de brolin
+    inventario:egreso:componente:esp8266:wemos             -1
     inventario:egreso:componente:gps                        -1
     inventario:egreso:componente:leds                       -1
     inventario:egreso:componente:dht11                      -1
     inventario:egreso:componente:plantower                  -1
     brolin
 
-2017/08/08  Volker 7000 de fedrico
+2017/08/08 * Volker 7000 de federico
+    inventario:egreso:componente:esp8266:wemos             -1
     inventario:egreso:componente:gps                        -1
     inventario:egreso:componente:leds                       -1
     inventario:egreso:componente:dht11                      -1
     inventario:egreso:componente:plantower                  -1
     federico
 
-2017/08/29 Aporte para  GPS
+2017/08/29 * Aporte para  GPS
     ingreso:cuenta:brolin:reembolsable:federico   $ 340,000.00
     egreso:cuenta:brolin
 
 
-2017/08/29 Aporte para Kit Mini Mandril y Pinza
+2017/08/29 * Aporte para Kit Mini Mandril y Pinza
     egreso:reembolsable:brolin      $-18,000.00
     elecronica I+D
 
-2017/08/29 Ingreso GPS's
+2017/08/29 * Ingreso GPS's
     inventario:ingreso:componente:gps                 10
     federico
 
-2017/08/29 Pinza de precisión
+2017/08/29 * Pinza de precisión
     inventario:ingreso:herramienta:pinzaDePrecision  1
     brolin
 
-2017/08/29 Kit Mini Mandril ;; cabeza y brocas
+2017/08/29 * Kit Mini Mandril ;; cabeza y brocas
     inventario:ingreso:herramienta:kitMiniMandril   1
     brolin
 
-2017/10/09 Entrega a Marta
+2017/10/09 * Entrega a Marta
+    inventario:egreso:componente:esp8266                    -1 
     inventario:egreso:componente:gps                        -1
     inventario:egreso:componente:leds                       -1
     inventario:egreso:componente:dht11                      -1
     inventario:egreso:componente:plantower                  -1
     Marta Salazar
 
-2017/10/04 Entrega a SIATA
+2017/10/04 * Entrega a SIATA
+    inventario:egreso:componente:esp8266:wemos              -1
     inventario:egreso:componente:gps                        -1
     inventario:egreso:componente:leds                       -1
     inventario:egreso:componente:dht11                      -1
@@ -380,9 +397,20 @@
     ingreso:venta:sensor:cuenta:federico           $284,000.00
     Marta Salazar
 
-; 2017/10/20 * Adquisición 2 kit GPS + ESP
-;     ingreso:venta:sensor:cuenta:federico           $300,000.00
-;     Luis Velazquez y Francisco
+2017/10/20 * Aporte Brolin
+    inventario:ingreso:componente:esp8266                2
+    brolin
+
+2017/10/20 * Entrega  Luis Velasquez y Francisco
+    inventario:egreso:componente:gps                        -2
+    inventario:egreso:componente:esp8266:wemos              -2
+    Luis Velazquez y Francisco
+
+2017/10/20 * Adquisición 2 kit GPS + ESP
+    ingreso:venta:sensor:cuenta:brolin           $300,000.00
+    Luis Velazquez y Francisco
+
+
 
 ; Descuenta 2 GPS
 ; Agrega dos ESP8266 que pone brolin, y los 10 ESP con los que se ensablaron los sensores que tenemos también los pone brolin
