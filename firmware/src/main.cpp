@@ -26,15 +26,12 @@ void fs_info_print() {
 }
 
 void fs_delete_file() {
-  // SPIFFS.format(); // descomentar esta línea si hay algo que no se puede borrar en la memoria flash
+   SPIFFS.format(); // descomentar esta línea si hay algo que no se puede borrar en la memoria flash
   // Assign a file name e.g. 'names.dat' or 'data.txt' or 'data.dat' try to use the 8.3 file naming convention format could be 'data.d'
   char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
 
   if (SPIFFS.exists(filename)) SPIFFS.remove(filename); // First blu175.mail.live.com in this example check to see if a file already exists, if so delete it
 }
-
-
-
 
 #include <DoubleResetDetector.h>
 
@@ -48,29 +45,25 @@ void fs_delete_file() {
 DoubleResetDetector drd(DRD_TIMEOUT, DRD_ADDRESS);
 
 void readLog() {
-  Serial.println("Reading log ...");
-  File file = SPIFFS.open("datalog.txt", "r");
-  String line = "";
-  if (!file) Serial.println("file open failed");  // Check for errors
-  while (file.available()) {
+
+  plantower = getPlantowerData();
+
+  // String frame = SENSOR_ID + STR_COMMA;
+  // frame += "pm=25";
+  // frame += " value=";
+  // frame +=  plantower.pm25;
+
+  setupLeds();
+  setupGPS();
+  String frame = influxFrame();
+
+  while (gps.ready) {
     wdt_disable();
-    // Read all the data from the file and display it
-
-    char c = file.read();
-    if(c == '\r') {
-      if(!line.endsWith("NULL")) {
-        Serial.println("Posting: "+line);
-        if(SEND_RECORD) {
-          postCsv("http://45.55.34.88:3000/api/v0/air.csv", line);
-        }
-      }
-
-      // Discard the \n, which is the next byte
-      file.read();
-      line = "";
-    } else {
-      line += String(c);
-    }
+    Serial.println(frame);
+    post2Influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
+    //post2Influx("http://192.168.1.61:8086/write?db=mydb","volker0001,long=6.41,lat=7.56 pm25=15,pm10=50");
+    ledParticulateQuality2(plantower);
+    delay(4999);
     wdt_enable(1000);
   }
 }
@@ -84,6 +77,27 @@ void sendLog() {
   String url = "http://192.168.0.18:3000/api/v0/air.csv";
   postCsvFile(url, "log");
 }
+
+void livePost() {
+  gps = getGPSData();
+  dht11 = getDHT11Data();
+  plantower = getPlantowerData();
+  String frame = influxFrame();
+
+  while (true) {
+    wdt_disable();
+    Serial.println(frame);
+    if(gps.ready){
+            post2Influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
+      //post2Influx("http://192.168.1.61:8086/write?db=mydb","volker0001,long=6.41,lat=7.56 pm25=15,pm10=50");
+      ledParticulateQuality2(plantower);
+      delay(4999);
+    }
+    delay(4999);
+    wdt_enable(1000);
+  }
+}
+
 
 void syncLog() {
   if(!INIT) { return; }
@@ -122,13 +136,16 @@ void setup() {
   setupDHT11();
   //fs_delete_file();  // descomentar para borrar la memoria
   fs_info_print();
-  //fs_list_files();
+  fs_list_files();
 
-  if (drd.detectDoubleReset()) {
+  //if (drd.detectDoubleReset()) {
     Serial.println("Connecting to network ...");
     setupWifi();
-    syncLog();
-  }
+    //syncLog();
+    //livePost();
+    //  }
+    //   WiFi.mode(WIFI_AP); 
+  //reportWiFi(30);
 }
 
 void loop() {
@@ -140,12 +157,15 @@ void loop() {
     plantowerData = plantower;
     if(plantowerData.ready) {
       ledParticulateQuality(plantowerData);
+      //reportWifi( plantower.pm25);
       if(gps.ready) {
         save();
+        String frame = influxFrame();
+        Serial.println(frame);
+        post2Influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
       }
     }
   }
-
   drd.loop();
 }
 
@@ -185,7 +205,7 @@ String csvFrame() {
   frame += gps.course + STR_COMMA;
   frame += gps.speed + STR_COMMA;
 
-  // Add DHT11 data
+  //Add DHT11 data
   if(dht11.ready) {
     frame += dht11.humidity + STR_COMMA;
     frame += dht11.temperature + STR_COMMA;
@@ -201,6 +221,57 @@ String csvFrame() {
   } else {
     frame += STR_NULL + STR_COMMA + STR_NULL + STR_COMMA + STR_NULL;
   }
+
+  return frame;
+}
+
+String influxFrame() {
+  /* CSV is ordered as:
+   "id","lat","lng","date","time","altitude","course","speed","humidity",
+   "temperature","pm1","pm25","pm10"
+  */
+
+  // First datum is the sensor_id
+  String frame = SENSOR_ID + STR_COMMA + "id=" + SENSOR_ID +  STR_SPACE;
+
+  // Add GPS data
+  char strlat[25],strlng[25];
+  dtostrf(gps.lat, 3, 6, strlat);
+  dtostrf(gps.lng, 3, 6, strlng);
+  frame += "lat=";
+  frame += strlat + STR_COMMA;
+  frame += "lng=";
+  frame += strlng + STR_COMMA;
+  //frame += gps.date + STR_COMMA;
+  //frame += gps.time + STR_COMMA;
+  frame += "altitude=";
+  frame += gps.altitude + STR_COMMA;
+  frame += "course=";
+  frame += gps.course + STR_COMMA;
+  frame += "speed=";
+  frame += gps.speed + STR_COMMA;
+
+  //Add DHT11 data
+  //if
+    frame += "humidity=";
+    frame += dht11.humidity + STR_COMMA;
+    frame += "temperature=";
+    frame += dht11.temperature + STR_COMMA;
+  // } else {
+  //   frame += "humidity=" + STR_NULL + STR_COMMA + "temperature=" + STR_NULL + STR_COMMA;
+  // }
+
+  // Add Plantower data
+    // if
+    frame += "pm1=";
+    frame += plantower.pm1 + STR_COMMA;
+    frame += "pm25=";
+    frame += plantower.pm25 + STR_COMMA;
+    frame += "pm10=";
+    frame += plantower.pm10;
+  // } else {
+  //   frame += "pm1=" + STR_NULL + STR_COMMA + "pm25=" + STR_NULL + STR_COMMA + "pm10=" + STR_NULL;
+  // }
 
   return frame;
 }
