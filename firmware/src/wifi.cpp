@@ -40,7 +40,7 @@ void setupWifi() {
     Serial.println("failed to connect and hit timeout");
     //reset and try again, or maybe put it to deep sleep
     ESP.reset();
-    delay(100); 
+    delay(1000); 
   }
 
   //if you get here you have connected to the WiFi

@@ -44,26 +44,31 @@ void fs_delete_file() {
 
 DoubleResetDetector drd(DRD_TIMEOUT, DRD_ADDRESS);
 
+
 void readLog() {
-
-  plantower = getPlantowerData();
-
-  // String frame = SENSOR_ID + STR_COMMA;
-  // frame += "pm=25";
-  // frame += " value=";
-  // frame +=  plantower.pm25;
-
-  setupLeds();
-  setupGPS();
-  String frame = influxFrame();
-
-  while (gps.ready) {
+  Serial.println("Reading log ...");
+  File file = SPIFFS.open("datalog.txt", "r");
+  String line = "";
+  if (!file) Serial.println("file open failed");  // Check for errors
+  while (file.available()) {
     wdt_disable();
-    Serial.println(frame);
-    post2Influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
-    //post2Influx("http://192.168.1.61:8086/write?db=mydb","volker0001,long=6.41,lat=7.56 pm25=15,pm10=50");
-    ledParticulateQuality2(plantower);
-    delay(4999);
+    // Read all the data from the file and display it
+
+    char c = file.read();
+    if(c == '\r') {
+      if(!line.endsWith("NULL")) {
+        Serial.println("Posting: "+line);
+        if(SEND_RECORD) {
+          postCsv("http://45.55.34.88:3000/api/v0/air.csv", line);
+        }
+      }
+
+      // Discard the \n, which is the next byte
+      file.read();
+      line = "";
+    } else {
+      line += String(c);
+    }
     wdt_enable(1000);
   }
 }
@@ -76,26 +81,6 @@ void deleteLog() {
 void sendLog() {
   String url = "http://192.168.0.18:3000/api/v0/air.csv";
   postCsvFile(url, "log");
-}
-
-void livePost() {
-  gps = getGPSData();
-  dht11 = getDHT11Data();
-  plantower = getPlantowerData();
-  String frame = influxFrame();
-
-  while (true) {
-    wdt_disable();
-    Serial.println(frame);
-    if(gps.ready){
-            post2Influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
-      //post2Influx("http://192.168.1.61:8086/write?db=mydb","volker0001,long=6.41,lat=7.56 pm25=15,pm10=50");
-      ledParticulateQuality2(plantower);
-      delay(4999);
-    }
-    delay(4999);
-    wdt_enable(1000);
-  }
 }
 
 
@@ -136,7 +121,7 @@ void setup() {
   setupDHT11();
   //fs_delete_file();  // descomentar para borrar la memoria
   fs_info_print();
-  fs_list_files();
+  //fs_list_files();
 
   //if (drd.detectDoubleReset()) {
     Serial.println("Connecting to network ...");
