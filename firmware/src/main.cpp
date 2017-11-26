@@ -147,7 +147,8 @@ void loop() {
         save();
         String frame = influxFrame();
         Serial.println(frame);
-        post2Influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
+        //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
+        post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
       }
     }
   }
