@@ -1,4 +1,42 @@
+#define FS_NO_GLOBALS
+//https://github.com/esp8266/Arduino/issues/1524
+#ifndef APP
+#define APP
 #include "app.h"
+#endif
+
+#include <ArduinoJson.h>
+
+/*
+ * Micro SD Shield - Datalogger
+ *
+ * This example shows how to log data from an analog sensor
+ * to an SD card using the SD library.
+ *
+ * The WeMos Micro SD Shield uses:
+ * D5, D6, D7, D8, 3V3 and G
+ *
+ * The shield uses SPI bus pins:
+ * D5 = CLK
+ * D6 = MISO
+ * D7 = MOSI
+ * D8 = CS
+ *
+ * The WeMos D1 Mini has one analog pin A0.
+ *
+ * The SD card library uses 8.3 format filenames and is case-insensitive.
+ * eg. IMAGE.JPG is the same as image.jpg
+ *
+ * created  24 Nov 2010
+ * modified 9 Apr 2012 by Tom Igoe
+ *
+ * This example code is in the public domain.
+ * https://github.com/esp8266/Arduino/blob/master/libraries/SD/examples/Datalogger/Datalogger.ino
+ */
+#include <SPI.h>
+#include <SD.h>
+
+const int chipSelect = D8;
 
 int INIT = 1;
 const int DEBUG = 0;
@@ -12,7 +50,7 @@ DHT11Data dht11;
 PlantowerData plantower;
 PlantowerData plantowerData;
 
-FSInfo fs_info;
+fs::FSInfo fs_info;
 
 
 void fs_info_print() {
@@ -26,7 +64,7 @@ void fs_info_print() {
 }
 
 void fs_delete_file() {
-  // SPIFFS.format(); // descomentar esta línea si hay algo que no se puede borrar en la memoria flash
+  //SPIFFS.format(); // descomentar esta línea si hay algo que no se puede borrar en la memoria flash
   // Assign a file name e.g. 'names.dat' or 'data.txt' or 'data.dat' try to use the 8.3 file naming convention format could be 'data.d'
   char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
 
@@ -47,29 +85,196 @@ void fs_delete_file() {
 
 DoubleResetDetector drd(DRD_TIMEOUT, DRD_ADDRESS);
 
+/******************************************************************************
+ * FunctionName : SecondsSince1900
+ * Description  : Returns input date in seconds since 00:00 GMT JAN 01 1900 
+ *                			No range verification! use with care!
+ * Parameters   : year > 2015, month (1-12), day (1-31), hour (0-23), minute (0-59), second (0-59)
+ * Returns      : Integer 32 bits 
+ *******************************************************************************/
+// Epoch time desde el 01-01-1970
+// Adaptarla para que sea epoch time
+uint32 SecondsSince1970(uint16 year, uint8 month, uint8 day, uint8 hour, uint8 minute, uint8 second)
+{
+	uint16 counter;
+	uint16 yearcount,leapdays;
+	uint32 daysfromepoch;
+	uint16 daysUpToMonth[12] = { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334 };
+	uint16 daysUpToMonthLeapYear[12] = { 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335 };
+
+	// integer years from epoch 
+	yearcount=year-1970;
+
+	// get leapdays from epoch
+	leapdays=0;
+	for(counter=1970;counter<year;counter++)
+	{
+		if( ( ( counter%4==0) && (counter%100!=0)) || (counter%400==0 ) )         
+		{
+			leapdays++;
+		}	
+	}
+	
+	
+	
+	if( ( ( year%4==0) && (year%100!=0)) || (year%400==0 ) )         
+	{
+		daysfromepoch = yearcount*365 + leapdays + daysUpToMonthLeapYear[month-1]+(day-1);
+	}
+	else
+	{
+		daysfromepoch = yearcount*365 + leapdays + daysUpToMonth[month-1]+(day-1);
+	}
+
+	return( (daysfromepoch*86400)+(hour*3600)+(minute*60)+second );
+}
+
+#include <stdio.h>
+//#include <time.h>
+#include <Time.h>
+
 void readLog() {
   Serial.println("Reading log ...");
-  File file = SPIFFS.open("datalog.txt", "r");
+  fs::File file = SPIFFS.open("datalog.txt", "r");
   String line = "";
+  String device,lat,lng,date,hour,altitude,course,speed,humidity,temperature,pm1,pm25,pm10;
   if (!file) Serial.println("file open failed");  // Check for errors
   while (file.available()) {
     wdt_disable();
     // Read all the data from the file and display it
 
     char c = file.read();
+    int field;
     if(c == '\r') {
+      field = 0;
       if(!line.endsWith("NULL")) {
-        Serial.println("Posting: "+line);
-        if(SEND_RECORD) {
-          postCsv("http://45.55.34.88:3000/api/v0/air.csv", line);
-        }
+        tmElements_t t;
+        time_t t_of_day;
+
+        t.Year = CalendarYrToTm(2017);
+        t.Month = 12;
+        t.Day = 1;
+        t.Hour = 21;
+        t.Minute = 44;
+        t.Second = 42;
+        //t.tm_isdst = -1;        // Is DST on? 1 = yes, 0 = no, -1 = unknown
+        t_of_day = makeTime(t);
+        //t_of_day = mktime(&t);
+
+        Serial.println(t_of_day);
+
+
+        //Serial.println(SecondsSince1970(2017,03,22,23,00,12));
+
+        // StaticJsonBuffer<300> JSONbuffer;   //Declaring static JSON buffer
+        // JsonObject& JSONencoder = JSONbuffer.createObject();
+        // JSONencoder["device"] = device;
+        // JSONencoder["lat"] = lat;
+        // JSONencoder["lng"] = lng;
+        // JSONencoder["timestamp"] = date+"T"+hour; // agregar date
+        // JSONencoder["altitude"] = altitude;
+        // JSONencoder["course"] = course;
+        // JSONencoder["speed"] = speed;
+        // JSONencoder["humidity"] = humidity;
+        // JSONencoder["temperature"] = temperature;
+        // JSONencoder["pm1"] = pm1;
+        // JSONencoder["pm25"] = pm25;
+        // JSONencoder["pm10"] = pm10;
+        // char JSONmessageBuffer[300];
+        // JSONencoder.prettyPrintTo(JSONmessageBuffer, sizeof(JSONmessageBuffer));
+        // Serial.println(JSONmessageBuffer);
+
+        //Serial.println("Posting: "+line);
+
+        // weather,location=us-midwest temperature=82 1465839830100400200
+        //   |    -------------------- --------------  |
+        //   |             |             |             |
+        //   |             |             |             |
+        //   +-----------+--------+-+---------+-+---------+
+        //   |measurement|,tag_set| |field_set| |timestamp|
+        //   +-----------+--------+-+---------+-+---------+
+        // if(SEND_RECORD) {
+        //   postCsv("http://45.55.34.88:3000/api/v0/air.csv", line);
+        // }
+        // https://techtutorialsx.com/2017/01/08/esp8266-posting-json-data-to-a-flask-server-on-the-cloud/
       }
 
       // Discard the \n, which is the next byte
       file.read();
       line = "";
     } else {
-      line += String(c);
+      if(c == ',') {
+        switch(field) {
+        case 0:
+          //device
+          device = line;
+          Serial.print("device=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+        case 1:
+          //lat
+          lat = line;
+          Serial.print("lat=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+        case 2:
+          //lng
+          lng = line;
+          Serial.print("lng=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+        case 3:
+          //date
+          date = line;
+          Serial.print("date=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+        case 4:
+          //hour
+          hour = line;
+          Serial.print("hour=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+        case 5:
+          //altitude
+          altitude = line;
+          Serial.print("altitude=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+        case 6:
+          //course
+          course = line;
+          Serial.print("course=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+        case 7:
+          //speed
+          speed = line;
+          Serial.print("speed=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+        case 8:
+          //humidity
+          humidity = line;
+          Serial.print("humidity=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+        case 9:
+          //temperature
+          temperature = line;
+          Serial.print("temperature=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+        case 10:
+          //pm1
+          pm1 = line;
+          Serial.print("pm1=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+        case 11:
+          //pm25
+          pm25 = line;
+          Serial.print("pm25=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+        case 12:
+          //pm10
+          pm10 = line;
+          Serial.print("pm10=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          break;
+          //default:
+        }
+        line = "";
+        field++;
+      } else {line += String(c);}
     }
     wdt_enable(1000);
   }
@@ -103,10 +308,10 @@ void syncLog() {
 }
 
 void fs_list_files(){
-  Dir dir = SPIFFS.openDir("/");
+  fs::Dir dir = SPIFFS.openDir("/");
   while (dir.next()) {
     Serial.print(dir.fileName());
-    File f = dir.openFile("r");
+    fs::File f = dir.openFile("r");
     Serial.println(f.size());
   }
 }
@@ -114,6 +319,16 @@ void fs_list_files(){
 void setup() {
   Serial.begin(115200);
   Serial.println("\nStarting ...");
+
+  Serial.print("Initializing SD card...");
+
+  // see if the card is present and can be initialized:
+  if (!SD.begin(chipSelect)) {
+    Serial.println("Card failed, or not present");
+    // don't do anything more:
+    return;
+  }
+  Serial.println("card initialized.");
 
   SPIFFS.begin();
   setupLeds();
@@ -126,10 +341,13 @@ void setup() {
 
   if (drd.detectDoubleReset()) {
     Serial.println("Connecting to network ...");
+    //readLog();
     setupWifi();
-    syncLog();
+    // syncLog();
   }
 }
+
+void savesdcard();
 
 void loop() {
   gps = getGPSData();
@@ -141,7 +359,7 @@ void loop() {
     if(plantowerData.ready) {
       ledParticulateQuality(plantowerData);
       if(gps.ready) {
-        save();
+        savesdcard();
       }
     }
   }
@@ -149,9 +367,30 @@ void loop() {
   drd.loop();
 }
 
+void savesdcard() {
+  
+  // open the file. note that only one file can be open at a time,
+  // so you have to close this one before opening another.
+  File dataFile = SD.open("datalog.txt", FILE_WRITE);
+
+  // if the file is available, write to it:
+  if (dataFile) {
+    String frame = csvFrame();
+    dataFile.println(frame);
+    dataFile.close();
+    // print to the serial port too:
+    Serial.println(frame);
+  }
+  // if the file isn't open, pop up an error:
+  else {
+    Serial.println("error opening datalog.txt");
+  }
+}
+
 void save() {
   char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
-  File file = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
+
+  fs::File file = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
   if (!file) {
     Serial.println("file open failed");   // Check for errors
     return;

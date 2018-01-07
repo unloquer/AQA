@@ -1,4 +1,7 @@
+#ifndef APP
+#define APP
 #include "app.h"
+#endif
 
 const uint16_t HTTP_TIMEOUT = 1000 * 60;
 HTTPClient http;

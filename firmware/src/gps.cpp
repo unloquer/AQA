@@ -1,10 +1,13 @@
+#ifndef APP
+#define APP
 #include "app.h"
+#endif
 
 TinyGPSPlus gpsParser;
-SoftwareSerial gpsSerial(13, 7);
+SoftwareSerial gpsSerial(2, 7);
 
 void setupGPS() {
-  static const int gpsRXPin = 13, gpsTXPin = 7;
+  static const int gpsRXPin = 2, gpsTXPin = 7;
   static const uint32_t bauds = 9600;
   gpsSerial.begin(bauds);
 }

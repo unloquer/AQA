@@ -1,4 +1,7 @@
+#ifndef APP
+#define APP
 #include "app.h"
+#endif
 
 // #define LENG 23   //0x42 + 23 bytes equal to 24 bytes ->
 #define LENG 31   //0x42 + 23 bytes equal to 24 bytes ->

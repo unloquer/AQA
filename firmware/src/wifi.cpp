@@ -1,9 +1,10 @@
+#ifndef APP
+#define APP
 #include "app.h"
+#endif
 
 AsyncWebServer server(80);
 DNSServer dns;
-
-
 
 void configModeCallback (AsyncWiFiManager *myWiFiManager) {
   Serial.println("Entered config mode");
@@ -15,12 +16,29 @@ void configModeCallback (AsyncWiFiManager *myWiFiManager) {
 
 
 void setupWifi() {
+  //ESP.getFreeHeap()
   // respond to GET requests on URL /heap
   server.on("/log", HTTP_GET, [](AsyncWebServerRequest *request){
-    //Download index.htm
-    request->_tempFile = SPIFFS.open("datalog.txt", "r");
-    request->send(request->_tempFile, request->_tempFile.name(), String(), true);
-    //AsyncWebServerResponse *response = request->beginResponse(SPIFFS, "log", String(), true);
+      //Download index.htm
+      request->_tempFile = SPIFFS.open("datalog.txt", "r");
+      request->send(request->_tempFile, request->_tempFile.name(), String(), true);
+      //AsyncResponseStream *response = request->beginResponseStream("text/html");
+      //response->print(request->_tempFile);
+      //request->send(response);
+      //AsyncWebServerResponse *response = request->beginResponse(SPIFFS, "log", String(), true);
+ 
+      // AsyncResponseStream *response = request->beginResponseStream("text/plain", 100);
+      // for(uint16_t i = 0; i < 5000; i++){
+      //   response->printf("%10u",i);
+      // }
+      // request->send(response);
+
+      // //Kill a kilobyte
+      // //    malloc(1024);
+      // Serial.println(ESP.getFreeHeap());
+      // for(int16_t i = 0; i<1000; i++)
+      //   char* a = new char;
+      // Serial.println(ESP.getFreeHeap());
     });
 
   //WiFiManager

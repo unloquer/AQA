@@ -1,6 +1,9 @@
+#ifndef APP
+#define APP
 #include "app.h"
+#endif
 
-#define DHTPIN 12     // what pin we're connected to
+#define DHTPIN 16     // what pin we're connected to
 #define DHTTYPE DHT11   // DHT 11
 
 // Initialize DHT sensor for normal 16mhz Arduino
