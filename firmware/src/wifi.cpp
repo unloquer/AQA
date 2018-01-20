@@ -1,11 +1,7 @@
 #include "app.h"
 
-AsyncWebServer server(80);
-DNSServer dns;
 
-
-
-void configModeCallback (AsyncWiFiManager *myWiFiManager) {
+void configModeCallback (WiFiManager *myWiFiManager) {
   Serial.println("Entered config mode");
   Serial.println(WiFi.softAPIP());
   // print the ssid that we should connect to to configure the ESP8266
@@ -16,18 +12,18 @@ void configModeCallback (AsyncWiFiManager *myWiFiManager) {
 
 void setupWifi() {
   // respond to GET requests on URL /heap
-  server.on("/log", HTTP_GET, [](AsyncWebServerRequest *request){
-    //Download index.htm
-    request->_tempFile = SPIFFS.open("datalog.txt", "r");
-    request->send(request->_tempFile, request->_tempFile.name(), String(), true);
-    //AsyncWebServerResponse *response = request->beginResponse(SPIFFS, "log", String(), true);
-    });
+  // server.on("/log", HTTP_GET, [](AsyncWebServerRequest *request){
+  //   //Download index.htm
+  //   request->_tempFile = SPIFFS.open("datalog.txt", "r");
+  //   request->send(request->_tempFile, request->_tempFile.name(), String(), true);
+  //   //AsyncWebServerResponse *response = request->beginResponse(SPIFFS, "log", String(), true);
+  //   });
 
   //WiFiManager
   //Local intialization. Once its business is done, there is no need to keep it around
   //Download index.htm
   // respond to GET requests on URL /heap
-  AsyncWiFiManager wifiManager(&server,&dns);
+  WiFiManager wifiManager;
   //reset settings - for testing
   //wifiManager.resetSettings();
   //set callback that gets called when connecting to previous WiFi fails, and enters Access Point mode

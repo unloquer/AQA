@@ -134,6 +134,13 @@ void setup() {
 }
 
 void loop() {
+  if (WiFi.status() != WL_CONNECTED) {
+    delay(60000);
+    //ESP.reset();
+    setupWifi();
+    return;
+  }
+
   gps = getGPSData();
   plantower = getPlantowerData();
   dht11 = getDHT11Data();
@@ -144,7 +151,7 @@ void loop() {
       ledParticulateQuality(plantowerData);
       //reportWifi( plantower.pm25);
       if(gps.ready) {
-        save();
+        //save();
         String frame = influxFrame();
         Serial.println(frame);
         //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);

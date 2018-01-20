@@ -1,21 +1,21 @@
-/* #include <ESP8266WiFi.h> */
-/* #include <ESP8266WiFiMulti.h> */
-/* #include <ESP8266HTTPClient.h> */
-/* #include <ESP8266WebServer.h> */
+#include <ESP8266WiFi.h>
+#include <DNSServer.h>
+#include <ESP8266HTTPClient.h>
+#include "WiFiManager.h" 
+#include <ESP8266WebServer.h>
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
 #include <Hash.h>
-#include <ESPAsyncTCP.h>
-#include <ESPAsyncWebServer.h>
-#include <ESPAsyncWiFiManager.h>
-#include <ESP8266HTTPClient.h>
+/* #include <ESPAsyncTCP.h> */
+/* #include <ESPAsyncWebServer.h> */
+/* #include <ESPAsyncWiFiManager.h> */
+/* #include <ESP8266HTTPClient.h> */
 //#include <SPIFFSEditor.h>
 #include <FS.h>
 #include <FastLED.h>
 #include "DHT.h"
-//#include <ESP8266WiFi.h>
 
-const String SENSOR_ID = "volker0001";
+const String SENSOR_ID = "volker0003";
 
 const String STR_COMMA = ",";
 const String STR_SLASH = "/";
