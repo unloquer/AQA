@@ -84,6 +84,7 @@ String csvFrame();
 void save();
 int postCsvFile(String url, String filename);
 int postCsv(String url, String csv);
+int post2Influx(String url, String load);
 
 void ledParticulateQuality(PlantowerData data);
 

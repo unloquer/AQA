@@ -169,7 +169,7 @@ void readLog() {
       if(!line.endsWith("NULL")) {
         //pm10
         pm10 = line;
-        Serial.print("pm10=");Serial.print(line);Serial.print(" ");Serial.println(field);
+        //Serial.print("pm10=");Serial.print(line);Serial.print(" ");Serial.println(field);
 
         tmElements_t t;
         time_t t_of_day;
@@ -185,8 +185,8 @@ void readLog() {
 
         line2send = device + STR_COMMA + "id=" + device + " lat=" + lat + ",lng=" + lng + ",altitude=" + altitude + ",course=" + course + ",speed=" + speed + ",humidity=" + humidity + ",temperature=" + temperature + ",pm1=" + pm1 + ",pm25=" + pm25 + ",pm10=" + pm10 + " "+ t_of_day;
 
+        post2Influx("http://aqa.unloquer.org:8086/write?db=mydb&precision=s'", line2send);
         Serial.println(line2send);
-
 
         line2send = "";
         //Serial.println(SecondsSince1970(2017,03,22,23,00,12));
@@ -204,22 +204,22 @@ void readLog() {
         case 0:
           //device
           device = line;
-          Serial.print("device=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("device=");Serial.print(line);Serial.print(" ");Serial.println(field);
           break;
         case 1:
           //lat
           lat = line;
-          Serial.print("lat=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("lat=");Serial.print(line);Serial.print(" ");Serial.println(field);
           break;
         case 2:
           //lng
           lng = line;
-          Serial.print("lng=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("lng=");Serial.print(line);Serial.print(" ");Serial.println(field);
           break;
         case 3:
           //date
           date = line;
-          Serial.print("date=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("date=");Serial.print(line);Serial.print(" ");Serial.println(field);
           y = getValue(line, '/', 2);
           d = getValue(line, '/', 1);
           m = getValue(line, '/', 0);
@@ -231,7 +231,7 @@ void readLog() {
         case 4:
           //hour
           hour = line;
-          Serial.print("hour=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("hour=");Serial.print(line);Serial.print(" ");Serial.println(field);
           s = getValue(line, ':', 2);
           mi = getValue(line, ':', 1);
           h = getValue(line, ':', 0);
@@ -242,42 +242,42 @@ void readLog() {
         case 5:
           //altitude
           altitude = line;
-          Serial.print("altitude=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("altitude=");Serial.print(line);Serial.print(" ");Serial.println(field);
           break;
         case 6:
           //course
           course = line;
-          Serial.print("course=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("course=");Serial.print(line);Serial.print(" ");Serial.println(field);
           break;
         case 7:
           //speed
           speed = line;
-          Serial.print("speed=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("speed=");Serial.print(line);Serial.print(" ");Serial.println(field);
           break;
         case 8:
           //humidity
           humidity = line;
-          Serial.print("humidity=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("humidity=");Serial.print(line);Serial.print(" ");Serial.println(field);
           break;
         case 9:
           //temperature
           temperature = line;
-          Serial.print("temperature=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("temperature=");Serial.print(line);Serial.print(" ");Serial.println(field);
           break;
         case 10:
           //pm1
           pm1 = line;
-          Serial.print("pm1=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("pm1=");Serial.print(line);Serial.print(" ");Serial.println(field);
           break;
         case 11:
           //pm25
           pm25 = line;
-          Serial.print("pm25=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("pm25=");Serial.print(line);Serial.print(" ");Serial.println(field);
           break;
         case 12:
           //pm10
           pm10 = line;
-          Serial.print("pm10=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          //Serial.print("pm10=");Serial.print(line);Serial.print(" ");Serial.println(field);
           break;
           //default:
         }
@@ -350,8 +350,8 @@ void setup() {
 
   if (drd.detectDoubleReset()) {
     Serial.println("Connecting to network ...");
+    setupWifi();
     readLog();
-    //setupWifi();
     // syncLog();
   }
 }

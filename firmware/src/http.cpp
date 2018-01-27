@@ -121,3 +121,27 @@ int postCsvFile(String url, String filename) {
 
   return httpCode;
 }
+
+int post2Influx(String url, String load) {
+  if (WiFi.status() != WL_CONNECTED) { return 0; }
+
+  http.begin(url);
+  http.setTimeout(HTTP_TIMEOUT);
+  //http.addHeader("Content-Type", "text/csv");
+  //http.addHeader("Content-Length", String(csv.length()));
+
+  int httpCode = http.POST(load);
+  Serial.println(httpCode);
+  if(httpCode > 0) {
+    String payload = http.getString();
+    Serial.println(payload);
+    Serial.println("load  sent successfully!");
+  } else {
+    Serial.print("[HTTP] failed, error;;;: ");
+    Serial.println(http.errorToString(httpCode).c_str());
+  }
+  
+  http.end();
+  return httpCode;
+  
+}
