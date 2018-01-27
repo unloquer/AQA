@@ -133,11 +133,31 @@ uint32 SecondsSince1970(uint16 year, uint8 month, uint8 day, uint8 hour, uint8 m
 //#include <time.h>
 #include <Time.h>
 
+//https://arduino.stackexchange.com/questions/1013/how-do-i-split-an-incoming-string#1033
+String getValue(String data, char separator, int index)
+{
+  int found = 0;
+  int strIndex[] = { 0, -1 };
+  int maxIndex = data.length() - 1;
+
+  for (int i = 0; i <= maxIndex && found <= index; i++) {
+    if (data.charAt(i) == separator || i == maxIndex) {
+      found++;
+      strIndex[0] = strIndex[1] + 1;
+      strIndex[1] = (i == maxIndex) ? i+1 : i;
+    }
+  }
+  return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
+}
+
 void readLog() {
   Serial.println("Reading log ...");
   fs::File file = SPIFFS.open("datalog.txt", "r");
-  String line = "";
+  String line = "", line2send;
+
   String device,lat,lng,date,hour,altitude,course,speed,humidity,temperature,pm1,pm25,pm10;
+  String y,m,d,h,mi,s;
+  int Year,Month,Day,Hour,Minute,Second;
   if (!file) Serial.println("file open failed");  // Check for errors
   while (file.available()) {
     wdt_disable();
@@ -146,60 +166,36 @@ void readLog() {
     char c = file.read();
     int field;
     if(c == '\r') {
-      field = 0;
       if(!line.endsWith("NULL")) {
+        //pm10
+        pm10 = line;
+        Serial.print("pm10=");Serial.print(line);Serial.print(" ");Serial.println(field);
+
         tmElements_t t;
         time_t t_of_day;
-
-        t.Year = CalendarYrToTm(2017);
-        t.Month = 12;
-        t.Day = 1;
-        t.Hour = 21;
-        t.Minute = 44;
-        t.Second = 42;
+        t.Year = CalendarYrToTm(Year);
+        t.Month = Month;
+        t.Day = Day;
+        t.Hour = Hour;
+        t.Minute = Minute;
+        t.Second = Second;
         //t.tm_isdst = -1;        // Is DST on? 1 = yes, 0 = no, -1 = unknown
         t_of_day = makeTime(t);
         //t_of_day = mktime(&t);
 
-        Serial.println(t_of_day);
+        line2send = device + STR_COMMA + "id=" + device + " lat=" + lat + ",lng=" + lng + ",altitude=" + altitude + ",course=" + course + ",speed=" + speed + ",humidity=" + humidity + ",temperature=" + temperature + ",pm1=" + pm1 + ",pm25=" + pm25 + ",pm10=" + pm10 + " "+ t_of_day;
+
+        Serial.println(line2send);
 
 
+        line2send = "";
         //Serial.println(SecondsSince1970(2017,03,22,23,00,12));
 
-        // StaticJsonBuffer<300> JSONbuffer;   //Declaring static JSON buffer
-        // JsonObject& JSONencoder = JSONbuffer.createObject();
-        // JSONencoder["device"] = device;
-        // JSONencoder["lat"] = lat;
-        // JSONencoder["lng"] = lng;
-        // JSONencoder["timestamp"] = date+"T"+hour; // agregar date
-        // JSONencoder["altitude"] = altitude;
-        // JSONencoder["course"] = course;
-        // JSONencoder["speed"] = speed;
-        // JSONencoder["humidity"] = humidity;
-        // JSONencoder["temperature"] = temperature;
-        // JSONencoder["pm1"] = pm1;
-        // JSONencoder["pm25"] = pm25;
-        // JSONencoder["pm10"] = pm10;
-        // char JSONmessageBuffer[300];
-        // JSONencoder.prettyPrintTo(JSONmessageBuffer, sizeof(JSONmessageBuffer));
-        // Serial.println(JSONmessageBuffer);
-
-        //Serial.println("Posting: "+line);
-
-        // weather,location=us-midwest temperature=82 1465839830100400200
-        //   |    -------------------- --------------  |
-        //   |             |             |             |
-        //   |             |             |             |
-        //   +-----------+--------+-+---------+-+---------+
-        //   |measurement|,tag_set| |field_set| |timestamp|
-        //   +-----------+--------+-+---------+-+---------+
-        // if(SEND_RECORD) {
-        //   postCsv("http://45.55.34.88:3000/api/v0/air.csv", line);
-        // }
-        // https://techtutorialsx.com/2017/01/08/esp8266-posting-json-data-to-a-flask-server-on-the-cloud/
       }
 
       // Discard the \n, which is the next byte
+
+      field = 0;
       file.read();
       line = "";
     } else {
@@ -224,11 +220,24 @@ void readLog() {
           //date
           date = line;
           Serial.print("date=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          y = getValue(line, '/', 2);
+          d = getValue(line, '/', 1);
+          m = getValue(line, '/', 0);
+          Year=y.toInt();
+          Month=m.toInt();
+          Day=d.toInt();
+
           break;
         case 4:
           //hour
           hour = line;
           Serial.print("hour=");Serial.print(line);Serial.print(" ");Serial.println(field);
+          s = getValue(line, ':', 2);
+          mi = getValue(line, ':', 1);
+          h = getValue(line, ':', 0);
+          Hour = h.toInt();
+          Minute = mi.toInt();
+          Second = s.toInt();
           break;
         case 5:
           //altitude
@@ -320,15 +329,15 @@ void setup() {
   Serial.begin(115200);
   Serial.println("\nStarting ...");
 
-  Serial.print("Initializing SD card...");
+  // Serial.print("Initializing SD card...");
 
-  // see if the card is present and can be initialized:
-  if (!SD.begin(chipSelect)) {
-    Serial.println("Card failed, or not present");
-    // don't do anything more:
-    return;
-  }
-  Serial.println("card initialized.");
+  // // see if the card is present and can be initialized:
+  // if (!SD.begin(chipSelect)) {
+  //   Serial.println("Card failed, or not present");
+  //   // don't do anything more:
+  //   return;
+  // }
+  // Serial.println("card initialized.");
 
   SPIFFS.begin();
   setupLeds();
@@ -341,8 +350,8 @@ void setup() {
 
   if (drd.detectDoubleReset()) {
     Serial.println("Connecting to network ...");
-    //readLog();
-    setupWifi();
+    readLog();
+    //setupWifi();
     // syncLog();
   }
 }
@@ -359,7 +368,7 @@ void loop() {
     if(plantowerData.ready) {
       ledParticulateQuality(plantowerData);
       if(gps.ready) {
-        savesdcard();
+        save();
       }
     }
   }
