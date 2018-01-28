@@ -4,10 +4,10 @@
 #endif
 
 TinyGPSPlus gpsParser;
-SoftwareSerial gpsSerial(2, 7);
+SoftwareSerial gpsSerial(13, 7);
 
 void setupGPS() {
-  static const int gpsRXPin = 2, gpsTXPin = 7;
+  static const int gpsRXPin = 13, gpsTXPin = 7;
   static const uint32_t bauds = 9600;
   gpsSerial.begin(bauds);
 }
@@ -15,15 +15,13 @@ void setupGPS() {
 void readGPS(unsigned long ms) {
   unsigned long start = millis();
 
-  wdt_disable();
-
-  do {
+   do {
     while(gpsSerial.available()) {
+      wdt_disable();
       gpsParser.encode(gpsSerial.read());
+      wdt_enable(1000);
     }
   } while (millis() - start < ms);
-
-  wdt_enable(1000);
 }
 
 GPSData parseGPSData() {
