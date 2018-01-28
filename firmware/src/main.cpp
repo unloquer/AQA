@@ -185,7 +185,7 @@ void readLog() {
 
         line2send = device + STR_COMMA + "id=" + device + " lat=" + lat + ",lng=" + lng + ",altitude=" + altitude + ",course=" + course + ",speed=" + speed + ",humidity=" + humidity + ",temperature=" + temperature + ",pm1=" + pm1 + ",pm25=" + pm25 + ",pm10=" + pm10 + " "+ t_of_day;
 
-        post2Influx("http://aqa.unloquer.org:8086/write?db=mydb&precision=s'", line2send);
+        post2Influx("http://aqa.unloquer.org:8086/write?db=mydb&precision=s", line2send);
         Serial.println(line2send);
 
         line2send = "";
