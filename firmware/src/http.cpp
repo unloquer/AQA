@@ -130,7 +130,9 @@ int post2Influx(String url, String load) {
   //http.addHeader("Content-Type", "text/csv");
   //http.addHeader("Content-Length", String(csv.length()));
 
+  wdt_disable();
   int httpCode = http.POST(load);
+
   Serial.println(httpCode);
   if(httpCode > 0) {
     String payload = http.getString();
@@ -140,7 +142,7 @@ int post2Influx(String url, String load) {
     Serial.print("[HTTP] failed, error;;;: ");
     Serial.println(http.errorToString(httpCode).c_str());
   }
-  
+  wdt_enable(1000);
   http.end();
   return httpCode;
   

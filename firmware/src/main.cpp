@@ -187,6 +187,7 @@ void readLog() {
 
         post2Influx("http://aqa.unloquer.org:8086/write?db=mydb&precision=s", line2send);
         Serial.println(line2send);
+        Serial.println("Free Memory: "+String(ESP.getFreeHeap()));
 
         line2send = "";
         //Serial.println(SecondsSince1970(2017,03,22,23,00,12));
@@ -352,7 +353,7 @@ void setup() {
     Serial.println("Connecting to network ...");
     setupWifi();
     readLog();
-    // syncLog();
+    fs_delete_file();
   }
 }
 
