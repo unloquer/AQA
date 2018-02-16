@@ -15,7 +15,7 @@
 #include <FastLED.h>
 #include "DHT.h"
 
-const String SENSOR_ID = "volker0003";
+const String SENSOR_ID = "repository"; // cambiar para personalizar
 
 const String STR_COMMA = ",";
 const String STR_SLASH = "/";
@@ -92,6 +92,7 @@ int post2Influx(String url, String load);
 
 
 void ledParticulateQuality(PlantowerData data);
+void ledParticulateQualityStreamming(PlantowerData data);
 void ledParticulateQualityStream(PlantowerData data);
 
 /*class GPSSensor {

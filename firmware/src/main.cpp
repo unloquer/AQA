@@ -140,26 +140,30 @@ void loop() {
     setupWifi();
     return;
   }
-
+  int i = 0;
+  while( i < 30){
   gps = getGPSData();
   plantower = getPlantowerData();
   dht11 = getDHT11Data();
-
-  if(plantower.ready) {
-    plantowerData = plantower;
-    if(plantowerData.ready) {
-      ledParticulateQuality(plantowerData);
-      //reportWifi( plantower.pm25);
-      if(gps.ready) {
-        //save();
-        String frame = influxFrame();
-        Serial.println(frame);
-        //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
-        post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
+    if(plantower.ready) {
+      plantowerData = plantower;
+      if(plantowerData.ready) {
+        ledParticulateQuality(plantowerData);
+        //reportWifi( plantower.pm25);
+        if(gps.ready) {
+          //save();
+          ledParticulateQualityStreamming(plantowerData);
+          String frame = influxFrame();
+          Serial.println(frame);
+          //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
+          post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
+          i++;
+        }
       }
     }
   }
   drd.loop();
+  ESP.reset();
 }
 
 void save() {
