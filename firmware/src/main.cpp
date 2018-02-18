@@ -141,7 +141,7 @@ void loop() {
     return;
   }
   int i = 0;
-  while( i < 30){
+  while( i < 200){
   gps = getGPSData();
   plantower = getPlantowerData();
   dht11 = getDHT11Data();
