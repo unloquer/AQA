@@ -92,6 +92,7 @@ int post2Influx(String url, String load);
 
 
 void ledParticulateQuality(PlantowerData data);
+void ledParticulateQualityStreamming(PlantowerData data);
 void ledParticulateQualityStream(PlantowerData data);
 
 /*class GPSSensor {

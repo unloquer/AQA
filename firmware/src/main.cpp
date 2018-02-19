@@ -295,32 +295,41 @@ void setup() {
   //reportWiFi(30);
 }
 
+int i = 0;
+
 void loop() {
-  // METER UN DEFINE NO MOBILE
-  // if (WiFi.status() != WL_CONNECTED) {
-  //   delay(1000);
-  //   ESP.reset();
-  //   return;
-  // }
+
+  if (WiFi.status() != WL_CONNECTED) {
+    delay(5000);
+    ESP.reset();
+    return;
+  }
 
   gps = getGPSData();
   plantower = getPlantowerData();
   dht11 = getDHT11Data();
-
-  if(plantower.ready) {
-    plantowerData = plantower;
-    if(plantowerData.ready) {
-      ledParticulateQuality(plantowerData);
-      //reportWifi( plantower.pm25);
-      if(gps.ready) {
-        save();
-        //String frame = influxFrame();
-        //Serial.println(frame);
-        //post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
+    if(plantower.ready) {
+      plantowerData = plantower;
+      if(plantowerData.ready) {
+        ledParticulateQuality(plantowerData);
+        //reportWifi( plantower.pm25);
+        if(gps.ready) {
+          //save();
+          ledParticulateQualityStreamming(plantowerData);
+          String frame = influxFrame();
+          Serial.println(frame);
+          //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
+          post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
+          i++;
+        }
       }
     }
-  }
   drd.loop();
+
+  if(i == 200){
+    ESP.reset();
+    i = 0;
+  }
 }
 
 void save() {
