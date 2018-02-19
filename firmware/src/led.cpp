@@ -25,8 +25,8 @@ void ledParticulateQuality(PlantowerData data) {
   CRGB alert = CRGB::Black;
 
   if(pm25 < 13) alert = CRGB::Green; // CRGB::Green; // Alert.ok
-  if(pm25 >= 13 && pm25 < 35) alert = CRGB::Orange; // Alert.notGood;
-  if(pm25 >= 35 && pm25 < 55) alert = CRGB::Yellow; // Alert.bad;
+  if(pm25 >= 13 && pm25 < 35) alert = CRGB::Yellog; // Alert.notGood;
+  if(pm25 >= 35 && pm25 < 55) alert = CRGB::Orange; // Alert.bad;
   if(pm25 >= 55 && pm25 < 75) alert = CRGB::Red; // CRGB::Red; // Alert.dangerous;
   if(pm25 >= 75) alert = CRGB::Purple; // Alert.harmful;
 
