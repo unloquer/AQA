@@ -287,7 +287,7 @@ void setup() {
   // METER UN DEFINE MOBILE
   // if (drd.detectDoubleReset()) {
   //   Serial.println("Connecting to network ...");
-  //   setupWifi();
+  setupWifi();
   //   readLog();
   //   fs_delete_file();
   // }
