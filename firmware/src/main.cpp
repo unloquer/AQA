@@ -26,7 +26,7 @@ void fs_info_print() {
 }
 
 void fs_delete_file() {
-   SPIFFS.format(); // descomentar esta línea si hay algo que no se puede borrar en la memoria flash
+  //SPIFFS.format(); // descomentar esta línea si hay algo que no se puede borrar en la memoria flash
   // Assign a file name e.g. 'names.dat' or 'data.txt' or 'data.dat' try to use the 8.3 file naming convention format could be 'data.d'
   char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
 
@@ -284,24 +284,24 @@ void setup() {
   fs_info_print();
   //fs_list_files();
 
+  // METER UN DEFINE MOBILE
   if (drd.detectDoubleReset()) {
     Serial.println("Connecting to network ...");
     setupWifi();
     readLog();
     fs_delete_file();
-    //livePost();
   }
-    //   WiFi.mode(WIFI_AP); 
+  //   WiFi.mode(WIFI_AP); 
   //reportWiFi(30);
 }
 
 void loop() {
-  if (WiFi.status() != WL_CONNECTED) {
-    delay(60000);
-    ESP.reset();
-    //setupWifi();
-    return;
-  }
+  // METER UN DEFINE NO MOBILE
+  // if (WiFi.status() != WL_CONNECTED) {
+  //   delay(1000);
+  //   ESP.reset();
+  //   return;
+  // }
 
   gps = getGPSData();
   plantower = getPlantowerData();
@@ -316,7 +316,6 @@ void loop() {
         save();
         //String frame = influxFrame();
         //Serial.println(frame);
-        //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
         //post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
       }
     }
