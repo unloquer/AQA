@@ -285,12 +285,12 @@ void setup() {
   //fs_list_files();
 
   // METER UN DEFINE MOBILE
-  if (drd.detectDoubleReset()) {
-    Serial.println("Connecting to network ...");
-    setupWifi();
-    readLog();
-    fs_delete_file();
-  }
+  // if (drd.detectDoubleReset()) {
+  //   Serial.println("Connecting to network ...");
+  //   setupWifi();
+  //   readLog();
+  //   fs_delete_file();
+  // }
   //   WiFi.mode(WIFI_AP); 
   //reportWiFi(30);
 }
@@ -324,7 +324,7 @@ void loop() {
         }
       }
     }
-  drd.loop();
+    //drd.loop();
 
   if(i == 200){
     ESP.reset();
