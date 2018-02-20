@@ -3,7 +3,7 @@
 */
 // https://github.com/FastLED/FastLED/wiki/ESP8266-notes
 #define FASTLED_ESP8266_RAW_PIN_ORDER
-
+//trabajar en esto cuando me desocupe
 #include "app.h"
 
 // Pines 16 y 14 no sirven para la librería fastled
