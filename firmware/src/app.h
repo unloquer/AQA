@@ -15,7 +15,7 @@
 #include <FastLED.h>
 #include "DHT.h"
 
-const String SENSOR_ID = "volkerC3p";
+const String SENSOR_ID = "volker0003";
 
 const String STR_COMMA = ",";
 const String STR_SLASH = "/";

@@ -326,7 +326,7 @@ void loop() {
     }
     //drd.loop();
 
-  if(i == 200){
+  if(i == 30){
     ESP.reset();
     i = 0;
   }
