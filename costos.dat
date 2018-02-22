@@ -418,12 +418,13 @@
     ahorros:fed:compra:sensor:plantower       ($-3003*158.10)
     Ali Express
 
+;; De las tarjetas diseñadas por uber
+;; 6 tarjetas valieron $100000 en colcircuitos
+;; 4 GPS's y capacitores que valieron $144000
+;; 6 esp8266 que pone unloquer
+;; 6 DHT11 que pone unloquer
+;; 6 cargadores de batería que pone brolin a $1000 c/u
+;; 24 leds que pone brolin a $500 c/u
+;; 6 kits de componentes varios que pone unloquer por valor de $10000 como máximo
 
-
-
-
-; Descuenta 2 GPS
-; Agrega dos ESP8266 que pone brolin, y los 10 ESP con los que se ensablaron los sensores que tenemos también los pone brolin
-; Descuenta dos ESP
-; Descuenta 20mil de checho por ensamblarlos
 
