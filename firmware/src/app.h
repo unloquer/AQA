@@ -1,20 +1,21 @@
-/* #include <ESP8266WiFi.h> */
-/* #include <ESP8266WiFiMulti.h> */
-/* #include <ESP8266HTTPClient.h> */
-/* #include <ESP8266WebServer.h> */
+#include <ESP8266WiFi.h>
+#include <DNSServer.h>
+#include <ESP8266HTTPClient.h>
+#include "WiFiManager.h" 
+#include <ESP8266WebServer.h>
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
 #include <Hash.h>
-#include <ESPAsyncTCP.h>
-#include <ESPAsyncWebServer.h>
-#include <ESPAsyncWiFiManager.h>
-#include <ESP8266HTTPClient.h>
+/* #include <ESPAsyncTCP.h> */
+/* #include <ESPAsyncWebServer.h> */
+/* #include <ESPAsyncWiFiManager.h> */
+/* #include <ESP8266HTTPClient.h> */
 //#include <SPIFFSEditor.h>
 #include <FS.h>
 #include <FastLED.h>
 #include "DHT.h"
 
-const String SENSOR_ID = "federico";
+const String SENSOR_ID = "volker0003";
 
 const String STR_COMMA = ",";
 const String STR_SLASH = "/";
@@ -22,6 +23,7 @@ const String STR_DOT = ".";
 const String STR_COLON = ":";
 const String STR_NULL = "NULL";
 const String STR_ZERO = "0";
+const String STR_SPACE = " ";
 
 typedef struct {
   String ssid;
@@ -71,6 +73,7 @@ typedef struct {
 } AirData;
 
 void setupWifi();
+//void reportWifi();
 void setupGPS();
 void setupPlantower();
 void setupDHT11();
@@ -81,11 +84,16 @@ DHT11Data getDHT11Data();
 PlantowerData getPlantowerData();
 
 String csvFrame();
+String influxFrame();
 void save();
 int postCsvFile(String url, String filename);
 int postCsv(String url, String csv);
+int post2Influx(String url, String load);
+
 
 void ledParticulateQuality(PlantowerData data);
+void ledParticulateQualityStreamming(PlantowerData data);
+void ledParticulateQualityStream(PlantowerData data);
 
 /*class GPSSensor {
   private:
