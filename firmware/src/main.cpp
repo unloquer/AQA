@@ -403,8 +403,10 @@ String influxFrame() {
   dtostrf(gps.lng, 3, 6, strlng);
   frame += "lat=";
   frame += strlat + STR_COMMA;
+  //frame += 6.27 + STR_COMMA; // hard coded latitude lat 
   frame += "lng=";
   frame += strlng + STR_COMMA;
+  //frame += -75.62    + STR_COMMA;// hard coded longitude lng
   //frame += gps.date + STR_COMMA;
   //frame += gps.time + STR_COMMA;
   frame += "altitude=";
