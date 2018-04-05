@@ -1,6 +1,6 @@
 #!/bin/bash
 source 'lib.trap.sh'
-usage="$(basename "$0")   <USER> <PATH> [-h]  -- program to generate mobile measurments
+usage="$(basename "$0")   <USER> <START LINE> <PATH> [-h]  -- program to generate mobile measurments
 
 where:
     -h  show this help text
@@ -19,9 +19,16 @@ bold=$(tput bold)
 
 # passed arguments 
 id=$1
-myFile=$2;
+startLine=$2
+myFile=$3;
 
-i=2;
+if [ $startLine -lt 2 ]
+then
+    i=2;
+else
+    i=$startLine
+fi
+
 # while number of lines of a file
 while(true)
 do
@@ -31,6 +38,11 @@ do
     #interval=$(awk -v iter=$i -F, 'NR==iter {print $8}' $myFile) # TODO: how to translate velocity to sleep time?
     curl -i -XPOST 'http://localhost:8086/write?db=aqaTest' --data-binary "$id,id=$id pm25=$pm25,lat=$lat,lng=$lng";
     # time = distance/speed
+    echo $1
+    echo "line: $i"
+    echo $pm25
+    echo $lat
+    echo $lng
     sleep  1; # 100/time;
     i=$((i+1))
 done
