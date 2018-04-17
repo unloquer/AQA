@@ -287,7 +287,7 @@ void setup() {
   // METER UN DEFINE MOBILE
   // if (drd.detectDoubleReset()) {
   //   Serial.println("Connecting to network ...");
-  setupWifi();
+  //setupWifi();
   //   readLog();
   //   fs_delete_file();
   // }
@@ -299,11 +299,11 @@ int i = 0;
 
 void loop() {
 
-  if (WiFi.status() != WL_CONNECTED) {
-    delay(5000);
-    ESP.reset();
-    return;
-  }
+  // if (WiFi.status() != WL_CONNECTED) {
+  //   delay(5000);
+  //   ESP.reset();
+  //   return;
+  //}
 
   gps = getGPSData();
   plantower = getPlantowerData();
@@ -314,22 +314,22 @@ void loop() {
         ledParticulateQuality(plantowerData);
         //reportWifi( plantower.pm25);
         if(gps.ready) {
-          //save();
+          save();
           ledParticulateQualityStreamming(plantowerData);
-          String frame = influxFrame();
-          Serial.println(frame);
-          //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
-          post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
-          i++;
+          // String frame = influxFrame();
+          // Serial.println(frame);
+          // //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
+          // post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
+          // i++;
         }
       }
     }
     //drd.loop();
 
-  if(i == 30){
-    ESP.reset();
-    i = 0;
-  }
+  // if(i == 30){
+  //   ESP.reset();
+  //   i = 0;
+  // }
 }
 
 void save() {

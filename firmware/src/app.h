@@ -15,7 +15,7 @@
 #include <FastLED.h>
 #include "DHT.h"
 
-const String SENSOR_ID = "generic"; // change this with your sensor ID
+const String SENSOR_ID = "alejo"; // change this with your sensor ID
 
 const String STR_COMMA = ",";
 const String STR_SLASH = "/";
