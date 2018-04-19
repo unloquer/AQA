@@ -19,6 +19,9 @@
 *** ¿A qué velocidad podemos esperar los cambios?
 *** ¿Sirve la metáfora de la reja ? 
     Una persona habita con una ventana en un primer piso que da a la calle, a varios vecinos les han roto la ventana para robarles frutas y otras pertenencias, el gobierno dice que tiene pactos y programas para disminuír la delincuencia en la ciudad gradualmente hasta lograr índices parecidos a alguna ciudad tranquila de un país desarrollado, la persona no sabe si esperar a que el gobierno mejore la inseguridad o poner una reja en su ventana.
+*** ¿La máscara sírve?                                                   
+**** ¿Las partículas pm25 son mas pequeñas que un pelo de la nariz? 25 a 70 :log:
+*** ¿Puedo saber dónde esta mejor el aire?
 
 ** ¿Puedo usar el pretexto del problema de la calidad del aire en medellín para aprender de  matemáticas?
 *** ¿De Antropología?
@@ -26,9 +29,6 @@
 *** ¿De Programación?
 *** ¿De Biología? 
 **** El Guáimaro, Sogamoso https://actualidad.rt.com/actualidad/266121-arbol-magico-colombia-titan-polucion
-** ¿La máscara sírve?                                                   
-*** ¿Las partículas pm25 son mas pequeñas que un pelo de la nariz? 25 a 70 :log:
-** ** ¿Sabes pasear?
 ** ¿Cómo me sumo?
 *** ¿Puedo donar un sensor a un hospital infantil?
 *** ¿Puedo resolver alguno de los problemas de programación?  https://github.com/unloquer/AQA/issues
