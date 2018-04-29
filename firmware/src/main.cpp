@@ -33,10 +33,10 @@
  * This example code is in the public domain.
  * https://github.com/esp8266/Arduino/blob/master/libraries/SD/examples/Datalogger/Datalogger.ino
  */
-#include <SPI.h>
-#include <SD.h>
+// #include <SPI.h>
+// #include <SD.h>
 
-const int chipSelect = D8;
+// const int chipSelect = D8;
 
 int INIT = 1;
 const int DEBUG = 0;
@@ -161,6 +161,7 @@ void readLog() {
   if (!file) Serial.println("file open failed");  // Check for errors
   while (file.available()) {
     wdt_disable();
+    yield();
     // Read all the data from the file and display it
 
     char c = file.read();
@@ -185,7 +186,7 @@ void readLog() {
 
         line2send = device + STR_COMMA + "id=" + device + " lat=" + lat + ",lng=" + lng + ",altitude=" + altitude + ",course=" + course + ",speed=" + speed + ",humidity=" + humidity + ",temperature=" + temperature + ",pm1=" + pm1 + ",pm25=" + pm25 + ",pm10=" + pm10 + " "+ t_of_day;
 
-        post2Influx("http://aqa.unloquer.org:8086/write?db=mydb&precision=s", line2send);
+        post2Influx("http://aqa.unloquer.org:8086/write?db=aqamobile&precision=s", line2send);
         Serial.println(line2send);
         Serial.println("Free Memory: "+String(ESP.getFreeHeap()));
 
@@ -377,25 +378,25 @@ void loop() {
   drd.loop();
 }
 
-void savesdcard() {
-  
-  // open the file. note that only one file can be open at a time,
-  // so you have to close this one before opening another.
-  File dataFile = SD.open("datalog.txt", FILE_WRITE);
+// void savesdcard() {
 
-  // if the file is available, write to it:
-  if (dataFile) {
-    String frame = csvFrame();
-    dataFile.println(frame);
-    dataFile.close();
-    // print to the serial port too:
-    Serial.println(frame);
-  }
-  // if the file isn't open, pop up an error:
-  else {
-    Serial.println("error opening datalog.txt");
-  }
-}
+//   // open the file. note that only one file can be open at a time,
+//   // so you have to close this one before opening another.
+//   File dataFile = SD.open("datalog.txt", FILE_WRITE);
+
+//   // if the file is available, write to it:
+//   if (dataFile) {
+//     String frame = csvFrame();
+//     dataFile.println(frame);
+//     dataFile.close();
+//     // print to the serial port too:
+//     Serial.println(frame);
+//   }
+//   // if the file isn't open, pop up an error:
+//   else {
+//     Serial.println("error opening datalog.txt");
+//   }
+// }
 
 void save() {
   char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
