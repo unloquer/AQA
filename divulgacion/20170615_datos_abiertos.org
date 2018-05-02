@@ -1,0 +1,102 @@
+#+TITLE:      De los personal a lo colectivo
+#+AUTHOR:     un/loquer
+#+EMAIL:      unloquer@gmail.com
+#+OPTIONS:    H:2 num:nil toc:t \n:nil ::t |:t ^:t -:t f:t *:t tex:t d:(HIDE) tags:not-in-toc
+#+STARTUP:    align fold nodlcheck hidestars oddeven lognotestate
+#+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w) | DONE(d) CANCELED(c)
+#+TAGS:       Write(w) Update(u) Fix(f) Check(c) 
+#+LANGUAGE:   es
+#+PRIORITIES: A C B
+#+CATEGORY:   un/loquer
+#+CONSTANTS: d=298
+
+** ¿Qué vamos a aprender hoy?
+*** ¿Cómo en un/loquer se esta respondiendo ante el problema del aire?
+**** ¿Artefacto para medir y reportar?
+     Un dispositivo que permite hacer mediciones móviles.
+***** ¿Microcontrolador? *ESP8266*
+      Tiene conectividad wi-fi integrada, recive los datos de direferentes protocolos y genera la trama de datos.
+
+|      lat |        lng | date      |        hour | altitude | course | speed | humidity | temperature | pm1 | pm25 | pm10 |
+| 6.254207 | -75.575022 | 5/11/2017 | 05:54:00.00 |   1498.5 | 189.57 | 14.24 |     34.0 |        28.0 |  11 |   16 |   17 |
+| 6.253995 | -75.575045 | 5/11/2017 | 05:54:05.00 |   1499.1 | 179.03 | 15.26 |     34.0 |        28.0 |  11 |   16 |   17 |
+| 6.253763 | -75.575067 | 5/11/2017 | 05:54:11.00 |   1498.8 | 186.22 | 14.46 |     34.0 |        28.0 |  11 |   16 |   17 |
+| 6.253593 | -75.575132 | 5/11/2017 | 05:54:16.00 |   1497.9 | 215.65 | 12.45 |     34.0 |        28.0 |  11 |   16 |   17 |
+| 6.253485 | -75.575307 | 5/11/2017 | 05:54:22.00 |   1498.3 | 256.68 | 14.41 |     34.0 |        28.0 |  11 |   16 |   17 |
+| 6.253502 | -75.575495 | 5/11/2017 | 05:54:27.00 |   1498.2 |  296.0 | 14.89 |     34.0 |        28.0 |  11 |   16 |   17 |
+
+****** ¿Almacena los datos?
+       Sí, porque no podemos garantizar conectividad wi-fi, se está trabajando en implementar el reporte a travéz de una red LoRa
+***** ¿GPS?  *quectel l70*
+      Entrega Timestamp, Latitud, Longitud, Altitud, Curso, y Velocidad, ver issue https://github.com/unloquer/AQA/issues/18
+*****  ¿Sensor de partículas? *planttower PMSx003*
+      Entrega mediciones de partículas pm1, pm2.5 y pm10.
+***** ¿Sensor de temperatura y humedad? *DHT11*
+***** ¿RGB Leds? 
+      Retroalimentación visual expresada en colores ajustada a alguna escala.
+***** TODO ¿Carcasa?
+**** ¿Compartir los datos capturados?
+*****  ¿Prueba de concepto? 
+      Actualmente los datos se descargan de la memoria Flash de forma rudimentaria.
+***** ¿Compartir la medición PM2.5 usando el ESSID?  
+      Cualquier dispositivo Wi-Fi al alcance puede recibir el reporte de la medición en su listado de redes disponibles. https://github.com/unloquer/AQA/issues/14
+***** TODO ¿Descarga con Wi-Fi?
+      Requiere un navegador para conectar el ESP a alguna red disponible.
+***** TODO ¿LoRa?
+      Estamos en la búsqueda de unos gateway para hacer una prueba de concepto.
+**** Detonantes:
+***** Cuanto le vale a la ciudad darle información al individuo de su entorno vs. Cuanto le vale al individo generar esa info
+***** ¿Aprendizaje a travez de problemas? *** ¿aprender? ¿en serio?
+****** anarquía; no reconoce autoridad, paternalismo, ¿Qué hacemos?
+****** varias ligas                                                     :Fix:
+******* escala ciudad 
+******* escala personal
+*** ¿Qué puedo aprender con los datos que exponen?
+**** dataPoints (advertencia!)  https://raw.githubusercontent.com/daquina-io/VizCalidadAire/master/data/points.csv
+*****  ¿Porqué hay una medida de 500 !!! ¿subjetiva?
+      Son datos sucios por diferentes razones, algunas ideas de depuración de @kleper https://github.com/daquina-io/VizCalidadAire/issues/2
+****** ¿Cómo podemos calibrar? https://github.com/unloquer/AQA/issues/13
+****** Link a mediciones mayores a 100 http://daquina.io/aqaviz/?_inputs_&dates=%5B%222017-03-01%22%2C%222017-10-11%22%5D&map_bounds=%7B%22north%22%3A6.38627143781799%2C%22east%22%3A-75.340461730957%2C%22south%22%3A6.11939048057678%2C%22west%22%3A-75.8781051635742%7D&map_zoom=12&range=%5B103%2C187%5D&undefined_shape_click=%7B%22id%22%3Anull%2C%22.nonce%22%3A0.468528855641437%2C%22lat%22%3A6.182392%2C%22lng%22%3A-75.550095%7D&undefined_shape_mouseout=%7B%22id%22%3Anull%2C%22.nonce%22%3A0.631095207384145%2C%22lat%22%3A6.18352%2C%22lng%22%3A-75.547245%7D&undefined_shape_mouseover=%7B%22id%22%3Anull%2C%22.nonce%22%3A0.697734141732581%2C%22lat%22%3A6.18352%2C%22lng%22%3A-75.547245%7D&wday=%5B%22Sunday%22%2C%22Monday%22%2C%22Tuesday%22%2C%22Wednesday%22%2C%22Thursday%22%2C%22Friday%22%2C%22Saturday%22%5D
+****** ¿Y si le agregamos un consenso? 
+       Tener muchas mediciones del mismo sitio en diferentes días y horas permitiría ir validando los datos.
+****** Gps 
+       Emite datos errados cuando se está localizando, el asunto se esta tratando acá: https://github.com/unloquer/AQA/issues/18
+
+       
+**** Detonantes
+***** ¿Puedo hacer mi propia comunidad de aire?
+****** ¿Porque comunidades pequeñas?
+***** ¿Puedo poner historias ?
+*** ¿De qué me sirve los aspectos "abiertos" de lo que están haciendo?
+**** ¿Respecto al Firmware? 
+***** ¿Puedo adaptar el código a mis necesidades?
+***** ¿Puedo quitar o agregar componentes (micrófono)?
+**** ¿Respecto al Hardware?                                           :Check:
+***** ¿Puedo cambiar el diseño PCB? ¿Para qué?
+***** ¿Diseño sensor?                                                 :Check:
+***** ¿Microcontrolador ESP2688?                                      :Check:
+**** ¿Se puede alterar los datos?
+***** ¿blame? ¿cadena de custodia? ¿blockchain?
+**** ¿Porqué publican el presupuesto? https://github.com/unloquer/AQA/blob/master/costos.dat    
+
+     | Dispositivo               | us$ |   col$ |
+     |---------------------------+-----+--------|
+     | DIY                       |  44 | 128876 |
+     | Muñeco, cables a la vista | 108 | 316332 |
+     | Embebido en carcasa       | 178 | 521362 |
+     #+TBLFM: $3=$2*2929
+
+**** Documentacion
+***** Repositorio  https://github.com/unloquer/AQA
+****** Fork
+****** Clone
+****** Pull request
+****** Blame
+***** Wiki http://wiki.unloquer.org/personas/brolin/proyectos/agentes_calidad_aire
+**** Asuntos / issues / problemas https://github.com/unloquer/AQA/issues
+**** ¿ lo puedo cerrar y vender?
+***** ¿licenciar para mantener abierto?
+****** ¿TAPR?  http://www.tapr.org/OHL
+**** Detonantes
+***** ¿Para que dure más de 100 años debe ser abierto o cerrado?
+
