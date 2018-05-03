@@ -94,12 +94,15 @@ int postCsvFile(String url, String filename);
 int postCsv(String url, String csv);
 int post2Influx(String url, String load);
 
-void viewdisplay();
 
 void ledParticulateQuality(PlantowerData data);
 void ledParticulateQualityStreamming(PlantowerData data);
 void ledParticulateQualityStream(PlantowerData data);
 
+ void displayTempHumid();
+void displaypm();
+void setupdisplay();
+void viewdisplay();
 /*class GPSSensor {
   private:
   int readTime;
