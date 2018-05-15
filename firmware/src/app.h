@@ -15,7 +15,21 @@
 #include <FastLED.h>
 #include "DHT.h"
 
-const String SENSOR_ID = "generic"; // change this with your sensor ID
+#define DEBUG
+#define NUEVATARJETA
+
+#ifdef DEBUG
+#define DMSG(args...)       Serial.print(args)
+#define DMSGf(args...)      Serial.printf(args)
+#define DMSG_STR(str)       Serial.println(str)
+#else
+#define DMSG(args...)
+#define DMSGf(args...)
+#define DMSG_STR(str)
+#endif
+
+
+const String SENSOR_ID = "alejo"; // change this with your sensor ID
 
 const String STR_COMMA = ",";
 const String STR_SLASH = "/";
@@ -45,9 +59,9 @@ typedef struct {
 
 typedef struct {
   String name;
-  int data;
+ int data;
   void read() {
-    Serial.println("I read!"+data);
+    DMSG_STR("I read!"+data);
   }
 } Sensor;
 

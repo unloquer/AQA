@@ -32,20 +32,20 @@ GPSData parseGPSData() {
     data.lat = gpsParser.location.lat();
     data.lng = gpsParser.location.lng();
 
-    Serial.print("lat: ");
-    Serial.println(data.lat);
-    Serial.print("lng: ");
-    Serial.println(data.lng);
+    DMSG("lat: ");
+    DMSG_STR(data.lat);
+    DMSG("lng: ");
+    DMSG_STR(data.lng);
   } else {
     data.ready = 0;
-    Serial.println("GPS is not ready!");
+    DMSG_STR("GPS is not ready!");
     // return data;
   }
 
   if (gpsParser.date.isValid()) {
     data.date += gpsParser.date.month() + STR_SLASH + gpsParser.date.day() +
       STR_SLASH + gpsParser.date.year();
-    Serial.println("date: "+data.date);
+    DMSG_STR("date: "+data.date);
   }
 
   if (gpsParser.time.isValid()) {
@@ -66,26 +66,26 @@ GPSData parseGPSData() {
     timeStr += gpsParser.time.centisecond();
 
     data.time = timeStr;
-    Serial.print("time: ");
-    Serial.println(data.time);
+    DMSG("time: ");
+    DMSG_STR(data.time);
   }
 
   if(gpsParser.altitude.isValid()) {
     data.altitude = gpsParser.altitude.meters();
-    Serial.print("altitude: ");
-    Serial.println(data.altitude);
+    DMSG("altitude: ");
+    DMSG_STR(data.altitude);
   }
 
   if(gpsParser.course.isValid()) {
     data.course = gpsParser.course.deg();
-    Serial.print("course: ");
-    Serial.println(data.course);
+    DMSG("course: ");
+    DMSG_STR(data.course);
   }
 
   if(gpsParser.speed.isValid()) {
     data.speed = gpsParser.speed.kmph();
-    Serial.print("speed: ");
-    Serial.println(data.speed);
+    DMSG("speed: ");
+    DMSG_STR(data.speed);
   }
 
   return data;

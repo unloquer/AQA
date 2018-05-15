@@ -2,11 +2,11 @@
 
 
 void configModeCallback (WiFiManager *myWiFiManager) {
-  Serial.println("Entered config mode");
-  Serial.println(WiFi.softAPIP());
+  DMSG_STR("Entered config mode");
+  DMSG_STR(WiFi.softAPIP());
   // print the ssid that we should connect to to configure the ESP8266
-  Serial.print("Created config portal AP ");
-  Serial.println(myWiFiManager->getConfigPortalSSID());
+  DMSG("Created config portal AP ");
+  DMSG_STR(myWiFiManager->getConfigPortalSSID());
 }
 
 
@@ -33,13 +33,13 @@ void setupWifi() {
   //here  "AutoConnectAP"
   //and goes into a blocking loop awaiting configuration
   if(!wifiManager.autoConnect()) {
-    Serial.println("failed to connect and hit timeout");
+    DMSG_STR("failed to connect and hit timeout");
     //reset and try again, or maybe put it to deep sleep
     ESP.reset();
     delay(1000); 
   }
 
   //if you get here you have connected to the WiFi
-  Serial.println("connected...yeey :)");
+  DMSG_STR("connected...yeey :)");
 
 }

@@ -16,7 +16,7 @@ String _get(String url) {
         return http.getString();
       }
     } else {
-      Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
+      DMSGf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
     }
 
     http.end();
@@ -35,7 +35,7 @@ String _post(String url, String json) {
         return http.getString();
       }
     } else {
-      Serial.printf("[HTTP] POST... failed, error: %s\n", http.errorToString(httpCode).c_str());
+      DMSGf("[HTTP] POST... failed, error: %s\n", http.errorToString(httpCode).c_str());
     }
 
     http.end();
@@ -53,11 +53,11 @@ int postCsv(String url, String csv) {
   int httpCode = http.POST(csv);
   if(httpCode > 0) {
     String payload = http.getString();
-    Serial.println(payload);
-    Serial.println("CSV file sent successfully");
+    DMSG_STR(payload);
+    DMSG_STR("CSV file sent successfully");
   } else {
-    Serial.print("[HTTP] failed, error: ");
-    Serial.println(http.errorToString(httpCode).c_str());
+    DMSG("[HTTP] failed, error: ");
+    DMSG_STR(http.errorToString(httpCode).c_str());
   }
 
   http.end();
@@ -72,14 +72,14 @@ int postCsvFile(String url, String filename) {
 
   File file = SPIFFS.open(filename, "r");
   content_length = file.size();
-  Serial.print("Size:");
-  Serial.println(content_length);
+  DMSG("Size:");
+  DMSG_STR(content_length);
 
   String data = "";
   char *_data; 
-  Serial.println("Reading file ...");
+  DMSG_STR("Reading file ...");
   while(file.available()) {
-    Serial.print(".");
+    DMSG(".");
     data += String((char)file.read());
   }
   data.toCharArray(_data, content_length);
@@ -89,29 +89,29 @@ int postCsvFile(String url, String filename) {
   //while(file.available()) {
   //*(data + i++) = file.read();
     //data[i++] = file.read();
-    //Serial.print(i);
+    //DMSG(i);
   //}
 
   //*(data + i) = '\0';
 
-  //Serial.print("Count size:");
-  //Serial.println(i);
+  //DMSG("Count size:");
+  //DMSG_STR(i);
 
   http.begin(url);
   http.setTimeout(HTTP_TIMEOUT);
   http.addHeader("Content-Type", "text/csv");
   http.addHeader("Content-Length", String(content_length));
 
-  Serial.println("\nSending file to "+url);
+  DMSG_STR("\nSending file to "+url);
   int httpCode = http.POST((uint8_t *)_data, strlen(_data));
   //int httpCode = http.POST(data);
   if(httpCode > 0) {
     String payload = http.getString();
-    Serial.println(payload);
-    Serial.println("CSV file sent successfully");
+    DMSG_STR(payload);
+    DMSG_STR("CSV file sent successfully");
   } else {
-    Serial.print("[HTTP] failed, error: ");
-    Serial.println(http.errorToString(httpCode).c_str());
+    DMSG("[HTTP] failed, error: ");
+    DMSG_STR(http.errorToString(httpCode).c_str());
   }
 
   http.end();
@@ -128,17 +128,18 @@ int post2Influx(String url, String load) {
   //http.addHeader("Content-Length", String(csv.length()));
 
   int httpCode = http.POST(load);
+  yield();
   if(httpCode > 0) {
     String payload = http.getString();
-    Serial.println(payload);
-    Serial.println("load  sent successfully!");
+    DMSG_STR(payload);
+    DMSG_STR(F("load  sent successfully!"));
   } else {
-    Serial.print("[HTTP] failed, error;;;: ");
-    Serial.println(http.errorToString(httpCode).c_str());
+    DMSG(F("[HTTP] failed, error;;;: "));
+    DMSG_STR(http.errorToString(httpCode).c_str());
   }
-  
+
   http.end();
   return httpCode;
-  
+
 }
 
