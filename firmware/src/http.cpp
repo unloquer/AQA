@@ -1,4 +1,5 @@
 #include "app.h"
+#include <StreamString.h>
 
 const uint16_t HTTP_TIMEOUT = 1000 * 60;
 HTTPClient http;
@@ -119,23 +120,39 @@ int postCsvFile(String url, String filename) {
   return httpCode;
 }
 
+// https://docs.influxdata.com/influxdb/v1.5/tools/api/#write
+// example 3 or example 4
+
 int post2Influx(String url, String load) {
   if (WiFi.status() != WL_CONNECTED) { return 0; }
 
   http.begin(url);
   http.setTimeout(HTTP_TIMEOUT);
+  http.addHeader("Content-Type", "application/x-www-form-urlencoded");
   //http.addHeader("Content-Type", "text/csv");
-  //http.addHeader("Content-Length", String(csv.length()));
+  http.addHeader("Content-Length", String(load.length()));
 
-  int httpCode = http.POST(load);
-  yield();
-  if(httpCode > 0) {
-    String payload = http.getString();
-    DMSG_STR(payload);
-    DMSG_STR(F("load  sent successfully!"));
-  } else {
-    DMSG(F("[HTTP] failed, error;;;: "));
-    DMSG_STR(http.errorToString(httpCode).c_str());
+  StreamString stream;
+  stream.print(load);
+
+  size_t loadSize = load.length();
+  int httpCode = -1;
+  while(httpCode == -1){
+    yield();
+    //httpCode = http.POST(load) ;
+    httpCode = http.sendRequest("POST", &stream, loadSize );
+    yield();
+    //https://github.com/esp8266/Arduino/issues/1872
+    //int sendRequest(const char * type, Stream * stream, size_t size = 0);
+    //http.writeToStream(&Serial);
+    if(httpCode > 0) {
+      String payload = http.getString();
+      DMSG_STR(payload);
+      DMSG_STR(F("load  sent successfully!"));
+    } else {
+      DMSG(F("[HTTP] failed, error;;;: "));
+      DMSG_STR(http.errorToString(httpCode).c_str());
+    }
   }
 
   http.end();

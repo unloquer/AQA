@@ -1,7 +1,7 @@
 #include <ESP8266WiFi.h>
 #include <DNSServer.h>
 #include <ESP8266HTTPClient.h>
-#include "WiFiManager.h" 
+#include "WiFiManager.h"
 #include <ESP8266WebServer.h>
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
@@ -16,7 +16,7 @@
 #include "DHT.h"
 
 #define DEBUG
-#define NUEVATARJETA
+//#define NUEVATARJETA
 
 #ifdef DEBUG
 #define DMSG(args...)       Serial.print(args)
@@ -29,7 +29,7 @@
 #endif
 
 
-const String SENSOR_ID = "alejo"; // change this with your sensor ID
+const String SENSOR_ID = "checho"; // change this with your sensor ID
 
 const String STR_COMMA = ",";
 const String STR_SLASH = "/";
