@@ -429,9 +429,36 @@
     iva                                            $-82,100.00
     colcircuitos
 
+2018/03/28 Ajuste por re-diseño de PCB (huecos para montaje)
+    ahorros:fed:compra:pcb    $-62,000.00
+    uber
+
 2018/03/21  Asesoría China almuerzo Uber, Rafa, Fede
     ahorros:fed:egreso:asesoria                $-42,000.00
     El Aula
+
+2018/05/03 Compra de 10 gps y 10 DHT11
+    compra:componentes:dht11  10 dht @ $4,800.00
+    compra:componentes:gpsL80  10 gps @ $32,000.00
+    iva                      $58,756.00
+    federico:efectivo
+
+2018/05/11 Pago a Uber por ensamblaje de dispositivos
+    costo:aparato:manoDeObra:ensamblaje:uber   $-480,000.00
+    uber
+
+2018/05/17 Compra 10 gps y 10 DHT11
+    compra:componentes:dht11  10 dht @ $4,800.00
+    compra:componentes:gpsL80  10 gps @ $29,700.00
+    iva       $55,084.00
+    federico:efectivo
+
+
+
+
+
+
+
 
 ;; De las tarjetas diseñadas por uber
 ;; 6 tarjetas valieron $100000 en colcircuitos
