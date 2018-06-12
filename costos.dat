@@ -444,7 +444,7 @@
     federico:efectivo
 
 2018/05/11 Pago a Uber por ensamblaje de dispositivos
-    costo:aparato:manoDeObra:ensamblaje:uber   $-480,000.00
+    costo:aparato:manoDeObra:ensamblaje:uber   $-480,000.00 ;; 10 soldados 
     uber
 
 2018/05/17 Compra 10 gps y 10 DHT11
@@ -452,6 +452,11 @@
     compra:componentes:gpsL80  10 gps @ $29,700.00
     iva       $55,084.00
     federico:efectivo
+
+2018/06/10 Pago a Uber por ensamblaje de dispositivos
+    costo:aparato:manoDeObra:ensamblaje:uber   $-528,000.00  ;; 11 soldados
+    compra:componentes:partesUsb               $-50,000.00
+    brolin:pagoPlataforma
 
 
 
