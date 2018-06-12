@@ -16,7 +16,8 @@ PlantowerData plantower;
 PlantowerData plantowerData;
 
 FSInfo fs_info;
-
+String readPosition();
+void savePosition(String position);
 
 void fs_info_print() {
   SPIFFS.info(fs_info);
@@ -113,9 +114,10 @@ void fs_list_files(){
   }
 }
 
-#include <stdio.h>
-//#include <time.h>
+// #include <stdio.h>
+// #include <time.h>
 #include <Time.h>
+#include <TimeLib.h>
 
 //https://arduino.stackexchange.com/questions/1013/how-do-i-split-an-incoming-string#1033
 String getValue(String data, char separator, int index)
@@ -138,8 +140,10 @@ String getValue(String data, char separator, int index)
 void readLog() {
   DMSG_STR("Reading log ...");
   fs::File file = SPIFFS.open("datalog.txt", "r");
+  if(readPosition().toInt() > 0) file.seek(readPosition().toInt(),SeekSet);
+  DMSG_STR("Initial position " + readPosition());
   String line = "", line2send;
-
+  int linesCnt = 0;
   String device,lat,lng,date,hour,altitude,course,speed,humidity,temperature,pm1,pm25,pm10;
   String y,m,d,h,mi,s;
   int Year,Month,Day,Hour,Minute,Second;
@@ -155,7 +159,7 @@ void readLog() {
       if(!line.endsWith("NULL")) {
         //pm10
         pm10 = line;
-        DMSG("pm10=");DMSG(line);DMSG(" ");DMSG_STR(field);
+        //DMSG("pm10=");DMSG(line);DMSG(" ");DMSG_STR(field);
 
         tmElements_t t;
         time_t t_of_day;
@@ -169,15 +173,20 @@ void readLog() {
         t_of_day = makeTime(t);
         //t_of_day = mktime(&t);
 
-        line2send = device + STR_COMMA + F("id=") + device + F(" lat=") + lat + F(",lng=") + lng + F(",altitude=") + altitude + F(",course=") + course + F(",speed=") + speed + F(",humidity=") + humidity + F(",temperature=") + temperature + F(",pm1=") + pm1 + F(",pm25=") + pm25 + F(",pm10=") + pm10 + F(" ") + t_of_day;
+        linesCnt ++;
 
-        post2Influx("http://aqa.unloquer.org:8086/write?db=aqamobile&precision=s", line2send);
-        //DMSG_STR(line2send);
-        //DMSG_STR("Free Memory: "+String(ESP.getFreeHeap()));
+        line2send += device + STR_COMMA + F("id=") + device + F(" lat=") + lat + F(",lng=") + lng + F(",altitude=") + altitude + F(",course=") + course + F(",speed=") + speed + F(",humidity=") + humidity + F(",temperature=") + temperature + F(",pm1=") + pm1 + F(",pm25=") + pm25 + F(",pm10=") + pm10 + F(" ") + t_of_day + F("\n");
 
-        line2send = "";
-        //DMSG_STR(SecondsSince1970(2017,03,22,23,00,12));
-
+        if(linesCnt == 40) { // que pasa si la última tanda tiene menos de 50 líneas??
+          DMSG_STR(linesCnt);
+          //DMSG(line2send);
+          // DMSG_STR("Free Memory: "+String(ESP.getFreeHeap()));
+          savePosition((String) file.position());
+          DMSG_STR("File position "+ String(file.position())); // La posición de memoria donde va leyendo el archivo, almacenarla para continuar desde acá
+          post2Influx("http://aqa.unloquer.org:8086/write?db=aqamobile&precision=s", line2send);
+          line2send = "";
+          linesCnt = 0;
+        }
       }
 
       // Discard the \n, which is the next byte
@@ -296,6 +305,7 @@ void setup() {
     setupWifi();
     readLog();
     fs_delete_file();
+    savePosition("0");
   }
   //   WiFi.mode(WIFI_AP);
   //reportWiFi(30);
@@ -351,6 +361,31 @@ void loop() {
   }
 #endif
 }
+
+String readPosition() {
+  char filename [] = "position.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
+  File file = SPIFFS.open(filename, "r");
+  if (!file) {
+    DMSG_STR("file open failed");   // Check for errors
+    return "-1";
+  }
+  String p = file.readString();
+  return p;
+}
+
+void savePosition(String position) {
+  char filename [] = "position.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
+  File file = SPIFFS.open(filename, "w+");
+  if (!file) {
+    DMSG_STR("file open failed");   // Check for errors
+    return;
+  }
+
+  //DMSG_STR("Dentro de saveposition " + position);
+  file.println(position);
+  file.close();
+}
+
 
 void save() {
   char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
