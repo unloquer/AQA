@@ -11,7 +11,7 @@
 #+CATEGORY:   divulgacion
 
 
-* Escala de colores
+* Nivel 1: Escala de colores
 ** Sensor para medir la presencia (de particulas pequeñas) en el aire 
 *** PRACTICA: Poner a funcionar el sensor, 
     Partes: <sensor partículas> <microcontrolador> <leds> <pila> <hoja de papel> <colores>
@@ -22,4 +22,24 @@
 **** Experimentos
 ***** Enciende un fosforo cerca al sensor y toma nota de los cambios en la escala de colores.
 ***** Pasa cerca al mofle de un carro y observa el cambio en los colores
-***** En una habitación compara las mediciones cerrando ventanas y puertas con las que se observan con puertas y ventanas abiertas.
+***** En una habitación compara las mediciones cerrando ventanas y puertas con las que se observan con puertas y ventanas 
+* Nivel 2: Tablero de mediciones
+** Medir mas variables 
+*** PRÁCTICA: Agregar GPS y Sensor de humedad y temperatura
+**** Ensamble la pieza <gps> en la pieza <microcontrolador> 
+***** Verifique;
+      GPS bien conectado: <color>
+      GPS bien localizado: <color>
+**** Ensamble la pieza <sensor humedad y temperatura>
+***** Verifique la conexión
+      Sensor de temperatura bien conectado: <color>
+** Visualizar y análizar las mediciones
+*** PRÁCTICA: Conectarse al portal del sensor
+    Este texto viene de: https://comunidad.unloquer.org/t/como-conectar-el-aqa-dispositivo-de-medicion-a-wifi/76
+*** PRÁCTICA: Poner el valor de PM2.5 en la matriz led
+** Compartir las mediciones
+*** PRÁCTICA: Conectar el sensor a internet
+* Nivel 3: Explorar y aprovechar
+** Cambiar el firmware
+** Comunicar sensores entre sí
+    
