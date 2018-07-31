@@ -127,7 +127,7 @@ int post2Influx(String url, String load) {
   if (WiFi.status() != WL_CONNECTED) { return 0; }
 
   http.begin(url);
-  http.setTimeout(HTTP_TIMEOUT);
+  http.setTimeout(HTTP_TIMEOUT); // En wifimanager con timeout no hace más intentos de conexión
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");
   //http.addHeader("Content-Type", "text/csv");
   http.addHeader("Content-Length", String(load.length()));

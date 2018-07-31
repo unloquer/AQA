@@ -9,7 +9,7 @@
 #ifdef NUEVATARJETA
 
 // Pines 16 y 14 no sirven para la librería fastled
-#define NUM_LEDS 4
+#define NUM_LEDS 3
 #define LED_PIN 4
 #define LED_TYPE WS2812B
 CRGB leds[NUM_LEDS];
@@ -51,7 +51,7 @@ void ledParticulateQuality(PlantowerData data) {
 
   for(int i=0; i < 4; i++) {
     #ifdef NUEVATARJETA
-    leds[0] = leds[1] = leds[2] = leds[3]= i%2 == 0 ? alert : CRGB::Black;
+    leds[0] = leds[1] = leds[2] = i%2 == 0 ? alert : CRGB::Black;
     #else
     leds[0] = leds[1] = i%2 == 0 ? alert : CRGB::Black;
     #endif
@@ -67,17 +67,17 @@ void ledParticulateQuality(PlantowerData data) {
 
     CRGB alert = CRGB::Black;
 
-    if(pm25 < 13) alert = CRGB::Red; // CRGB::Green; // Alert.ok
+    if(pm25 < 13) alert = CRGB::Green; // CRGB::Green; // Alert.ok
     if(pm25 >= 13 && pm25 < 35) alert = CRGB::OrangeRed; // Alert.notGood;
     if(pm25 >= 35 && pm25 < 55) alert = CRGB::Yellow; // Alert.bad;
-    if(pm25 >= 55 && pm25 < 75) alert = CRGB::Green; // CRGB::Red; // Alert.dangerous;
+    if(pm25 >= 55 && pm25 < 75) alert = CRGB::Red; // CRGB::Red; // Alert.dangerous;
     if(pm25 >= 75) alert = CRGB::Purple; // Alert.harmful;
 
     FastLED.setBrightness(millis() % 255);
 
     for(int i=0; i < 4; i++) {
       #ifdef NUEVATARJETA
-      leds[0] = leds[1] = leds[2] = leds[3]= i%2 == 0 ? alert : CRGB::Black;
+      leds[0] = leds[1] = leds[2] = i%2 == 0 ? alert : CRGB::Black;
       #else
       leds[0] = leds[1] = i%2 == 0 ? alert : CRGB::Black;
       #endif
@@ -93,17 +93,17 @@ void ledParticulateQualityStreamming(PlantowerData data) {
 
   CRGB alert = CRGB::Black;
 
-  if(pm25 < 13) alert = CRGB::Red; // CRGB::Green; // Alert.ok
+  if(pm25 < 13) alert = CRGB::Green; // CRGB::Green; // Alert.ok
   if(pm25 >= 13 && pm25 < 35) alert = CRGB::OrangeRed; // Alert.notGood;
   if(pm25 >= 35 && pm25 < 55) alert = CRGB::Yellow; // Alert.bad;
-  if(pm25 >= 55 && pm25 < 75) alert = CRGB::Green; // CRGB::Red; // Alert.dangerous;
+  if(pm25 >= 55 && pm25 < 75) alert = CRGB::Red; // CRGB::Red; // Alert.dangerous;
   if(pm25 >= 75) alert = CRGB::Purple; // Alert.harmful;
 
   FastLED.setBrightness(millis() % 255);
 
   for(int i=0; i < 4; i++) {
     #ifdef NUEVATARJETA
-    leds[0] = leds[1] = leds[2] = leds[3]= i%2 == 0 ? alert : CRGB::Black;
+    leds[0] = leds[1] = leds[2] =  i%2 == 0 ? alert : CRGB::Black;
     #else
     leds[0] = leds[1] = i%2 == 0 ? alert : CRGB::Black;
     #endif

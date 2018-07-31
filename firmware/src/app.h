@@ -16,7 +16,7 @@
 #include "DHT.h"
 
 #define DEBUG
-//#define NUEVATARJETA
+#define NUEVATARJETA
 
 #ifdef DEBUG
 #define DMSG(args...)       Serial.print(args)
@@ -29,7 +29,7 @@
 #endif
 
 
-const String SENSOR_ID = "checho"; // change this with your sensor ID
+const String SENSOR_ID = "brolin"; // change this with your sensor ID
 
 const String STR_COMMA = ",";
 const String STR_SLASH = "/";
