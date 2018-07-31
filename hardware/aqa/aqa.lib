@@ -1,0 +1,17 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#
+# VResistor
+#
+DEF VResistor R 0 40 Y Y 1 F N
+F0 "R" 150 -50 60 H V C CNN
+F1 "VResistor" -50 100 60 V V C CNN
+F2 "" 0 0 60 H I C CNN
+F3 "" 0 0 60 H I C CNN
+DRAW
+X 1 1 50 150 200 R 50 50 1 1 B
+X 2 2 50 50 200 R 50 50 1 1 B
+ENDDRAW
+ENDDEF
+#
+#End Library
