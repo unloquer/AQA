@@ -1,0 +1,51 @@
+#+TITLE:      Instructivo
+#+AUTHOR:     unloquer
+#+EMAIL:      unloquer@gmail.com
+#+INFOJS_OPT: toc:nil mouse:underline buttons:0 path:http://thomasf.github.io/solarized-css/org-info.min.js
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://thomasf.github.io/solarized-css/solarized-light.min.css" />
+#+OPTIONS:    H:3 num:nil toc:t \n:nil ::t |:t ^:t -:t f:t *:t tex:t d:(HIDE) tags:not-in-toc
+#+STARTUP:    align fold nodlcheck hidestars oddeven lognotestate
+#+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)
+#+LANGUAGE:   en
+#+PRIORITIES: A C B
+#+CATEGORY:   divulgacion
+
+
+* Nivel 1: Escala de colores
+** Sensor para medir la presencia (de particulas pequeñas) en el aire 
+*** PRACTICA: Poner a funcionar el sensor, 
+    Partes: <sensor partículas> <microcontrolador> <leds> <pila> <hoja de papel> <colores>
+**** Ensamble la pieza <sensor> en la pieza <microcontrolador>
+**** Ensamble la pieza <leds> en la pieza <microcontrolador> 
+**** Para encender, conecte el <microcontrolador> con el <adaptador USB>
+**** Tome nota de los colores cada minuto en un papel durante 15 minutos
+**** Experimentos
+***** Imprime un mapa del barrio, sale a caminar con marcadores verde, naranja, rojo, morado y marrón, marca las mediciones en el mapa. 
+***** Enciende un fosforo cerca al sensor y toma nota de los cambios en la escala de colores.
+***** Pasa cerca al mofle de un carro y observa el cambio en los colores
+***** En una habitación compara las mediciones cerrando ventanas y puertas con las que se observan con puertas y ventanas 
+* Nivel 2: Tablero de mediciones
+** Medir mas variables 
+*** PRÁCTICA: Agregar GPS 
+**** Ensamble la pieza <gps> en la pieza <microcontrolador> 
+***** Verifique;
+      GPS bien conectado: <color>
+      GPS bien localizado: <color>
+** Visualizar y análizar las mediciones
+*** PRÁCTICA: Conectarse al portal del sensor
+    Este texto se tomaría de: https://comunidad.unloquer.org/t/como-conectar-el-aqa-dispositivo-de-medicion-a-wifi/76
+*** PRÁCTICA: Poner el valor de PM2.5 en la matriz led
+** Compartir las mediciones
+*** PRÁCTICA: Conectar el sensor a internet
+* Nivel 3 (extra): Explorar y aprovechar
+** Cambiar el firmware
+*** PRÁCTICA: Cambie el nombre del sensor
+**** Instala el entorno platformio.io
+**** Cambia el nombre del sensor en el archivo app.h
+***** Verifica: compile (build) el proyecto con el cambio de nombre 
+**** Sube el firmware al dispositivo
+***** Conecta por el puerto mini USB.
+***** Sube el firmware (upload).
+***** Verifica: Se conecta por WiFi al dispositivo y verifica el nuevo nombre del sensor.
+** Comunicar sensores entre sí
+*** PRÁCTICA: Tansmite el valor de PM2.5 de un dispositivo con sensor de partículas a otro sin sensor de partículas.
