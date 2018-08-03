@@ -1,0 +1,125 @@
+;; para hacer consultas a este cuaderno
+;; puede usar ledger ( http://ledger-cli.org/  )
+;; por ejemplo el comando
+;; $ ledger ruta/al/archivo/costos.dat register aparato
+;; responde con la suma de los costos de la categoría aparato
+;; flujo ingresos egresos:
+;; $ ledger -f ~/unloquer/AQA/costos.dat reg ingreso and not inventario egreso and not inventario
+;; ejemplo cuenta :
+;; ledger -f ~/unloquer/AQA/costos.dat reg cuenta:brolin
+;; ejemplo reembolsables:
+;; ledger -f ~/unloquer/AQA/costos.dat reg reembolsable:brolin
+
+; El número de la actividad en el presupuesto aprobado por los judaros y que está en el archivo de drive corresponde al número encerrado entre paréntesis
+
+2018/06/16 Compra de 40 matrices led
+    proyecto:dispositivo:15:producciónmodulos:materiales:matricesled:conciliar_soporte                   
+    proyecto:prestamo:debe:brolin                                            $600000
+
+2018/06/28 Pago de póliza
+    proyecto:administración:22:imprevistos:pagopoliza:conciliar_soporte              
+    proyecto:prestamo:debe:brolin                                              $71500
+
+2018/07/04 (1) Sesiones creativas de diseño de la metodología
+    proyecto:diseño:metodología:1:sesionescreativas                    $1000000
+    proyecto:presupuesto
+
+2018/07/04 (2) Sesiones creativas de diseño del dispositivo
+    proyecto:diseño:dispositivo:2:sesionescreativas                    $1000000
+    proyecto:presupuesto
+
+2018/07/04 (3) Formulación de guías metodológicas
+    proyecto:diseño:metodología:3:formulación                           $500000
+    proyecto:presupuesto
+
+2018/07/04 (4) Diseño gráfico de guías metodológicas y material de apoyo
+    proyecto:diseño:gráfico:4:guías                                          $2000000
+    proyecto:presupuesto
+
+2018/07/04 (5) Partición en sesiones de taller y definición de materiales para cada taller
+    proyecto:talleres:5:diseño                                          $100000
+    proyecto:presupuesto
+
+2018/07/04 (6) Investigación forma física que facilita el uso por módulos
+    proyecto:diseño:gráfico:6:empaque                                   $200000
+    proyecto:presupuesto
+
+2018/07/04 (7) Diseño gráfico para aplicar a todo el material
+    proyecto:diseño:gráfico:7:estéticageneral                           $600000
+    proyecto:presupuesto
+
+2018/07/04 (8) Diseño de forma física que facilita el uso por módulos
+    proyecto:diseño:dispositivo:8:empaque                                $600000
+    proyecto:presupuesto
+
+2018/07/04 (9) Síntesis y planeación de la metodologia
+    proyecto:síntesis:9:metodología                                       $100000
+    proyecto:presupuesto
+
+2018/07/04 (10) Síntesis y planeación del kit
+    proyecto:síntesis:10:producto                                         $100000
+    proyecto:presupuesto
+
+
+2018/07/04 (11) Planeación de ejercicio piloto que incluye construcción de dispositivo, práctica y reflexión
+    proyecto:talleres:11:planeación                                        $100000
+    proyecto:presupuesto
+
+2018/07/04 (12) Equipo coordinador
+    proyecto:administración:12:coordinación                                              $2600000
+    proyecto:presupuesto
+
+2018/07/04 (13) Modularización hardware ya disponible en circuitos independientes
+    proyecto:dispositivo:13:modularizarhardware                            $200000
+    proyecto:presupuesto
+
+2018/07/04 (14) Adaptación de software a funcionamiento modular
+    proyecto:dispositivo:14:ajustesfirmware                                $300000
+    proyecto:presupuesto
+
+2018/07/04 (15) Producción de forma física que facilite el uso por módulos
+    proyecto:dispositivo:15:producciónmodulos                             $6000000
+    proyecto:presupuesto
+
+2018/07/04 (16) Configuración de servidores que soportan la plataforma
+    proyecto:dispositivo:16:servidores                                        $300000
+    proyecto:presupuesto
+
+2018/07/04 (17) Pruebas funcionales de hardware y software
+    proyecto:dispositivo:17:pruebas                                                  $300000
+    proyecto:presupuesto
+
+2018/07/04 (18) Realización de ejercicio piloto en el doce de octubre, moravia y manrique
+    proyecto:talleres:18:realizacion                                    $3600000
+    proyecto:presupuesto
+
+2018/07/04 (19) Cubrimiento redes sociales
+    proyecto:síntesis:difusión:19:redessociales                                           $700000
+    proyecto:presupuesto
+
+2018/07/04 (20) Documentación de todo el proceso de manera abierta
+    proyecto:síntesis:difusión:20:documentación                                   $700000
+    proyecto:presupuesto
+
+2018/07/04 (21) Creación digital  de material editorial que sintetiza y visualiza la experiencia
+    proyecto:síntesis:difusión:21:materialeditorial                              $1500000
+    proyecto:presupuesto
+
+2018/07/04 (22) Imprevistos
+    proyecto:administración:22:imprevistos                                             $2500000
+    proyecto:presupuesto
+
+2018/07/27 Pago 40% estímulo
+    proyecto                                                                    -$10000000
+    pagoalcaldia
+
+2018/08/03 Pago a brolin por compra de 40 matrices led
+    prestamo:pago:brolin:matricesled                                          
+    proyecto:prestamo:pago:brolin                                            $600000       
+2018/08/03 Pagoa a brolin por póliza
+    prestamo:pago:brolin:poliza                                          
+    proyecto:prestamo:pago:brolin                                            $71500
+
+2018/07/30 Compra conectores RCA
+    proyecto:dispositivo:15:producciónmodulos:materiales:conectores              
+    proyecto                                                                  $10300
