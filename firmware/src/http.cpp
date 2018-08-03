@@ -100,8 +100,8 @@ int postCsvFile(String url, String filename) {
 
   http.begin(url);
   http.setTimeout(HTTP_TIMEOUT);
-  http.addHeader("Content-Type", "text/csv");
-  http.addHeader("Content-Length", String(content_length));
+  http.addHeader(F("Content-Type"), F("text/csv"));
+  http.addHeader(F("Content-Length"), String(content_length));
 
   DMSG_STR("\nSending file to "+url);
   int httpCode = http.POST((uint8_t *)_data, strlen(_data));
@@ -109,9 +109,9 @@ int postCsvFile(String url, String filename) {
   if(httpCode > 0) {
     String payload = http.getString();
     DMSG_STR(payload);
-    DMSG_STR("CSV file sent successfully");
+    DMSG_STR(F("CSV file sent successfully"));
   } else {
-    DMSG("[HTTP] failed, error: ");
+    DMSG(F("[HTTP] failed, error: "));
     DMSG_STR(http.errorToString(httpCode).c_str());
   }
 
