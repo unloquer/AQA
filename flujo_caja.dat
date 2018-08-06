@@ -12,12 +12,12 @@
 
 ; El número de la actividad en el presupuesto aprobado por los judaros y que está en el archivo de drive corresponde al número encerrado entre paréntesis
 
-2018/06/16 Compra de 40 matrices led
-    proyecto:dispositivo:15:producciónmodulos:materiales:matricesled:conciliar_soporte                   
+2018/06/16 Compra de 40 matrices led -> http://wiki.unloquer.org/lib/exe/fetch.php?media=:proyectos:estimula_aqa:administrativo:2018-08-06-105923_1153x450_scrot.png
+    proyecto:dispositivo:15:producciónmodulos:materiales:matricesled           ;:conciliar_soporte                   
     proyecto:prestamo:debe:brolin                                            $600000
 
-2018/06/28 Pago de póliza
-    proyecto:administración:22:imprevistos:pagopoliza:conciliar_soporte              
+2018/06/28 Pago de póliza -> http://wiki.unloquer.org/lib/exe/fetch.php?media=:proyectos:estimula_aqa:administrativo:pago_poliza.jpg
+    proyecto:administración:22:imprevistos:pagopoliza              
     proyecto:prestamo:debe:brolin                                              $71500
 
 2018/07/04 (1) Sesiones creativas de diseño de la metodología
@@ -120,6 +120,6 @@
     prestamo:pago:brolin:poliza                                          
     proyecto:prestamo:pago:brolin                                            $71500
 
-2018/07/30 Compra conectores RCA
+2018/07/30 Compra conectores RCA -> http://wiki.unloquer.org/_media/proyectos/estimula_aqa/administrativo/facturaconectores.jpg
     proyecto:dispositivo:15:producciónmodulos:materiales:conectores              
     proyecto                                                                  $10300
