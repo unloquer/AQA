@@ -11,7 +11,6 @@
 ;; ledger -f ~/unloquer/AQA/costos.dat reg reembolsable:brolin
 
 ; El número de la actividad en el presupuesto aprobado por los judaros y que está en el archivo de drive corresponde al número encerrado entre paréntesis
-
 2018/06/16 Compra de 40 matrices led -> http://wiki.unloquer.org/lib/exe/fetch.php?media=:proyectos:estimula_aqa:administrativo:2018-08-06-105923_1153x450_scrot.png
     proyecto:dispositivo:15:producciónmodulos:materiales:matricesled           ;:conciliar_soporte                   
     proyecto:prestamo:debe:brolin                                            $600000
@@ -110,16 +109,45 @@
     proyecto:presupuesto
 
 2018/07/27 Pago 40% estímulo
-    proyecto                                                                    -$10000000
-    pagoalcaldia
+    proyecto                                                                
+    pagoalcaldia                                                            -$10000000
 
 2018/08/03 Pago a brolin por compra de 40 matrices led
-    prestamo:pago:brolin:matricesled                                          
-    proyecto:prestamo:pago:brolin                                            $600000       
+    proyecto:prestamo:pago:brolin:matricesled                                            
+    egresos:15:producciónmodulos:prestamo:pago:brolin                          $600000
+
 2018/08/03 Pagoa a brolin por póliza
-    prestamo:pago:brolin:poliza                                          
-    proyecto:prestamo:pago:brolin                                            $71500
+    proyecto:prestamo:pago:brolin:poliza                                            
+    egresos:15:producciónmodulos:prestamo:pago:brolin                          $71500
 
 2018/07/30 Compra conectores RCA -> http://wiki.unloquer.org/_media/proyectos/estimula_aqa/administrativo/facturaconectores.jpg
-    proyecto:dispositivo:15:producciónmodulos:materiales:conectores              
-    proyecto                                                                  $10300
+    proyecto:dispositivo:15:producciónmodulos:materiales:conectores                         
+    egresos:15:producciónmodulos                                     $10300
+
+2018/07/30 Compra conectores 50 motores dc para anemómetro -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:motoresdc:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $72840
+
+2018/08/11 Compra crédito digital ocean
+    proyecto:dispositivo:16:servidores:digitalocean                          
+    egresos:16:servidores                                            $308847
+
+2018/08/15 Pago a diseñador por 3 meses
+    proyecto:diseño:gráfico:4:pago:guías                                 
+    egresos:proyección:4:guias                                      $2000000
+
+2018/08/15 Pago a diseñador por 3 meses
+    proyecto:diseño:gráfico:6:pago:empaque                                 
+    egresos:proyección:6:empaque                                     $200000
+
+2018/08/15 Pago a checho por ilustraciones
+    proyecto:diseño:gráfico:7:pago:estéticageneral                                 
+    egresos:proyección:7:estéticageneral                             $600000
+
+2018/08/15 Pago a checho por ilustraciones
+    proyecto:diseño:dispositivo:8:pago:empaque                                 
+    egresos:proyección:8:empaque                                     $600000
+
+
+
+
