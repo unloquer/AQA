@@ -1,0 +1,3 @@
+[submodule "hardware/pcb/diseno_uber_gaviria"]
+	path = hardware/pcb/diseno_uber_gaviria
+	url = https://github.com/uagaviria/PCB-CALIDAD-DE-AIRE
