@@ -148,6 +148,27 @@
     proyecto:diseño:dispositivo:8:pago:empaque                                 
     egresos:proyección:8:empaque                                     $600000
 
+2018/08/16 Compra cables de colores para soldar -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:cables:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $68988
 
+2018/08/17 Compra 15 sensores pms5003 -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:pms5003:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $623235
 
+2018/08/21 Compra 50 sensores dht11 -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:dht11:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $100820
+
+2018/08/21 Compra 20 wemos d1 mini -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:wemos:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $151201
+
+2018/08/22 Pago a diseñador por 3 meses
+    egresos:6:empaque                                                $200000
+    egresos:proyección:6:empaque                                     
+
+2018/08/22 Pago a diseñador por 3 meses
+    egresos:4:guias                                                  $680000
+    egresos:proyección:4:guias                                     
 
