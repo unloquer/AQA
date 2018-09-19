@@ -1,11 +1,17 @@
+#include <constants_defines.h>
 #include <Arduino.h>
 #include <app.h>
-GPS my_gps;
+using namespace aqaGps;
+
+//gpsData my_gps;
+SoftwareSerial gpsSerial(GPS_RX,GPS_TX);
+AqaGps gpsSensor(gpsSerial);
 void setup() {
 
   Serial.begin(115200);
-
-  Serial.println(my_gps.ready);
+  
+  gpsSerial.begin(GPS_BAUDS);
+ /* Serial.println(my_gps.ready);
   String defines = STR_DOT;
   defines+=STR_COMMA;
   defines+=STR_SPACE;
@@ -13,12 +19,14 @@ void setup() {
   defines += STR_SLASH;
   defines += STR_NULL;
 
-  DMSG_STR(defines);
+  DMSG_STR(defines);*/
 
 }
 
 
 void loop() {
 
+  gpsSensor.handleGpsData();
+  yield();
 
 }

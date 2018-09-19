@@ -9,6 +9,11 @@
  
 #define DEBUG
 
+//---pin and softwareSerial stuff definition
+//
+#define GPS_RX 13
+#define GPS_TX 7
+#define GPS_BAUDS 9600
 
 //
 //-- define special chars

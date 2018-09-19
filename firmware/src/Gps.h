@@ -4,14 +4,14 @@
 
 #include<constants_defines.h>
 #include <Arduino.h>
-#include <TinyGPS++.h>
 #include <Stream.h>
+#include <SoftwareSerial.h>
 
-class GPS {
+namespace aqaGps {
 
-  public:
+  typedef struct gpsData {
 
-    int ready = 35;
+    int ready = 0;
 
     String date;
     String time;
@@ -20,8 +20,28 @@ class GPS {
     double speed;
     double lat;
     double lng;
+  };
 
-};
+  class AqaGps {
+
+    public:
+      AqaGps ();
+      AqaGps(Stream &out);
+      bool timeout(void);
+      void aqaGpsSetup();
+      void handleGpsData();
+      TinyGPSPlus tinyGps;
+
+    private:
+
+      void _readGps(unsigned long timeout);
+      Stream &_out;
+      bool _timeout = false;
+//     SoftwareSerial gpsSerial(GPS_RX,GPS_TX);
+
+
+  };
+}
 
 #endif
 
