@@ -1,6 +1,6 @@
-#include <constants_defines.h>
-#include <Arduino.h>
 #include <app.h>
+
+
 using namespace aqaGps;
 
 //gpsData my_gps;

@@ -26,19 +26,16 @@ namespace aqaGps {
   class AqaGps {
 
     public:
-      AqaGps ();
       AqaGps(Stream &out);
       bool timeout(void);
-      void aqaGpsSetup();
       void handleGpsData();
-      TinyGPSPlus tinyGps;
 
     private:
 
+      TinyGPSPlus tinyGps;
       void _readGps(unsigned long timeout);
       Stream &_out;
       bool _timeout = false;
-//     SoftwareSerial gpsSerial(GPS_RX,GPS_TX);
 
 
   };
