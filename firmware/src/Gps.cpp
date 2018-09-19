@@ -1,7 +1,8 @@
+
+#include<Arduino.h>
 #include <constants_defines.h>
 #include <TinyGPS++.h>
 #include<Gps.h>
-#include<Arduino.h>
 using namespace aqaGps;
 
 
@@ -45,12 +46,19 @@ void AqaGps::handleGpsData()
     data.lng = tinyGps.location.lng();
 
     DMSG("lat:  ");
-    DMSG_STR(data.lat);
+     DMSG(data.lat);DMSG(STR_SPACE);
     DMSG("long: ");
     DMSG_STR(data.lng);
 
   }else {
     DMSG_STR("gsp not ready!");
+  }
+
+  if(tinyGps.date.isValid()) {
+
+    data.date += tinyGps.date.month() + STR_SLASH + tinyGps.date.day() +
+      STR_SLASH + tinyGps.date.year();
+    DMSG_STR("date :"+data.date);
   }
 
 }

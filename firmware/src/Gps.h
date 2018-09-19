@@ -6,6 +6,7 @@
 #include <Arduino.h>
 #include <Stream.h>
 #include <SoftwareSerial.h>
+#include <TinyGPS++.h>
 
 namespace aqaGps {
 

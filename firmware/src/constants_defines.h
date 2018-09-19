@@ -17,13 +17,13 @@
 
 //
 //-- define special chars
-#define STR_COMMA  ","
-#define STR_SLASH  "/"
-#define STR_DOT  "."
-#define STR_COLON  ":"
-#define STR_NULL  "NULL"
-#define STR_ZERO  "0"
-#define STR_SPACE  " "
+const String STR_COMMA  = ",";
+const String STR_SLASH =  "/";
+ const String STR_DOT =  ".";
+const String STR_COLON = ":";
+const String STR_NULL = "NULL";
+const String  STR_ZERO  = "0";
+const String STR_SPACE  = " ";
 // ---- 
 // debugging 
 #ifdef  DEBUG
