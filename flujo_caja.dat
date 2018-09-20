@@ -65,7 +65,7 @@
     proyecto:presupuesto
 
 2018/07/04 (12) Equipo coordinador
-    proyecto:administración:12:coordinación                                              $2600000
+    proyecto:administración:12:coordinación                               $2600000
     proyecto:presupuesto
 
 2018/07/04 (13) Modularización hardware ya disponible en circuitos independientes
@@ -172,3 +172,70 @@
     egresos:4:guias                                                  $680000
     egresos:proyección:4:guias                                     
 
+2018/08/15 Pago de 1 hora de asesoría a Rafael Vega
+    proyecto:dispositivo:13:pago:modularizarhardware:conciliar_soporte                                 
+    egresos:proyección:13:modularizarhardware                         $80000
+
+2018/09/2 Compra 100 cables conectores mikrokits -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:conectores:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $40000
+
+2018/09/2 Compra 120 cables conectores terminal cobre -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:conectores:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $56854
+
+2018/09/2 Compra 20 wemos d1 mini -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:wemos:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $152046
+
+2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
+    proyecto:talleres:11:pago:planeación 
+    egresos:proyección:11:planeación_talleres                         $100000
+
+2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
+    proyecto:talleres:5:pago:diseño
+    egresos:proyección:5:diseño                                       $100000
+
+2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
+    proyecto:talleres:18:pago:realización 
+    egresos:proyección:18:realización                                 $2400000
+
+2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
+    proyecto:síntesis:difusión:19:pago:redessociales 
+    egresos:proyección:19:redessociales                                $700000
+
+2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
+    proyecto:síntesis:difusión:20:pago:documentación 
+    egresos:proyección:20:documentación                                $700000
+
+2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
+    proyecto:dispositivo:14:pago:ajustesfirmware
+    egresos:proyección:14:ajustesfirmware                              $300000
+
+2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
+    proyecto:diseño:metodología:3:pago:formulación
+    egresos:proyección:3:formulación_metodología                       $200000
+
+2018/09/13 Compra conectores RCA -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:conectores:conciliar_soporte
+    egresos:15:producciónmodulos                                      $110100
+
+2018/09/13 Compra 40 fuentes de voltaje LM2577 step-up module -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:fuentes:conciliar_soporte
+    egresos:15:producciónmodulos                                      $139781
+
+2018/09/18 Compra de 200 broche magnéticas en la bombay -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:broches:conciliar_soporte                         
+    egresos:15:producciónmodulos                                      $24200
+
+2018/09/19 Compra de 2 fuentes LM2577 -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:fuentes:conciliar_soporte                         
+    egresos:15:producciónmodulos                                     $30000
+
+2018/09/19 Compra de 50 motores con hélices -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:motoresdc::conciliar_soporte                         
+    egresos:15:producciónmodulos                                     $97633
+
+2018/09/19 Compra de 20 GPS l80 -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:gpss:conciliar_soporte                         
+    egresos:15:producciónmodulos                                   	$627963
