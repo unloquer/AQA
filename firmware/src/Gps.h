@@ -30,11 +30,16 @@ namespace aqaGps {
 
     public:
       AqaGps(Stream &out);
-      bool timeout(void);
+      // todo: implement timeouts
+      // and states for querying data
+      //bool timeout(void);
       void handleGpsData();
 
     private:
 
+      bool sensorOk(void);
+      void checkValidGps();
+      bool _isSensorFullyFunctional;
       tmElements_t time_struct;
       gpsData data;
       TinyGPSPlus tinyGps;
