@@ -54,7 +54,7 @@
 *** PRÁCTICA: dibujale o escrivele el nombre del sensor
 **** hagale huecos a la caja de carton de  y que entre aire
 **** colore una cara
-*****colere dos caras del indicacion del la calidad de aire 
+***** colere dos caras del indicacion del la calidad de aire 
 **** verifica que todo funcione y que te guste
 ***** diseña una cara que se pueda cambiar un dibujo   
 ***** colerea 2 caras  de valores alterados alrededor de unas planta en el jardin y  en la  cocina  
@@ -75,7 +75,7 @@
 * Nivel 6 (extra): Explorar y aprovechar el sofware
 ** Cambiar el firmware
 *** PRÁCTICA: Cambie el nombre del sensor
-**** Instala el entorno platformio.io
+**** Instala el entorno platformio.io si no lo instalo  
 **** Cambia el nombre del sensor en el archivo app.h
 ***** Verifica: compile (build) el proyecto con el cambio de nombre
 ** Cambiar el firmware comentado y descomentando  #esto es un comentario 
