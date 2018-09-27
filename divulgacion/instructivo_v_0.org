@@ -65,14 +65,14 @@
 *** PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos
 **** hagale huecos a la caja de carton de  y que entre aire
 **** sal  a 2 restaurante 
-***PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos 
+*** PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos 
 **** sal  a un centro comercial
-***PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos   
+*** PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos   
 **** sal casa de 4 amigos y en cada una 
-***PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos 
+*** PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos 
 ** Compartir las mediciones y hacer un promedio
 *** PRÁCTICA: Conectar el sensor a internet
-* Nivel 4 (extra): Explorar y aprovechar el sofware
+* Nivel 6 (extra): Explorar y aprovechar el sofware
 ** Cambiar el firmware
 *** PRÁCTICA: Cambie el nombre del sensor
 **** Instala el entorno platformio.io
