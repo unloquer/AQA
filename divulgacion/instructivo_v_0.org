@@ -49,3 +49,41 @@
 ***** Verifica: Se conecta por WiFi al dispositivo y verifica el nuevo nombre del sensor.
 ** Comunicar sensores entre sí
 *** PRÁCTICA: Tansmite el valor de PM2.5 de un dispositivo con sensor de partículas a otro sin sensor de partículas.
+* Nivel 4 (extra): Explorar ,aprovechar y personalisar 
+** escojer una caja de carton paratodo el kit 
+*** PRÁCTICA: dibujale o escrivele el nombre del sensor
+**** hagale huecos a la caja de carton de  y que entre aire
+**** colore una cara
+*****colere dos caras del indicacion del la calidad de aire 
+**** verifica que todo funcione y que te guste
+***** diseña una cara que se pueda cambiar un dibujo   
+***** colerea 2 caras  de valores alterados alrededor de unas planta en el jardin y  en la  cocina  
+** Compartir las mediciones
+*** PRÁCTICA: Conectar el sensor a internet
+* Nivel 5 (extra): Explorar la ciudad y toma conciencia 
+** sal a  un parque   
+*** PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos
+**** hagale huecos a la caja de carton de  y que entre aire
+**** sal  a 2 restaurante 
+***PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos 
+**** sal  a un centro comercial
+***PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos   
+**** sal casa de 4 amigos y en cada una 
+***PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos 
+** Compartir las mediciones y hacer un promedio
+*** PRÁCTICA: Conectar el sensor a internet
+* Nivel 4 (extra): Explorar y aprovechar el sofware
+** Cambiar el firmware
+*** PRÁCTICA: Cambie el nombre del sensor
+**** Instala el entorno platformio.io
+**** Cambia el nombre del sensor en el archivo app.h
+***** Verifica: compile (build) el proyecto con el cambio de nombre
+** Cambiar el firmware comentado y descomentando  #esto es un comentario 
+*** PRÁCTICA: comentando o descomentado la linea  #define MOBILE y buscarlo en el codigo
+**** Sube el firmware al dispositivo
+***** Conecta por el puerto mini USB.
+***** Sube el firmware (upload).
+***** Sube el firmware pero comentandolo #define MOBILE
+***** Verifica: Se conecta por WiFi al dispositivo y verifica el nuevo nombre del sensor.
+** Comunicar sensores entre sí
+*** PRÁCTICA: Tansmite el valor de PM2.5 de un dispositivo con sensor de partículas a otro sin sensor de partículas.
