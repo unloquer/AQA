@@ -89,15 +89,15 @@
     proyecto:presupuesto
 
 2018/07/04 (18) Realización de ejercicio piloto en el doce de octubre, moravia y manrique
-    proyecto:talleres:18:realizacion                                    $3600000
+    proyecto:talleres:18:realización                                    $3600000
     proyecto:presupuesto
 
 2018/07/04 (19) Cubrimiento redes sociales
-    proyecto:síntesis:difusión:19:redessociales                                           $700000
+    proyecto:síntesis:difusión:19:redessociales                         $700000
     proyecto:presupuesto
 
 2018/07/04 (20) Documentación de todo el proceso de manera abierta
-    proyecto:síntesis:difusión:20:documentación                                   $700000
+    proyecto:síntesis:difusión:20:documentación                        $700000
     proyecto:presupuesto
 
 2018/07/04 (21) Creación digital  de material editorial que sintetiza y visualiza la experiencia
@@ -133,19 +133,19 @@
     egresos:16:servidores                                            $308847
 
 2018/08/15 Pago a diseñador por 3 meses
-    proyecto:diseño:gráfico:4:pago:guías                                 
+    proyecto:diseño:gráfico:4:pagoalejandro:guías                                 
     egresos:proyección:4:guias                                      $2000000
 
 2018/08/15 Pago a diseñador por 3 meses
-    proyecto:diseño:gráfico:6:pago:empaque                                 
+    proyecto:diseño:gráfico:6:pagoalejandro:empaque                                 
     egresos:proyección:6:empaque                                     $200000
 
 2018/08/15 Pago a checho por ilustraciones
-    proyecto:diseño:gráfico:7:pago:estéticageneral                                 
+    proyecto:diseño:gráfico:7:pagochecho:estéticageneral                    
     egresos:proyección:7:estéticageneral                             $600000
 
 2018/08/15 Pago a checho por ilustraciones
-    proyecto:diseño:dispositivo:8:pago:empaque                                 
+    proyecto:diseño:dispositivo:8:pagochecho:empaque                       
     egresos:proyección:8:empaque                                     $600000
 
 2018/08/16 Compra cables de colores para soldar -> 
@@ -173,7 +173,7 @@
     egresos:proyección:4:guias                                     
 
 2018/08/15 Pago de 1 hora de asesoría a Rafael Vega
-    proyecto:dispositivo:13:pago:modularizarhardware:conciliar_soporte                                 
+    proyecto:dispositivo:13:pagorafa:modularizarhardware:conciliar_soporte      
     egresos:proyección:13:modularizarhardware                         $80000
 
 2018/09/2 Compra 100 cables conectores mikrokits -> 
@@ -188,32 +188,35 @@
     proyecto:dispositivo:15:producciónmodulos:materiales:wemos:conciliar_soporte              
     egresos:15:producciónmodulos                                      $152046
 
-2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
-    proyecto:talleres:11:pago:planeación 
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:talleres:11:pagomiguel:planeación 
     egresos:proyección:11:planeación_talleres                         $100000
 
-2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
-    proyecto:talleres:5:pago:diseño
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:talleres:5:pagomiguel:diseño
     egresos:proyección:5:diseño                                       $100000
 
-2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
-    proyecto:talleres:18:pago:realización 
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:talleres:18:pagomiguel:realización                      -$1300000
+    proyecto:talleres:18:pagojohnny:realización                      
     egresos:proyección:18:realización                                 $2400000
 
-2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
-    proyecto:síntesis:difusión:19:pago:redessociales 
-    egresos:proyección:19:redessociales                                $700000
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:síntesis:difusión:19:pagomiguel:redessociales            -$100000
+    proyecto:síntesis:difusión:19:pagojohnny:redessociales            -$400000
+    egresos:proyección:19:redessociales                                $500000
 
-2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
-    proyecto:síntesis:difusión:20:pago:documentación 
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:síntesis:difusión:20:pagomiguel:documentación
+    proyecto:síntesis:difusión:20:pagochecho:documentación            -$300000
     egresos:proyección:20:documentación                                $700000
 
-2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
-    proyecto:dispositivo:14:pago:ajustesfirmware
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:dispositivo:14:pagomiguel:ajustesfirmware
     egresos:proyección:14:ajustesfirmware                              $300000
 
-2018/08/15 Pago a Johnny, Miguel y Checho (1'5millón c/u)
-    proyecto:diseño:metodología:3:pago:formulación
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:diseño:metodología:3:pagomiguel:formulación
     egresos:proyección:3:formulación_metodología                       $200000
 
 2018/09/13 Compra conectores RCA -> 
@@ -233,9 +236,57 @@
     egresos:15:producciónmodulos                                     $30000
 
 2018/09/19 Compra de 50 motores con hélices -> 
-    proyecto:dispositivo:15:producciónmodulos:materiales:motoresdc::conciliar_soporte                         
+    proyecto:dispositivo:15:producciónmodulos:materiales:motoresdc:conciliar_soporte                         
     egresos:15:producciónmodulos                                     $97633
 
 2018/09/19 Compra de 20 GPS l80 -> 
-    proyecto:dispositivo:15:producciónmodulos:materiales:gpss:conciliar_soporte                         
+    proyecto:dispositivo:15:producciónmodulos:materiales:gps:conciliar_soporte                         
     egresos:15:producciónmodulos                                   	$627963
+
+2018/09/25 Compra borneras en suconel ->
+    proyecto:dispositivo:15:producciónmodulos:materiales:borneras:conciliar_soporte
+    egresos:15:producciónmodulos                                     $14000
+
+2018/09/25 Compra suiches balancín en bigtrónica
+    proyecto:dispositivo:15:producciónmodulos:materiales:suiches:conciliar_soporte
+    egresos:15:producciónmodulos                                     $13000
+
+2018/09/25 Compra suiches lámpara en bigtrónica
+    proyecto:dispositivo:15:producciónmodulos:materiales:suiches:conciliar_soporte
+    egresos:15:producciónmodulos                                     $3000
+
+2018/09/27 Pago otro 40% estímulo
+    proyecto                                                                
+    pagoalcaldia                                                 -$10000000
+
+2018/09/27 Compra de 20 motores con hélices en bigtrónica
+    proyecto:dispositivo:15:producciónmodulos:materiales:motoresdc:conciliar_soporte                         
+    egresos:15:producciónmodulos                                     $65853
+
+2018/09/29 Compra de 1 particle 2
+    proyecto:dispositivo:15:producciónmodulos:materiales:particle:conciliar_soporte                         
+    egresos:15:producciónmodulos                                     $179992
+
+2018/10/02 Pago a uber por diseño de tarjetas
+    proyecto:dispositivo:17:pruebas:pagouber                         
+    egresos:17:pruebas                                                $300000
+
+2018/10/02 Producción de PCBs
+    proyecto:dispositivo:15:producciónmodulos:materiales:pcb:conciliar_soporte
+    egresos::15:producciónmodulos                                     $414500
+
+2018/10/03 Compra de 2 particle Argon, 1 Boron 2G y 3 xenon
+    proyecto:dispositivo:15:producciónmodulos:materiales:particle:conciliar_soporte                         
+    egresos:15:producciónmodulos                                     ($3000*121)
+
+2018/09/29 Pago a miguel
+    egresos:11:planeación                                   $100000
+    egresos:proyección:11:planeación_talleres                                     
+2018/09/29 Pago a miguel
+    egresos:5:diseño                                        $100000
+    egresos:proyección:5:diseño
+
+2018/09/29 Pago a miguel
+    egresos:18:realización                                  $1300000
+    egresos:proyección:18:realización
+
