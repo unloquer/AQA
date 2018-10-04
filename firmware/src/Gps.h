@@ -7,6 +7,8 @@
 #include <Stream.h>
 #include <SoftwareSerial.h>
 #include <TinyGPS++.h>
+#include <Time.h>
+#include <TimeLib.h>
 
 namespace aqaGps {
 
@@ -14,24 +16,32 @@ namespace aqaGps {
 
     int ready = 0;
 
-    String date;
-    String time;
+//    String date;
+   // String time;
     double altitude;
     double course;
     double speed;
     double lat;
     double lng;
+    time_t epoch_time;
   };
 
   class AqaGps {
 
     public:
       AqaGps(Stream &out);
-      bool timeout(void);
+      // todo: implement timeouts
+      // and states for querying data
+      //bool timeout(void);
       void handleGpsData();
 
     private:
 
+      bool sensorOk(void);
+      void checkValidGps();
+      bool _isSensorFullyFunctional;
+      tmElements_t time_struct;
+      gpsData data;
       TinyGPSPlus tinyGps;
       void _readGps(unsigned long timeout);
       Stream &_out;
