@@ -146,15 +146,18 @@ bool AqaGps::sensorOk (void) {
 }
 
 void AqaGps::checkValidGps () {
-  if(_out.available() && tinyGps.location.isValid()) {
+  // this sensor is "functional" if its location is valid
+  // neet to integrate connection to serial data: _out.available()
+  if(tinyGps.location.isValid()) {
     _isSensorFullyFunctional = true;
   }
   /*  if (!_out.available()){
       DMSG_STR("sensor not connected");
       _isSensorFullyFunctional = false;
       }*/ 
-  if(!tinyGps.location.isValid()) {
+  if(!tinyGps.location.isValid() && tinyGps.date.isValid()) {
     DMSG_STR("GPS GETTING LOCATION");
+    DMSG_STR(data.epoch_time);
     _isSensorFullyFunctional = false;
   }
 }

@@ -29,13 +29,25 @@ void AqaDht::_readDht(unsigned long timeout) {
 
   wdt_enable(1000);
 }
+void AqaDht::checkValues() {
+
+  if(!isnan(dht.readTemperature()) && !isnan(dht.readHumidity())) {
+    _isSensorFullyFunctional = true;
+  } else {
+    _isSensorFullyFunctional = false;
+  }
+  
+}
+bool AqaDht::sensorOk(void) {
+  return _isSensorFullyFunctional;
+}
 
 void AqaDht::handleDhtData() {
 
   _readDht(1000);
   yield();
-
-  if(!isnan(dht.readTemperature()) && !isnan(dht.readHumidity())) {
+  checkValues();
+  if(_isSensorFullyFunctional) {
 
   DMSG("validated ambientXD: ");
   DMSG(STR_SPACE);

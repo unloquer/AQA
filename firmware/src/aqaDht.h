@@ -30,10 +30,10 @@ namespace aqaDht {
       void handleDhtData();
       void setup();
 
+      bool sensorOk(void);
     private:
 
-      bool sensorOk(void);
-      void checkValidGps();
+      void checkValues();
       bool _isSensorFullyFunctional;
       dht11Data data;
       void _readDht(unsigned long timeout);

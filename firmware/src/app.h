@@ -1,4 +1,6 @@
 #pragma once
+
+#include <aqaWifi.h>
 #include <Arduino.h>
 #include <constants_defines.h>
 #include <Gps.h>
