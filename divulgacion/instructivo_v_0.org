@@ -11,7 +11,28 @@
 #+CATEGORY:   divulgacion
 
 
+* Ambientación
+
+** ¿Es la primera vez en un taller sobre la calidad del aire?
+** ¿Qué se espera encontrar en este taller? 
+** ¿Se ha ido a otro taller de calidad del aire? ¿Qué se ha encontrado?
+** Lo que se puede y lo que no
+*** Si se puede
+**** Equivocarse
+**** Jugar
+**** Apasionarse por algún conocimiento o por alguna persona
+**** Cuestionar
+**** _____________
+**** _____________
+*** No se puede
+**** Trollear (provocar reacciones emotivas en el otro)
+**** Imponer una posición frente a un tema
+**** __________
+**** __________
 * Nivel 1: Escala de colores
+
+** Introducción 
+    Camiones, carros, fábricas, emiten contaminantes pequeños que están en el aire y se mueven con el viento, ¿Cómo podemos saber las zonas de mayor concentración de ese material particulado? 
 ** Sensor para medir la presencia (de particulas pequeñas) en el aire 
 *** PRACTICA: Poner a funcionar el sensor, 
     Partes: <sensor partículas> <microcontrolador> <leds> <pila> <hoja de papel> <colores>
@@ -20,7 +41,7 @@
 **** Para encender, conecte el <microcontrolador> con el <adaptador USB>
 **** Tome nota de los colores cada minuto en un papel durante 15 minutos
 **** Experimentos
-***** Imprime un mapa del barrio, sale a caminar con marcadores verde, naranja, rojo, morado y marrón, marca las mediciones en el mapa. 
+***** ¿Cuáles son las zonas de mayor concentración de material particulado en mi cuadra? Imprime un mapa del barrio, sale a caminar con marcadores verde, naranja, rojo, morado y marrón, marca las mediciones en el mapa. 
 ***** Enciende un fosforo cerca al sensor y toma nota de los cambios en la escala de colores.
 ***** Pasa cerca al mofle de un carro y observa el cambio en los colores
 ***** En una habitación compara las mediciones cerrando ventanas y puertas con las que se observan con puertas y ventanas 
@@ -50,11 +71,11 @@
 ** Comunicar sensores entre sí
 *** PRÁCTICA: Tansmite el valor de PM2.5 de un dispositivo con sensor de partículas a otro sin sensor de partículas.
 * Nivel 4 (extra): Explorar ,aprovechar y personalisar 
-** escojer una caja de carton paratodo el kit 
-*** PRÁCTICA: dibujale o escrivele el nombre del sensor
-**** hagale huecos a la caja de carton de  y que entre aire
-**** colore una cara
-***** colere dos caras del indicacion del la calidad de aire 
+** Escojer una caja de carton para todo el kit 
+*** PRÁCTICA: dibujale o escribele el nombre del sensor
+**** hagale huecos a la caja de carton  y que entre aire
+**** colorée una cara
+***** colerée dos caras del indicacion del la calidad de aire 
 **** verifica que todo funcione y que te guste
 ***** diseña una cara que se pueda cambiar un dibujo   
 ***** colerea 2 caras  de valores alterados alrededor de unas planta en el jardin y  en la  cocina  
@@ -64,9 +85,9 @@
 ** sal a  un parque   
 *** PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos
 **** hagale huecos a la caja de carton de  y que entre aire
-**** sal  a 2 restaurante 
+**** sal a 2 restaurantes 
 *** PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos 
-**** sal  a un centro comercial
+**** sal a un centro comercial
 *** PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos   
 **** sal casa de 4 amigos y en cada una 
 *** PRÁCTICA: toma mediciones a papel y lapiz por 2 minutos 
