@@ -32,7 +32,10 @@
 * Nivel 1: Escala de colores
 
 ** Introducción 
-    Camiones, carros, fábricas, emiten contaminantes pequeños que están en el aire y se mueven con el viento, ¿Cómo podemos saber las zonas de mayor concentración de ese material particulado? 
+    Camiones, carros, fábricas, emiten contaminantes pequeños que están en el aire y se mueven con el viento, 
+*** ¿Cómo se puede saber de las zonas de mayor concentración de ese material particulado? 
+*** ¿Cómo se puede visualizar?
+*** ¿Porqué es importante que los ciudadanos midan la calidad del aire?
 ** Sensor para medir la presencia (de particulas pequeñas) en el aire 
 *** PRACTICA: Poner a funcionar el sensor, 
     Partes: <sensor partículas> <microcontrolador> <leds> <pila> <hoja de papel> <colores>
@@ -46,6 +49,11 @@
 ***** Pasa cerca al mofle de un carro y observa el cambio en los colores
 ***** En una habitación compara las mediciones cerrando ventanas y puertas con las que se observan con puertas y ventanas 
 * Nivel 2: Tablero de mediciones
+  Tener más fuentes de medición nos permite dimensionar la complejidad del fenómeno del aire, poder comparar esas mediciones entre sí puede revelar asuntos importantes para entender los fenómenos.
+
+** Preguntas
+*** ¿Cómo preparar nuestras mediciones para ser comparadas con otras?
+*** ¿Cómo preparar las mediciones para ser consumidas por máquinas?¿Para qué?
 ** Medir mas variables 
 *** PRÁCTICA: Agregar GPS 
 **** Ensamble la pieza <gps> en la pieza <microcontrolador> 
