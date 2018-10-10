@@ -10,6 +10,8 @@
 #include <DNSServer.h>
 #include <ESP8266WebServer.h>
 #include <WiFiManager.h>
+#include <Hash.h>
+#include <ESP8266HTTPClient.h>
 namespace aqaWifi {
 
 

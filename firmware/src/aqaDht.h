@@ -31,6 +31,7 @@ namespace aqaDht {
       void setup();
 
       bool sensorOk(void);
+      dht11Data * getDhtData(void);
     private:
 
       void checkValues();

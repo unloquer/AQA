@@ -82,3 +82,7 @@ void AqaPlantower::handlePlantowerData() {
   _readPlantower(1000);
   yield();
 }
+
+plantowerData * AqaPlantower::getPlantowerData(void) {
+  return &data;
+}

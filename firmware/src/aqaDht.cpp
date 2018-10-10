@@ -62,3 +62,6 @@ void AqaDht::handleDhtData() {
   }
 
 }
+dht11Data * AqaDht::getDhtData(void) {
+  return &data;
+}

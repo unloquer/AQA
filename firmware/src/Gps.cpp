@@ -161,3 +161,7 @@ void AqaGps::checkValidGps () {
     _isSensorFullyFunctional = false;
   }
 }
+
+gpsData * AqaGps::getGpsData(void) {
+  return &data;
+}

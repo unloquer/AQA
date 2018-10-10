@@ -35,6 +35,7 @@ namespace aqaGps {
       //bool timeout(void);
       void handleGpsData();
       bool sensorOk(void);
+      gpsData * getGpsData(void);
 
     private:
 

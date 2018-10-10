@@ -8,6 +8,19 @@
 
  
 #define DEBUG
+#define NUEVATARJETA
+#define MOBILE
+
+//------ http
+
+const uint16_t HTTP_TIMEOUT = 1000 * 60;
+//
+//----DOUBLE RESET DETECTOR
+// Number of seconds after reset during which a
+// subseqent reset will be considered a double reset.
+#define DRD_TIMEOUT 100
+// RTC Memory Address for the DoubleResetDetector to use
+#define DRD_ADDRESS 0
 
 //---pin and softwareSerial stuff definition
 //---- for the gps
