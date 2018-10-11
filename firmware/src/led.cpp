@@ -50,17 +50,17 @@ void ledParticulateQuality(PlantowerData data) {
 
   //FastLED.setBrightness(millis() % 255);
 
-  for(int i=0; i < 3; i++) {
+  for(int i=0; i < 4; i++) {
     #ifdef NUEVATARJETA
     leds[0] = i%2 == 0 ? alert : CRGB::Black;
     leds[1] = i%2 == 0 ? alert : CRGB::Black;
-    leds[2] = i%2 == 0 ? alert : CRGB::Black;
+    //leds[2] = i%2 == 0 ? alert : CRGB::Black;
     //  leds[1] = leds[2] = i%2 == 0 ? 
     #else
     leds[0] = leds[1] = i%2 == 0 ? alert : CRGB::Black;
     #endif
     FastLED.show();
-    delay(400);
+    delay(300);
   }
 }
 
@@ -81,7 +81,7 @@ void ledParticulateQuality(PlantowerData data) {
 
     FastLED.setBrightness(millis() % 255);
 
-    for(int i=0; i < 3; i++) {
+    for(int i=0; i < 4; i++) {
       #ifdef NUEVATARJETA
       leds[0] = i%2 == 0 ? alert : CRGB::Black;
       leds[1] = i%2 == 0 ? alert : CRGB::Black;
@@ -112,7 +112,7 @@ void ledParticulateQualityStreamming(PlantowerData data) {
 
   FastLED.setBrightness(millis() % 255);
 
-  for(int i=0; i < 3; i++) {
+  for(int i=0; i < 4; i++) {
     #ifdef NUEVATARJETA
     leds[0] = i%2 == 0 ? alert : CRGB::Black;
     leds[1] = i%2 == 0 ? alert : CRGB::Black;
