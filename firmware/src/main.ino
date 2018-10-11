@@ -24,7 +24,7 @@ dht11Data * dhtInfo;
 //---leds
 AqaLeds aqa_leds;
 
-const String SENSOR_ID = "estacion floresta"; // change with your id
+const String SENSOR_ID = "estacion_floresta"; // change with your id
 int INIT = 1;
 // const int DEBUG = 0;
 const int READ_LOG = 1;
@@ -149,7 +149,7 @@ void readLog() {
           // DMSG_STR("Free Memory: "+String(ESP.getFreeHeap()));
           savePosition((String) file.position());
           DMSG_STR("File position "+ String(file.position())); // La posición de memoria donde va leyendo el archivo, almacenarla para continuar desde acá
-          aqaHttp::post2Influx("http://aqa.unloquer.org:8086/write?db=aqamobile&precision=s", line2send);
+//          aqaHttp::post2Influx("http://aqa.unloquer.org:8086/write?db=aqamobile&precision=s", line2send);
           line2send = "";
           linesCnt = 0;
         }
@@ -303,6 +303,11 @@ void loop() {
     //ready to send to the server
 
     DMSG_STR("ready to SAVE/UPLOAD");
+    save();
+    String frame = influxFrame();
+    DMSG_STR(frame);
+    //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
+    aqaHttp::post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
 
   }else {
   DMSG("got the info from pointer   ");
