@@ -127,7 +127,7 @@ void readLog() {
         pm10 = line;
         //DMSG("pm10=");DMSG(line);DMSG(" ");DMSG_STR(field);
 
-        tmElements_t t;
+/*        tmElements_t t;
         time_t t_of_day;
         t.Year = CalendarYrToTm(Year);
         t.Month = Month;
@@ -137,11 +137,11 @@ void readLog() {
         t.Second = Second;
         //t.tm_isdst = -1;        // Is DST on? 1 = yes, 0 = no, -1 = unknown
         t_of_day = makeTime(t);
-        //t_of_day = mktime(&t);
+        //t_of_day = mktime(&t);*/
 
         linesCnt ++;
 
-        line2send += device + STR_COMMA + F("id=") + device + F(" lat=") + lat + F(",lng=") + lng + F(",altitude=") + altitude + F(",course=") + course + F(",speed=") + speed + F(",humidity=") + humidity + F(",temperature=") + temperature + F(",pm1=") + pm1 + F(",pm25=") + pm25 + F(",pm10=") + pm10 + F(" ") + t_of_day + F("\n");
+        line2send += device + STR_COMMA + F("id=") + device + F(" lat=") + lat + F(",lng=") + lng + F(",altitude=") + altitude + F(",course=") + course + F(",speed=") + speed + F(",humidity=") + humidity + F(",temperature=") + temperature + F(",pm1=") + pm1 + F(",pm25=") + pm25 + F(",pm10=") + pm10 + F(" ") + date + F("\n");
 
         if(linesCnt == 40) { // que pasa si la última tanda tiene menos de 50 líneas??
           DMSG_STR(linesCnt);
@@ -181,65 +181,61 @@ void readLog() {
         case 3:
           //date
           date = line;
-          //DMSG("date=");DMSG(line);DMSG(" ");DMSG_STR(field);
-          y = getValue(line, '/', 2);
+         // DMSG("date=");DMSG(line);DMSG(" ");DMSG_STR(field);
+        /*  y = getValue(line, '/', 2);
           d = getValue(line, '/', 1);
           m = getValue(line, '/', 0);
           Year=y.toInt();
           Month=m.toInt();
-          Day=d.toInt();
+          Day=d.toInt();*/ 
 
           break;
         case 4:
-          //hour
-          hour = line;
-          //DMSG("hour=");DMSG(line);DMSG(" ");DMSG_STR(field);
-          s = getValue(line, ':', 2);
+          //hour// altitude 
+          altitude = line;
+          //DMSG("altitude=");DMSG(line);DMSG(" ");DMSG_STR(field);
+ /*         s = getValue(line, ':', 2);
           mi = getValue(line, ':', 1);
           h = getValue(line, ':', 0);
           Hour = h.toInt();
           Minute = mi.toInt();
-          Second = s.toInt();
+          Second = s.toInt();*/
           break;
         case 5:
-          //altitude
-          altitude = line;
-          //DMSG("altitude=");DMSG(line);DMSG(" ");DMSG_STR(field);
-          break;
-        case 6:
           //course
           course = line;
           //DMSG("course=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
-        case 7:
+        case 6:
           //speed
           speed = line;
           //DMSG("speed=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
-        case 8:
+        case 7:
           //humidity
           humidity = line;
           //DMSG("humidity=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
-        case 9:
+        case 8:
           //temperature
           temperature = line;
-          //DMSG("temperature=");DMSG(line);DMSG(" ");DMSG_STR(field);
+         DMSG("temperature=");DMSG(line);DMSG(" ");DMSG_STR(field);
+          break;
+        case 9:
+          // pm1
+          pm1 = line;
+          DMSG("pm1=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
         case 10:
-          //pm1
-          pm1 = line;
-          //DMSG("pm1=");DMSG(line);DMSG(" ");DMSG_STR(field);
-          break;
-        case 11:
           //pm25
           pm25 = line;
-          //DMSG("pm25=");DMSG(line);DMSG(" ");DMSG_STR(field);
+           DMSG("pm25=");DMSG(line);DMSG(" ");DMSG_STR(field);
+          yield();
           break;
-        case 12:
+        case 11:
           //pm10
           pm10 = line;
-          //DMSG("pm10=");DMSG(line);DMSG(" ");DMSG_STR(field);
+          DMSG("pm10=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
           //default:
         }
@@ -278,8 +274,8 @@ void setup() {
 
     the_wifi.init_connections();
     readLog();
-    fs_delete_file();
-    savePosition("0");
+/*    fs_delete_file();
+    savePosition("0");*/
   }
 #else
   DMSG_STR("FIJO");
@@ -296,9 +292,9 @@ void loop() {
   plantowerSensor.handlePlantowerData();
   dhtSensor.handleDhtData();
   yield();
-  the_wifi.check_connections();
+//  the_wifi.check_connections();
 
-  if( gpsSensor.sensorOk() && plantowerSensor.sensorOk() && dhtSensor.sensorOk() && the_wifi.internetOk() ) 
+  if( gpsSensor.sensorOk() && plantowerSensor.sensorOk() && dhtSensor.sensorOk()  ) 
   {
     //ready to send to the server
 
@@ -306,12 +302,11 @@ void loop() {
     save();
     String frame = influxFrame();
     DMSG_STR(frame);
+    yield();
     //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
     aqaHttp::post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
 
   }else {
-  DMSG("got the info from pointer   ");
-  DMSG_STR(dhtInfo->temperature);
 
     DMSG("gps:  ");
     DMSG(gpsSensor.sensorOk());
