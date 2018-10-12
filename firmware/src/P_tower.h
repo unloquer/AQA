@@ -27,10 +27,11 @@ namespace aqaPlantower {
       // and states for querying data
       //bool timeout(void);
       void handlePlantowerData();
+      bool sensorOk(void);
+      plantowerData * getPlantowerData(void);
 
     private:
 
-      bool sensorOk(void);
       void checkValidPlantower();
       bool _isSensorFullyFunctional;
       plantowerData data;

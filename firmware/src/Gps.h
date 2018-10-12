@@ -34,10 +34,11 @@ namespace aqaGps {
       // and states for querying data
       //bool timeout(void);
       void handleGpsData();
+      bool sensorOk(void);
+      gpsData * getGpsData(void);
 
     private:
 
-      bool sensorOk(void);
       void checkValidGps();
       bool _isSensorFullyFunctional;
       tmElements_t time_struct;

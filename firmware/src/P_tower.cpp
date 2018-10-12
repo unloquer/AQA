@@ -20,6 +20,9 @@ char AqaPlantower::checkValue(unsigned char *thebuf, char leng) {
   if(receiveSum == ((thebuf[leng-2]<<8) + thebuf[leng-1])) {
     receiveSum = 0;
     receiveflag = 1;
+    _isSensorFullyFunctional = true;
+  }else {
+    _isSensorFullyFunctional = false;
   }
 
   return receiveflag;
@@ -38,6 +41,11 @@ int AqaPlantower::parsePM2_5(unsigned char *thebuf) {
 int AqaPlantower::parsePM10(unsigned char *thebuf) {
 
   return  ((thebuf[7] << 8) + thebuf[8]); //count PM10 value of the air detector module
+}
+
+bool AqaPlantower::sensorOk(void) {
+
+  return _isSensorFullyFunctional;
 }
 
 void AqaPlantower::_readPlantower(unsigned long timeout) {
@@ -73,4 +81,8 @@ void AqaPlantower::_readPlantower(unsigned long timeout) {
 void AqaPlantower::handlePlantowerData() {
   _readPlantower(1000);
   yield();
+}
+
+plantowerData * AqaPlantower::getPlantowerData(void) {
+  return &data;
 }
