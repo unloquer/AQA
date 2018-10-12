@@ -273,7 +273,7 @@
 
 2018/10/02 Producción de PCBs
     proyecto:dispositivo:15:producciónmodulos:materiales:pcb:conciliar_soporte
-    egresos::15:producciónmodulos                                     $414500
+    egresos:15:producciónmodulos                                     $414500
 
 2018/10/03 Compra de 2 particle Argon, 1 Boron 2G y 3 xenon
     proyecto:dispositivo:15:producciónmodulos:materiales:particle:conciliar_soporte                         
@@ -281,7 +281,8 @@
 
 2018/09/29 Pago a miguel
     egresos:11:planeación                                   $100000
-    egresos:proyección:11:planeación_talleres                                     
+    egresos:proyección:11:planeación_talleres
+
 2018/09/29 Pago a miguel
     egresos:5:diseño                                        $100000
     egresos:proyección:5:diseño
@@ -289,4 +290,38 @@
 2018/09/29 Pago a miguel
     egresos:18:realización                                  $1300000
     egresos:proyección:18:realización
+
+2018/10/04 Compra de sticker con la escala de colores
+    proyecto:dispositivo:15:producciónmodulos:materiales:stickers:conciliar_soporte
+    egresos:15:producciónmodulos                                     $49400
+
+2018/10/04 Compra de marcadores con la escala de colores
+    proyecto:dispositivo:15:producciónmodulos:materiales:marcadores:conciliar_soporte
+    egresos:15:producciónmodulos                                     $20000
+
+2018/10/04 Compra de 2 dos power banks para probar
+    proyecto:dispositivo:15:producciónmodulos:materiales:powerbanks:conciliar_soporte
+    egresos:15:producciónmodulos                                     $35000
+
+2018/10/04 Fabricación de cajas
+    proyecto:dispositivo:15:producciónmodulos:materiales:cajacarton:conciliar_soporte
+    egresos:proyección:15:producciónmodulos                          (($50000+($50000*0.19))*25)
+
+2018/10/08 Pago envío de particle a colombia
+    proyecto:dispositivo:15:producciónmodulos:materiales:particle:conciliar_soporte  
+    egresos:15:producciónmodulos                                     $46500
+
+2018/10/08 Compra de 20 power ban
+    proyecto:dispositivo:15:producciónmodulos:materiales:powerbanks:conciliar_soporte
+    egresos:15:producciónmodulos                                     $240000
+
+2018/10/08 Compra de resistencia y capacitores
+    proyecto:dispositivo:15:producciónmodulos:materiales:resistencias:conciliar_soporte
+    egresos:15:producciónmodulos                                     $13000
+
+2018/10/09 Compra de puertos usb y borneras en compel
+    proyecto:dispositivo:15:producciónmodulos:materiales:puertosusbyborneras:conciliar_soporte
+    egresos:15:producciónmodulos                                     $129250
+
+
 
