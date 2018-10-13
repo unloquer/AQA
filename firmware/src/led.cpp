@@ -32,6 +32,8 @@ void setupLeds() {
   #else
   FastLED.addLeds<LPD8806, DI, CI, COLOR_ORDER>(leds, NUM_LEDS);
   #endif
+  // https://github.com/FastLED/FastLED/issues/659
+  // https://github.com/FastLED/FastLED/wiki/FastLED-Temporal-Dithering
   FastLED.setDither(0);
 }
 
