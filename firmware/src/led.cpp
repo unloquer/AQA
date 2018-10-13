@@ -51,27 +51,27 @@ void ledParticulateQuality(PlantowerData data) {
 
   //FastLED.setBrightness(millis() % 255);
 
-  leds[0] = leds[1] = leds[2] = leds[3] = alert;
+  leds[0] = leds[1] = leds[2] = alert;
   FastLED.delay(10);
   FastLED.show();
   FastLED.delay(300);
-  leds[0] = leds[1] = leds[2] = leds[3] = CRGB::Black;
+  leds[0] = leds[1] = leds[2]= CRGB::Black;
   FastLED.delay(10);
   FastLED.show();
   FastLED.delay(300);
-  leds[0] = leds[1] = leds[2] = leds[3] = alert;
+  leds[0] = leds[1] = leds[2]= alert;
   FastLED.delay(10);
   FastLED.show();
   FastLED.delay(300);
-  leds[0] = leds[1] = leds[2] = leds[3] = CRGB::Black;
+  leds[0] = leds[1] = leds[2]= CRGB::Black;
   FastLED.delay(10);
   FastLED.show();
   FastLED.delay(300);
-  leds[0] = leds[1] = leds[2] = leds[3] = alert;
+  leds[0] = leds[1] = leds[2]= alert;
   FastLED.delay(10);
   FastLED.show();
   FastLED.delay(300);
-  leds[0] = leds[1] = leds[2] = leds[3] = CRGB::Black;
+  leds[0] = leds[1] = leds[2]= CRGB::Black;
   FastLED.delay(10);
   FastLED.show();
   FastLED.delay(300);
@@ -94,27 +94,27 @@ void ledParticulateQualityStreamming(PlantowerData data) {
 
   FastLED.setBrightness(millis() % 255);
 
-  leds[0] = leds[1] = leds[2] = leds[3] = alert;
+  leds[0] = leds[1] = leds[2]= alert;
   FastLED.delay(10);
   FastLED.show();
   FastLED.delay(100);
-  leds[0] = leds[1] = leds[2] = leds[3] = CRGB::Black;
+  leds[0] = leds[1] = leds[2]= CRGB::Black;
   FastLED.delay(10);
   FastLED.show();
   FastLED.delay(100);
-  leds[0] = leds[1] = leds[2] = leds[3] = alert;
+  leds[0] = leds[1] = leds[2]= alert;
   FastLED.delay(10);
   FastLED.show();
   FastLED.delay(100);
-  leds[0] = leds[1] = leds[2] = leds[3] = CRGB::Black;
+  leds[0] = leds[1] = leds[2]= CRGB::Black;
   FastLED.delay(10);
   FastLED.show();
   FastLED.delay(100);
-  leds[0] = leds[1] = leds[2] = leds[3] = alert;
+  leds[0] = leds[1] = leds[2]= alert;
   FastLED.delay(10);
   FastLED.show();
   FastLED.delay(100);
-  leds[0] = leds[1] = leds[2] = leds[3] = CRGB::Black;
+  leds[0] = leds[1] = leds[2]= CRGB::Black;
   FastLED.delay(10);
   FastLED.show();
   FastLED.delay(100);
