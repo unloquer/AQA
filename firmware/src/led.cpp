@@ -32,6 +32,7 @@ void setupLeds() {
   #else
   FastLED.addLeds<LPD8806, DI, CI, COLOR_ORDER>(leds, NUM_LEDS);
   #endif
+  FastLED.setDither(0);
 }
 
 void ledParticulateQuality(PlantowerData data) {
@@ -50,48 +51,31 @@ void ledParticulateQuality(PlantowerData data) {
 
   //FastLED.setBrightness(millis() % 255);
 
-  for(int i=0; i < 4; i++) {
-    #ifdef NUEVATARJETA
-    leds[0] = i%2 == 0 ? alert : CRGB::Black;
-    leds[1] = i%2 == 0 ? alert : CRGB::Black;
-    //leds[2] = i%2 == 0 ? alert : CRGB::Black;
-    //  leds[1] = leds[2] = i%2 == 0 ? 
-    #else
-    leds[0] = leds[1] = i%2 == 0 ? alert : CRGB::Black;
-    #endif
-    FastLED.show();
-    delay(300);
-  }
-}
+  leds[0] = leds[1] = leds[2] = leds[3] = alert;
+  FastLED.delay(10);
+  FastLED.show();
+  FastLED.delay(300);
+  leds[0] = leds[1] = leds[2] = leds[3] = CRGB::Black;
+  FastLED.delay(10);
+  FastLED.show();
+  FastLED.delay(300);
+  leds[0] = leds[1] = leds[2] = leds[3] = alert;
+  FastLED.delay(10);
+  FastLED.show();
+  FastLED.delay(300);
+  leds[0] = leds[1] = leds[2] = leds[3] = CRGB::Black;
+  FastLED.delay(10);
+  FastLED.show();
+  FastLED.delay(300);
+  leds[0] = leds[1] = leds[2] = leds[3] = alert;
+  FastLED.delay(10);
+  FastLED.show();
+  FastLED.delay(300);
+  leds[0] = leds[1] = leds[2] = leds[3] = CRGB::Black;
+  FastLED.delay(10);
+  FastLED.show();
+  FastLED.delay(300);
 
-  void ledParticulateQuality2(PlantowerData data) {
-    int pm1 = data.pm1;
-    int pm25 = data.pm25;
-    int pm10 = data.pm10;
-
-    CRGB alert = CRGB::Black;
-
-    if(pm25 < 12) alert = CRGB::Green; // CRGB::Green; // Alert.ok
-    if(pm25 >= 12 && pm25 < 35) alert = CRGB::Gold; // Alert.notGood;
-    if(pm25 >= 35 && pm25 < 55) alert = CRGB::OrangeRed; // Alert.bad;
-    if(pm25 >= 55 && pm25 < 150) alert = CRGB::DarkRed; // CRGB::Red; // Alert.dangerous;
-    if(pm25 >= 150 && pm25 < 250) alert = CRGB::Purple; // CRGB::Purple; // Alert.VeryDangerous;
-    if(pm25 >= 250) alert = CRGB::Chocolate; // Alert.harmful;
-
-
-    FastLED.setBrightness(millis() % 255);
-
-    for(int i=0; i < 4; i++) {
-      #ifdef NUEVATARJETA
-      leds[0] = i%2 == 0 ? alert : CRGB::Black;
-      leds[1] = i%2 == 0 ? alert : CRGB::Black;
-      leds[2] = i%2 == 0 ? alert : CRGB::Black;
-      #else
-      leds[0] = leds[1] = i%2 == 0 ? alert : CRGB::Black;
-      #endif
-      FastLED.show();
-      delay(300);
-    }
 }
 
 void ledParticulateQualityStreamming(PlantowerData data) {
@@ -108,19 +92,31 @@ void ledParticulateQualityStreamming(PlantowerData data) {
   if(pm25 >= 150 && pm25 < 250) alert = CRGB::Purple; // CRGB::Purple; // Alert.VeryDangerous;
   if(pm25 >= 250) alert = CRGB::Chocolate; // Alert.harmful;
 
-
-
   FastLED.setBrightness(millis() % 255);
 
-  for(int i=0; i < 4; i++) {
-    #ifdef NUEVATARJETA
-    leds[0] = i%2 == 0 ? alert : CRGB::Black;
-    leds[1] = i%2 == 0 ? alert : CRGB::Black;
-    leds[2] = i%2 == 0 ? alert : CRGB::Black;
-#else
-    leds[0] = leds[1] = i%2 == 0 ? alert : CRGB::Black;
-    #endif
-    FastLED.show();
-    delay(30);
-  }
+  leds[0] = leds[1] = leds[2] = leds[3] = alert;
+  FastLED.delay(10);
+  FastLED.show();
+  FastLED.delay(100);
+  leds[0] = leds[1] = leds[2] = leds[3] = CRGB::Black;
+  FastLED.delay(10);
+  FastLED.show();
+  FastLED.delay(100);
+  leds[0] = leds[1] = leds[2] = leds[3] = alert;
+  FastLED.delay(10);
+  FastLED.show();
+  FastLED.delay(100);
+  leds[0] = leds[1] = leds[2] = leds[3] = CRGB::Black;
+  FastLED.delay(10);
+  FastLED.show();
+  FastLED.delay(100);
+  leds[0] = leds[1] = leds[2] = leds[3] = alert;
+  FastLED.delay(10);
+  FastLED.show();
+  FastLED.delay(100);
+  leds[0] = leds[1] = leds[2] = leds[3] = CRGB::Black;
+  FastLED.delay(10);
+  FastLED.show();
+  FastLED.delay(100);
+
 }
