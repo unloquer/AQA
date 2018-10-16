@@ -82,6 +82,11 @@ typedef struct {
   float temperature;
   float humidity;
 } DHT11Data;
+/*los datos definidos o puestos  en typedef struct  son  los nesesarios para
+que el dht (el que mide la temperatura y humedad) recoja datos  y cree la
+varible ready que es un numero  que lee  los varibles  que son un numero
+decimal la humedad y la temperatura que son llamados humidity y temperature
+ que  es un numero decimal y luego es nombrado  DHTData*/
 
 typedef struct {
   int ready = 0;
@@ -90,7 +95,12 @@ typedef struct {
   int pm25;
   int pm10;
 } PlantowerData;
-
+/*los datos definidos o puestos  en typedef struct  son  los nesesarios para
+que el sensor de particulas (el que mide canbtidad y tamño de particulas)
+ recoja datos de  de un el tamaño (particulas por millon)pm1 este es el
+ y lo mismo con pm25 que seria el tamaño de particulas 2.5 que es la mas
+  peligrosa no sola mente
+y luego es nombrado  plantowerData*/
 typedef struct {
   GPSData gps;
   DHT11Data dht11;
