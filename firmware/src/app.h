@@ -14,10 +14,10 @@
 #include <FS.h>
 #include <FastLED.h>
 #include "DHT.h"
-
+//impotamos o incluimos las librerias nesarias
 #define DEBUG
-#define NUEVATARJETA
-
+#define NUEVATARJETA // si no es nueva se comenta esta linea
+//definimos el modo de la tarjeta si es nueva o sino
 #ifdef DEBUG
 #define DMSG(args...)       Serial.print(args)
 #define DMSGf(args...)      Serial.printf(args)
@@ -29,7 +29,8 @@
 #endif
 
 
-const String SENSOR_ID = "brolin"; // change this with your sensor ID
+const String SENSOR_ID = "volker0023"; // change this with your sensor ID
+//esta es la ide de tu sensor cambiala
 
 const String STR_COMMA = ",";
 const String STR_SLASH = "/";
@@ -38,13 +39,15 @@ const String STR_COLON = ":";
 const String STR_NULL = "NULL";
 const String STR_ZERO = "0";
 const String STR_SPACE = " ";
-
+//declaramos unas varibles  como string o palablas
 typedef struct {
   String ssid;
   String password;
   int ip[4];
 } WifiConfig;
-
+/*los datos definodos o puetos  en typedef struct  son  los nesarios para
+estableser la coneccion a internet para conectarse con las bases de datos
+y luego es nombrado  Wificonfig*/
 typedef struct {
   int ready = 0;
 
@@ -56,7 +59,9 @@ typedef struct {
   double lat;
   double lng;
 } GPSData;
-
+/*los datos definodos o puetos  en typedef struct  son  los nesarios para
+recojer cada dato proprcionado por el gps
+y luego es nombrado  GPSData*/
 typedef struct {
   String name;
  int data;
@@ -64,7 +69,13 @@ typedef struct {
     DMSG_STR("I read!"+data);
   }
 } Sensor;
-
+/*los datos definodos o puetos  en typedef struct  son  los nesarios para
+recojer los y crear
+crear name como una palabra
+      data como un numero entero
+recojer  la funcion vacia (que no de vuelve datos) read()
+y imprimir  I read y un numero que es datos
+y luego es nombrado  sensor*/
 typedef struct {
   int ready = 0;
 
