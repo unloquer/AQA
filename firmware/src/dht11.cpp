@@ -1,8 +1,8 @@
 #include "app.h"
 // inclimos la librera central que es don donde se
 #define DHTPIN 12     /*// what pin we're connected to
-// declara toda tota las funciones y librerias
-// al pin al que esta contado en gpio a el gpio12
+// declara toda las funciones y librerias
+// al pin al que esta conectado en gpio a el gpio12
 // depende de la tarjeta el pin
 // wemos https://cdn-images-1.medium.com/max/1288/1*YKc8KpAfMrlhrOLmNjdRwQ.png
 // nodemcu https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjw4MmQ1IzeAhVp0FkKHb3-B8IQjRx6BAgBEAU&url=https%3A%2F%2Fwww.teachmemicro.com%2Fnodemcu-pinout%2F&psig=AOvVaw2QNGWpnHxLAe3VN1ieW49R&ust=1539837576645757
