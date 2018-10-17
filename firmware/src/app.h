@@ -15,6 +15,7 @@
 #include <FastLED.h>
 #include "DHT.h"
 //impotamos o incluimos las librerias nesarias
+// que algunas veces no hay que intstalarlas
 #define DEBUG
 #define NUEVATARJETA // si no es nueva se comenta esta linea
 //definimos el modo de la tarjeta si es nueva o sino
@@ -113,26 +114,37 @@ void setupGPS();
 void setupPlantower();
 void setupDHT11();
 void setupLeds();
-/*invocamos las funciones vacias que no devuelven nada */
+/*invocamos las funciones vacias que no devuelven nada  pero reciven valores*/
 GPSData getGPSData();
 DHT11Data getDHT11Data();
 PlantowerData getPlantowerData();
-/*invocamos las funciones que devuelven un tipo de dato que es propio de su clase (porfavor si  me equivoque corrijanme)*/
+/*invocamos las funciones que devuelven un tipo de dato que es
+ propio de su clase (porfavor si  me equivoque corrijanme)*/
 String csvFrame();
 String influxFrame();
-/*invocamos las funciones que devuelven un tipo de dato que son palabras como "shjdflkhnlf" y "xnlddhndhln" 
+/*invocamos las funciones que devuelven un tipo de dato que son
+ palabras como "shjdflkhnlf" y "xnlddhndhln"
 o letras  juntas  si a eso sele pude llamar pabras*/
 void save();
 /*invocamos la funcion vacia que no devuelven nada */
 int postCsvFile(String url, String filename);
 int postCsv(String url, String csv);
 int post2Influx(String url, String load);
-
+/*invocamos la funcion de tipo entero que retorna   y recive unos
+parametros adicionales que  son almacenados dentro de la funcion */
 
 void ledParticulateQuality(PlantowerData data);
 void ledParticulateQualityStreamming(PlantowerData data);
 void ledParticulateQualityStream(PlantowerData data);
+/*invocamos la funcion vacia que no devuelven nada  que recive unos
+parametros adicionales que  son almacenados dentro de la funcion */
 
+
+/*diferencia entre void y int (si me equivoco corijanme)
+void no se pone return y no retorna nada
+int retorna las varibles que tu le pongas return y puede estar limitado
+a una retornar una varible
+ http://www.forosdelweb.com/f96/diferencias-entre-void-e-int-582370/*/
 /*class GPSSensor {
   private:
   int readTime;
