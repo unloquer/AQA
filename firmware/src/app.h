@@ -14,11 +14,11 @@
 #include <FS.h>
 #include <FastLED.h>
 #include "DHT.h"
-//impotamos o incluimos las librerias nesarias
+//importamos o incluimos las librerias necesarias
 // que algunas veces no hay que intstalarlas
 #define DEBUG
-#define NUEVATARJETA // si no es nueva se comenta esta linea
-//definimos el modo de la tarjeta si es nueva o sino
+#define NUEVATARJETA // si no es nueva  o tiene la tarjeta roja con todo incluido se comenta esta linea
+//definimos el modo de la tarjeta si es nueva o tiene la tarjeta roja con todo incluido o sino  no se comenta
 #ifdef DEBUG
 #define DMSG(args...)       Serial.print(args)
 #define DMSGf(args...)      Serial.printf(args)
@@ -31,7 +31,7 @@
 
 
 const String SENSOR_ID = "volker0023"; // change this with your sensor ID
-//esta es la ide de tu sensor cambiala
+//esta es la id de tu sensor cambiala
 
 const String STR_COMMA = ",";
 const String STR_SLASH = "/";
@@ -40,13 +40,13 @@ const String STR_COLON = ":";
 const String STR_NULL = "NULL";
 const String STR_ZERO = "0";
 const String STR_SPACE = " ";
-//declaramos unas varibles  como string o palablas que son costantes que no cambian
+//declaramos unas variables  como string o palablas que son costantes que no cambian
 typedef struct {
   String ssid;
   String password;
   int ip[4];
 } WifiConfig;
-/*los datos definodos o puetos  en typedef struct  son  los nesarios para
+/*los datos definidos o puestos  en typedef struct  son  los nesarios para
 estableser la coneccion a internet para conectarse con las bases de datos
 y luego es nombrado  Wificonfig*/
 typedef struct {
@@ -60,8 +60,8 @@ typedef struct {
   double lat;
   double lng;
 } GPSData;
-/*los datos definodos o puetos  en typedef struct  son  los nesarios para
-recojer cada dato proprcionado por el gps
+/*los datos definidos o puestos  en typedef struct  son  los nesarios para
+recojer cada dato proporcionado por el gps
 y luego es nombrado  GPSData*/
 typedef struct {
   String name;
@@ -70,12 +70,12 @@ typedef struct {
     DMSG_STR("I read!"+data);
   }
 } Sensor;
-/*los datos definodos o puetos  en typedef struct  son  los nesarios para
+/*los datos definidos o puestos  en typedef struct  son  los nesarios para
 recojer los y crear
 crear name como una palabra
       data como un numero entero
 recojer  la funcion vacia (que no de vuelve datos) read()
-y imprimir  I read y un numero que es datos
+y imprimir  I read y un numero que es la variable "data"
 y luego es nombrado  sensor*/
 typedef struct {
   int ready = 0;
@@ -85,7 +85,7 @@ typedef struct {
 } DHT11Data;
 /*los datos definidos o puestos  en typedef struct  son  los nesesarios para
 que el dht (el que mide la temperatura y humedad) recoja datos  y cree la
-varible ready que es un numero  que lee  los varibles  que son un numero
+varible ready que es un numero entero que lee  los varibles  y los valores del dht son un numero
 decimal la humedad y la temperatura que son llamados humidity y temperature
  que  es un numero decimal y luego es nombrado  DHTData*/
 
@@ -100,7 +100,7 @@ typedef struct {
 que el sensor de particulas (el que mide canbtidad y tamño de particulas)
  recoja datos de  de un el tamaño (particulas por millon)pm1 este es el
  y lo mismo con pm25 que seria el tamaño de particulas 2.5 que es la mas
-  peligrosa no sola mente
+  peligrosa no sola mente lee esa tembien la pm10
 y luego es nombrado  plantowerData*/
 typedef struct {
   GPSData gps;
