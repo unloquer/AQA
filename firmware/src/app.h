@@ -39,7 +39,7 @@ const String STR_COLON = ":";
 const String STR_NULL = "NULL";
 const String STR_ZERO = "0";
 const String STR_SPACE = " ";
-//declaramos unas varibles  como string o palablas
+//declaramos unas varibles  como string o palablas que son costantes que no cambian
 typedef struct {
   String ssid;
   String password;
@@ -113,14 +113,17 @@ void setupGPS();
 void setupPlantower();
 void setupDHT11();
 void setupLeds();
-
+/*invocamos las funciones vacias que no devuelven nada */
 GPSData getGPSData();
 DHT11Data getDHT11Data();
 PlantowerData getPlantowerData();
-
+/*invocamos las funciones que devuelven un tipo de dato que es propio de su clase (porfavor si  me equivoque corrijanme)*/
 String csvFrame();
 String influxFrame();
+/*invocamos las funciones que devuelven un tipo de dato que son palabras como "shjdflkhnlf" y "xnlddhndhln" 
+o letras  juntas  si a eso sele pude llamar pabras*/
 void save();
+/*invocamos la funcion vacia que no devuelven nada */
 int postCsvFile(String url, String filename);
 int postCsv(String url, String csv);
 int post2Influx(String url, String load);
