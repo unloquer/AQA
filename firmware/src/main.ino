@@ -1,5 +1,5 @@
 #include <app.h>
-
+#include <Ticker.h>
 
 using namespace aqaGps;
 using namespace aqaPlantower;
@@ -31,6 +31,7 @@ const int READ_LOG = 1;
 const int DELETE_LOG = 1;
 const int SEND_LOG = 0;
 const int SEND_RECORD = 1;
+bool system_connected = false;
 
 DoubleResetDetector drd(DRD_TIMEOUT, DRD_ADDRESS);
 
@@ -219,23 +220,23 @@ void readLog() {
         case 8:
           //temperature
           temperature = line;
-         DMSG("temperature=");DMSG(line);DMSG(" ");DMSG_STR(field);
+         //DMSG("temperature=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
         case 9:
           // pm1
           pm1 = line;
-          DMSG("pm1=");DMSG(line);DMSG(" ");DMSG_STR(field);
+      //    DMSG("pm1=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
         case 10:
           //pm25
           pm25 = line;
-           DMSG("pm25=");DMSG(line);DMSG(" ");DMSG_STR(field);
+   //        DMSG("pm25=");DMSG(line);DMSG(" ");DMSG_STR(field);
           yield();
           break;
         case 11:
           //pm10
           pm10 = line;
-          DMSG("pm10=");DMSG(line);DMSG(" ");DMSG_STR(field);
+//          DMSG("pm10=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
           //default:
         }
@@ -247,6 +248,11 @@ void readLog() {
   }
 }
 
+Ticker reset_ticker;
+void tick() {
+  DMSG_STR("restarting systemOOOOOOOOOOOO");
+  ESP.reset();
+}
 void setup() {
 
   Serial.begin(115200);
@@ -257,6 +263,7 @@ void setup() {
   dhtSensor.setup();
   aqa_leds.setupLeds();
 
+  reset_ticker.attach(600,tick);
   DMSG_STR("\nStarting ...");
 
   SPIFFS.begin();
@@ -266,7 +273,6 @@ void setup() {
   gpsInfo = gpsSensor.getGpsData();
   fs_info_print();
   //set up networking
-
 #ifdef MOBILE
   DMSG_STR("MOVIL");
   if(drd.detectDoubleReset()) {
@@ -274,14 +280,23 @@ void setup() {
 
     the_wifi.init_connections();
     readLog();
-/*    fs_delete_file();
-    savePosition("0");*/
+    fs_delete_file();
+    savePosition("0");
   }
 #else
   DMSG_STR("FIJO");
   the_wifi.init_connections();
 #endif
 
+// check connected modules directive -> all .sensorOk() together
+//checkConnectedModules(10000);
+DMSG_STR("reached check timeout");
+/* if(checkConnectedModules(50000)){
+    DMSG_STR("CHECKED");
+
+  }else{
+    DMSG_STR("didn't check");
+  }*/
 }
 
 
@@ -289,17 +304,21 @@ void loop() {
 
 
   gpsSensor.handleGpsData();
+  yield();
   plantowerSensor.handlePlantowerData();
+  yield();
   dhtSensor.handleDhtData();
   yield();
+  wdt_reset();
+  
 //  the_wifi.check_connections();
 
-  if( gpsSensor.sensorOk() && plantowerSensor.sensorOk() && dhtSensor.sensorOk()  ) 
+  if( gpsSensor.sensorOk() && plantowerSensor.sensorOk() && dhtSensor.sensorOk()) 
   {
     //ready to send to the server
 
     DMSG_STR("ready to SAVE/UPLOAD");
-    save();
+//    save();
     String frame = influxFrame();
     DMSG_STR(frame);
     yield();
@@ -317,6 +336,7 @@ void loop() {
     DMSG("dht :  ");
     DMSG_STR(dhtSensor.sensorOk());
  }
+
  yield();
 }
 
@@ -417,6 +437,9 @@ String influxFrame() {
 
   // Add GPS data
   char strlat[25],strlng[25];
+
+  /*dtostrf(6.276540, 3, 6, strlat);
+  dtostrf(-75.564611, 3, 6, strlng);*///coordenadas de moravia.
   dtostrf(gpsInfo->lat, 3, 6, strlat);
   dtostrf(gpsInfo->lng, 3, 6, strlng);
   frame += F("lat=");
@@ -459,4 +482,39 @@ String influxFrame() {
   return frame;
 }
 
+void checkConnectedModules(unsigned long timeout) {
 
+  DMSG_STR("starting to check.......");
+  unsigned long start = millis();
+  DMSG_STR("value starting millis....."+start);
+  wdt_disable();
+
+  /*if(plantowerSensor.sensorOk()) {
+  
+    DMSG_STR("hell yes");
+  }else{
+    DMSG_STR("sensor not ready");
+  }
+
+  delay(timeout);
+  DMSG_STR("reached timeout");*/
+  do {
+
+    plantowerSensor.handlePlantowerData();
+    if(plantowerSensor.sensorOk()) {
+
+      system_connected = true;
+      DMSG_STR("sensor  CHECKEDDDDDDDDDDDD");
+      break;
+
+    }else{
+      DMSG_STR("not plantowerOK");
+    
+    }
+
+    DMSG_STR("checked for connected sensors");
+
+
+  }while(millis() - start < timeout);
+  wdt_enable(1000);
+}
