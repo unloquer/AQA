@@ -323,5 +323,23 @@
     proyecto:dispositivo:15:producciónmodulos:materiales:puertosusbyborneras:conciliar_soporte
     egresos:15:producciónmodulos                                     $129250
 
+2018/10/12 Compra Stickers
+    proyecto:ajustar_en_rubro:stickers
+    egresos:ajustar_en_rubro:stickers                                 $20000
+
+2018/10/10 Compra cargador usb
+    proyecto:ajustar_en_rubro:cargadorusb
+    egresos:ajustar_en_rubro:cargadorusb                              $27000
+
+2018/10/17 Compra de brújulas
+    proyecto:talleres:18:realización:souvenir:conciliar_soporte
+    egresos:18:realización                                            $60000
+
+2018/10/20 Compra almuerzo taller moravia
+    proyecto:talleres:18:realización:almuerzomoravia:conciliar_soporte
+    egresos:18:realización                                            $21000
+
+
+
 
 

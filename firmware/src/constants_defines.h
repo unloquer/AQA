@@ -4,9 +4,6 @@
 #define _CONSTANTS_DEFINES_H
 #include <Arduino.h>
 
-#define NUEVATARJETA
-
- 
 #define DEBUG
 #define NUEVATARJETA
 #define MOBILE

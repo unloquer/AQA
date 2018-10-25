@@ -1,6 +1,5 @@
 #include <app.h>
 
-
 using namespace aqaGps;
 using namespace aqaPlantower;
 using namespace aqaDht;
