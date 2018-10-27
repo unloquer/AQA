@@ -24,7 +24,7 @@ dht11Data * dhtInfo;
 //---leds
 AqaLeds aqa_leds;
 
-const String SENSOR_ID = "moravia"; // change with your id
+const String SENSOR_ID = "estacion_floresta"; // change with your id
 int INIT = 1;
 // const int DEBUG = 0;
 const int READ_LOG = 1;

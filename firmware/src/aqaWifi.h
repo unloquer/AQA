@@ -8,11 +8,13 @@
 #include <ESP8266WiFi.h>
 //#include <ESP8266Ping.h>
 #include <DNSServer.h>
-#include <ESP8266WebServer.h>
-#include <WiFiManager.h>
+//#include <ESP8266WebServer.h>
+#include <ESPAsyncWebServer.h>
+#include <ESPAsyncWiFiManager.h>
 #include <Hash.h>
 #include <ESP8266HTTPClient.h>
 namespace aqaWifi {
+
 
 
   class AqaWifi {
@@ -31,7 +33,6 @@ namespace aqaWifi {
 
 //      void configModeCallback (WiFiManager *w_manager);
       Ticker connect_check_dispatcher;
-      WiFiManager my_wifiManager;
 
 
 
