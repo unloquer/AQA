@@ -37,9 +37,9 @@ namespace aqaLeds {
     public: 
       void setupLeds();
 
-      void ledParticulateQuality(aqaPlantower::plantowerData data);
-      void ledParticulateQuality2(aqaPlantower::plantowerData data);
-      void ledParticulateQualityStreamming(aqaPlantower::plantowerData data);
+    void ledParticulateQuality(aqaPlantower::plantowerData data);
+    void ledParticulateQuality2(aqaPlantower::plantowerData data);
+    void ledParticulateQualityStreamming(aqaPlantower::plantowerData data);
 
     private:
       CRGB leds[NUM_LEDS];

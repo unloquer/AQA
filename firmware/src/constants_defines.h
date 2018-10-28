@@ -5,8 +5,8 @@
 #include <Arduino.h>
 
 #define DEBUG
-#define NUEVATARJETA
-#define MOBILE
+//#define NUEVATARJETA
+//#define MOBILE
 
 //------ http
 
@@ -33,7 +33,7 @@ const uint16_t HTTP_TIMEOUT = 1000 * 60;
 #define P_BAUDS 9600
 
 //-- DHT stuff
-#define DHTPIN 12
+#define DHTPIN 12//D6//
 #define DHTTYPE DHT11
 
 //-- define special chars

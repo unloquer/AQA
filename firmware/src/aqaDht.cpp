@@ -27,7 +27,8 @@ void AqaDht::_readDht(unsigned long timeout) {
 
   }while (millis() - start < timeout);
 
-  wdt_enable(1000);
+//  wdt_enable(1000);
+  wdt_reset();
 }
 void AqaDht::checkValues() {
 

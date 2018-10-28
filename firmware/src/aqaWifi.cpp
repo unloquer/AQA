@@ -87,6 +87,7 @@ void AqaWifi::init_connections() {
 // WiFiManager  my_wifiManager;
   my_wifiManager.setAPCallback(configModeCallback);
 
+  my_wifiManager.setConnectTimeout(60);
   if(!my_wifiManager.autoConnect()) {
     delay(1000); // timeout
 

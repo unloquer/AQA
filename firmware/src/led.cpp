@@ -36,7 +36,7 @@ void AqaLeds::ledParticulateQuality(aqaPlantower::plantowerData data) {
   }
 }
 
-  void AqaLeds::ledParticulateQuality2(aqaPlantower::plantowerData data) {
+void AqaLeds::ledParticulateQuality2(aqaPlantower::plantowerData data) {
     int pm1 = data.pm1;
     int pm25 = data.pm25;
     int pm10 = data.pm10;
