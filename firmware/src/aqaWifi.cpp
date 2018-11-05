@@ -2,7 +2,11 @@
 #include <ESP8266Ping.h>
 using namespace aqaWifi;
 
-void configModeCallback(WiFiManager *w_manager) {
+AsyncWebServer server(80);
+DNSServer dns;
+AsyncWiFiManager my_wifiManager(&server, &dns);
+
+void configModeCallback(AsyncWiFiManager *w_manager) {
 
   DMSG_STR("Entered config mode");
   DMSG_STR(WiFi.softAPIP());
@@ -81,14 +85,16 @@ void AqaWifi::check_connections() {
 bool AqaWifi::internetOk(void) {
   return _internet_connected;
 }
+void feck() {
+  Serial.println("address callback");
+}
 
 void AqaWifi::init_connections() {
 
 // WiFiManager  my_wifiManager;
   my_wifiManager.setAPCallback(configModeCallback);
 
-  my_wifiManager.setConnectTimeout(60);
-  if(!my_wifiManager.autoConnect()) {
+  if(!my_wifiManager.autoConnect("AQA_estacion")) {
     delay(1000); // timeout
 
     DMSG_STR("failed to connect and hit timeout");
@@ -97,5 +103,11 @@ void AqaWifi::init_connections() {
   }
   // you are connected either to the ap or to the internet :)
   DMSG_STR("connected...yeey :)");
+  //----init server
+   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send(200, "text/plain", "AQA_XD");
+    });
+   server.on("/log", std::bind(feck));
+  server.begin();
 }
 
