@@ -9,8 +9,8 @@
 #ifdef NUEVATARJETA
 
 // Pines 16 y 14 no sirven para la librería fastled
-#define NUM_LEDS 3
-#define LED_PIN 4
+#define NUM_LEDS 64
+#define LED_PIN D2
 #define LED_TYPE WS2812B
 CRGB leds[NUM_LEDS];
 #define COLOR_ORDER GRB
@@ -35,6 +35,7 @@ void setupLeds() {
   // https://github.com/FastLED/FastLED/issues/659
   // https://github.com/FastLED/FastLED/wiki/FastLED-Temporal-Dithering
   FastLED.setDither(0);
+  FastLED.setBrightness(32);
 }
 
 void ledParticulateQuality(PlantowerData data) {
@@ -53,31 +54,12 @@ void ledParticulateQuality(PlantowerData data) {
 
   //FastLED.setBrightness(millis() % 255);
 
-  leds[0] = leds[1] = leds[2] = alert;
-  FastLED.delay(10);
-  FastLED.show();
-  FastLED.delay(300);
-  leds[0] = leds[1] = leds[2]= CRGB::Black;
-  FastLED.delay(10);
-  FastLED.show();
-  FastLED.delay(300);
-  leds[0] = leds[1] = leds[2]= alert;
-  FastLED.delay(10);
-  FastLED.show();
-  FastLED.delay(300);
-  leds[0] = leds[1] = leds[2]= CRGB::Black;
-  FastLED.delay(10);
-  FastLED.show();
-  FastLED.delay(300);
-  leds[0] = leds[1] = leds[2]= alert;
-  FastLED.delay(10);
-  FastLED.show();
-  FastLED.delay(300);
-  leds[0] = leds[1] = leds[2]= CRGB::Black;
-  FastLED.delay(10);
-  FastLED.show();
-  FastLED.delay(300);
-
+  for(int i=0; i < 4; i++) {
+    for(int j=0; j < NUM_LEDS; j++) leds[j] = i%2 == 0 ? alert : CRGB::Black;
+    FastLED.delay(10);
+    FastLED.show();
+    FastLED.delay(300);
+  }
 }
 
 void ledParticulateQualityStreamming(PlantowerData data) {
@@ -96,29 +78,10 @@ void ledParticulateQualityStreamming(PlantowerData data) {
 
   FastLED.setBrightness(millis() % 255);
 
-  leds[0] = leds[1] = leds[2]= alert;
-  FastLED.delay(10);
-  FastLED.show();
-  FastLED.delay(100);
-  leds[0] = leds[1] = leds[2]= CRGB::Black;
-  FastLED.delay(10);
-  FastLED.show();
-  FastLED.delay(100);
-  leds[0] = leds[1] = leds[2]= alert;
-  FastLED.delay(10);
-  FastLED.show();
-  FastLED.delay(100);
-  leds[0] = leds[1] = leds[2]= CRGB::Black;
-  FastLED.delay(10);
-  FastLED.show();
-  FastLED.delay(100);
-  leds[0] = leds[1] = leds[2]= alert;
-  FastLED.delay(10);
-  FastLED.show();
-  FastLED.delay(100);
-  leds[0] = leds[1] = leds[2]= CRGB::Black;
-  FastLED.delay(10);
-  FastLED.show();
-  FastLED.delay(100);
-
+  for(int i=0; i < 4; i++) {
+    for(int j=0; j < NUM_LEDS; j++) leds[j] = i%2 == 0 ? alert : CRGB::Black;
+    FastLED.delay(10);
+    FastLED.show();
+    FastLED.delay(100);
+  }
 }

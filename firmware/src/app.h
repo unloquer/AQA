@@ -29,7 +29,7 @@
 #endif
 
 
-const String SENSOR_ID = "brolin"; // change this with your sensor ID
+const String SENSOR_ID = "aqakit3"; // change this with your sensor ID
 
 const String STR_COMMA = ",";
 const String STR_SLASH = "/";

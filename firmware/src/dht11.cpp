@@ -1,6 +1,6 @@
 #include "app.h"
 
-#define DHTPIN 12     // what pin we're connected to
+#define DHTPIN D1     // what pin we're connected to
 #define DHTTYPE DHT11   // DHT 11
 
 // Initialize DHT sensor for normal 16mhz Arduino
@@ -14,6 +14,9 @@ DHT11Data getDHT11Data() {
   DHT11Data data;
   data.temperature = isnan(dht.readTemperature()) ? -1 : dht.readTemperature();
   data.humidity = isnan(dht.readHumidity()) ? -1 : dht.readHumidity();;
+
+  DMSG_STR("dht t: "+(String)data.temperature+" "+(String)data.humidity);
+
   data.ready = 1;
   return data;
 }

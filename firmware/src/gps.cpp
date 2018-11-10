@@ -1,7 +1,7 @@
 #include "app.h"
 
 TinyGPSPlus gpsParser;
-SoftwareSerial gpsSerial(13, 7);
+SoftwareSerial gpsSerial(D7, 7);
 
 void setupGPS() {
   static const int gpsRXPin = 13, gpsTXPin = 7;
@@ -25,6 +25,10 @@ void readGPS(unsigned long ms) {
 
 GPSData parseGPSData() {
   GPSData data;
+
+  String date = gpsParser.date.month() + STR_SLASH + gpsParser.date.day() +
+    STR_SLASH + gpsParser.date.year();
+  DMSG_STR("date: "+date);
 
   if (gpsParser.location.isValid()) {
     data.ready = 1;
