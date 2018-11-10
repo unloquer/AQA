@@ -33,21 +33,25 @@
 
 ** Introducción 
     Camiones, carros, fábricas, emiten contaminantes pequeños que están en el aire y se mueven con el viento, 
-*** ¿Cómo se puede saber de las zonas de mayor concentración de ese material particulado? 
-*** ¿Cómo se puede visualizar?
-*** ¿Porqué es importante que los ciudadanos midan la calidad del aire?
-** Sensor para medir la presencia (de particulas pequeñas) en el aire 
-*** PRACTICA: Poner a funcionar el sensor, 
-    Partes: <sensor partículas> <microcontrolador> <leds> <pila> <hoja de papel> <colores>
-**** Ensamble la pieza <sensor> en la pieza <microcontrolador>
-**** Ensamble la pieza <leds> en la pieza <microcontrolador> 
-**** Para encender, conecte el <microcontrolador> con el <adaptador USB>
-**** Tome nota de los colores cada minuto en un papel durante 15 minutos
-**** Experimentos
-***** ¿Cuáles son las zonas de mayor concentración de material particulado en mi cuadra? Imprime un mapa del barrio, sale a caminar con marcadores verde, naranja, rojo, morado y marrón, marca las mediciones en el mapa. 
-***** Enciende un fosforo cerca al sensor y toma nota de los cambios en la escala de colores.
-***** Pasa cerca al mofle de un carro y observa el cambio en los colores
-***** En una habitación compara las mediciones cerrando ventanas y puertas con las que se observan con puertas y ventanas 
+***** ¿Cómo se puede saber de las zonas de mayor concentración de ese material particulado? 
+***** ¿Cómo se puede visualizar?
+***** ¿Porqué es importante que los ciudadanos midan la calidad del aire?
+** ¿Se puede medir el aire que está alrededor?
+   Imprime un mapa del barrio, sale a caminar con marcadores verde, naranja, rojo, morado y marrón, marca las mediciones en el mapa. 
+***** Pasa cerca al mofle de un carro y observa el cambio en los colores.
+***** ¿Qué pasa con las medicines en un semáforo cuando se acumulan carros intermitentemente?
+***** ¿Cuáles son las zonas de mayor concentración de material particulado en mi cuadra? 
+** Desde la posición de quien respira ¿existe diferencia entre la presencia del material particulado que hay a nivel atmosférico y las emisiones cercanas ?
+** ¿Se puede ensamblar un sensor portable para medir la presencia (de particulas pequeñas) en el aire ?
+***** PRACTICA: Poner a funcionar el sensor, 
+      Partes: <sensor partículas> <microcontrolador> <leds> <pila> <hoja de papel> <colores>
+****** Ensamble la pieza <sensor> en la pieza <microcontrolador>
+****** Ensamble la pieza <leds> en la pieza <microcontrolador> 
+****** Para encender, conecte el <microcontrolador> con el <adaptador USB>
+****** Tome nota de los colores cada minuto en un papel durante 15 minutos
+****** Experimentos
+******* Enciende un fosforo cerca al sensor y toma nota de los cambios en la escala de colores.
+******* En una habitación compara las mediciones cerrando ventanas y puertas con las que se observan con puertas y ventanas 
 * Nivel 2: Tablero de mediciones
   Tener más fuentes de medición nos permite dimensionar la complejidad del fenómeno del aire, poder comparar esas mediciones entre sí puede revelar asuntos importantes para entender los fenómenos.
 
