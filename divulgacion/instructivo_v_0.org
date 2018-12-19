@@ -120,3 +120,25 @@
 ***** Verifica: Se conecta por WiFi al dispositivo y verifica el nuevo nombre del sensor.
 ** Comunicar sensores entre sí
 *** PRÁCTICA: Tansmite el valor de PM2.5 de un dispositivo con sensor de partículas a otro sin sensor de partículas.
+* Nivel 7 (extra): identificar que  contamina ,los gases son contaminacion ?
+** tareas 
+*** ¿cuando hay un olor maluco hay contamicaion?
+****¿ que indica el sensor?
+*** ¿ que lugar de la casa es el mas contaminado  ?
+****¿ es el mas oloroso?
+***¿ un gas pude que cambie las particulas en el aire ?
+* Nivel 8 (extra): cunto se demora en irse la contamniacion
+**intente y responda
+*** busque 3 respientes uno profundo y otro largo   y otro en promedio de lo profundo y largo   
+*** meta el sensor en cada uno de los resipintes por el mismo tiempo y minimo 2 minutos 
+****¿ que indica el sensor en cada respiente  y anote los colores y medidas de cada resipiente?
+****¿ se fue la contaminacion? ¿en cuanto tiempo?
+* Nivel 9 (extra): platas limpian el aire?
+**investigue y comprueve compare 
+***especies de plantas que limpien el aire
+*** busque en internet plantas que limpin el aire y compare 
+***platas que limpian purifican https://bit.ly/2Up1EMU https://bit.ly/2BU1DcE  
+****pista solo hay un tipo de planta que limpia el aire de la polucion y se pude limpiar mediante el biomagentismo
+   
+* comparte tus resultados https://comunidad.unloquer.org/ 
+
