@@ -197,8 +197,10 @@ void readLog() {
 
 Ticker reset_ticker;
 void tick() {
-  DMSG_STR("restarting system");
-  ESP.reset();
+  if(!WiFi.isConnected()) {
+    DMSG_STR("restarting system");
+    ESP.reset();
+  }
 }
 void setup() {
 

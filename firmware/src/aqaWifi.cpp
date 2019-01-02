@@ -7,6 +7,8 @@ AsyncWiFiManager my_wifiManager(&server, &dns);
 
 void configModeCallback(AsyncWiFiManager *w_manager) {
 
+  w_manager->setConfigPortalTimeout(240);
+  w_manager->setTimeout(120);
   DMSG_STR("Entered config mode");
   DMSG_STR(WiFi.softAPIP());
   // print the ssid that we should connect to to configure the ESP8266
