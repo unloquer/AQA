@@ -1,6 +1,5 @@
 #include <aqaWifi.h>
 #include <ESP8266Ping.h>
-using namespace aqaWifi;
 
 AsyncWebServer server(80);
 DNSServer dns;

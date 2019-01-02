@@ -2,8 +2,6 @@
 //#include<Arduino.h>
 //#include <constants_defines.h>
 #include <Gps.h>
-using namespace aqaGps;
-
 
 AqaGps::AqaGps(Stream &out) : _out(out)
 {

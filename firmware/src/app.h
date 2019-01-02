@@ -22,6 +22,6 @@ void save();
 // function to check module hook up
 void checkConnectedModules(unsigned long timeout);
 
-void ledParticulateQuality(aqaPlantower::plantowerData data);
-void ledParticulateQualityStreamming(aqaPlantower::plantowerData data);
-void ledParticulateQualityStream(aqaPlantower::plantowerData data);
+/*void ledParticulateQuality(plantowerData data);
+void ledParticulateQualityStreamming(plantowerData data);
+void ledParticulateQualityStream(plantowerData data);*/

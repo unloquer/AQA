@@ -1,11 +1,5 @@
 #include <app.h>
 #include <Ticker.h>
-
-using namespace aqaGps;
-using namespace aqaPlantower;
-using namespace aqaDht;
-using namespace aqaWifi;
-using namespace aqaLeds;
 //gps configuration
 SoftwareSerial gpsSerial(GPS_RX,GPS_TX);
 AqaGps gpsSensor(gpsSerial);
@@ -35,51 +29,11 @@ bool system_connected = false;
 
 DoubleResetDetector drd(DRD_TIMEOUT, DRD_ADDRESS);
 
-FSInfo fs_info;
-String readPosition();
-void savePosition(String position);
-void readLog();
-
-void fs_info_print() {
-  SPIFFS.info(fs_info);
-  DMSG("totalBytes ");DMSG_STR(fs_info.totalBytes);
-  DMSG("usedBytes ");DMSG_STR(fs_info.usedBytes);
-  DMSG("blockSize ");DMSG_STR(fs_info.blockSize);
-  DMSG("pageSize ");DMSG_STR(fs_info.pageSize);
-  DMSG("maxOpenFiles ");DMSG_STR(fs_info.maxOpenFiles);
-  DMSG("maxPathLength ");DMSG_STR(fs_info.maxPathLength);
-}
-void fs_delete_file() {
-  //SPIFFS.format(); // descomentar esta línea si hay algo que no se puede borrar en la memoria flash
-  // Assign a file name e.g. 'names.dat' or 'data.txt' or 'data.dat' try to use the 8.3 file naming convention format could be 'data.d'
-  char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
-
-  if (SPIFFS.exists(filename)) SPIFFS.remove(filename); // First blu175.mail.live.com in this example check to see if a file already exists, if so delete it
-}
-void deleteLog() {
-  DMSG_STR("Deleting log");
-  SPIFFS.remove("datalog.txt");
-}
 void sendLog() {
   String url = "http://192.168.0.18:3000/api/v0/air.csv";
   aqaHttp::postCsvFile(url, "log");
 }
-void syncLog() {
-  if(!INIT) { return; }
-  INIT = 0;
 
-  if(READ_LOG) {
-    readLog();
-  }
-
-  if(SEND_LOG) {
-    sendLog();
-  }
-
-  if(DELETE_LOG) {
-    deleteLog();
-  }
-}
 String getValue(String data, char separator, int index)
 {
   int found = 0;
@@ -96,14 +50,7 @@ String getValue(String data, char separator, int index)
   }
   return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
-void fs_list_files(){
-  Dir dir = SPIFFS.openDir("/");
-  while (dir.next()) {
-    DMSG(dir.fileName());
-    File f = dir.openFile("r");
-    DMSG_STR(f.size());
-  }
-}
+
 void readLog() {
   DMSG_STR("Reading log ...");
   fs::File file = SPIFFS.open("datalog.txt", "r");
@@ -250,7 +197,7 @@ void readLog() {
 
 Ticker reset_ticker;
 void tick() {
-  DMSG_STR("restarting systemOOOOOOOOOOOO");
+  DMSG_STR("restarting system");
   ESP.reset();
 }
 void setup() {
@@ -271,7 +218,7 @@ void setup() {
   dhtInfo = dhtSensor.getDhtData();
   plantowerInfo = plantowerSensor.getPlantowerData();
   gpsInfo = gpsSensor.getGpsData();
-  fs_info_print();
+  //fs_info_print();
   //set up networking
 #ifdef MOBILE
   DMSG_STR("MOVIL");
@@ -313,6 +260,7 @@ void loop() {
   
 //  the_wifi.check_connections();
 
+  aqa_leds.ledParticulateQuality(*plantowerInfo);
   if( gpsSensor.sensorOk() && plantowerSensor.sensorOk() && dhtSensor.sensorOk()) 
   {
     //ready to send to the server
@@ -324,6 +272,9 @@ void loop() {
     yield();
     //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
     aqaHttp::post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
+
+
+    aqa_leds.ledParticulateQualityStreamming(*plantowerInfo);
 
   }else {
 

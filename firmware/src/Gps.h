@@ -10,47 +10,44 @@
 #include <Time.h>
 #include <TimeLib.h>
 
-namespace aqaGps {
+typedef struct gpsData {
 
-  typedef struct gpsData {
+  int ready = 0;
 
-    int ready = 0;
+  //    String date;
+  // String time;
+  double altitude;
+  double course;
+  double speed;
+  double lat;
+  double lng;
+  time_t epoch_time;
+};
 
-//    String date;
-   // String time;
-    double altitude;
-    double course;
-    double speed;
-    double lat;
-    double lng;
-    time_t epoch_time;
-  };
+class AqaGps {
 
-  class AqaGps {
+public:
+  AqaGps(Stream &out);
+  // todo: implement timeouts
+  // and states for querying data
+  //bool timeout(void);
+  void handleGpsData();
+  bool sensorOk(void);
+  gpsData * getGpsData(void);
 
-    public:
-      AqaGps(Stream &out);
-      // todo: implement timeouts
-      // and states for querying data
-      //bool timeout(void);
-      void handleGpsData();
-      bool sensorOk(void);
-      gpsData * getGpsData(void);
+private:
 
-    private:
-
-      void checkValidGps();
-      bool _isSensorFullyFunctional;
-      tmElements_t time_struct;
-      gpsData data;
-      TinyGPSPlus tinyGps;
-      void _readGps(unsigned long timeout);
-      Stream &_out;
-      bool _timeout = false;
+  void checkValidGps();
+  bool _isSensorFullyFunctional;
+  tmElements_t time_struct;
+  gpsData data;
+  TinyGPSPlus tinyGps;
+  void _readGps(unsigned long timeout);
+  Stream &_out;
+  bool _timeout = false;
 
 
-  };
-}
+};
 
 #endif
 

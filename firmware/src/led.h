@@ -30,22 +30,20 @@
 
 #endif
 
-namespace aqaLeds {
+class AqaLeds {
 
-  class AqaLeds {
+public: 
+  void setupLeds();
 
-    public: 
-      void setupLeds();
+  void ledParticulateQuality(plantowerData data);
+  void ledParticulateQuality2(plantowerData data);
+  void ledParticulateQualityStreamming(plantowerData data);
 
-    void ledParticulateQuality(aqaPlantower::plantowerData data);
-    void ledParticulateQuality2(aqaPlantower::plantowerData data);
-    void ledParticulateQualityStreamming(aqaPlantower::plantowerData data);
+private:
+  CRGB leds[NUM_LEDS];
 
-    private:
-      CRGB leds[NUM_LEDS];
+};
 
-  };
-}
 
 
 

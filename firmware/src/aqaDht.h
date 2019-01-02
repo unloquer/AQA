@@ -7,43 +7,40 @@
 #include <Stream.h>
 #include <DHT.h>
 
-namespace aqaDht {
+typedef struct dht11Data {
 
-  typedef struct dht11Data {
+  int ready = 0;
 
-    int ready = 0;
+  //    String date;
+  // String time;
+  float temperature;
+  float humidity;
+};
 
-//    String date;
-   // String time;
-    float temperature;
-    float humidity;
-  };
+class AqaDht {
 
-  class AqaDht {
+public:
+  //      AqaDht(Stream &out);
+  AqaDht();
+  // todo: implement timeouts
+  // and states for querying data
+  //bool timeout(void);
+  void handleDhtData();
+  void setup();
 
-    public:
-//      AqaDht(Stream &out);
-      AqaDht();
-      // todo: implement timeouts
-      // and states for querying data
-      //bool timeout(void);
-      void handleDhtData();
-      void setup();
+  bool sensorOk(void);
+  dht11Data * getDhtData(void);
+private:
 
-      bool sensorOk(void);
-      dht11Data * getDhtData(void);
-    private:
-
-      void checkValues();
-      bool _isSensorFullyFunctional;
-      dht11Data data;
-      void _readDht(unsigned long timeout);
-//      Stream &_out;
-      bool _timeout = false;
+  void checkValues();
+  bool _isSensorFullyFunctional;
+  dht11Data data;
+  void _readDht(unsigned long timeout);
+  //      Stream &_out;
+  bool _timeout = false;
 
 
-  };
-}
+};
 
 #endif
 

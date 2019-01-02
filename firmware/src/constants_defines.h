@@ -5,7 +5,7 @@
 #include <Arduino.h>
 
 #define DEBUG
-//#define NUEVATARJETA
+#define NUEVATARJETA
 //#define MOBILE
 
 //------ http

@@ -1,5 +1,4 @@
 #include <aqaDht.h>
-using namespace aqaDht;
 
 DHT dht(DHTPIN,DHTTYPE);
 

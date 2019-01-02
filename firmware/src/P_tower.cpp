@@ -1,8 +1,5 @@
 #include<P_tower.h>
 
-
-using namespace aqaPlantower;
-
 AqaPlantower::AqaPlantower(Stream &out) : _out(out)
 {
 

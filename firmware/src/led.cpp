@@ -1,6 +1,4 @@
-
 #include <led.h>
-using namespace aqaLeds;
 
 void AqaLeds::setupLeds() {
   #ifdef NUEVATARJETA
@@ -10,7 +8,7 @@ void AqaLeds::setupLeds() {
   #endif
 }
 
-void AqaLeds::ledParticulateQuality(aqaPlantower::plantowerData data) {
+void AqaLeds::ledParticulateQuality(plantowerData data) {
   int pm1 = data.pm1;
   int pm25 = data.pm25;
   int pm10 = data.pm10;
@@ -32,11 +30,11 @@ void AqaLeds::ledParticulateQuality(aqaPlantower::plantowerData data) {
     leds[0] = leds[1] = i%2 == 0 ? alert : CRGB::Black;
     #endif
     FastLED.show();
-    delay(300);
+    FastLED.delay(300);
   }
 }
 
-void AqaLeds::ledParticulateQuality2(aqaPlantower::plantowerData data) {
+void AqaLeds::ledParticulateQuality2(plantowerData data) {
     int pm1 = data.pm1;
     int pm25 = data.pm25;
     int pm10 = data.pm10;
@@ -58,11 +56,11 @@ void AqaLeds::ledParticulateQuality2(aqaPlantower::plantowerData data) {
       leds[0] = leds[1] = i%2 == 0 ? alert : CRGB::Black;
       #endif
       FastLED.show();
-      delay(100);
+      FastLED.delay(100);
     }
 }
 
-void AqaLeds::ledParticulateQualityStreamming(aqaPlantower::plantowerData data) {
+void AqaLeds::ledParticulateQualityStreamming(plantowerData data) {
   int pm1 = data.pm1;
   int pm25 = data.pm25;
   int pm10 = data.pm10;
@@ -84,6 +82,6 @@ void AqaLeds::ledParticulateQualityStreamming(aqaPlantower::plantowerData data) 
     leds[0] = leds[1] = i%2 == 0 ? alert : CRGB::Black;
     #endif
     FastLED.show();
-    delay(30);
+    FastLED.delay(30);
   }
 }
