@@ -9,7 +9,7 @@ https://comunidad.unloquer.org/t/como-programar-el-aqa/33
 
 
 
-## Sensor portable para medir la calidad del aire
+## Enlaces
   * Foro: https://comunidad.unloquer.org/
   * Ejemplo de la trama de datos: https://raw.githubusercontent.com/daquina-io/VizCalidadAire/master/data/points.csv
   * wiki: http://wiki.unloquer.org/personas/brolin/proyectos/agentes_calidad_aire
