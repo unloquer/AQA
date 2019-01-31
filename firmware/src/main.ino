@@ -13,12 +13,12 @@ AqaWifi the_wifi(5000);// aqawifi(int i) initializes a ticker callback. doesnt w
 //--------- variables to point to the data of the sensors
 gpsData * gpsInfo;
 plantowerData * plantowerInfo;
-dht11Data * dhtInfo; 
+dht11Data * dhtInfo;
 
 //---leds
 AqaLeds aqa_leds;
 
-const String SENSOR_ID = "volker0003"; // change with your id
+const String SENSOR_ID = "moravia"; // change with your id
 int INIT = 1;
 // const int DEBUG = 0;
 const int READ_LOG = 1;
@@ -259,22 +259,19 @@ void loop() {
   dhtSensor.handleDhtData();
   yield();
   wdt_reset();
-  
-//  the_wifi.check_connections();
+  //  the_wifi.check_connections();
 
   aqa_leds.ledParticulateQuality(*plantowerInfo);
-  if( gpsSensor.sensorOk() && plantowerSensor.sensorOk() && dhtSensor.sensorOk()) 
+  if( /*gpsSensor.sensorOk() &&*/  plantowerSensor.sensorOk() && dhtSensor.sensorOk())
   {
     //ready to send to the server
-
     DMSG_STR("ready to SAVE/UPLOAD");
-//    save();
+    //    save();
     String frame = influxFrame();
     DMSG_STR(frame);
     yield();
     //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
     aqaHttp::post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
-
 
     aqa_leds.ledParticulateQualityStreamming(*plantowerInfo);
 
@@ -396,11 +393,11 @@ String influxFrame() {
   dtostrf(gpsInfo->lat, 3, 6, strlat);
   dtostrf(gpsInfo->lng, 3, 6, strlng);
   frame += F("lat=");
-  frame += strlat + STR_COMMA;
-  //frame += 6.27 + STR_COMMA; // hard coded latitude lat 
+  //frame += strlat + STR_COMMA;
+  frame += 6.276321143174576 + STR_COMMA; // hard coded latitude lat
   frame += F("lng=");
-  frame += strlng + STR_COMMA;
-  //frame += -75.62    + STR_COMMA;// hard coded longitude lng
+  //frame += strlng + STR_COMMA;
+  frame += -75.56456565856934 + STR_COMMA;// hard coded longitude lng
   //frame += gps.date + STR_COMMA;
   //frame += gps.time + STR_COMMA;
   frame += F("altitude=");
@@ -443,7 +440,7 @@ void checkConnectedModules(unsigned long timeout) {
   wdt_disable();
 
   /*if(plantowerSensor.sensorOk()) {
-  
+
     DMSG_STR("hell yes");
   }else{
     DMSG_STR("sensor not ready");
@@ -455,14 +452,12 @@ void checkConnectedModules(unsigned long timeout) {
 
     plantowerSensor.handlePlantowerData();
     if(plantowerSensor.sensorOk()) {
-
       system_connected = true;
       DMSG_STR("sensor  CHECKEDDDDDDDDDDDD");
       break;
 
     }else{
       DMSG_STR("not plantowerOK");
-    
     }
 
     DMSG_STR("checked for connected sensors");

@@ -44,8 +44,8 @@ const String STR_COLON = ":";
 const String STR_NULL = "NULL";
 const String  STR_ZERO  = "0";
 const String STR_SPACE  = " ";
-// ---- 
-// debugging 
+// ----
+// debugging
 #ifdef  DEBUG
 #define DMSG(args...)       Serial.print(args)
 #define DMSGf(args...)      Serial.printf(args)

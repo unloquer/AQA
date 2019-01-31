@@ -550,6 +550,23 @@
     proyecto:tallerexplora                                                 $1996000
     parqueexplora
 
+2019/01/22 Ingreso dinero por venta sensor
+    proyecto:sensordani                                                     $300000
+    danielarango
+
+2019/01/22 Pago dominio unloquer
+    egresos:dominiounloquer                                                 $111478
+    proyecto:sensordani 
+
+2019/01/28 Compra CNC 5 ejes
+    egresos:compra:cnc                                                     $2508062
+    proyecto:compra:cnc
+
+2019/01/30 Compra Mini NAS C3P
+    egresos:compra:mininas:mercadolibre                                     $745900
+    proyecto:compra:mininas
+
+
 
 
 
