@@ -33,21 +33,25 @@
 
 ** Introducción 
     Camiones, carros, fábricas, emiten contaminantes pequeños que están en el aire y se mueven con el viento, 
-*** ¿Cómo se puede saber de las zonas de mayor concentración de ese material particulado? 
-*** ¿Cómo se puede visualizar?
-*** ¿Porqué es importante que los ciudadanos midan la calidad del aire?
-** Sensor para medir la presencia (de particulas pequeñas) en el aire 
-*** PRACTICA: Poner a funcionar el sensor, 
-    Partes: <sensor partículas> <microcontrolador> <leds> <pila> <hoja de papel> <colores>
-**** Ensamble la pieza <sensor> en la pieza <microcontrolador>
-**** Ensamble la pieza <leds> en la pieza <microcontrolador> 
-**** Para encender, conecte el <microcontrolador> con el <adaptador USB>
-**** Tome nota de los colores cada minuto en un papel durante 15 minutos
-**** Experimentos
-***** ¿Cuáles son las zonas de mayor concentración de material particulado en mi cuadra? Imprime un mapa del barrio, sale a caminar con marcadores verde, naranja, rojo, morado y marrón, marca las mediciones en el mapa. 
-***** Enciende un fosforo cerca al sensor y toma nota de los cambios en la escala de colores.
-***** Pasa cerca al mofle de un carro y observa el cambio en los colores
-***** En una habitación compara las mediciones cerrando ventanas y puertas con las que se observan con puertas y ventanas 
+***** ¿Cómo se puede saber de las zonas de mayor concentración de ese material particulado? 
+***** ¿Cómo se puede visualizar?
+***** ¿Porqué es importante que los ciudadanos midan la calidad del aire?
+** ¿Se puede medir el aire que está alrededor?
+   Imprime un mapa del barrio, sale a caminar con marcadores verde, naranja, rojo, morado y marrón, marca las mediciones en el mapa. 
+***** Pasa cerca al mofle de un carro y observa el cambio en los colores.
+***** ¿Qué pasa con las medicines en un semáforo cuando se acumulan carros intermitentemente?
+***** ¿Cuáles son las zonas de mayor concentración de material particulado en mi cuadra? 
+** Desde la posición de quien respira ¿existe diferencia entre la presencia del material particulado que hay a nivel atmosférico y las emisiones cercanas ?
+** ¿Se puede ensamblar un sensor portable para medir la presencia (de particulas pequeñas) en el aire ?
+***** PRACTICA: Poner a funcionar el sensor, 
+      Partes: <sensor partículas> <microcontrolador> <leds> <pila> <hoja de papel> <colores>
+****** Ensamble la pieza <sensor> en la pieza <microcontrolador>
+****** Ensamble la pieza <leds> en la pieza <microcontrolador> 
+****** Para encender, conecte el <microcontrolador> con el <adaptador USB>
+****** Tome nota de los colores cada minuto en un papel durante 15 minutos
+****** Experimentos
+******* Enciende un fosforo cerca al sensor y toma nota de los cambios en la escala de colores.
+******* En una habitación compara las mediciones cerrando ventanas y puertas con las que se observan con puertas y ventanas 
 * Nivel 2: Tablero de mediciones
   Tener más fuentes de medición nos permite dimensionar la complejidad del fenómeno del aire, poder comparar esas mediciones entre sí puede revelar asuntos importantes para entender los fenómenos.
 
@@ -116,3 +120,25 @@
 ***** Verifica: Se conecta por WiFi al dispositivo y verifica el nuevo nombre del sensor.
 ** Comunicar sensores entre sí
 *** PRÁCTICA: Tansmite el valor de PM2.5 de un dispositivo con sensor de partículas a otro sin sensor de partículas.
+* Nivel 7 (extra): identificar que  contamina ,los gases son contaminacion ?
+** tareas 
+*** ¿cuando hay un olor maluco hay contamicaion?
+****¿ que indica el sensor?
+*** ¿ que lugar de la casa es el mas contaminado  ?
+****¿ es el mas oloroso?
+***¿ un gas pude que cambie las particulas en el aire ?
+* Nivel 8 (extra): cunto se demora en irse la contamniacion
+**intente y responda
+*** busque 3 respientes uno profundo y otro largo   y otro en promedio de lo profundo y largo   
+*** meta el sensor en cada uno de los resipintes por el mismo tiempo y minimo 2 minutos 
+****¿ que indica el sensor en cada respiente  y anote los colores y medidas de cada resipiente?
+****¿ se fue la contaminacion? ¿en cuanto tiempo?
+* Nivel 9 (extra): platas limpian el aire?
+**investigue y comprueve compare 
+***especies de plantas que limpien el aire
+*** busque en internet plantas que limpin el aire y compare 
+***platas que limpian purifican https://bit.ly/2Up1EMU https://bit.ly/2BU1DcE  
+****pista solo hay un tipo de planta que limpia el aire de la polucion y se pude limpiar mediante el biomagentismo
+   
+* comparte tus resultados https://comunidad.unloquer.org/ 
+
