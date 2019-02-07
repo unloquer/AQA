@@ -1,4 +1,7 @@
 #include "app.h"
+// WiFi parameters
+const char* ssid = "RED_WIFI";
+const char* password = "PASSWORD_RED_WIFI";
 
 
 void configModeCallback (WiFiManager *myWiFiManager) {
@@ -23,23 +26,34 @@ void setupWifi() {
   //Local intialization. Once its business is done, there is no need to keep it around
   //Download index.htm
   // respond to GET requests on URL /heap
-  WiFiManager wifiManager;
+  //WiFiManager wifiManager;
   //reset settings - for testing
   //wifiManager.resetSettings();
   //set callback that gets called when connecting to previous WiFi fails, and enters Access Point mode
-  wifiManager.setAPCallback(configModeCallback);
-  //fetches ssid and pass and tries to connect
-  //if it does not connect it starts an access point with the specified name
-  //here  "AutoConnectAP"
-  //and goes into a blocking loop awaiting configuration
-  if(!wifiManager.autoConnect()) {
-    DMSG_STR("failed to connect and hit timeout");
-    //reset and try again, or maybe put it to deep sleep
-    ESP.reset();
-    delay(1000); 
-  }
+  // wifiManager.setAPCallback(configModeCallback);
+  // //fetches ssid and pass and tries to connect
+  // //if it does not connect it starts an access point with the specified name
+  // //here  "AutoConnectAP"
+  // //and goes into a blocking loop awaiting configuration
+  // if(!wifiManager.autoConnect()) {
+  //   DMSG_STR("failed to connect and hit timeout");
+  //   //reset and try again, or maybe put it to deep sleep
+  //   ESP.reset();
+  //   delay(1000); 
+  // }
 
   //if you get here you have connected to the WiFi
-  DMSG_STR("connected...yeey :)");
+  // DMSG_STR("connected...yeey :)");
+
+  // Connect to WiFi
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("");
+  Serial.println("WiFi connected");
+  // Print the IP address
+  Serial.println(WiFi.localIP());
 
 }

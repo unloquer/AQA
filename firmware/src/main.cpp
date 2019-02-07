@@ -1,4 +1,4 @@
-#define MOBILE
+//#define MOBILE
 
 #include "app.h"
 #include <GDBStub.h>
@@ -335,7 +335,7 @@ void loop() {
     if(plantowerData.ready) {
       ledParticulateQuality(plantowerData);
       //reportWifi( plantower.pm25);
-      if(gps.ready) {
+      //if(gps.ready) {
 #ifdef MOBILE
         ledParticulateQualityStreamming(plantowerData);
         save();
@@ -347,7 +347,7 @@ void loop() {
         post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
         i++;
 #endif
-      }
+        //}
     }
   }
 
@@ -457,11 +457,11 @@ String influxFrame() {
   dtostrf(gps.lat, 3, 6, strlat);
   dtostrf(gps.lng, 3, 6, strlng);
   frame += F("lat=");
-  frame += strlat + STR_COMMA;
-  //frame += 6.27 + STR_COMMA; // hard coded latitude lat 
+  //frame += strlat + STR_COMMA;
+  frame += 6.263553 + STR_COMMA; // hard coded latitude lat 
   frame += F("lng=");
-  frame += strlng + STR_COMMA;
-  //frame += -75.62    + STR_COMMA;// hard coded longitude lng
+  //frame += strlng + STR_COMMA;
+  frame += -75.597504 + STR_COMMA;// hard coded longitude lng
   //frame += gps.date + STR_COMMA;
   //frame += gps.time + STR_COMMA;
   frame += F("altitude=");

@@ -34,6 +34,7 @@ void setupLeds() {
   #endif
   // https://github.com/FastLED/FastLED/issues/659
   // https://github.com/FastLED/FastLED/wiki/FastLED-Temporal-Dithering
+  FastLED.setBrightness(64);
   FastLED.setDither(0);
 }
 
@@ -93,8 +94,6 @@ void ledParticulateQualityStreamming(PlantowerData data) {
   if(pm25 >= 55 && pm25 < 150) alert = CRGB::DarkRed; // CRGB::Red; // Alert.dangerous;
   if(pm25 >= 150 && pm25 < 250) alert = CRGB::Purple; // CRGB::Purple; // Alert.VeryDangerous;
   if(pm25 >= 250) alert = CRGB::Chocolate; // Alert.harmful;
-
-  FastLED.setBrightness(millis() % 255);
 
   leds[0] = leds[1] = leds[2]= alert;
   FastLED.delay(10);
