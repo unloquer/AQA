@@ -152,6 +152,7 @@ int post2Influx(String url, String load) {
     } else {
       DMSG(F("[HTTP] failed, error;;;: "));
       DMSG_STR(http.errorToString(httpCode).c_str());
+      digitalWrite(D0, LOW); delay(100);
     }
   }
 

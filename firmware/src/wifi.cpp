@@ -1,7 +1,7 @@
 #include "app.h"
 // WiFi parameters
-const char* ssid = "RED_WIFI";
-const char* password = "PASSWORD_RED_WIFI";
+const char* ssid = "HOME-4E05";
+const char* password = "BDFBC14F7BC4E656";
 
 
 void configModeCallback (WiFiManager *myWiFiManager) {

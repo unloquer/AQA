@@ -289,6 +289,8 @@ void setup() {
   Serial.begin(115200);
   DMSG_STR("\nStarting ...");
 
+  pinMode(D0, OUTPUT); digitalWrite(D0, HIGH); // https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
+
   SPIFFS.begin();
   setupLeds();
   setupGPS();
@@ -322,7 +324,7 @@ void loop() {
 #ifndef MOBILE
   if (WiFi.status() != WL_CONNECTED) {
     delay(5000);
-    ESP.reset();
+    digitalWrite(D0, LOW); delay(100); // from here https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
     return;
   }
 #endif
@@ -356,8 +358,8 @@ void loop() {
   drd.loop();
 #else
   if(i >= 30){
-    ESP.reset();
     i = 0;
+    digitalWrite(D0, LOW); delay(100);;
   }
 #endif
 }
@@ -458,10 +460,10 @@ String influxFrame() {
   dtostrf(gps.lng, 3, 6, strlng);
   frame += F("lat=");
   //frame += strlat + STR_COMMA;
-  frame += 6.263553 + STR_COMMA; // hard coded latitude lat 
+  frame += 6.230127 + STR_COMMA; // hard coded latitude lat 
   frame += F("lng=");
   //frame += strlng + STR_COMMA;
-  frame += -75.597504 + STR_COMMA;// hard coded longitude lng
+  frame += -75.593703 + STR_COMMA;// hard coded longitude lng
   //frame += gps.date + STR_COMMA;
   //frame += gps.time + STR_COMMA;
   frame += F("altitude=");

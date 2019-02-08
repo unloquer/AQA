@@ -30,7 +30,7 @@
 #define DMSG_STR(str)
 #endif
 
-const String SENSOR_ID = "volker0004"; // change this with your sensor ID
+const String SENSOR_ID = "volker0003"; // change this with your sensor ID
 
 const String STR_COMMA = ",";
 const String STR_SLASH = "/";
