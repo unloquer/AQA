@@ -38,6 +38,8 @@ String aqaHttp::_post(String url, String json) {
       }
     } else {
       DMSGf("[HTTP] POST... failed, error: %s\n", http.errorToString(httpCode).c_str());
+      //reset
+      digitalWrite(D0, LOW); delay(100); // from here https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
     }
 
     http.end();
@@ -153,6 +155,8 @@ int aqaHttp::post2Influx(String url, String load) {
     } else {
       DMSG(F("[HTTP] failed, error;;;: "));
       DMSG_STR(http.errorToString(httpCode).c_str());
+      //reset
+      digitalWrite(D0, LOW); delay(100); // from here https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
     }
   }
 

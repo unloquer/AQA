@@ -90,25 +90,41 @@ void feck() {
   Serial.println("address callback");
 }
 
+// void AqaWifi::init_connections() {
+// // WiFiManager  my_wifiManager;
+//   my_wifiManager.setAPCallback(configModeCallback);
+
+//   if(!my_wifiManager.autoConnect("AQA_estacion")) {
+//     delay(1000); // timeout
+
+//     DMSG_STR("failed to connect and hit timeout");
+//     ESP.reset();
+// //    delay(1000);
+//   }
+//   // you are connected either to the ap or to the internet :)
+//   DMSG_STR("connected...yeey :)");
+//   //----init server
+//    server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+//         request->send(200, "text/plain", "AQA_XD");
+//     });
+//    server.on("/log", std::bind(feck));
+//   server.begin();
+// }
+
+// WiFi parameters
+const char* ssid = "WIFI_SSID";
+const char* password = "WIFI_PASSWORD";
+
 void AqaWifi::init_connections() {
-
-// WiFiManager  my_wifiManager;
-  my_wifiManager.setAPCallback(configModeCallback);
-
-  if(!my_wifiManager.autoConnect("AQA_estacion")) {
-    delay(1000); // timeout
-
-    DMSG_STR("failed to connect and hit timeout");
-    ESP.reset();
-//    delay(1000);
+  // // Connect to WiFi
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
   }
-  // you are connected either to the ap or to the internet :)
-  DMSG_STR("connected...yeey :)");
-  //----init server
-   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-        request->send(200, "text/plain", "AQA_XD");
-    });
-   server.on("/log", std::bind(feck));
-  server.begin();
-}
+  Serial.println("");
 
+  Serial.println("WiFi connected");
+  // Print the IP address
+  Serial.println(WiFi.localIP());
+}

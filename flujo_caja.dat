@@ -534,12 +534,12 @@
     egresos:proyección:2:sesionescreativas:dispositivo
 
 2018/12/03 Pago envío de particle a colombia
-    egresos:18:realización:envíoparticle                                    $62112
+    egresos:18:realización:envíoparticle                                     $62112
     proyecto:talleres:18:realización:envíoparticle
     
 
 2018/12/05 Compra sacabocados y cable
-    egresos:18:realización:sacabocados                                      $52700
+    egresos:18:realización:sacabocados                                       $52700
     proyecto:talleres:18:realización:sacabocados
 
 2018/12/07 Compra egghead.io
@@ -549,6 +549,10 @@
 2018/12/26 Pago taller Explora
     proyecto:tallerexplora                                                 $1996000
     parqueexplora
+
+2019/01/18 Pago particle
+    egresos:mensualidadparticle                                               $9343
+    proyecto:compra:mensualidadparticle                                       
 
 2019/01/22 Ingreso dinero por venta sensor
     proyecto:sensordani                                                     $300000
@@ -565,6 +569,38 @@
 2019/01/30 Compra Mini NAS C3P
     egresos:compra:mininas:mercadolibre                                     $745900
     proyecto:compra:mininas
+
+2019/02/04 Compra mouser
+    egresos:compra:mouser                                                    $85339
+    proyecto:compra:componetes
+
+2019/02/08 Envio mouser
+    egresos:compra:mouser:envio                                            $49177
+    proyecto:compra:mouser:envio
+
+2019/02/11 Compra esp32 con cámaras pruebas
+    egresos:compra:esp32eye:aliexpress                                     $819761
+    proyecto:compra:esp32eye
+
+2019/02/13 Ajuste de compra de cnc
+    egresos:compra:cnc                                                     $188708
+    proyecto:compra:cnc
+
+2019/02/18 Pago particle
+    egresos:mensualidadparticle                                             $9440
+    proyecto:compra:mensualidadparticle
+
+2019/03/02 Comida sesión de planeación y ordenar
+    egresos:sesiontrabajo:comida                                            $75000
+    proyecto:sesiontrabajo:comida
+
+2019/03/04 Pago ups colombia
+    egresos:compra:cnc:envío                                               $232000
+    proyecto:compra:cnc:envío
+
+
+
+
 
 
 

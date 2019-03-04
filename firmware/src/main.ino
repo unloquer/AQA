@@ -199,11 +199,11 @@ Ticker reset_ticker;
 void tick() {
   if(!WiFi.isConnected()) {
     DMSG_STR("restarting system");
-    ESP.reset();
+    digitalWrite(D0, LOW); delay(100); // from here https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
   }
 }
 void setup() {
-
+  pinMode(D0, OUTPUT); digitalWrite(D0, HIGH); // https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
   Serial.begin(115200);
 
 
@@ -394,10 +394,10 @@ String influxFrame() {
   dtostrf(gpsInfo->lng, 3, 6, strlng);
   frame += F("lat=");
   //frame += strlat + STR_COMMA;
-  frame += 6.276321143174576 + STR_COMMA; // hard coded latitude lat
+  frame += "6.276161175203223" + STR_COMMA; // hard coded latitude lat
   frame += F("lng=");
   //frame += strlng + STR_COMMA;
-  frame += -75.56456565856934 + STR_COMMA;// hard coded longitude lng
+  frame += "-75.56450128555298" + STR_COMMA;// hard coded longitude lng
   //frame += gps.date + STR_COMMA;
   //frame += gps.time + STR_COMMA;
   frame += F("altitude=");
