@@ -598,11 +598,41 @@
     egresos:compra:cnc:envío                                               $232000
     proyecto:compra:cnc:envío
 
+2019/03/10 Capacitación CNC
+    egresos:compra:cnc:capacitación                          ($80000+$14000+$20000)
+    proyecto:compra:cn:capacitación
 
+2019/03/13 Compra de 40 matrices led
+    egresos:compra:matricesled                                             $584000
+    proyecto:compra:matricesled
 
+2019/03/14 Compra de calibrador
+    egresos:compra:cnc:calibrador                                          $153770
+    proyecto:compra:cnc:calibrador
 
+2019/03/14 Compra de brocas
+    egresos:compra:cnc:brocas                                                $6000
+    proyecto:compra:cnc:brocas
 
+2019/03/14 Turbina eólica
+    egresos:compra:turbinaeolica                                            $20000
+    proyecto:compra:turbinaeolica
 
+2019/03/14 Alcohol isopropílico
+    egresos:compra:alcohol                                                  $27000
+    proyecto:compra:alcohol
+
+2019/03/18 Pago particle
+    egresos:mensualidadparticle                                             $9401
+    proyecto:compra:mensualidadparticle
+
+2019/03/21 Compra conectores usb
+    egresos:compra:conectoresusb                                           $50733
+    proyecto:compra:conectoresusb
+
+2019/03/30 Compra varios aliexpress
+    egresos:compra:extrusor3d                                             $270177
+    proyecto:compra:extrusor3d
 
 
 
