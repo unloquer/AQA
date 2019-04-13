@@ -1,4 +1,3 @@
-#pragma once 
 #ifndef _GPS_H
 #define _GPS_H
 
@@ -14,8 +13,6 @@ typedef struct gpsData {
 
   int ready = 0;
 
-  //    String date;
-  // String time;
   double altitude;
   double course;
   double speed;

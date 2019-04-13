@@ -1,4 +1,3 @@
-
 //#include<Arduino.h>
 //#include <constants_defines.h>
 #include <Gps.h>
@@ -13,10 +12,8 @@ AqaGps::AqaGps(Stream &out) : _out(out)
 void  AqaGps::_readGps(unsigned long timeout)
 {
 
-  //if (!_out.available()) DMSG_STR("unavailable");
-
   unsigned long start = millis();
-  wdt_disable(); 
+  wdt_disable();
 
   do {
     while(_out.available()) {
@@ -35,8 +32,6 @@ void AqaGps::handleGpsData()
 
   _readGps(800);
   yield();
-
-  //checkValidGps();
 
   if(tinyGps.location.isValid()){
     // sensor fuuly functional
@@ -94,7 +89,7 @@ void AqaGps::handleGpsData()
     data.epoch_time = makeTime(time_struct);
     yield();
     /*DMSG("epoch time: ");
-      DMSG_STR(data.epoch_time);*/ 
+      DMSG_STR(data.epoch_time);*/
 
 
 
@@ -107,12 +102,12 @@ void AqaGps::handleGpsData()
   if(tinyGps.course.isValid()) {
     data.course = tinyGps.course.deg();
     /*DMSG("course: ");
-      DMSG_STR(data.course);*/ 
+      DMSG_STR(data.course);*/
   }
   if(tinyGps.speed.isValid()) {
     data.speed = tinyGps.speed.kmph();
     /* DMSG("speed: ");
-       DMSG_STR(data.speed);*/ 
+       DMSG_STR(data.speed);*/
   }
 
   if(sensorOk()) {
@@ -127,9 +122,9 @@ void AqaGps::handleGpsData()
     /*  DMSG("altitude: ");
         DMSG_STR(data.altitude);
         DMSG("course: ");
-        DMSG_STR(data.course); 
+        DMSG_STR(data.course);
         DMSG("speed: ");
-        DMSG_STR(data.speed);*/ 
+        DMSG_STR(data.speed);*/
   }else {
     // DMSG_STR("Sensor NOT FULLY OK");
   }
@@ -153,7 +148,7 @@ void AqaGps::checkValidGps () {
   /*  if (!_out.available()){
       DMSG_STR("sensor not connected");
       _isSensorFullyFunctional = false;
-      }*/ 
+      }*/
   if(!tinyGps.location.isValid() && tinyGps.date.isValid()) {
     DMSG_STR("GPS GETTING LOCATION");
     DMSG_STR(data.epoch_time);

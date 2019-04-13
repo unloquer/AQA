@@ -10,6 +10,7 @@
 #include <led.h>
 //----------------
 #include <FS.h>
+#include <filesystem.h>
 #include <DoubleResetDetector.h>
 #include <GDBStub.h>
 
@@ -19,9 +20,8 @@
 String csvFrame();
 String influxFrame();
 void save();
+String readPosition();
+void savePosition(String position);
 // function to check module hook up
 void checkConnectedModules(unsigned long timeout);
 
-/*void ledParticulateQuality(plantowerData data);
-void ledParticulateQualityStreamming(plantowerData data);
-void ledParticulateQualityStream(plantowerData data);*/

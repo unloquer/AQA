@@ -634,6 +634,11 @@
     egresos:compra:extrusor3d                                             $270177
     proyecto:compra:extrusor3d
 
+2019/04/07 Compra de 20 pms7003
+    egresos:compra:pms7003                                                $802000
+    proyecto:compra:pms7003
+
+
 
 
 
