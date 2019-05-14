@@ -638,6 +638,21 @@
     egresos:compra:pms7003                                                $802000
     proyecto:compra:pms7003
 
+2019/04/17 Compra de puntas para cnc
+    egresos:compra:cnc:puntas                                             $163000
+    proyecto:compra:cnc:puntas
+
+2019/05/03 Compra de fresas para cnc
+    egresos:compra:cnc:puntas                                              $10200
+    proyecto:compra:cnc:puntas
+
+2019/05/14 Compra baquelita
+    egresos:compra:cnc:baquelita                                            $8800
+    proyecto:compra:cnc:baquelita
+
+
+
+
 
 
 

@@ -112,6 +112,7 @@ void AqaWifi::init_connections() {
   server.begin();
 }
 #else
+
 void AqaWifi::init_connections() {
   // // Connect to WiFi
   WiFi.begin(SSID, PASSWORD);

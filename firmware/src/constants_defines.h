@@ -3,21 +3,21 @@
 #include <Arduino.h>
 
 #define DEBUG
-//#define NUEVATARJETA
+#define NUEVATARJETA
 //#define MOBILE
 #define FIXED_WIFI
 
 #ifndef MOBILE
-#define FIXED_LAT "latitude"
-#define FIXED_LON "longitude"
+#define FIXED_LAT "numeric_lat"
+#define FIXED_LON "numeric_lng"
 #endif
 
 const String SENSOR_ID = "aqa_id"; // change with your id
 // WiFi parameters
 
 #ifdef FIXED_WIFI
-const String SSID = "WIFI_SSID";
-const String PASSWORD = "WIFI_PASSWORD";
+const String SSID = "wifi_ssid";
+const String PASSWORD = "wifi_password";
 #endif
 //------ http
 const uint16_t HTTP_TIMEOUT = 1000 * 60;
@@ -53,7 +53,7 @@ const uint16_t HTTP_TIMEOUT = 1000 * 60;
 #ifdef NUEVATARJETA
 // Pines 16 y 14 no sirven para la librería fastled
 #define NUM_LEDS 3
-#define LED_PIN D0
+#define LED_PIN 4 //D0
 #define LED_TYPE WS2812B
 #define COLOR_ORDER GRB
 
