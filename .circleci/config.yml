@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: genericstudent/platformio-esp8266
+    steps:
+      - checkout
+      - run: platformio ci firmware/ --project-conf=firmware/platoformio.ini
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
