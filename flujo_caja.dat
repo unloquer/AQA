@@ -650,6 +650,11 @@
     egresos:compra:cnc:baquelita                                            $8800
     proyecto:compra:cnc:baquelita
 
+2019/05/29 Compra de disco duro pc
+    egresos:compra:discoduro                                              $150000
+    proyecto:compra:discoduro
+
+
 
 
 

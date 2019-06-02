@@ -1,7 +1,8 @@
 #pragma once
 
-#include <aqaWifi.h>
 #include <Arduino.h>
+#include <SoftwareSerial.h>
+#include <aqaWifi.h>
 #include <constants_defines.h>
 #include <Gps.h>
 #include <P_tower.h>
