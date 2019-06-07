@@ -94,7 +94,7 @@ void AqaWifi::init_connections() {
 // WiFiManager  my_wifiManager;
   my_wifiManager.setAPCallback(configModeCallback);
 
-  if(!my_wifiManager.autoConnect("AQA_estacion_florest")) {
+  if(!my_wifiManager.autoConnect()) {
     delay(1000); // timeout
 
     DMSG_STR("failed to connect and hit timeout");

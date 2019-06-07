@@ -24,7 +24,7 @@ dht11Data * dhtInfo;
 //---leds
 AqaLeds aqa_leds;
 
-const String SENSOR_ID = "estacion_floresta"; // change with your id
+const String SENSOR_ID = "los_colores"; // change with your id
 int INIT = 1;
 // const int DEBUG = 0;
 const int READ_LOG = 1;
@@ -250,8 +250,9 @@ void readLog() {
 
 Ticker reset_ticker;
 void tick() {
-  DMSG_STR("restarting systemOOOOOOOOOOOO");
-  ESP.reset();
+  //DMSG_STR("restarting systemOOOOOOOOOOOO");
+  //ESP.reset();
+  wdt_reset();
 }
 void setup() {
 
@@ -263,7 +264,7 @@ void setup() {
   dhtSensor.setup();
   aqa_leds.setupLeds();
 
-  reset_ticker.attach(600,tick);
+  reset_ticker.attach(3,tick);
   DMSG_STR("\nStarting ...");
 
   SPIFFS.begin();
@@ -309,7 +310,7 @@ void loop() {
   yield();
   dhtSensor.handleDhtData();
   yield();
-  wdt_reset();
+//  wdt_reset();
   
 //  the_wifi.check_connections();
 
@@ -324,6 +325,7 @@ void loop() {
     yield();
     //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
     aqaHttp::post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
+    wdt_reset();
 
   }else {
 
