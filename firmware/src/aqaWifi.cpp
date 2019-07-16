@@ -3,20 +3,21 @@
 
 AsyncWebServer server(80);
 DNSServer dns;
-AsyncWiFiManager my_wifiManager(&server, &dns);
+//AsyncWiFiManager my_wifiManager(&server, &dns);
 
 
-void configModeCallback(AsyncWiFiManager *w_manager) {
+// void configModeCallback(AsyncWiFiManager *w_manager) {
 
-  w_manager->setConfigPortalTimeout(240);
-  w_manager->setTimeout(120);
-  DMSG_STR("Entered config mode");
-  DMSG_STR(WiFi.softAPIP());
-  // print the ssid that we should connect to to configure the ESP8266
-  DMSG("Created config portal AP ");
-  DMSG_STR(w_manager->getConfigPortalSSID());
-}
-AqaWifi::AqaWifi(int duration) : _duration(duration) {
+//   w_manager->setConfigPortalTimeout(240);
+//   w_manager->setTimeout(120);
+//   DMSG_STR("Entered config mode");
+//   DMSG_STR(WiFi.softAPIP());
+//   // print the ssid that we should connect to to configure the ESP8266
+//   DMSG("Created config portal AP ");
+//   DMSG_STR(w_manager->getConfigPortalSSID());
+// }
+
+ AqaWifi::AqaWifi(int duration) : _duration(duration) {
 
 
 //connect_check_dispatcher.attach_ms(_duration,std::bind(&AqaWifi::check_connections, this));
