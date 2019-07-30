@@ -93,24 +93,24 @@ void feck() {
 
 #ifndef FIXED_WIFI
 void AqaWifi::init_connections() {
-// WiFiManager  my_wifiManager;
-  my_wifiManager.setAPCallback(configModeCallback);
+// // WiFiManager  my_wifiManager;
+//   my_wifiManager.setAPCallback(configModeCallback);
 
-  if(!my_wifiManager.autoConnect("AQA_estacion")) {
-    delay(1000); // timeout
+//   if(!my_wifiManager.autoConnect("AQA_estacion")) {
+//     delay(1000); // timeout
 
-    DMSG_STR("failed to connect and hit timeout");
-    ESP.reset();
-//    delay(1000);
-  }
-  // you are connected either to the ap or to the internet :)
-  DMSG_STR("connected...yeey :)");
-  //----init server
-   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-        request->send(200, "text/plain", "AQA_XD");
-    });
-   server.on("/log", std::bind(feck));
-  server.begin();
+//     DMSG_STR("failed to connect and hit timeout");
+//     ESP.reset();
+// //    delay(1000);
+//   }
+//   // you are connected either to the ap or to the internet :)
+//   DMSG_STR("connected...yeey :)");
+//   //----init server
+//    server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+//         request->send(200, "text/plain", "AQA_XD");
+//     });
+//    server.on("/log", std::bind(feck));
+//   server.begin();
 }
 #else
 

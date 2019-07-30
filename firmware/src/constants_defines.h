@@ -5,7 +5,7 @@
 #define DEBUG
 #define NUEVATARJETA
 //#define MOBILE
-#define FIXED_WIFI
+//#define FIXED_WIFI
 
 #ifndef MOBILE
 #define FIXED_LAT "numeric_lat"
@@ -16,8 +16,8 @@ const String SENSOR_ID = "aqa_id"; // change with your id
 // WiFi parameters
 
 #ifdef FIXED_WIFI
-const String SSID = "wifi_ssid";
-const String PASSWORD = "wifi_password";
+const String SSID = "ss_id";
+const String PASSWORD = "password";
 #endif
 //------ http
 const uint16_t HTTP_TIMEOUT = 1000 * 60;
