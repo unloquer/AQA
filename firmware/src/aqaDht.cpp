@@ -36,8 +36,8 @@ void AqaDht::checkValues() {
   } else {
     _isSensorFullyFunctional = false;
   }
-  
 }
+
 bool AqaDht::sensorOk(void) {
   return _isSensorFullyFunctional;
 }
@@ -48,17 +48,13 @@ void AqaDht::handleDhtData() {
   yield();
   checkValues();
   if(_isSensorFullyFunctional) {
-
-  DMSG("validated ambientXD: ");
-  DMSG(STR_SPACE);
-  DMSG("temperature:  ");
-  DMSG(data.temperature);
-  DMSG(STR_SPACE);
-  DMSG("humidity: ");
-  DMSG_STR(data.humidity);
-
-      
-
+    DMSG("validated ambientXD: ");
+    DMSG(STR_SPACE);
+    DMSG("temperature:  ");
+    DMSG(data.temperature);
+    DMSG(STR_SPACE);
+    DMSG("humidity: ");
+    DMSG_STR(data.humidity);
   }
 
 }

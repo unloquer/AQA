@@ -228,6 +228,8 @@ void loop() {
   plantowerSensor.handlePlantowerData();
   yield();
   dhtSensor.handleDhtData();
+  // dhtInfo = dhtSensor.getDhtData();
+
   yield();
   wdt_reset();
   //  the_wifi.check_connections();
@@ -250,7 +252,7 @@ void loop() {
       yield();
       aqaHttp::post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
 
-      aqa_leds.ledParticulateQualityStreamming(*plantowerInfo);
+      //aqa_leds.ledParticulateQualityStreamming(*plantowerInfo);
     }else {
 
     DMSG("gps:  ");
@@ -382,8 +384,12 @@ String influxFrame() {
   //Add DHT11 data
 
   frame += F("humidity=");
+  DMSG_STR(dhtInfo->humidity);
+
   frame += dhtInfo->humidity + STR_COMMA;
   frame += F("temperature=");
+  DMSG_STR(dhtInfo->temperature);
+
   frame += dhtInfo->temperature + STR_COMMA;
 
   // Add Plantower data
