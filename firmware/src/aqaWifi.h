@@ -6,7 +6,7 @@
 #include <Ticker.h>
 #include <ESP8266WiFi.h>
 //#include <ESP8266Ping.h>
-#include <DNSServer.h>
+// #include <DNSServer.h>
 //#include <ESP8266WebServer.h>
 // #include <ESPAsyncWebServer.h>
 // #include <ESPAsyncWiFiManager.h>
