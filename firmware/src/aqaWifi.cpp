@@ -1,21 +1,22 @@
 #include <aqaWifi.h>
 #include <ESP8266Ping.h>
 
-AsyncWebServer server(80);
-DNSServer dns;
-AsyncWiFiManager my_wifiManager(&server, &dns);
+// AsyncWebServer server(80);
+// DNSServer dns;
+// AsyncWiFiManager my_wifiManager(&server, &dns);
 
 
-void configModeCallback(AsyncWiFiManager *w_manager) {
+// void configModeCallback(AsyncWiFiManager *w_manager) {
 
-  w_manager->setConfigPortalTimeout(240);
-  w_manager->setTimeout(120);
-  DMSG_STR("Entered config mode");
-  DMSG_STR(WiFi.softAPIP());
-  // print the ssid that we should connect to to configure the ESP8266
-  DMSG("Created config portal AP ");
-  DMSG_STR(w_manager->getConfigPortalSSID());
-}
+//   w_manager->setConfigPortalTimeout(240);
+//   w_manager->setTimeout(120);
+//   DMSG_STR("Entered config mode");
+//   DMSG_STR(WiFi.softAPIP());
+//   // print the ssid that we should connect to to configure the ESP8266
+//   DMSG("Created config portal AP ");
+//   DMSG_STR(w_manager->getConfigPortalSSID());
+// }
+
 AqaWifi::AqaWifi(int duration) : _duration(duration) {
 
 
@@ -105,11 +106,11 @@ void AqaWifi::init_connections() {
   // you are connected either to the ap or to the internet :)
   DMSG_STR("connected...yeey :)");
   //----init server
-   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-        request->send(200, "text/plain", "AQA_XD");
-    });
-   server.on("/log", std::bind(feck));
-  server.begin();
+  //  server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+  //       request->send(200, "text/plain", "AQA_XD");
+  //   });
+  //  server.on("/log", std::bind(feck));
+  // server.begin();
 }
 #else
 
@@ -127,10 +128,10 @@ void AqaWifi::init_connections() {
   Serial.println(WiFi.localIP());
 
   //----init server
-  server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-                             request->send(200, "text/plain", "AQA_XD");
-                           });
-  server.on("/log", std::bind(feck));
-  server.begin();
+  // server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+  //                            request->send(200, "text/plain", "AQA_XD");
+  //                          });
+  // server.on("/log", std::bind(feck));
+  // server.begin();
 }
 #endif

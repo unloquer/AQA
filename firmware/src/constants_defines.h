@@ -4,7 +4,7 @@
 
 #define DEBUG
 #define NUEVATARJETA
-#define MOBILE
+//#define MOBILE
 #define FIXED_WIFI
 
 #ifndef MOBILE
