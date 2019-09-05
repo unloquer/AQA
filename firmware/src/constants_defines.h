@@ -12,12 +12,12 @@
 #define FIXED_LON "-75.597483"
 #endif
 
-const String SENSOR_ID = "aqa_bpp"; // change with your id
+const String SENSOR_ID = "aqa_floresta"; // change with your id
 // WiFi parameters
 
 #ifdef FIXED_WIFI
-const String SSID = "WIFI LIBRE";
-const String PASSWORD = "";
+const String SSID = "YOURSSID";
+const String PASSWORD = "xxxxx";
 #endif
 //------ http
 const uint16_t HTTP_TIMEOUT = 1000 * 60;

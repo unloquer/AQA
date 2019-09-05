@@ -15,6 +15,17 @@ void AqaDht::setup() {
 
 }
 
+float AqaDht::getTemperature(void) {
+
+  return data.temperature;
+
+}
+float AqaDht::getHumidity(void) {
+
+  return data.humidity;
+
+}
+
 void AqaDht::_readDht(unsigned long timeout) {
   unsigned long start = millis();
   wdt_disable();

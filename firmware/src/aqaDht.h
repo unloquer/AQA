@@ -27,6 +27,8 @@ public:
   //bool timeout(void);
   void handleDhtData();
   void setup();
+  float getTemperature(void);
+  float getHumidity(void);
 
   bool sensorOk(void);
   dht11Data * getDhtData(void);

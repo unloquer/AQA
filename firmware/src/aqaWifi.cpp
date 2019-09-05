@@ -115,6 +115,7 @@ void AqaWifi::init_connections() {
 #else
 
 void AqaWifi::init_connections() {
+  DMSG_STR(SSID);
   // // Connect to WiFi
   WiFi.begin(SSID, PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
