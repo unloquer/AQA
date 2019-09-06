@@ -223,15 +223,15 @@ void setup() {
 
 
 void loop() {
-  gpsSensor.handleGpsData();
-  yield();
+ // gpsSensor.handleGpsData();
+  //yield();
   plantowerSensor.handlePlantowerData();
   yield();
   dhtSensor.handleDhtData();
   // dhtInfo = dhtSensor.getDhtData();
 
   yield();
-  wdt_reset();
+  //wdt_reset();
   //  the_wifi.check_connections();
 
   aqa_leds.ledParticulateQuality(*plantowerInfo);
@@ -247,12 +247,14 @@ void loop() {
     {
       //ready to send to the server
       DMSG_STR("ready to SAVE/UPLOAD");
+      // float temp = dhtSensor.getTemperature();
+      // DMSG_STR(temp);
+      
       String frame = influxFrame();
       DMSG_STR(frame);
       yield();
       aqaHttp::post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
-
-      //aqa_leds.ledParticulateQualityStreamming(*plantowerInfo);
+      aqa_leds.ledParticulateQualityStreamming(*plantowerInfo);
     }else {
 
     DMSG("gps:  ");
@@ -329,8 +331,8 @@ String csvFrame() {
 
   //Add DHT11 data
   if(dhtSensor.sensorOk()) {
-    frame += dhtInfo->humidity + STR_COMMA;
-    frame += dhtInfo->temperature + STR_COMMA;
+    frame += dhtSensor.getHumidity() + STR_COMMA;// dhtInfo->humidity + STR_COMMA;
+    frame += dhtSensor.getTemperature() + STR_COMMA;// dhtInfo->temperature + STR_COMMA;
   } else {
     frame += STR_NULL + STR_COMMA + STR_NULL + STR_COMMA;
   }
@@ -384,13 +386,13 @@ String influxFrame() {
   //Add DHT11 data
 
   frame += F("humidity=");
-  DMSG_STR(dhtInfo->humidity);
+  DMSG_STR(dhtSensor.getHumidity());//dhtInfo->humidity);
 
-  frame += dhtInfo->humidity + STR_COMMA;
+  frame += dhtSensor.getHumidity() + STR_COMMA;//dhtInfo->humidity + STR_COMMA;
   frame += F("temperature=");
-  DMSG_STR(dhtInfo->temperature);
+  DMSG_STR(dhtSensor.getTemperature());//dhtInfo->temperature);
 
-  frame += dhtInfo->temperature + STR_COMMA;
+  frame += dhtSensor.getTemperature() + STR_COMMA;// dhtInfo->temperature + STR_COMMA;
 
   // Add Plantower data
 
