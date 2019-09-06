@@ -8,16 +8,16 @@
 #define FIXED_WIFI
 
 #ifndef MOBILE
-#define FIXED_LAT "6.263550"
-#define FIXED_LON "-75.597483"
+#define FIXED_LAT "6.200022"
+#define FIXED_LON "-75.505357"
 #endif
 
-const String SENSOR_ID = "aqa_bpp"; // change with your id
+const String SENSOR_ID = "aqa_id"; // change with your id
 // WiFi parameters
 
 #ifdef FIXED_WIFI
-const String SSID = "WIFI LIBRE";
-const String PASSWORD = "";
+const String SSID = "WIFI_SSID";
+const String PASSWORD = "WIFI_PASSWORD";
 #endif
 //------ http
 const uint16_t HTTP_TIMEOUT = 1000 * 60;
