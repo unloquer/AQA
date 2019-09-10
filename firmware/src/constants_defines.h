@@ -18,7 +18,7 @@ const String SENSOR_ID = "aqa_id"; // change with your id
 #ifdef FIXED_WIFI
 const String SSID = "WIFI_SSID";
 const String PASSWORD = "WIFI_PASSWORD";
-
+#endif
 //------ Http uint16_t HTTP_TIMEOUT = 1000 * 60;
 
 //
