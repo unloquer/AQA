@@ -2,7 +2,6 @@
 #include <StreamString.h>*/
 #include <http.h>
 using namespace aqaHttp;
-const uint16_t HTTP_TIMEOUT = 1000 * 60;
 HTTPClient http;
 
 // Facade to HTTP GET request
@@ -155,8 +154,9 @@ int aqaHttp::post2Influx(String url, String load) {
     } else {
       DMSG(F("[HTTP] failed, error;;;: "));
       DMSG_STR(http.errorToString(httpCode).c_str());
+      break;
       //reset
-      digitalWrite(D0, LOW); delay(100); // from here https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
+//      digitalWrite(D0, LOW); delay(100); // from here https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
     }
   }
 
