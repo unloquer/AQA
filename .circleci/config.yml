@@ -5,7 +5,8 @@ jobs:
       - image: circleci/python:2.7
     steps:
       - checkout
-      - run: pip install --user platformio==4.0.3 && /home/circleci/.local/bin/platformio ci /home/circleci/project/firmware/src --project-conf /home/circleci/project/firmware/platformio.ini
+      - run: pip install --user platformio==4.0.3 
+      - run: /home/circleci/.local/bin/platformio ci /home/circleci/project/firmware/src --project-conf /home/circleci/project/firmware/platformio.ini
 workflows:
   version: 2
   build:
