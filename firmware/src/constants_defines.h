@@ -7,18 +7,20 @@
 //#define MOBILE
 #define FIXED_WIFI
 
+
 #ifndef MOBILE
-#define FIXED_LAT "6.200022"
-#define FIXED_LON "-75.505357"
+#define FIXED_LAT "6.259261"
+#define FIXED_LON "-75.588483"
 #endif
 
-const String SENSOR_ID = "aqa_id"; // change with your id
+const String SENSOR_ID = "aqa_unal10"; // change with your id
 // WiFi parameters
 
 #ifdef FIXED_WIFI
-const String SSID = "WIFI_SSID";
-const String PASSWORD = "WIFI_PASSWORD";
+const String SSID = "Router_Piso_1";
+const String PASSWORD = "90rt3r1@";
 #endif
+
 //------ Http uint16_t HTTP_TIMEOUT = 1000 * 60;
 
 //
@@ -51,7 +53,7 @@ const String PASSWORD = "WIFI_PASSWORD";
 
 #ifdef NUEVATARJETA
 // Pines 16 y 14 no sirven para la librería fastled
-#define NUM_LEDS 2
+#define NUM_LEDS 1
 #define LED_PIN D1 //D0
 #define LED_TYPE WS2812B
 #define COLOR_ORDER GRB
