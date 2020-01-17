@@ -57,13 +57,13 @@ PlantowerData readPlantower(unsigned long ms) {
   do {
     //while(pmsSerial.available()) {
     if(pmsSerial.find(0x42)) {    //start to read when detect 0x42
-      //Serial.println("has 0x42");
+      //DMSG_STR("has 0x42");
       pmsSerial.readBytes(buf,LENG);
 
       if(buf[0] == 0x4d){
-        //Serial.println("has 0x4d");
+        //DMSG_STR("has 0x4d");
         if(checkValue(buf,LENG)){
-          Serial.println("value checked");
+          DMSG_STR("value checked");
           PM01Value = parsePM01(buf); //count PM1.0 value of the air detector module
           PM2_5Value = parsePM2_5(buf);//count PM2.5 value of the air detector module
           PM10Value = parsePM10(buf); //count PM10 value of the air detector module
@@ -80,24 +80,24 @@ PlantowerData readPlantower(unsigned long ms) {
 
   wdt_enable(1000);
 
-  Serial.print("PM1.0: ");
-  Serial.print(PM01Value);
-  Serial.println(" ug/m3");
+  DMSG("PM1.0: ");
+  DMSG(PM01Value);
+  DMSG_STR(" ug/m3");
 
-  Serial.print("PM2.5: ");
-  Serial.print(PM2_5Value);
-  Serial.println(" ug/m3");
+  DMSG("PM2.5: ");
+  DMSG(PM2_5Value);
+  DMSG_STR(" ug/m3");
 
-  Serial.print("PM1 0: ");
-  Serial.print(PM10Value);
-  Serial.println(" ug/m3");
-  Serial.println();
+  DMSG("PM1 0: ");
+  DMSG(PM10Value);
+  DMSG_STR(" ug/m3");
+  DMSG_STR();
 
   return data;
 }
 
 void setupPlantower() {
-  static const int pmsRXPin = 12, pmsTXPin = 6;
+  static const int pmsRXPin = 12 , pmsTXPin = 6;
   static const uint32_t bauds = 9600;
   pmsSerial.begin(bauds);
 }
