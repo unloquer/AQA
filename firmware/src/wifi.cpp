@@ -4,6 +4,7 @@ const char* ssid = "tu_nombre_de_red";
 const char* password = "tu_password";
 
 
+
 void configModeCallback (WiFiManager *myWiFiManager) {
   DMSG_STR("Entered config mode");
   DMSG_STR(WiFi.softAPIP());

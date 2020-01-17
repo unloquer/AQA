@@ -1,6 +1,10 @@
 #include "app.h"
 // inclimos la librera central que es don donde se
+
 #define DHTPIN D1    /*// what pin we're connected to
+
+#define DHTPIN 12     /*// what pin we're connected to
+
 // declara toda las funciones y librerias
 // al pin al que esta conectado en gpio a el gpio12
 // depende de la tarjeta el pin
