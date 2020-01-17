@@ -14,3 +14,5 @@ https://comunidad.unloquer.org/t/como-programar-el-aqa/33
   * Ejemplo de la trama de datos: https://raw.githubusercontent.com/daquina-io/VizCalidadAire/master/data/points.csv
   * wiki: http://wiki.unloquer.org/personas/brolin/proyectos/agentes_calidad_aire
   * Licensed under the TAPR Open Hardware License (www.tapr.org/OHL)
+## Como leer los colores
+el color gradiente de los leds funciona mientras mas intenso el color mas contaminacion  y menos inteso el color  menos contaminacion

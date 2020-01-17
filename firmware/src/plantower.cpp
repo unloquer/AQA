@@ -97,7 +97,7 @@ PlantowerData readPlantower(unsigned long ms) {
 }
 
 void setupPlantower() {
-  static const int pmsRXPin = 12, pmsTXPin = 6;
+  static const int pmsRXPin = 12 , pmsTXPin = 6;
   static const uint32_t bauds = 9600;
   pmsSerial.begin(bauds);
 }

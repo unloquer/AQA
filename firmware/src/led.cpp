@@ -44,15 +44,38 @@ void ledParticulateQuality(PlantowerData data) {
   int pm10 = data.pm10;
 
   CRGB alert = CRGB::Black;
+ 
+if(pm25 < 13){
+     //alert = CRGB::Green; // CRGB::Green; // Alert.ok
+      int color=255*pm25/13;
+       alert = CRGB(0,color,0);
+       DMSG_STR(color);
+   }
+  if(pm25 >= 13 && pm25 < 35) {
+    //  alert = CRGB::Gold; // Alert.notGood;
+      int color=255*pm25/35;
+       alert = CRGB(255,color,0);
+       DMSG_STR(color);
+    }
+  if(pm25 >= 35 && pm25 < 55) {
+      //alert = CRGB::OrangeRed; // Alert.bad;
+      int color=150*pm25/55;
+       alert = CRGB(255,color,0);
+       DMSG_STR(color);
+    }
+  if(pm25 >= 55 && pm25 < 75) {
+    //alert = CRGB::DarkRed; // CRGB::Red; // Alert.dangerous;
+      int color=255*pm25/75;
+       alert = CRGB(color,0,0);
+       DMSG_STR(color);
+  }
+  if(pm25 >= 75 && pm25 < 255)  {
+    //alert = CRGB::Purple;  // CRGB::Purple; // Alert.VeryDangerous;
+      int color=180*pm25/255;
+       alert = CRGB(175,0,color);
+       DMSG_STR(color);
+  }
 
-  if(pm25 < 12) alert = CRGB::Green; // CRGB::Green; // Alert.ok
-  if(pm25 >= 12 && pm25 < 35) alert = CRGB::Gold; // Alert.notGood;
-  if(pm25 >= 35 && pm25 < 55) alert = CRGB::OrangeRed; // Alert.bad;
-  if(pm25 >= 55 && pm25 < 150) alert = CRGB::DarkRed; // CRGB::Red; // Alert.dangerous;
-  if(pm25 >= 150 && pm25 < 250) alert = CRGB::Purple; // CRGB::Purple; // Alert.VeryDangerous;
-  if(pm25 >= 250) alert = CRGB::Brown; // Alert.harmful;
-
-  //FastLED.setBrightness(millis() % 255);
 
   leds[0] = leds[1] = leds[2] = alert;
   FastLED.delay(10);
@@ -79,7 +102,6 @@ void ledParticulateQuality(PlantowerData data) {
   FastLED.show();
   FastLED.delay(300);
 
-}
 
 void ledParticulateQualityStreamming(PlantowerData data) {
   int pm1 = data.pm1;
@@ -88,13 +110,6 @@ void ledParticulateQualityStreamming(PlantowerData data) {
 
   CRGB alert = CRGB::Black;
 
-  if(pm25 < 12) alert = CRGB::Green; // CRGB::Green; // Alert.ok
-  if(pm25 >= 12 && pm25 < 35) alert = CRGB::Gold; // Alert.notGood;
-  if(pm25 >= 35 && pm25 < 55) alert = CRGB::OrangeRed; // Alert.bad;
-  if(pm25 >= 55 && pm25 < 150) alert = CRGB::DarkRed; // CRGB::Red; // Alert.dangerous;
-  if(pm25 >= 150 && pm25 < 250) alert = CRGB::Purple; // CRGB::Purple; // Alert.VeryDangerous;
-  if(pm25 >= 250) alert = CRGB::Chocolate; // Alert.harmful;
-
   leds[0] = leds[1] = leds[2]= alert;
   FastLED.delay(10);
   FastLED.show();
@@ -121,3 +136,4 @@ void ledParticulateQualityStreamming(PlantowerData data) {
   FastLED.delay(100);
 
 }
+

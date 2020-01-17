@@ -1,4 +1,6 @@
-//#define MOBILE
+
+#define MOBILE
+
 
 #include "app.h"
 #include <GDBStub.h>
