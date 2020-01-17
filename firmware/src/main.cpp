@@ -1,125 +1,30 @@
-#define MOBILE
+#include <app.h>
+#include <Ticker.h>
+//gps configuration
+SoftwareSerial gpsSerial(GPS_RX,GPS_TX);
+AqaGps gpsSensor(gpsSerial);
+// plantower pm configuration
+SoftwareSerial plantower_serial(P_TOWER_RX, P_TOWER_TX);
+AqaPlantower plantowerSensor(plantower_serial);
+// DHT
+AqaDht dhtSensor;
+// Wifi
+AqaWifi the_wifi(5000);// aqawifi(int i) initializes a ticker callback. doesnt work with ping
+//--------- variables to point to the data of the sensors
+gpsData * gpsInfo;
+plantowerData * plantowerInfo;
+dht11Data * dhtInfo;
 
-#include "app.h"
-#include <GDBStub.h>
+//---leds
+AqaLeds aqa_leds;
 
-int INIT = 1;
-// const int DEBUG = 0;
-const int READ_LOG = 1;
-const int DELETE_LOG = 1;
-const int SEND_LOG = 0;
-const int SEND_RECORD = 1;
+// Filesystem
+filesystem _fs;
 
-GPSData gps;
-DHT11Data dht11;
-PlantowerData plantower;
-PlantowerData plantowerData;
-
-FSInfo fs_info;
-String readPosition();
-void savePosition(String position);
-
-void fs_info_print() {
-  SPIFFS.info(fs_info);
-  DMSG("totalBytes ");DMSG_STR(fs_info.totalBytes);
-  DMSG("usedBytes ");DMSG_STR(fs_info.usedBytes);
-  DMSG("blockSize ");DMSG_STR(fs_info.blockSize);
-  DMSG("pageSize ");DMSG_STR(fs_info.pageSize);
-  DMSG("maxOpenFiles ");DMSG_STR(fs_info.maxOpenFiles);
-  DMSG("maxPathLength ");DMSG_STR(fs_info.maxPathLength);
-}
-
-void fs_delete_file() {
-  //SPIFFS.format(); // descomentar esta línea si hay algo que no se puede borrar en la memoria flash
-  // Assign a file name e.g. 'names.dat' or 'data.txt' or 'data.dat' try to use the 8.3 file naming convention format could be 'data.d'
-  char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
-
-  if (SPIFFS.exists(filename)) SPIFFS.remove(filename); // First blu175.mail.live.com in this example check to see if a file already exists, if so delete it
-}
-
-#include <DoubleResetDetector.h>
-
-// Number of seconds after reset during which a
-// subseqent reset will be considered a double reset.
-#define DRD_TIMEOUT 100
-
-// RTC Memory Address for the DoubleResetDetector to use
-#define DRD_ADDRESS 0
+bool system_connected = false;
 
 DoubleResetDetector drd(DRD_TIMEOUT, DRD_ADDRESS);
-void readLog();
 
-// void readLog() {
-//   DMSG_STR("Reading log ...");
-//   File file = SPIFFS.open("datalog.txt", "r");
-//   String line = "";
-//   if (!file) DMSG_STR("file open failed");  // Check for errors
-//   while (file.available()) {
-//     wdt_disable();
-//     // Read all the data from the file and display it
-
-//     char c = file.read();
-//     if(c == '\r') {
-//       if(!line.endsWith("NULL")) {
-//         DMSG_STR("Posting: "+line);
-//         if(SEND_RECORD) {
-//           postCsv("http://45.55.34.88:3000/api/v0/air.csv", line);
-//         }
-//       }
-
-//       // Discard the \n, which is the next byte
-//       file.read();
-//       line = "";
-//     } else {
-//       line += String(c);
-//     }
-//     wdt_enable(1000);
-//   }
-// }
-
-void deleteLog() {
-  DMSG_STR("Deleting log");
-  SPIFFS.remove("datalog.txt");
-}
-
-void sendLog() {
-  String url = "http://192.168.0.18:3000/api/v0/air.csv";
-  postCsvFile(url, "log");
-}
-
-
-void syncLog() {
-  if(!INIT) { return; }
-  INIT = 0;
-
-  if(READ_LOG) {
-    readLog();
-  }
-
-  if(SEND_LOG) {
-    sendLog();
-  }
-
-  if(DELETE_LOG) {
-    deleteLog();
-  }
-}
-
-void fs_list_files(){
-  Dir dir = SPIFFS.openDir("/");
-  while (dir.next()) {
-    DMSG(dir.fileName());
-    File f = dir.openFile("r");
-    DMSG_STR(f.size());
-  }
-}
-
-// #include <stdio.h>
-// #include <time.h>
-#include <Time.h>
-#include <TimeLib.h>
-
-//https://arduino.stackexchange.com/questions/1013/how-do-i-split-an-incoming-string#1033
 String getValue(String data, char separator, int index)
 {
   int found = 0;
@@ -139,21 +44,21 @@ String getValue(String data, char separator, int index)
 
 void readLog() {
   DMSG_STR("Reading log ...");
-  fs::File file = SPIFFS.open("datalog.txt", "r");
-  if(readPosition().toInt() > 0) file.seek(readPosition().toInt(),SeekSet);
+  _fs.file = SPIFFS.open("datalog.txt", "r");
+  if(readPosition().toInt() > 0) _fs.file.seek(readPosition().toInt(),SeekSet);
   DMSG_STR("Initial position " + readPosition());
   String line = "", line2send;
   int linesCnt = 0;
   String device,lat,lng,date,hour,altitude,course,speed,humidity,temperature,pm1,pm25,pm10;
   String y,m,d,h,mi,s;
   int Year,Month,Day,Hour,Minute,Second;
-  if (!file) DMSG_STR("file open failed");  // Check for errors
-  while (file.available()) {
+  if (!_fs.file) DMSG_STR("file open failed");  // Check for errors
+  while (_fs.file.available()) {
     yield();
     wdt_disable();
     // Read all the data from the file and display it
 
-    char c = file.read();
+    char c = _fs.file.read();
     int field;
     if(c == '\r') {
       if(!line.endsWith("NULL")) {
@@ -161,29 +66,17 @@ void readLog() {
         pm10 = line;
         //DMSG("pm10=");DMSG(line);DMSG(" ");DMSG_STR(field);
 
-        tmElements_t t;
-        time_t t_of_day;
-        t.Year = CalendarYrToTm(Year);
-        t.Month = Month;
-        t.Day = Day;
-        t.Hour = Hour;
-        t.Minute = Minute;
-        t.Second = Second;
-        //t.tm_isdst = -1;        // Is DST on? 1 = yes, 0 = no, -1 = unknown
-        t_of_day = makeTime(t);
-        //t_of_day = mktime(&t);
-
         linesCnt ++;
 
-        line2send += device + STR_COMMA + F("id=") + device + F(" lat=") + lat + F(",lng=") + lng + F(",altitude=") + altitude + F(",course=") + course + F(",speed=") + speed + F(",humidity=") + humidity + F(",temperature=") + temperature + F(",pm1=") + pm1 + F(",pm25=") + pm25 + F(",pm10=") + pm10 + F(" ") + t_of_day + F("\n");
+        line2send += device + STR_COMMA + F("id=") + device + F(" lat=") + lat + F(",lng=") + lng + F(",altitude=") + altitude + F(",course=") + course + F(",speed=") + speed + F(",humidity=") + humidity + F(",temperature=") + temperature + F(",pm1=") + pm1 + F(",pm25=") + pm25 + F(",pm10=") + pm10 + F(" ") + date + F("\n");
 
         if(linesCnt == 40) { // que pasa si la última tanda tiene menos de 50 líneas??
           DMSG_STR(linesCnt);
           //DMSG(line2send);
           // DMSG_STR("Free Memory: "+String(ESP.getFreeHeap()));
-          savePosition((String) file.position());
-          DMSG_STR("File position "+ String(file.position())); // La posición de memoria donde va leyendo el archivo, almacenarla para continuar desde acá
-          post2Influx("http://aqa.unloquer.org:8086/write?db=aqamobile&precision=s", line2send);
+          savePosition((String) _fs.file.position());
+          DMSG_STR("File position "+ String(_fs.file.position())); // La posición de memoria donde va leyendo el archivo, almacenarla para continuar desde acá
+          aqaHttp::post2Influx("http://aqa.unloquer.org:8086/write?db=aqamobile&precision=s", line2send);
           line2send = "";
           linesCnt = 0;
         }
@@ -192,7 +85,7 @@ void readLog() {
       // Discard the \n, which is the next byte
 
       field = 0;
-      file.read();
+      _fs.file.read();
       line = "";
     } else {
       if(c == ',') {
@@ -215,65 +108,55 @@ void readLog() {
         case 3:
           //date
           date = line;
-          //DMSG("date=");DMSG(line);DMSG(" ");DMSG_STR(field);
-          y = getValue(line, '/', 2);
-          d = getValue(line, '/', 1);
-          m = getValue(line, '/', 0);
-          Year=y.toInt();
-          Month=m.toInt();
-          Day=d.toInt();
+          // DMSG("date=");DMSG(line);DMSG(" ");DMSG_STR(field);
 
           break;
         case 4:
-          //hour
-          hour = line;
-          //DMSG("hour=");DMSG(line);DMSG(" ");DMSG_STR(field);
-          s = getValue(line, ':', 2);
-          mi = getValue(line, ':', 1);
-          h = getValue(line, ':', 0);
-          Hour = h.toInt();
-          Minute = mi.toInt();
-          Second = s.toInt();
-          break;
-        case 5:
-          //altitude
+          //hour// altitude 
           altitude = line;
           //DMSG("altitude=");DMSG(line);DMSG(" ");DMSG_STR(field);
+          /*         s = getValue(line, ':', 2);
+                     mi = getValue(line, ':', 1);
+                     h = getValue(line, ':', 0);
+                     Hour = h.toInt();
+                     Minute = mi.toInt();
+                     Second = s.toInt();*/
           break;
-        case 6:
+        case 5:
           //course
           course = line;
           //DMSG("course=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
-        case 7:
+        case 6:
           //speed
           speed = line;
           //DMSG("speed=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
-        case 8:
+        case 7:
           //humidity
           humidity = line;
           //DMSG("humidity=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
-        case 9:
+        case 8:
           //temperature
           temperature = line;
           //DMSG("temperature=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
-        case 10:
-          //pm1
+        case 9:
+          // pm1
           pm1 = line;
-          //DMSG("pm1=");DMSG(line);DMSG(" ");DMSG_STR(field);
+          //    DMSG("pm1=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
-        case 11:
+        case 10:
           //pm25
           pm25 = line;
-          //DMSG("pm25=");DMSG(line);DMSG(" ");DMSG_STR(field);
+          //        DMSG("pm25=");DMSG(line);DMSG(" ");DMSG_STR(field);
+          yield();
           break;
-        case 12:
+        case 11:
           //pm10
           pm10 = line;
-          //DMSG("pm10=");DMSG(line);DMSG(" ");DMSG_STR(field);
+          //          DMSG("pm10=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
           //default:
         }
@@ -285,88 +168,107 @@ void readLog() {
   }
 }
 
+Ticker reset_ticker;
+void tick() {
+  if(!WiFi.isConnected()) {
+    DMSG_STR("restarting system");
+    digitalWrite(D0, LOW); delay(100); // from here https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
+  }
+}
 void setup() {
-  Serial.begin(115200);
-  DMSG_STR("\nStarting ...");
-
   pinMode(D0, OUTPUT); digitalWrite(D0, HIGH); // https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
+  Serial.begin(115200);
 
   SPIFFS.begin();
-  setupLeds();
-  setupGPS();
-  setupPlantower();
-  setupDHT11();
-  //fs_delete_file();  // descomentar para borrar la memoria
-  fs_info_print();
-  //fs_list_files();
+  _fs.fs_info_print();
+  gpsSerial.begin(GPS_BAUDS);
+  plantower_serial.begin(P_BAUDS);
+  dhtSensor.setup();
+  aqa_leds.setupLeds();
 
+  reset_ticker.attach(600,tick);
+  DMSG_STR("\nStarting ...");
+
+  // point to the right addresses :3
+  dhtInfo = dhtSensor.getDhtData();
+  plantowerInfo = plantowerSensor.getPlantowerData();
+  gpsInfo = gpsSensor.getGpsData();
+  //fs_info_print();
+  //set up networking
 #ifdef MOBILE
   DMSG_STR("MOVIL");
-  if (drd.detectDoubleReset()) {
-    DMSG_STR("Connecting to network ...");
-    setupWifi();
+  if(drd.detectDoubleReset()) {
+    DMSG_STR("connecting to network...");
+
+    the_wifi.init_connections();
     readLog();
-    fs_delete_file();
+    _fs.fs_delete_file();
     savePosition("0");
   }
-  //   WiFi.mode(WIFI_AP);
-  //reportWiFi(30);
 #else
   DMSG_STR("FIJO");
-  setupWifi();
+  the_wifi.init_connections();
 #endif
+
+  // check connected modules directive -> all .sensorOk() together
+  //checkConnectedModules(10000);
+  DMSG_STR("reached check timeout");
+  /* if(checkConnectedModules(50000)){
+     DMSG_STR("CHECKED");
+
+     }else{
+     DMSG_STR("didn't check");
+     }*/
 }
 
-int i = 0;
 
 void loop() {
+  gpsSensor.handleGpsData();
+  yield();
+  plantowerSensor.handlePlantowerData();
+  yield();
+  dhtSensor.handleDhtData();
+  yield();
+  wdt_reset();
+  //  the_wifi.check_connections();
 
-#ifndef MOBILE
-  if (WiFi.status() != WL_CONNECTED) {
-    delay(5000);
-    digitalWrite(D0, LOW); delay(100); // from here https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
-    return;
-  }
-#endif
+  aqa_leds.ledParticulateQuality(*plantowerInfo);
 
-  gps = getGPSData();
-  plantower = getPlantowerData();
-  dht11 = getDHT11Data();
-  if(plantower.ready) {
-    plantowerData = plantower;
-    if(plantowerData.ready) {
-      ledParticulateQuality(plantowerData);
-      //reportWifi( plantower.pm25);
-      //if(gps.ready) {
 #ifdef MOBILE
-        ledParticulateQualityStreamming(plantowerData);
-        save();
-#else
-        ledParticulateQualityStreamming(plantowerData);
-        String frame = influxFrame();
-        DMSG_STR(frame);
-        //post2influx("http://159.203.187.96:8086/write?db=aqaTest", frame);
-        post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
-        i++;
-#endif
-        //}
+  if( gpsSensor.sensorOk() && plantowerSensor.sensorOk() && dhtSensor.sensorOk())
+    {
+      save();
+      aqa_leds.ledParticulateQualityStreamming(*plantowerInfo);
     }
-  }
-
-
-#ifdef MOBILE
-  drd.loop();
 #else
-  if(i >= 30){
-    i = 0;
-    digitalWrite(D0, LOW); delay(100);;
+  if(true/*plantowerSensor.sensorOk() && dhtSensor.sensorOk()*/)
+    {
+      //ready to send to the server
+      DMSG_STR("ready to SAVE/UPLOAD");
+      String frame = influxFrame();
+      DMSG_STR(frame);
+      yield();
+      aqaHttp::post2Influx("http://aqa.unloquer.org:8086/write?db=aqa", frame);
+
+      aqa_leds.ledParticulateQualityStreamming(*plantowerInfo);
+    }else {
+
+    DMSG("gps:  ");
+    DMSG(gpsSensor.sensorOk());
+    DMSG("internet:  ");
+    DMSG(the_wifi.internetOk());
+    DMSG("plantower:  ");
+    DMSG(plantowerSensor.sensorOk());
+    DMSG("dht :  ");
+    DMSG_STR(dhtSensor.sensorOk());
   }
 #endif
+  yield();
 }
 
 String readPosition() {
   char filename [] = "position.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
-  File file = SPIFFS.open(filename, "r");
+  fs::File file = SPIFFS.open(filename, "r");
   if (!file) {
     DMSG_STR("file open failed");   // Check for errors
     return "-1";
@@ -377,7 +279,7 @@ String readPosition() {
 
 void savePosition(String position) {
   char filename [] = "position.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
-  File file = SPIFFS.open(filename, "w+");
+  fs::File file = SPIFFS.open(filename, "w+");
   if (!file) {
     DMSG_STR("file open failed");   // Check for errors
     return;
@@ -388,10 +290,9 @@ void savePosition(String position) {
   file.close();
 }
 
-
 void save() {
   char filename [] = "datalog.txt";                     // Assign a filename or use the format e.g. SD.open("datalog.txt",...);
-  File file = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
+  fs::File file = SPIFFS.open(filename, "a+");        // Open a file for reading and writing (appending)
   if (!file) {
     DMSG_STR("file open failed");   // Check for errors
     return;
@@ -405,7 +306,7 @@ void save() {
 
 String csvFrame() {
   /* CSV is ordered as:
-     "id","lat","lng","date","time","altitude","course","speed","humidity",
+     "id","epochtime","lat","lng","altitude","course","speed","humidity",
      "temperature","pm1","pm25","pm10"
   */
 
@@ -414,30 +315,29 @@ String csvFrame() {
 
   // Add GPS data
   char strlat[25],strlng[25];
-  dtostrf(gps.lat, 3, 6, strlat);
-  dtostrf(gps.lng, 3, 6, strlng);
+  dtostrf(gpsInfo->lat, 3, 6, strlat);
+  dtostrf(gpsInfo->lng, 3, 6, strlng);
 
+  frame += gpsInfo->epoch_time + STR_COMMA; //refactored to epoch time
   frame += strlat + STR_COMMA;
   frame += strlng + STR_COMMA;
-  frame += gps.date + STR_COMMA;
-  frame += gps.time + STR_COMMA;
-  frame += gps.altitude + STR_COMMA;
-  frame += gps.course + STR_COMMA;
-  frame += gps.speed + STR_COMMA;
+  frame += gpsInfo->altitude + STR_COMMA;
+  frame += gpsInfo->course + STR_COMMA;
+  frame += gpsInfo->speed + STR_COMMA;
 
   //Add DHT11 data
-  if(dht11.ready) {
-    frame += dht11.humidity + STR_COMMA;
-    frame += dht11.temperature + STR_COMMA;
+  if(dhtSensor.sensorOk()) {
+    frame += dhtInfo->humidity + STR_COMMA;
+    frame += dhtInfo->temperature + STR_COMMA;
   } else {
     frame += STR_NULL + STR_COMMA + STR_NULL + STR_COMMA;
   }
 
   // Add Plantower data
-  if(plantower.ready) {
-    frame += plantower.pm1 + STR_COMMA;
-    frame += plantower.pm25 + STR_COMMA;
-    frame += plantower.pm10;
+  if(plantowerSensor.sensorOk()) {
+    frame += plantowerInfo->pm1 + STR_COMMA;
+    frame += plantowerInfo->pm25 + STR_COMMA;
+    frame += plantowerInfo->pm10;
   } else {
     frame += STR_NULL + STR_COMMA + STR_NULL + STR_COMMA + STR_NULL;
   }
@@ -456,44 +356,79 @@ String influxFrame() {
 
   // Add GPS data
   char strlat[25],strlng[25];
-  dtostrf(gps.lat, 3, 6, strlat);
-  dtostrf(gps.lng, 3, 6, strlng);
+
+  dtostrf(gpsInfo->lat, 3, 6, strlat);
+  dtostrf(gpsInfo->lng, 3, 6, strlng);
   frame += F("lat=");
-  //frame += strlat + STR_COMMA;
-  frame += 6.230127 + STR_COMMA; // hard coded latitude lat 
+#ifdef FIXED_LAT
+  frame += FIXED_LAT + STR_COMMA; // hard coded latitude lat
+#else
+  frame += strlat + STR_COMMA;
+#endif
+
   frame += F("lng=");
-  //frame += strlng + STR_COMMA;
-  frame += -75.593703 + STR_COMMA;// hard coded longitude lng
-  //frame += gps.date + STR_COMMA;
-  //frame += gps.time + STR_COMMA;
+#ifdef FIXED_LON
+  frame += FIXED_LON + STR_COMMA;// hard coded longitude lng
+#else
+  frame += strlng + STR_COMMA;
+#endif
   frame += F("altitude=");
-  frame += gps.altitude + STR_COMMA;
+  frame += gpsInfo->altitude + STR_COMMA;
   frame += F("course=");
-  frame += gps.course + STR_COMMA;
+  frame += gpsInfo->course + STR_COMMA;
   frame += F("speed=");
-  frame += gps.speed + STR_COMMA;
+  frame += gpsInfo->speed + STR_COMMA;
 
   //Add DHT11 data
-  //if
+
   frame += F("humidity=");
-  frame += dht11.humidity + STR_COMMA;
+  frame += dhtInfo->humidity + STR_COMMA;
   frame += F("temperature=");
-  frame += dht11.temperature + STR_COMMA;
-  // } else {
-  //   frame += "humidity=" + STR_NULL + STR_COMMA + "temperature=" + STR_NULL + STR_COMMA;
-  // }
+  frame += dhtInfo->temperature + STR_COMMA;
 
   // Add Plantower data
-  // if
+
   frame += F("pm1=");
-  frame += plantower.pm1 + STR_COMMA;
+  frame += plantowerInfo->pm1 + STR_COMMA;
   frame += F("pm25=");
-  frame += plantower.pm25 + STR_COMMA;
+  frame += plantowerInfo->pm25 + STR_COMMA;
   frame += F("pm10=");
-  frame += plantower.pm10;
-  // } else {
-  //   frame += "pm1=" + STR_NULL + STR_COMMA + "pm25=" + STR_NULL + STR_COMMA + "pm10=" + STR_NULL;
-  // }
+  frame += plantowerInfo->pm10;
 
   return frame;
+}
+
+void checkConnectedModules(unsigned long timeout) {
+
+  DMSG_STR("starting to check.......");
+  unsigned long start = millis();
+  DMSG_STR("value starting millis....."+start);
+  wdt_disable();
+
+  /*if(plantowerSensor.sensorOk()) {
+
+    DMSG_STR("hell yes");
+    }else{
+    DMSG_STR("sensor not ready");
+    }
+
+    delay(timeout);
+    DMSG_STR("reached timeout");*/
+  do {
+
+    plantowerSensor.handlePlantowerData();
+    if(plantowerSensor.sensorOk()) {
+      system_connected = true;
+      DMSG_STR("sensor  CHECKEDDDDDDDDDDDD");
+      break;
+
+    }else{
+      DMSG_STR("not plantowerOK");
+    }
+
+    DMSG_STR("checked for connected sensors");
+
+
+  }while(millis() - start < timeout);
+  wdt_enable(1000);
 }

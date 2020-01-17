@@ -1,0 +1,683 @@
+;; para hacer consultas a este cuaderno
+;; puede usar ledger ( http://ledger-cli.org/  )
+;; por ejemplo el comando
+;; $ ledger ruta/al/archivo/costos.dat register aparato
+;; responde con la suma de los costos de la categoría aparato
+;; flujo ingresos egresos:
+;; $ ledger -f ~/unloquer/AQA/costos.dat reg ingreso and not inventario egreso and not inventario
+;; ejemplo cuenta :
+;; ledger -f ~/unloquer/AQA/costos.dat reg cuenta:brolin
+;; ejemplo reembolsables:
+;; ledger -f ~/unloquer/AQA/costos.dat reg reembolsable:brolin
+
+; El número de la actividad en el presupuesto aprobado por los judaros y que está en el archivo de drive corresponde al número encerrado entre paréntesis
+2018/06/16 Compra de 40 matrices led -> http://wiki.unloquer.org/lib/exe/fetch.php?media=:proyectos:estimula_aqa:administrativo:2018-08-06-105923_1153x450_scrot.png
+    proyecto:dispositivo:15:producciónmodulos:materiales:matricesled           ;:conciliar_soporte                   
+    proyecto:prestamo:debe:brolin                                            $600000
+
+2018/06/28 Pago de póliza -> http://wiki.unloquer.org/lib/exe/fetch.php?media=:proyectos:estimula_aqa:administrativo:pago_poliza.jpg
+    proyecto:administración:22:imprevistos:pagopoliza              
+    proyecto:prestamo:debe:brolin                                              $71500
+
+2018/07/04 (1) Sesiones creativas de diseño de la metodología
+    proyecto:diseño:metodología:1:sesionescreativas                    $1000000
+    presupuestoporrecibir
+
+2018/07/04 (2) Sesiones creativas de diseño del dispositivo
+    proyecto:diseño:dispositivo:2:sesionescreativas                    $1000000
+    presupuestoporrecibir
+
+2018/07/04 (3) Formulación de guías metodológicas
+    proyecto:diseño:metodología:3:formulación                           $500000
+    presupuestoporrecibir
+
+2018/07/04 (4) Diseño gráfico de guías metodológicas y material de apoyo
+    proyecto:diseño:gráfico:4:guías                                          $2000000
+    presupuestoporrecibir
+
+2018/07/04 (5) Partición en sesiones de taller y definición de materiales para cada taller
+    proyecto:talleres:5:diseño                                          $100000
+    presupuestoporrecibir
+
+2018/07/04 (6) Investigación forma física que facilita el uso por módulos
+    proyecto:diseño:gráfico:6:empaque                                   $200000
+    presupuestoporrecibir
+
+2018/07/04 (7) Diseño gráfico para aplicar a todo el material
+    proyecto:diseño:gráfico:7:estéticageneral                           $600000
+    presupuestoporrecibir
+
+2018/07/04 (8) Diseño de forma física que facilita el uso por módulos
+    proyecto:diseño:dispositivo:8:empaque                                $600000
+    presupuestoporrecibir
+
+2018/07/04 (9) Síntesis y planeación de la metodologia
+    proyecto:síntesis:9:metodología                                       $100000
+    presupuestoporrecibir
+
+2018/07/04 (10) Síntesis y planeación del kit
+    proyecto:síntesis:10:producto                                         $100000
+    presupuestoporrecibir
+
+2018/07/04 (11) Planeación de ejercicio piloto que incluye construcción de dispositivo, práctica y reflexión
+    proyecto:talleres:11:planeación                                        $100000
+    presupuestoporrecibir
+
+2018/07/04 (12) Equipo coordinador
+    proyecto:administración:12:coordinación                               $2600000
+    presupuestoporrecibir
+
+2018/07/04 (13) Modularización hardware ya disponible en circuitos independientes
+    proyecto:dispositivo:13:modularizarhardware                            $200000
+    presupuestoporrecibir
+
+2018/07/04 (14) Adaptación de software a funcionamiento modular
+    proyecto:dispositivo:14:ajustesfirmware                                $300000
+    presupuestoporrecibir
+
+2018/07/04 (15) Producción de forma física que facilite el uso por módulos
+    proyecto:dispositivo:15:producciónmodulos                             $6000000
+    presupuestoporrecibir
+
+2018/07/04 (16) Configuración de servidores que soportan la plataforma
+    proyecto:dispositivo:16:servidores                                        $300000
+    presupuestoporrecibir
+
+2018/07/04 (17) Pruebas funcionales de hardware y software
+    proyecto:dispositivo:17:pruebas                                           $300000
+    presupuestoporrecibir
+
+2018/07/04 (18) Realización de ejercicio piloto en el doce de octubre, moravia y manrique
+    proyecto:talleres:18:realización                                    $3600000
+    presupuestoporrecibir
+
+2018/07/04 (19) Cubrimiento redes sociales
+    proyecto:síntesis:difusión:19:redessociales                         $700000
+    presupuestoporrecibir
+
+2018/07/04 (20) Documentación de todo el proceso de manera abierta
+    proyecto:síntesis:difusión:20:documentación                        $700000
+    presupuestoporrecibir
+
+2018/07/04 (21) Creación digital  de material editorial que sintetiza y visualiza la experiencia
+    proyecto:síntesis:difusión:21:materialeditorial                         $1500000
+    presupuestoporrecibir
+
+2018/07/04 (22) Imprevistos
+    proyecto:administración:22:imprevistos                                   $2500000
+    presupuestoporrecibir
+
+2018/07/27 Pago 40% estímulo
+    presupuestoporrecibir                                                          
+    pagoalcaldia                                                            -$10000000
+
+2018/08/03 Pago a brolin por compra de 40 matrices led
+    proyecto:prestamo:pago:brolin:matricesled                                           
+    egresos:15:producciónmodulos:prestamo:pago:brolin                          $600000
+
+2018/08/03 Pagoa a brolin por póliza
+    proyecto:prestamo:pago:brolin:poliza                                            
+    egresos:15:producciónmodulos:prestamo:pago:brolin                          $71500
+
+2018/07/30 Compra conectores RCA -> http://wiki.unloquer.org/_media/proyectos/estimula_aqa/administrativo/facturaconectores.jpg
+    proyecto:dispositivo:15:producciónmodulos:materiales:conectores                
+    egresos:15:producciónmodulos                                     $10300
+
+2018/07/30 Compra conectores 50 motores dc para anemómetro -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:motoresdc:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $72840
+
+2018/08/11 Compra crédito digital ocean
+    proyecto:dispositivo:16:servidores:digitalocean                          
+    egresos:16:servidores                                            $308847
+
+2018/08/15 Pago a diseñador por 3 meses
+    proyecto:diseño:gráfico:4:pagoalejandro:guías                                 
+    egresos:proyección:4:guias                                      $2000000
+
+2018/08/15 Pago a diseñador por 3 meses
+    proyecto:diseño:gráfico:6:pagoalejandro:empaque                                 
+    egresos:proyección:6:empaque                                     $200000
+
+2018/08/15 Pago a checho por ilustraciones
+    proyecto:diseño:gráfico:7:pagochecho:estéticageneral                    
+    egresos:proyección:7:estéticageneral                             $475000
+
+2018/08/15 Pago a checho por ilustraciones
+    proyecto:diseño:dispositivo:8:pagochecho:empaque                       
+    egresos:proyección:8:empaque                                     $475000
+
+2018/08/16 Compra cables de colores para soldar -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:cables:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $68988
+
+
+2018/08/17 Compra 15 sensores pms5003 -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:pms5003:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $623235
+
+2018/08/21 Compra 50 sensores dht11 -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:dht11:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $100820
+
+2018/08/21 Compra 20 wemos d1 mini -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:wemos:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $151201
+
+2018/08/22 Pago a diseñador por 3 meses
+    egresos:6:empaque:pagoalejandro                                  $200000
+    egresos:proyección:6:empaque                                     
+
+2018/08/22 Pago a diseñador por 3 meses
+    egresos:4:guias:pagoalejandro                                     $680000
+    egresos:proyección:4:guias                                     
+
+2018/08/15 Pago de 1 hora de asesoría a Rafael Vega
+    proyecto:dispositivo:13:pagorafa:modularizarhardware:conciliar_soporte      
+    egresos:proyección:13:modularizarhardware                         $80000
+
+2018/09/2 Compra 100 cables conectores mikrokits -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:conectores:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $40000
+
+2018/09/2 Compra 120 cables conectores terminal cobre -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:conectores:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $56854
+
+2018/09/2 Compra 20 wemos d1 mini -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:wemos:conciliar_soporte              
+    egresos:15:producciónmodulos                                      $152046
+
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:talleres:11:pagomiguel:planeación 
+    egresos:proyección:11:planeación_talleres                         $100000
+
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:talleres:5:pagomiguel:diseño
+    egresos:proyección:5:diseño                                       $100000
+
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:talleres:18:pagomiguel:realización                      -$550000
+    proyecto:talleres:18:pagojohnny:realización                      
+    egresos:proyección:18:realización                                 $1150000
+
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:síntesis:difusión:19:pagomiguel:redessociales            -$100000
+    proyecto:síntesis:difusión:19:pagojohnny:redessociales            -$400000
+    egresos:proyección:19:redessociales                                $500000
+
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:síntesis:difusión:20:pagomiguel:documentación
+    proyecto:síntesis:difusión:20:pagochecho:documentación            -$50000
+    egresos:proyección:20:documentación                                $700000
+
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:dispositivo:14:pagomiguel:ajustesfirmware
+    egresos:proyección:14:ajustesfirmware                              $300000
+
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:diseño:metodología:3:pagomiguel:formulación
+    egresos:proyección:3:formulación_metodología                       $200000
+
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:diseño:metodología:1:sesionescreativas:pagomiguel               -$250000
+    proyecto:diseño:metodología:1:sesionescreativas:pagojohnny               -$250000
+    proyecto:diseño:metodología:1:sesionescreativas:pagochecho               -$250000
+    proyecto:diseño:metodología:1:sesionescreativas:pagobrolin               -$250000
+    egresos:proyección:1:sesionescreativas:metodología                                   $1000000
+
+2018/08/15 Pago a Johnny, Miguel y Brolin (1'5millón c/u)
+    proyecto:diseño:dispositivo:2:sesionescreativas:pagomiguel               -$250000
+    proyecto:diseño:dispositivo:2:sesionescreativas:pagojohnny               -$250000
+    proyecto:diseño:dispositivo:2:sesionescreativas:pagochecho               -$250000
+    proyecto:diseño:dispositivo:2:sesionescreativas:pagobrolin               -$250000
+    egresos:proyección:2:sesionescreativas:dispositivo                       $1000000
+
+2018/09/13 Compra conectores RCA -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:conectores:conciliar_soporte
+    egresos:15:producciónmodulos                                      $110100
+
+2018/09/13 Compra 40 fuentes de voltaje LM2577 step-up module -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:fuentes:conciliar_soporte
+    egresos:15:producciónmodulos                                      $139781
+
+2018/09/18 Compra de 200 broche magnéticas en la bombay -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:broches:conciliar_soporte
+    egresos:15:producciónmodulos                                      $24200
+
+2018/09/19 Compra de 2 fuentes LM2577 -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:fuentes:conciliar_soporte
+    egresos:15:producciónmodulos                                     $30000
+
+2018/09/19 Compra de 50 motores con hélices -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:motoresdc:conciliar_soporte
+    egresos:15:producciónmodulos                                     $97633
+
+2018/09/19 Compra de 20 GPS l80 -> 
+    proyecto:dispositivo:15:producciónmodulos:materiales:gps:conciliar_soporte
+    egresos:15:producciónmodulos                                   	$627963
+
+2018/09/25 Compra borneras en suconel ->
+    proyecto:dispositivo:15:producciónmodulos:materiales:borneras:conciliar_soporte
+    egresos:15:producciónmodulos                                     $14000
+
+2018/09/25 Compra suiches balancín en bigtrónica
+    proyecto:dispositivo:15:producciónmodulos:materiales:suiches:conciliar_soporte
+    egresos:15:producciónmodulos                                     $13000
+
+2018/09/25 Compra suiches lámpara en bigtrónica
+    proyecto:dispositivo:15:producciónmodulos:materiales:suiches:conciliar_soporte
+    egresos:15:producciónmodulos                                     $3000
+
+2018/09/27 Pago otro 40% estímulo
+    presupuestoporrecibir
+    pagoalcaldia                                                 -$10000000
+
+2018/09/27 Compra de 20 motores con hélices en bigtrónica
+    proyecto:dispositivo:15:producciónmodulos:materiales:motoresdc:conciliar_soporte                         
+    egresos:15:producciónmodulos                                     $65853
+
+2018/09/29 Compra de 1 particle 2
+    proyecto:dispositivo:15:producciónmodulos:materiales:particle:conciliar_soporte                         
+    egresos:15:producciónmodulos                                     $179992
+
+2018/10/02 Pago a uber por diseño de tarjetas
+    proyecto:dispositivo:17:pruebas:pagouber                         
+    egresos:17:pruebas:pagouber                                        $300000
+
+2018/10/02 Producción de PCBs
+    proyecto:dispositivo:15:producciónmodulos:materiales:pcb:conciliar_soporte
+    egresos:15:producciónmodulos:pagouber                              $414500
+
+2018/10/03 Compra de 2 particle Argon, 1 Boron 2G y 3 xenon
+    proyecto:dispositivo:15:producciónmodulos:materiales:particle:conciliar_soporte                         
+    egresos:15:producciónmodulos                                     $378720
+
+2018/09/29 Pago a miguel
+    egresos:11:planeación:pagomiguel                                   $100000
+    egresos:proyección:11:planeación_talleres
+
+2018/09/29 Pago a miguel
+    egresos:5:diseño:pagomiguel                                        $100000
+    egresos:proyección:5:diseño
+
+2018/09/29 Pago a miguel
+    egresos:18:realización:pagomiguel                                  $550000
+    egresos:proyección:18:realización
+
+2018/09/29 Pago a miguel
+    egresos:19:redessociales:pagomiguel                                $100000
+    egresos:proyección:19:redessociales
+
+2018/09/29 Pago a miguel
+    egresos:20:documentación:pagomiguel                                $650000
+    egresos:proyección:20:documentación
+
+2018/10/04 Compra de sticker con la escala de colores
+    proyecto:dispositivo:15:producciónmodulos:materiales:stickers:conciliar_soporte
+    egresos:15:producciónmodulos                                     $49400
+
+2018/10/04 Compra de marcadores con la escala de colores
+    proyecto:dispositivo:15:producciónmodulos:materiales:marcadores:conciliar_soporte
+    egresos:15:producciónmodulos                                     $20000
+
+2018/10/04 Compra de 2 dos power banks para probar
+    proyecto:dispositivo:15:producciónmodulos:materiales:powerbanks:conciliar_soporte
+    egresos:15:producciónmodulos                                     $35000
+
+2018/10/04 Fabricación de cajas
+    proyecto:dispositivo:15:producciónmodulos:materiales:cajacarton:conciliar_soporte
+    egresos:proyección:15:producciónmodulos                          $738000
+
+2018/10/08 Pago envío de particle a colombia
+    proyecto:dispositivo:15:producciónmodulos:materiales:particle:conciliar_soporte  
+    egresos:15:producciónmodulos                                     $46500
+
+2018/10/08 Compra de 20 power ban
+    proyecto:dispositivo:15:producciónmodulos:materiales:powerbanks:conciliar_soporte
+    egresos:15:producciónmodulos                                     $240000
+
+2018/10/08 Compra de resistencia y capacitores
+    proyecto:dispositivo:15:producciónmodulos:materiales:resistencias:conciliar_soporte
+    egresos:15:producciónmodulos                                     $13000
+
+2018/10/09 Compra de puertos usb y borneras en compel
+    proyecto:dispositivo:15:producciónmodulos:materiales:puertosusbyborneras:conciliar_soporte
+    egresos:15:producciónmodulos                                     $129250
+
+2018/10/12 Compra Stickers
+    proyecto:administración:22:imprevistos:stickers
+    egresos:22:imprevistos:stickers                                 $20000
+
+2018/10/10 Compra cargador usb
+    proyecto:administración:22:imprevistos:cargadorusb
+    egresos:22:imprevistos:cargadorusb                              $27000
+
+2018/10/17 Compra de brújulas
+    proyecto:talleres:18:souvenir:realización:conciliar_soporte
+    egresos:18:realización                                            $60000
+
+2018/10/20 Compra almuerzo taller moravia
+    proyecto:talleres:18:almuerzo:realización:conciliar_soporte
+    egresos:18:realización                                            $21000
+
+2018/10/27 Compra almuerzo taller moravia
+    proyecto:talleres:18:almuerzo:realización:conciliar_soporte
+    egresos:18:realización                                            ($48000 + $3000 + $14600)
+
+2018/10/29 Pago a johnny
+    egresos:18:realización:pagojohnny                                     $600000
+    egresos:proyección:18:realización
+
+2018/10/29 Pago a johnny
+    egresos:19:redessociales:pagojohnny                                    $200000
+    egresos:proyección:19:redessociales
+
+2018/10/29 Pago a checho
+    egresos:7:estéticageneral:pagochecho                                    $475000
+    egresos:proyección:7:estéticageneral
+
+2018/10/29 Pago a checho
+    egresos:8:empaque:pagochecho                                            $185000
+    egresos:proyección:8:empaque
+
+2018/10/30 Pago a brolin
+    egresos:1:sesionescreativas:pagobrolin                                $250000
+    egresos:proyección:1:sesionescreativas:metodología
+
+2018/10/30 Pago a brolin
+    egresos:2:sesionescreativas:pagobrolin                                $250000
+    egresos:proyección:2:sesionescreativas:dispositivo
+
+2018/10/30 Pago a brolin
+    proyecto:síntesis:difusión:21:materialeditorial:pagobrolin
+    egresos:21:materialeditorialdigital:pagobrolin                        $750000
+
+2018/10/30 Pago a brolin
+    proyecto:talleres:18:pagobrolin:realización
+    egresos:18:realización:pagobrolin                                    $750000
+
+; 2018/10/30 Pago elena por apoyo en planeación de taller
+;     proyecto:talleres:18:pagoelena:realización
+;     egresos:proyección:18:pagoelena                                    $1300000
+
+2018/11/03 Compra almuerzo taller moravia
+    proyecto:talleres:18:almuerzo:realización:conciliar_soporte
+    egresos:18:realización                                                $40000
+
+2018/11/03 Compra de herramientas para armar módulos
+    proyecto:dispositivo:15:producciónmodulos:materiales:herramientaseasy:conciliar_soporte
+    egresos:15:realización                                                $30974
+
+2018/11/06 Pago Juan Sebastián Fernández
+    proyecto:síntesis:10:pagojuanse:producto
+    egresos:10::síntesisproducto:pagojuanse                               $100000
+
+2018/11/06 Pago Juan Sebastián Fernández
+    proyecto:síntesis:difusión:19:pagojuanse:redessociales
+    egresos:19:textocomisionado:pagojuanse                           $200000
+
+2018/11/06 Pago Juan Sebastián Fernández
+    proyecto:síntesis:9:pagojuanse:metodología   
+    egresos:9:metodología:pagojuanse                                      $100000
+
+2018/11/08 Compra cable para ensamblar
+    proyecto:dispositivo:15:producciónmodulos:materiales:cables
+    egresos:15:producciónmodulos                                          $60100
+
+2018/11/08 Compra cortafrío
+    proyecto:dispositivo:15:producciónmodulos:materiales:cortafrío
+    egresos:15:producciónmodulos                                          $45600
+
+2018/11/09 Pago de cajas de carton a pop
+    egresos:15:producciónmodulos:cajas
+    egresos:proyección:15:producciónmodulos                              -$738000
+
+2018/11/09 Pago miguel vargas
+    egresos:14:ajustesfirmware:pagomiguel
+    egresos:proyección:14:ajustesfirmware                                    -$300000
+
+2018/11/09 Pago miguel vargas
+    egresos:3:formulación_metodología:pagomiguel
+    egresos:proyección:3:formulación_metodología                             -$200000
+
+2018/11/09 Pago miguel vargas
+    egresos:1:sesionescreativas:metodología:pagomiguel
+    egresos:proyección:1:sesionescreativas:metodología                       -$250000
+
+2018/11/09 Pago miguel vargas
+    egresos:2:sesionescreativas:dispositivo:pagomiguel
+    egresos:proyección:2:sesionescreativas:dispositivo                       -$250000
+
+2018/11/09 Compra cable para ensamblar
+    egresos:15:producciónmodulos:cablesawg28
+    proyecto:dispositivo:15:producciónmodulos:materiales:cablesawg28         -$217916
+
+2018/11/09 Compra cable para ensamblar
+    proyecto:dispositivo:15:producciónmodulos:materiales:cablesawg20
+    egresos:15:producciónmodulos:cablesawg20                                   $6000
+
+2018/11/09 Compra de suiches balancín
+    proyecto:dispositivo:15:producciónmodulos:materiales:suiches
+    egresos:15:producciónmodulos:suiches                                      $10000
+
+2018/11/09 Compra 2 cautines
+    proyecto:dispositivo:15:producciónmodulos:materiales:cautín
+    egresos:15:producciónmodulos:cautín                                       $44000
+
+2018/11/09 Comida en jornada de ensamblaje
+    proyecto:talleres:18:almuerzo
+    egresos:18:almuerzo                                  ($12900+$50000+$63000+$11000+$13000)
+
+2018/11/10 Almuerzo y transporte en talleres moravía y 12 oct
+    proyecto:talleres:18:almuerzo
+    egresos:18:almuerzo                                                       $35000
+
+2018/11/13 Pago a Alejandro henao
+    egresos:4:guias:pagoalejandro                                           $1320000
+    egresos:proyección:4:guias
+
+2018/11/16 Impresión de material editorial
+    proyecto:síntesis:difusión:21:materialeditorial:impresión
+    egresos:proyección:21:materialeditorial                                 $180000
+
+2018/11/19 Compra cautín estáción de soldadura
+    proyecto:dispositivo:15:producciónmodulos:materiales:reemplazocautín
+    egresos:15:reemplazocautín                                               $26600
+
+2018/11/19 Cinta doble faz
+    proyecto:dispositivo:15:producciónmodulos:materiales:cintadoblefaz
+    egresos:15:cintadoblefaz                                                 $18000
+
+2018/11/21 Pago a checho
+    egresos:8:empaque:pagochecho                                     ($475000-$185000)
+    egresos:proyección:8:empaque
+
+2018/11/21 Pago a checho
+    egresos:20:documentación:pagochecho                                     $50000
+    egresos:proyección:20:documentación
+
+2018/11/21 Pago a checho
+    egresos:1:sesionescreativas:metodología:pagochecho                      $250000
+    egresos:proyección:1:sesionescreativas:metodología              
+
+2018/11/21 Pago a checho
+    egresos:2:sesionescreativas:dispositivo:pagochecho                      $250000
+    egresos:proyección:2:sesionescreativas:dispositivo              
+
+2018/11/23 Impresión de material editorial
+    egresos:21:materialeditorial:impresión                                 $180000
+    egresos:proyección:21:materialeditorial                                 
+
+2018/11/20 Pago de óperas
+    egresos:18:cafeexlibris                                                 $37100
+    proyecto:talleres:18:realización:pagoexlibris                                 
+
+2018/09/27 Pago otro 40% estímulo
+    presupuestoporrecibir
+    pagoalcaldia                                                         -$5000000
+
+2018/11/28 Pago servidores unloquer
+    egresos:18:pagodigitalocean                                            $854948
+    proyecto:talleres:18:realización:pagoservidores                                
+
+2018/12/02 Pago Johnny Sepúlveda
+    egresos:1:sesionescreativas:pagojohnny                                 $250000
+    egresos:proyección:1:sesionescreativas:metodología
+
+2018/12/02 Pago Johnny Sepúlveda
+    egresos:19:redessociales:pagojohnny                                    $200000
+    egresos:proyección:19:redessociales
+
+2018/12/02 Pago Johnny Sepúlveda
+    egresos:2:sesionescreativas:dispositivo:pagojohnny                     $250000
+    egresos:proyección:2:sesionescreativas:dispositivo
+
+2018/12/03 Pago envío de particle a colombia
+    egresos:18:realización:envíoparticle                                     $62112
+    proyecto:talleres:18:realización:envíoparticle
+    
+
+2018/12/05 Compra sacabocados y cable
+    egresos:18:realización:sacabocados                                       $52700
+    proyecto:talleres:18:realización:sacabocados
+
+2018/12/07 Compra egghead.io
+    egresos:21:materialeditorial:egghead                                    $442690
+    proyecto:síntesis:21:materialeditorial:egghead                          
+
+2018/12/26 Pago taller Explora
+    proyecto:tallerexplora                                                 $1996000
+    parqueexplora
+
+2019/01/18 Pago particle
+    egresos:mensualidadparticle                                               $9343
+    proyecto:compra:mensualidadparticle                                       
+
+2019/01/22 Ingreso dinero por venta sensor
+    proyecto:sensordani                                                     $300000
+    danielarango
+
+2019/01/22 Pago dominio unloquer
+    egresos:dominiounloquer                                                 $111478
+    proyecto:sensordani 
+
+2019/01/28 Compra CNC 5 ejes
+    egresos:compra:cnc                                                     $2508062
+    proyecto:compra:cnc
+
+2019/01/30 Compra Mini NAS C3P
+    egresos:compra:mininas:mercadolibre                                     $745900
+    proyecto:compra:mininas
+
+2019/02/04 Compra mouser
+    egresos:compra:mouser                                                    $85339
+    proyecto:compra:componetes
+
+2019/02/08 Envio mouser
+    egresos:compra:mouser:envio                                            $49177
+    proyecto:compra:mouser:envio
+
+2019/02/11 Compra esp32 con cámaras pruebas
+    egresos:compra:esp32eye:aliexpress                                     $819761
+    proyecto:compra:esp32eye
+
+2019/02/13 Ajuste de compra de cnc
+    egresos:compra:cnc                                                     $188708
+    proyecto:compra:cnc
+
+2019/02/18 Pago particle
+    egresos:mensualidadparticle                                             $9440
+    proyecto:compra:mensualidadparticle
+
+2019/03/02 Comida sesión de planeación y ordenar
+    egresos:sesiontrabajo:comida                                            $75000
+    proyecto:sesiontrabajo:comida
+
+2019/03/04 Pago ups colombia
+    egresos:compra:cnc:envío                                               $232000
+    proyecto:compra:cnc:envío
+
+2019/03/10 Capacitación CNC
+    egresos:compra:cnc:capacitación                          ($80000+$14000+$20000)
+    proyecto:compra:cn:capacitación
+
+2019/03/13 Compra de 40 matrices led
+    egresos:compra:matricesled                                             $584000
+    proyecto:compra:matricesled
+
+2019/03/14 Compra de calibrador
+    egresos:compra:cnc:calibrador                                          $153770
+    proyecto:compra:cnc:calibrador
+
+2019/03/14 Compra de brocas
+    egresos:compra:cnc:brocas                                                $6000
+    proyecto:compra:cnc:brocas
+
+2019/03/14 Turbina eólica
+    egresos:compra:turbinaeolica                                            $20000
+    proyecto:compra:turbinaeolica
+
+2019/03/14 Alcohol isopropílico
+    egresos:compra:alcohol                                                  $27000
+    proyecto:compra:alcohol
+
+2019/03/18 Pago particle
+    egresos:mensualidadparticle                                             $9401
+    proyecto:compra:mensualidadparticle
+
+2019/03/21 Compra conectores usb
+    egresos:compra:conectoresusb                                           $50733
+    proyecto:compra:conectoresusb
+
+2019/03/30 Compra varios aliexpress
+    egresos:compra:extrusor3d                                             $270177
+    proyecto:compra:extrusor3d
+
+2019/04/07 Compra de 20 pms7003
+    egresos:compra:pms7003                                                $802000
+    proyecto:compra:pms7003
+
+2019/04/17 Compra de puntas para cnc
+    egresos:compra:cnc:puntas                                             $163000
+    proyecto:compra:cnc:puntas
+
+2019/05/03 Compra de fresas para cnc
+    egresos:compra:cnc:puntas                                              $10200
+    proyecto:compra:cnc:puntas
+
+2019/05/14 Compra baquelita
+    egresos:compra:cnc:baquelita                                            $8800
+    proyecto:compra:cnc:baquelita
+
+2019/05/29 Compra de disco duro pc
+    egresos:compra:discoduro                                              $150000
+    proyecto:compra:discoduro
+
+
+
+
+
+
+
+
+
+; 2018/11/16 División de recurso destinado para coordinación
+;     egresos:proyección:12:coordinación:pagomiguel                       ($2600000/4)
+;     egresos:proyección:12:coordinación:pagojohnny                       ($2600000/4)
+;     egresos:proyección:12:coordinación:pagochecho                       ($2600000/4)
+;     egresos:proyección:12:coordinación:pagobrolin                       ($2600000/4)
+;     proyecto:administración:12:coordinación:pagomiguel                  (-$2600000/4)
+;     proyecto:administración:12:coordinación:pagojohnny                  (-$2600000/4)
+;     proyecto:administración:12:coordinación:pagochecho                  (-$2600000/4)
+;     proyecto:administración:12:coordinación:pagobrolin                  (-$2600000/4)
+
+; 2018/11/16 División de recurso destinado para imprevistos
+;     egresos:proyección:22:imprevistos:pagomiguel                        ($2381500/4)
+;     egresos:proyección:22:imprevistos:pagojohnny                        ($2381500/4)
+;     egresos:proyección:22:imprevistos:pagochecho                        ($2381500/4)
+;     egresos:proyección:22:imprevistos:pagobrolin                        ($2381500/4)
+;     proyecto:administración:22:imprevistos:pagomiguel                   (-$2381500/4)
+;     proyecto:administración:22:imprevistos:pagojohnny                   (-$2381500/4)
+;     proyecto:administración:22:imprevistos:pagochecho                   (-$2381500/4)
+;     proyecto:administración:22:imprevistos:pagobrolin                   (-$2381500/4)

@@ -1,11 +1,12 @@
-#include "app.h"
-#include <StreamString.h>
-
-const uint16_t HTTP_TIMEOUT = 1000 * 60;
+/*#include <app.h>
+#include <StreamString.h>*/
+#include <http.h>
+using namespace aqaHttp;
+/*const uint16_t HTTP_TIMEOUT = 1000 * 60;*/
 HTTPClient http;
 
 // Facade to HTTP GET request
-String _get(String url) {
+String aqaHttp::_get(String url) {
   if (WiFi.status() == WL_CONNECTED) {
     http.begin(url);
     int httpCode = http.GET();
@@ -24,7 +25,7 @@ String _get(String url) {
   }
 }
 
-String _post(String url, String json) {
+String aqaHttp::_post(String url, String json) {
   if (WiFi.status() == WL_CONNECTED) {
     http.begin(url);
 
@@ -37,13 +38,15 @@ String _post(String url, String json) {
       }
     } else {
       DMSGf("[HTTP] POST... failed, error: %s\n", http.errorToString(httpCode).c_str());
+      //reset
+      digitalWrite(D0, LOW); delay(100); // from here https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
     }
 
     http.end();
   }
 }
 
-int postCsv(String url, String csv) {
+int aqaHttp::postCsv(String url, String csv) {
   if (WiFi.status() != WL_CONNECTED) { return 0; }
 
   http.begin(url);
@@ -66,7 +69,7 @@ int postCsv(String url, String csv) {
   return httpCode;
 }
 
-int postCsvFile(String url, String filename) {
+int aqaHttp::postCsvFile(String url, String filename) {
   if (WiFi.status() != WL_CONNECTED) { return 0; }
 
   int content_length = 0;
@@ -123,7 +126,7 @@ int postCsvFile(String url, String filename) {
 // https://docs.influxdata.com/influxdb/v1.5/tools/api/#write
 // example 3 or example 4
 
-int post2Influx(String url, String load) {
+int aqaHttp::post2Influx(String url, String load) {
   if (WiFi.status() != WL_CONNECTED) { return 0; }
 
   http.begin(url);
@@ -152,7 +155,8 @@ int post2Influx(String url, String load) {
     } else {
       DMSG(F("[HTTP] failed, error;;;: "));
       DMSG_STR(http.errorToString(httpCode).c_str());
-      digitalWrite(D0, LOW); delay(100);
+      //reset
+      digitalWrite(D0, LOW); delay(100); // from here https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
     }
   }
 
