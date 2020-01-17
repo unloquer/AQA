@@ -1,0 +1,77 @@
+;; contizacion Juan A 
+
+
+2018/03/13  Sensor Partículas (Plantower)
+    costo:aparato:parte                                          $-48,000.00
+    aliExpress
+
+2018/03/13 GPS
+    costo:aparato:parte  $-36,000.00
+    nacional
+2018/03/13 ESP
+    costo:aparato:parte    $-30,000.00
+    aliExpress
+2018/03/13 Sensor de Humedad
+    costo:aparato:parte    $-5,000.00
+    nacional
+2018/03/13 LEDs
+  costo:aparato:parte   $-2,000.00
+  nacional
+2018/03/13 Bateria
+    costo:aparato:accesorio  $-28,000.00
+    nacional
+2018/03/13 Adaptador
+    costo:aparato:accesorio  $-18,000.00
+    nacional
+2018/03/13 Diseño Electronico - PCB
+    costo:aparato:diesño   $-40,000
+    unloquer
+2018/03/13 Ensamblaje
+    costo:aparato:manoDeObra  $-20,000
+    unloquer
+2018/03/13 Carcasa
+    costo:aparato:servicios  $-6,000.00
+    nacional
+2018/03/13 Desarrollo Firmware/Software
+    costo:aparato:manoDeObra  $-30,000.00
+    unloquer
+2018/03/13 Infraestructura (Servidores, Servicios)
+    costo:aparato:servicios     $-40,000
+    digitalOcean
+2018/03/13  Utilidad (opcional)
+    costo:aparato:utilidad  $-60,000.00
+    unloquer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

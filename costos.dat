@@ -417,13 +417,56 @@
 2017/11/11 Se compran 10 sensores plantower
     ahorros:fed:compra:sensor:plantower       ($-3003*158.10)
     Ali Express
+2018/03/08	Compra 5 plantower pequeños	
+    tdc:federico                                 $  355,736.49
+    Ali Express
+2018/03/08	Compra 15 plantower grandes
+    tdc:federico                                $   684,763.87
+    Ali Express
 
+2018/03/21 Produccion 50 PCB rojo
+    ahorros:fed:compra:pcb  ($-8,642.00*50)
+    iva                                            $-82,100.00
+    colcircuitos
 
+2018/03/28 Ajuste por re-diseño de PCB (huecos para montaje)
+    ahorros:fed:compra:pcb    $-62,000.00
+    uber
 
+2018/03/21  Asesoría China almuerzo Uber, Rafa, Fede
+    ahorros:fed:egreso:asesoria                $-42,000.00
+    El Aula
 
+;; Agregar baterías de litio polímero 3 x $79800
 
-; Descuenta 2 GPS
-; Agrega dos ESP8266 que pone brolin, y los 10 ESP con los que se ensablaron los sensores que tenemos también los pone brolin
-; Descuenta dos ESP
-; Descuenta 20mil de checho por ensamblarlos
+2018/05/03 Compra de 10 gps y 10 DHT11
+    compra:componentes:dht11  10 dht @ $4,800.00
+    compra:componentes:gpsL80  10 gps @ $32,000.00
+    iva                      $58,756.00
+    federico:efectivo
+
+2018/05/11 Pago a Uber por ensamblaje de dispositivos
+    costo:aparato:manoDeObra:ensamblaje:uber   $-480,000.00 ;; 10 soldados 
+    uber
+
+2018/05/17 Compra 10 gps y 10 DHT11
+    compra:componentes:dht11  10 dht @ $4,800.00
+    compra:componentes:gpsL80  10 gps @ $29,700.00
+    iva       $55,084.00
+    federico:efectivo
+
+2018/06/10 Pago a Uber por ensamblaje de dispositivos
+    costo:aparato:manoDeObra:ensamblaje:uber   $-528,000.00  ;; 11 soldados
+    compra:componentes:partesUsb               $-50,000.00
+    brolin:pagoPlataforma
+
+;; De las tarjetas diseñadas por uber
+;; 6 tarjetas valieron $100000 en colcircuitos
+;; 4 GPS's y capacitores que valieron $144000
+;; 6 esp8266 que pone unloquer
+;; 6 DHT11 que pone unloquer
+;; 6 cargadores de batería que pone brolin a $1000 c/u
+;; 24 leds que pone brolin a $500 c/u
+;; 6 kits de componentes varios que pone unloquer por valor de $10000 como máximo
+
 
