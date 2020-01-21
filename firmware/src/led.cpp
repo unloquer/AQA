@@ -6,6 +6,7 @@ void AqaLeds::setupLeds() {
   #else
   FastLED.addLeds<LPD8806, DI, CI, COLOR_ORDER>(leds, NUM_LEDS);
   #endif
+
 }
 
 void AqaLeds::ledParticulateQuality(plantowerData data) {
@@ -164,17 +165,24 @@ if(pm25 < 13){
 
 
 
+
   if (pm25>= 255) alert = CRGB::Brown; // Alert.harmful;
   
   FastLED.setBrightness(millis() % 255);
 
   for(int i=0; i < 4; i++) {
+
     for(int j=0; j < NUM_LEDS; j++) leds[j] = i%2 == 0 ? alert : CRGB::Black;// para el kit diadactico y los 64 leds
     /*#ifdef NUEVATARJETA
     leds[0] = leds[1] = leds[2] =  i%2 == 0 ? alert : CRGB::Black;
     #else
     leds[0] = leds[1] = i%2 == 0 ? alert : CRGB::Black;
     #endif*/
+    #ifdef NUEVATARJETA
+    leds[0] = leds[1] = leds[2] =  i%2 == 0 ? alert : CRGB::Black;
+    #else
+    leds[0] = leds[1] = i%2 == 0 ? alert : CRGB::Black;
+    #endif
     FastLED.show();
     FastLED.delay(30);
   }
