@@ -14,7 +14,7 @@
 #define FIXED_LON "numeric_lng"
 #endif
 
-
+const String SENSOR_ID = "tu sensor id :)";
 
 #ifdef FIXED_WIFI
 const String SSID = "ss_id";
