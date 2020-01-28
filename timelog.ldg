@@ -1,0 +1,6 @@
+;; =========== Registro de tiempos
+;; para consultar el tiempo de un usuario
+;; $ ledger -f /ruta/del/archivo bal brolin
+;; 
+i 2019-01-28 11:00:00 son0p:aqakit:timelog:noBillable  se hace commit de ejemplo de sistema para registrar tiempos  
+o 2019-01-28 11:35:04 
