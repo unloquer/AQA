@@ -119,12 +119,15 @@ void AqaGps::handleGpsData()
     DMSG_STR(data.lng);
     DMSG("epoch time: ");
     DMSG_STR(data.epoch_time);
-    /*  DMSG("altitude: ");
+        DMSG("altitude: ");
         DMSG_STR(data.altitude);
         DMSG("course: ");
         DMSG_STR(data.course);
         DMSG("speed: ");
-        DMSG_STR(data.speed);*/
+        DMSG_STR(data.speed);
+
+    
+    
   }else {
     // DMSG_STR("Sensor NOT FULLY OK");
   }
@@ -159,3 +162,4 @@ void AqaGps::checkValidGps () {
 gpsData * AqaGps::getGpsData(void) {
   return &data;
 }
+

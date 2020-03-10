@@ -56,7 +56,8 @@ void AqaDht::handleDhtData() {
   DMSG(STR_SPACE);
   DMSG("humidity: ");
   DMSG_STR(data.humidity);
-
+  
+  
       
 
   }

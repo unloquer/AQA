@@ -8,6 +8,8 @@ SoftwareSerial plantower_serial(P_TOWER_RX, P_TOWER_TX);
 AqaPlantower plantowerSensor(plantower_serial);
 // DHT
 AqaDht dhtSensor;
+//HC06
+//SoftwareSerial hc06(1,3);
 // Wifi
 AqaWifi the_wifi(5000);// aqawifi(int i) initializes a ticker callback. doesnt work with ping
 //--------- variables to point to the data of the sensors
@@ -53,6 +55,7 @@ void readLog() {
   String y,m,d,h,mi,s;
   int Year,Month,Day,Hour,Minute,Second;
   if (!_fs.file) DMSG_STR("file open failed");  // Check for errors
+  
   while (_fs.file.available()) {
     yield();
     wdt_disable();
@@ -89,6 +92,7 @@ void readLog() {
       line = "";
     } else {
       if(c == ',') {
+        
         switch(field) {
         case 0:
           //device
@@ -159,6 +163,7 @@ void readLog() {
           //          DMSG("pm10=");DMSG(line);DMSG(" ");DMSG_STR(field);
           break;
           //default:
+          
         }
         line = "";
         field++;
@@ -166,7 +171,9 @@ void readLog() {
     }
     wdt_enable(1000);
   }
+
 }
+
 
 Ticker reset_ticker;
 void tick() {
@@ -176,16 +183,18 @@ void tick() {
   }
 }
 void setup() {
+  //hc06.begin(9600);
   pinMode(D0, OUTPUT); digitalWrite(D0, HIGH); // https://github.com/esp8266/Arduino/issues/1622#issuecomment-347165350
-  Serial.begin(115200);
-
+  Serial.begin(9600);
+  
   SPIFFS.begin();
   _fs.fs_info_print();
   gpsSerial.begin(GPS_BAUDS);
   plantower_serial.begin(P_BAUDS);
+
   dhtSensor.setup();
   aqa_leds.setupLeds();
-
+  
   reset_ticker.attach(600,tick);
   DMSG_STR("\nStarting ...");
 
@@ -219,19 +228,21 @@ void setup() {
      }else{
      DMSG_STR("didn't check");
      }*/
+
 }
 
 
 void loop() {
+
   gpsSensor.handleGpsData();
   yield();
   plantowerSensor.handlePlantowerData();
   yield();
   dhtSensor.handleDhtData();
   yield();
+ 
   wdt_reset();
   //  the_wifi.check_connections();
-
   aqa_leds.ledParticulateQuality(*plantowerInfo);
 
 #ifdef MOBILE
@@ -396,6 +407,7 @@ String influxFrame() {
   frame += plantowerInfo->pm10;
 
   return frame;
+
 }
 
 void checkConnectedModules(unsigned long timeout) {

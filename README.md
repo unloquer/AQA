@@ -17,8 +17,17 @@ https://comunidad.unloquer.org/t/como-programar-el-aqa/33
 ## Como leer los colores
 el color gradiente de los leds funciona mientras mas intenso el color mas contaminacion  y menos inteso el color  menos contaminacion
  color >13 genrlamente verde
+
  13<color <35 generamente amarillo
- 35<color<55 generalmente naranja
+ 
+35<color<55 generalmente naranja
+
  55<color<75 generalmente rojo
+
  75<color< 255 generalmente morado
+
  color<255 marron
+
+https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal&hl=es_CO 
+
+aplicacion para ver el monitor serial y los datos desde un dispositivo movil android
