@@ -69,17 +69,21 @@ void AqaPlantower::_readPlantower(unsigned long timeout) {
 
 //  wdt_enable(1000);
   wdt_reset();
-
+  delay(10);
   DMSG("PM2.5:  ");
   DMSG(data.pm25);
   DMSG_STR("  ug/m3");
-  DMSG("PM1:  ");
+  DMSG_STR("");
+  delay(10);
+  DMSG("PM10:  ");
   DMSG(data.pm10);
   DMSG_STR("  ug/m3");
+  DMSG_STR("");
+  delay(10);
   DMSG("PM1:  ");
   DMSG(data.pm1);
   DMSG_STR("  ug/m3");
-  
+  DMSG_STR("");
 
 }
 

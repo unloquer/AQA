@@ -15,7 +15,7 @@ void AqaLeds::ledParticulateQuality(plantowerData data) {
   int pm10 = data.pm10;
 
   CRGB alert = CRGB::Black;
- 
+ delay(1);
 if(pm25 < 13){
      //alert = CRGB::Green; // CRGB::Green; // Alert.ok
       int color=255*pm25/13;
@@ -52,10 +52,10 @@ if(pm25 < 13){
       DMSG_STR("morado");
   }
 
-
-
-  if (pm25>= 255) alert = CRGB::Brown; // Alert.harmful;
-  
+  if (pm25>= 255){ // Alert.harmful;
+     alert = CRGB::Brown;
+     DMSG_STR("cafe");
+  }
   FastLED.setBrightness(millis() % 255);
 
   for(int i=0; i < 4; i++) {
@@ -77,7 +77,7 @@ void AqaLeds::ledParticulateQuality2(plantowerData data) {
 
     CRGB alert = CRGB::Black;
 
-
+delay(1);
 if(pm25 < 13){
      //alert = CRGB::Green; // CRGB::Green; // Alert.ok
       int color=255*pm25/13;
@@ -115,10 +115,10 @@ if(pm25 < 13){
        DMSG_STR("morado");
   }
 
-
-
-  if (pm25>= 255) alert = CRGB::Brown; // Alert.harmful;
-  
+  if (pm25>= 255){ // Alert.harmful;
+     alert = CRGB::Brown;
+     DMSG_STR("cafe");
+  }
 
     FastLED.setBrightness(millis() % 255);
 
@@ -141,7 +141,7 @@ void AqaLeds::ledParticulateQualityStreamming(plantowerData data) {
 
   CRGB alert = CRGB::Black;
 
-
+delay(1);
 if(pm25 < 13){
      //alert = CRGB::Green; // CRGB::Green; // Alert.ok
       int color=255*pm25/13;
@@ -178,12 +178,10 @@ if(pm25 < 13){
        DMSG_STR("morado");
   }
 
-
-
-
-
-  if (pm25>= 255) alert = CRGB::Brown; // Alert.harmful;
-  
+  if (pm25>= 255){ // Alert.harmful;
+     alert = CRGB::Brown;
+     DMSG_STR("cafe");
+  }
   FastLED.setBrightness(millis() % 255);
 
   for(int i=0; i < 4; i++) {

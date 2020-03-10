@@ -48,15 +48,18 @@ void AqaDht::handleDhtData() {
   yield();
   checkValues();
   if(_isSensorFullyFunctional) {
-
+  
   DMSG("validated ambientXD: ");
+  delay(10);
   DMSG(STR_SPACE);
   DMSG("temperature:  ");
   DMSG(data.temperature);
+  DMSG_STR("");
+  delay(10);
   DMSG(STR_SPACE);
   DMSG("humidity: ");
   DMSG_STR(data.humidity);
-  
+  DMSG_STR("");
   
       
 

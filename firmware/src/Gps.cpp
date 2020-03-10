@@ -113,18 +113,31 @@ void AqaGps::handleGpsData()
   if(sensorOk()) {
     // receiving data from software serial &&
     // gps location is valid
+    delay(10);
     DMSG("lat:  ");
     DMSG(data.lat);DMSG(STR_SPACE);
+    DMSG_STR("");
+    delay(10);
     DMSG("long: ");
     DMSG_STR(data.lng);
+    DMSG_STR("");
+    delay(10);
     DMSG("epoch time: ");
     DMSG_STR(data.epoch_time);
+    DMSG_STR("");
+    delay(10);
+        //DMSG_STR("compass");
         DMSG("altitude: ");
         DMSG_STR(data.altitude);
+        DMSG_STR("");
+        delay(10);
         DMSG("course: ");
         DMSG_STR(data.course);
+        DMSG_STR("");
+        delay(10);
         DMSG("speed: ");
         DMSG_STR(data.speed);
+        DMSG_STR("");
 
     
     
