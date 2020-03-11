@@ -14,10 +14,10 @@
 #define FIXED_LON "numeric_lng"
 #endif
 
-const String SENSOR_ID = "jero98772";
+const String SENSOR_ID = "AQAid";
 
 #ifdef FIXED_WIFI
-const String SSID = "Inalambrica-UdeM";
+const String SSID = "SSiD";
 const String PASSWORD = "password";
 
 #endif
