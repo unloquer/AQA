@@ -116,7 +116,7 @@ void AqaWifi::init_connections() {
 
 void AqaWifi::init_connections() {
   // // Connect to WiFi
-  WiFi.begin(SSID);//, PASSWORD);
+  WiFi.begin(SSID, PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
