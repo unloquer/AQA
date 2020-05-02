@@ -1,4 +1,4 @@
-## Agentes de la Calidad del Aire (AQA)
+## Sensor portable para medir la calidad del aire
 Cuando se desea profundizar en el problema de la calidad del aire en Medellín nos encontramos con varios obstáculos debido a la complejidad del problema y la limitada capacidad de los ciudadanos para recolectar y examinar las mediciones.
 El Kit AQA se esfuerza por acercar al ciudadano a la posibilidad de medir y analizar el aire que respira. De hecho, en las actividades propuestas se aprende a ensamblar un dispositivo para la medición del materialparticulado, y se considera unas herramientas para el estudio de las mediciones.
 Es en los detalles del ensamblaje y el uso de las herramientas de análisis donde se puede pensar con las manos y entrar en relación directa con el problema de la calidad del aire.
