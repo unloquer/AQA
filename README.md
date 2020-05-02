@@ -5,6 +5,9 @@ Es en los detalles del ensamblaje y el uso de las herramientas de análisis dond
 
 ## Instalación
 
+descargar repositorio
+     git clone https://github.com/unloquer/AQA.git
+
 https://comunidad.unloquer.org/t/como-programar-el-aqa/33
 
 
